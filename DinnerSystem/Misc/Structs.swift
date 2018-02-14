@@ -12,6 +12,7 @@ struct user {
     static var id = ""
     static var name = ""
     static var prev = ""
+    static var pw = ""
 }
 
 struct dinnerSys {

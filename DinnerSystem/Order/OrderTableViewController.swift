@@ -59,7 +59,7 @@ class OrderViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
-        alert.text = "你選擇的是\(selOrder.name)，共\(selOrder.cost)。\n確定請選擇點餐日期後按點餐。（日期範圍：該週星期一到五。）"
+        alert.text = "你選擇的是\(selOrder.name)，共\(selOrder.cost)元。\n確定請選擇點餐日期後按點餐。（日期範圍：該週星期一到五。）"
         alert.sizeToFit()
     }
     
@@ -95,8 +95,11 @@ class OrderViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }else{
-                    let action = UIAlertAction(title: "OK", style: .default, handler:nil)
                     let alert = UIAlertController(title: "點餐成功", message: "", preferredStyle: .actionSheet)
+                    let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        self.navigationController?.popViewController(animated: true)
+                    })
                     alert.addImage(image: success_image!)
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)

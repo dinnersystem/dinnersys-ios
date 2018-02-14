@@ -13,6 +13,9 @@
 		E602DC71201211EE000F4785 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E602DC70201211EE000F4785 /* Structs.swift */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
 		E60CE07B20319E4500ED78E9 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CE07A20319E4400ED78E9 /* Food.swift */; };
+		E60CE07F2031C97C00ED78E9 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CE07C2031C97C00ED78E9 /* Dish.swift */; };
+		E60CE0802031C97C00ED78E9 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CE07D2031C97C00ED78E9 /* History.swift */; };
+		E60CE0812031C97C00ED78E9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CE07E2031C97C00ED78E9 /* User.swift */; };
 		E61B81B8201F337200B27B93 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61B81B7201F337200B27B93 /* HistoryTableViewController.swift */; };
 		E653E430200074F9000E35AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E42F200074F9000E35AE /* AppDelegate.swift */; };
 		E653E432200074F9000E35AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E431200074F9000E35AE /* ViewController.swift */; };
@@ -23,7 +26,6 @@
 		E653E450200074F9000E35AE /* DinnerSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */; };
 		E661CF5220130E4600292756 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661CF5120130E4600292756 /* MoreTableViewController.swift */; };
 		E6655D4C20038EE2008C5104 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6655D4B20038EE2008C5104 /* OrderTableViewController.swift */; };
-		E6AF080C202EE59000310FB0 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AF080B202EE59000310FB0 /* History.swift */; };
 		E6C79349201C8EAD00974489 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C79348201C8EAD00974489 /* AlertController.swift */; };
 		E6C8C6332004F54600230836 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C8C6322004F54600230836 /* Order.swift */; };
 		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
@@ -72,6 +74,9 @@
 		E602DC70201211EE000F4785 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60CE07A20319E4400ED78E9 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		E60CE07C2031C97C00ED78E9 /* Dish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Dish.swift; path = "/Volumes/Macintosh HD 2/Swift/DinnerSystem/DinnerSystem/History/Dish.swift"; sourceTree = "<absolute>"; };
+		E60CE07D2031C97C00ED78E9 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = History.swift; path = "/Volumes/Macintosh HD 2/Swift/DinnerSystem/DinnerSystem/History/History.swift"; sourceTree = "<absolute>"; };
+		E60CE07E2031C97C00ED78E9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "/Volumes/Macintosh HD 2/Swift/DinnerSystem/DinnerSystem/History/User.swift"; sourceTree = "<absolute>"; };
 		E61B81B7201F337200B27B93 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E42F200074F9000E35AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,10 +93,8 @@
 		E653E451200074F9000E35AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E661CF5120130E4600292756 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		E6655D4B20038EE2008C5104 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
-		E6AF080B202EE59000310FB0 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		E6C79348201C8EAD00974489 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		E6C8C6322004F54600230836 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		E6D722A2202F13D500C02395 /* Property List.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Property List.plist"; path = "../../../../Users/seanpai/Desktop/Property List.plist"; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6E48C9F201DC23F00723A3D /* DLFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLFoodData.swift; sourceTree = "<group>"; };
 		EE5B20602BAFF0EF6CE9C041 /* Pods-DinnerSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystemTests/Pods-DinnerSystemTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,8 +155,10 @@
 		E61B81AF201F2EAC00B27B93 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				E60CE07C2031C97C00ED78E9 /* Dish.swift */,
+				E60CE07D2031C97C00ED78E9 /* History.swift */,
+				E60CE07E2031C97C00ED78E9 /* User.swift */,
 				E61B81B7201F337200B27B93 /* HistoryTableViewController.swift */,
-				E6AF080B202EE59000310FB0 /* History.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -169,7 +174,6 @@
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
-				E6D722A2202F13D500C02395 /* Property List.plist */,
 				E653E42E200074F9000E35AE /* DinnerSystem */,
 				E653E436200074F9000E35AE /* Assets.xcassets */,
 				E653E443200074F9000E35AE /* DinnerSystemTests */,
@@ -579,12 +583,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E60CE0812031C97C00ED78E9 /* User.swift in Sources */,
 				E60CE07B20319E4500ED78E9 /* Food.swift in Sources */,
 				E653E432200074F9000E35AE /* ViewController.swift in Sources */,
+				E60CE07F2031C97C00ED78E9 /* Dish.swift in Sources */,
 				E6C79349201C8EAD00974489 /* AlertController.swift in Sources */,
 				E661CF5220130E4600292756 /* MoreTableViewController.swift in Sources */,
-				E6AF080C202EE59000310FB0 /* History.swift in Sources */,
 				E653E430200074F9000E35AE /* AppDelegate.swift in Sources */,
+				E60CE0802031C97C00ED78E9 /* History.swift in Sources */,
 				E6655D4C20038EE2008C5104 /* OrderTableViewController.swift in Sources */,
 				E602DC71201211EE000F4785 /* Structs.swift in Sources */,
 				E6E48CA0201DC23F00723A3D /* DLFoodData.swift in Sources */,
@@ -758,6 +764,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Misc/Info.plist";
@@ -765,6 +772,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -776,6 +784,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Misc/Info.plist";
@@ -783,6 +792,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -102,6 +102,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 alert.addAction(okAction)
                 self.present(alert, animated: true, completion: nil)
                 user.id = username
+                user.pw = password
             }
             print("response:\(String(describing: responseString))")
         }
