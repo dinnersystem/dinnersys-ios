@@ -62,12 +62,15 @@ class MoreViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBOutlet var webView: WKWebView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let homeURL = URL(string: "http://dinnersys.ddns.net/")
-        let homeRequest = URLRequest(url: homeURL!)
-        webView.load(homeRequest)
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            let viewFrame = CGRect(x: 0, y: 64, width: view.frame.width, height: ((view.frame.height)-49))
+            let webView = WKWebView(frame: viewFrame)
+            webView.allowsBackForwardNavigationGestures = true
+            let homeURL = URL(string: "http://dinnersys.ddns.net/")
+            let homeRequest = URLRequest(url: homeURL!)
+            webView.load(homeRequest)
+            view.addSubview(webView)
     }
 
 }
