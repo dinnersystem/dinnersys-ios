@@ -99,32 +99,37 @@ class HistoryTableViewController: UITableViewController {
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             let info = history[indexPath.row]
-                Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=delete_order&recv_date=\(info.recvDate)&order_date=\(info.orderDate)&dish_id=\(info.dishId)").responseData { origindata in
-                    Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=show_order&date_filter=today&type=self&plugin=yes").responseData { origindata in
-                        if let data = origindata.result.value {
-                            let string = String(data: data,encoding: .utf8)
-                            if string == "{}"{
-                                history = []
-                                let alert = UIAlertController(title: "無點餐紀錄", message: "您是否尚未點餐？若有請重新整理(列表向下拉)！", preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
-                                self.tableView.reloadData()
-                            }else{
-                                print(data as NSData)
-                                let decoder = JSONDecoder()
-                                history = try! decoder.decode([History].self, from: data)
-                                self.tableView.reloadData()
-                            }
+            Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=delete_order&recv_date=\(info.recvDate)&order_date=\(info.orderDate)&dish_id=\(info.dishId)").responseData { origindata in
+                Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=show_order&date_filter=today&type=self&plugin=yes").responseData { origindata in
+                    if let data = origindata.result.value {
+                        let string = String(data: data,encoding: .utf8)
+                        if string == "{}"{
+                            history = []
+                            let alert = UIAlertController(title: "無點餐紀錄", message: "您是否尚未點餐？若有請重新整理(列表向下拉)！", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            self.tableView.reloadData()
+                        }else{
+                            print(data as NSData)
+                            let decoder = JSONDecoder()
+                            history = try! decoder.decode([History].self, from: data)
+                            self.tableView.reloadData()
                         }
-                        else{
-                            print("i got nothing:\(String(describing: origindata.result.error))")
-                        }
+                    }
+                    else{
+                        print("i got nothing:\(String(describing: origindata.result.error))")
                     }
                 }
             }
         }
-  
+    }
+
+   
 }

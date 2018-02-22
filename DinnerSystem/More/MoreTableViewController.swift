@@ -27,13 +27,17 @@ class MoreViewController: UIViewController {
                 self.present(deniedAlert, animated: true, completion: nil)
             }
             else{
+                let neWPw = newpw.text!
+                if !neWPw.contains(" ") {
                 let olDPw = oldpw.text!
                 let neWPw = newpw.text!
                 if(olDPw == user.pw){
                 Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=change_password&old_pswd=\(olDPw)&new_pswd=\(neWPw)").responseData {data in}
                 let okAlert = UIAlertController(title: "成功", message: "已更改密碼", preferredStyle: .alert)
                 okAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(okAlert, animated: true, completion: nil)
+                    self.present(okAlert, animated: true, completion: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 }else{
                     let deniedAlert = UIAlertController(title: "錯誤", message: "原密碼錯誤", preferredStyle: .alert)
                     deniedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
@@ -43,10 +47,17 @@ class MoreViewController: UIViewController {
                     self.present(deniedAlert, animated: true, completion: nil)
                 }
             }
+                else{
+                    let deniedAlert = UIAlertController(title: "錯誤", message: "請勿輸入空格", preferredStyle: .alert)
+                    deniedAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
+                        (action:UIAlertAction) -> () in
+                        self.present(alert, animated: true, completion: nil)
+                    }))
+                    self.present(deniedAlert, animated: true, completion: nil)
+                }
+        }
         })
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: {(action:UIAlertAction) -> () in
-            self.dismiss(animated: true, completion: nil)
-        })
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         alert.addTextField{
             (textfield:UITextField!) -> Void in
             textfield.isSecureTextEntry = true
@@ -61,8 +72,12 @@ class MoreViewController: UIViewController {
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
+    @IBAction func logout(_ sender: Any) {
+        Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+        self.dismiss(animated: true, completion: nil)
+    }
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
             let viewFrame = CGRect(x: 0, y: 64, width: view.frame.width, height: ((view.frame.height)-49))
             let webView = WKWebView(frame: viewFrame)

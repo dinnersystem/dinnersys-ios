@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.6.0)
+  - Crashlytics (3.10.0):
+    - Fabric (~> 1.7.3)
+  - Fabric (1.7.3)
   - Firebase/Core (4.9.0):
     - FirebaseAnalytics (= 4.0.9)
     - FirebaseCore (= 4.0.15)
@@ -20,23 +23,24 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - Crashlytics (~> 3.10.0)
+  - Fabric (~> 1.7.3)
   - Firebase/Core
-  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Crashlytics: a989ef242b66605577a425733797f810bd2725eb
+  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
   Firebase: 632216af3ed7f31e3be34776947fdc7546cfb572
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
   FirebaseCore: 3bd047463058fa6b5d312c97502c52e45401cdfb
   FirebaseInstanceID: d2058a35e9bebda1b6dd42486b84917bde552a9d
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: b4f7941f8d884f2e8bb7aaf8154d5c4df7da72e5
+PODFILE CHECKSUM: 0586e7f1d6fdb1c25e57a50450ad8824cea45249
 
 COCOAPODS: 1.4.0

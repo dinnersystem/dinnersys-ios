@@ -6,8 +6,9 @@ target 'DinnerSystem' do
   use_frameworks!
 
   pod 'Alamofire'
-pod 'SwiftyJSON'
 pod 'Firebase/Core'
+pod 'Fabric', '~> 1.7.3'
+pod 'Crashlytics', '~> 3.10.0'
 
   target 'DinnerSystemTests' do
     inherit! :search_paths

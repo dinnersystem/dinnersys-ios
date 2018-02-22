@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 import Alamofire
-import SwiftyJSON
 
 var filterData: Data!
 var filterString = ""
@@ -59,6 +58,7 @@ class OrderViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     
     override func viewDidLoad() {
+        alert.numberOfLines = 5
         alert.text = "你選擇的是\(selOrder.name)，共\(selOrder.cost)元。\n確定請選擇點餐日期後按點餐。（日期範圍：該週星期一到五。）"
         alert.sizeToFit()
     }

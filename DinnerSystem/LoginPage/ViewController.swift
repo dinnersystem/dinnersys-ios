@@ -9,7 +9,6 @@
 import UIKit
 import LocalAuthentication
 import SystemConfiguration
-import SwiftyJSON
 import Alamofire
 
 class ViewController: UIViewController,UITextFieldDelegate {
