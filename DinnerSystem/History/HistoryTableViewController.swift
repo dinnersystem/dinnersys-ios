@@ -99,6 +99,47 @@ class HistoryTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath ) {
+        let info = history[indexPath.row]
+        let delAlert = UIAlertController(title: "訂單資訊", message: "訂單名稱：\(info.dishName)\n點餐日期：\(info.orderDate)\n取餐日期：\(info.recvDate)\n餐點金額：\(info.dishCharge)\n付款狀態：\(info.paidStatus)", preferredStyle: .actionSheet)
+        let unpaidAction = UIAlertAction(title: "取消訂單", style: .destructive, handler: {
+            (action: UIAlertAction!) -> () in
+            Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=delete_order&recv_date=\(info.recvDate)&order_date=\(info.orderDate)&dish_id=\(info.dishId)").responseData { origindata in
+            Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=show_order&date_filter=today&type=self&plugin=yes").responseData { origindata in
+                if let data = origindata.result.value {
+                    let string = String(data: data,encoding: .utf8)
+                    if string == "{}"{
+                        history = []
+                        let alert = UIAlertController(title: "無點餐紀錄", message: "您是否尚未點餐？若有請重新整理(列表向下拉)！", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        self.tableView.reloadData()
+                    }else{
+                        print(data as NSData)
+                        let decoder = JSONDecoder()
+                        history = try! decoder.decode([History].self, from: data)
+                        self.tableView.reloadData()
+                    }
+                }
+                else{
+                    print("i got nothing:\(String(describing: origindata.result.error))")
+                }
+            }
+            }})
+        let cancelAction = UIAlertAction(title: "返回", style: .cancel, handler: nil)
+        let paidAction = UIAlertAction(title: "已付款之訂單請先申請退款", style: .destructive, handler: nil)
+        paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        paidAction.isEnabled = false
+        if info.paidStatus == "您尚未付款"{
+            delAlert.addAction(unpaidAction)
+        }else{
+            delAlert.addAction(paidAction)
+        }
+        delAlert.addAction(cancelAction)
+        self.present(delAlert, animated: true, completion: {
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
+    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true

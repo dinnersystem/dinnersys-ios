@@ -13,11 +13,11 @@ var history:[History] = []
 struct History : Codable {
 
 	let dish : Dish?
-	let dishCharge : String?
+	let dishCharge : String
 	let dishId : String
-	let dishName : String?
+	let dishName : String
 	let orderDate : String
-	let paidStatus : String?
+	let paidStatus : String
 	let recvDate : String
 	let user : User?
 	let userId : String?
@@ -39,11 +39,11 @@ struct History : Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		dish = try Dish(from: decoder)
-		dishCharge = try values.decodeIfPresent(String.self, forKey: .dishCharge)
+		dishCharge = try values.decodeIfPresent(String.self, forKey: .dishCharge)!
         dishId = (try values.decodeIfPresent(String.self, forKey: .dishId))!
-		dishName = try values.decodeIfPresent(String.self, forKey: .dishName)
+		dishName = try values.decodeIfPresent(String.self, forKey: .dishName)!
         orderDate = (try values.decodeIfPresent(String.self, forKey: .orderDate))!
-		paidStatus = try values.decodeIfPresent(String.self, forKey: .paidStatus)
+		paidStatus = try values.decodeIfPresent(String.self, forKey: .paidStatus)!
         recvDate = (try values.decodeIfPresent(String.self, forKey: .recvDate))!
 		user = try User(from: decoder)
 		userId = try values.decodeIfPresent(String.self, forKey: .userId)
