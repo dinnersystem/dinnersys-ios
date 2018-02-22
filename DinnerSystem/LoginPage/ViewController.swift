@@ -168,7 +168,10 @@ class ViewController: UIViewController,UITextFieldDelegate {
             }
     
    */
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        usr.resignFirstResponder()
+        pwd.resignFirstResponder() 
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
