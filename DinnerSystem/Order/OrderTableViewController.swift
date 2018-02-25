@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Alamofire
+import UserNotifications
 
 var filterData: Data!
 var filterString = ""
@@ -69,6 +70,15 @@ class OrderViewController: UIViewController {
         formatter.dateFormat = "yyyy-MM-dd"
         let date = formatter.string(from: datePicker.date)
         print("user:\(user.id), date:\(date) dish_id:\(selOrder.num).")
+        let yearFormatter = DateFormatter()
+        yearFormatter.dateFormat = "yyyy"
+        selDate.year = Int(yearFormatter.string(from: datePicker.date))!
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MM"
+        selDate.month = Int(monthFormatter.string(from: datePicker.date))!
+        let dayFormatter = DateFormatter()
+        dayFormatter.dateFormat = "dd"
+        selDate.day = Int(dayFormatter.string(from: datePicker.date))!
         let urlWithOrder = dinnerSys.str + "backend/backend.php?dish_id=\(selOrder.num)&cmd=make_order&date=\(date)"
         let orderURL = URL(string: urlWithOrder)
         var request = URLRequest(url: orderURL!)
@@ -102,6 +112,25 @@ class OrderViewController: UIViewController {
                     })
                     alert.addImage(image: success_image!)
                     alert.addAction(action)
+                    //start notification
+                    let content = UNMutableNotificationContent()
+                    content.title = NSString.localizedUserNotificationString(forKey: "點餐提醒", arguments: nil)
+                    content.body = NSString.localizedUserNotificationString(forKey: "您今日點的餐為\(selOrder.name)。", arguments: nil)
+                    var dateInfo = DateComponents()
+                    dateInfo.year = selDate.year
+                    dateInfo.month = selDate.month
+                    dateInfo.day = selDate.day
+                    dateInfo.hour = 11
+                    dateInfo.minute = 0
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: dateInfo, repeats: false)
+                    let requst = UNNotificationRequest(identifier: "date:\(date)id:\(selOrder.num)", content: content, trigger: trigger)
+                    let center = UNUserNotificationCenter.current()
+                    center.add(requst) { (error : Error?) in
+                        if let theerror = error{
+                            print (theerror.localizedDescription)
+                        }
+                    }
+                    //end notification
                     self.present(alert, animated: true, completion: nil)
                 }
             }
