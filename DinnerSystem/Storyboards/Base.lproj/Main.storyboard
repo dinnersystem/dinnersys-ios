@@ -160,6 +160,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="點餐" id="him-Kn-2sS"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Jsn-JF-LxJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="updateMenu:" destination="B76-1W-7vK" eventType="valueChanged" id="PRI-Wd-pyS"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWT-kY-HfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

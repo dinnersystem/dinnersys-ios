@@ -16,6 +16,20 @@ var filterString = ""
 
 class OrderTableViewController: UITableViewController {
     
+    @IBAction func updateMenu(_ sender: Any) {
+        Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=show_menu&plugin=yes").responseData { origindata in
+            if let data = origindata.result.value {
+                print(data as NSData)
+                let decoder = JSONDecoder()
+                arrRes = try! decoder.decode([Food].self, from: data)
+                self.tableView.reloadData()
+            }
+            else{
+                print("i got nothing:\(String(describing: origindata.result.error))")
+            }
+        }
+    self.refreshControl?.endRefreshing()
+}
     override func viewDidLoad() {
         Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=show_menu&plugin=yes").responseData { origindata in
             if let data = origindata.result.value {
