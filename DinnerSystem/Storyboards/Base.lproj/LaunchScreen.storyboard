@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,15 +20,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand-drawn-background-of-cook-with-tray_23-2147630131" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AhC-vd-V2e">
-                                <rect key="frame" x="7" y="172" width="360" height="322"/>
+                                <rect key="frame" x="7" y="172.5" width="360" height="322"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AhC-vd-V2e" secondAttribute="height" multiplier="180:161" id="Slj-Ni-tEM"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AhC-vd-V2e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="7" id="2Kn-bH-6ik"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AhC-vd-V2e" secondAttribute="trailing" constant="8" id="DG5-dG-HQL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="AhC-vd-V2e" secondAttribute="bottom" constant="173" id="KhI-1e-h2N"/>
-                            <constraint firstItem="AhC-vd-V2e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="152" id="goC-lJ-1dR"/>
                             <constraint firstItem="AhC-vd-V2e" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mEj-Ko-2WA"/>
                             <constraint firstItem="AhC-vd-V2e" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="pmf-NP-h5P"/>
                         </constraints>
