@@ -102,6 +102,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 self.present(alert, animated: true, completion: nil)
                 user.id = username
                 user.pw = password
+                Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=get_date").responseData{response in
+                    if response.data != nil{
+                        let data = response.data
+                        let decoder = JSONDecoder()
+                        dInfo = try! decoder.decode([dateInfo].self, from: data!)
+                        print(dInfo[0])
+                    }
+                }
             }
         }
     }
@@ -144,7 +152,17 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 if(self.remSwitch.isOn){
                     self.udefault.set(username, forKey: "username")
                     self.udefault.set(password, forKey: "password")
+                    self.tidButton.setTitle("以\(username)的身份登入", for: .normal)
                 }
+                Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=get_date").responseData{response in
+                    if response.data != nil{
+                        let data = response.data
+                        let decoder = JSONDecoder()
+                        dInfo = try! decoder.decode([dateInfo].self, from: data!)
+                        print(dInfo[0])
+                    }
+                }
+                
             }
             print("response:\(String(describing: responseString))")
         }

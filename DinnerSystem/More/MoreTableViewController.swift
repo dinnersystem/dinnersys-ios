@@ -10,8 +10,11 @@ import UIKit
 import WebKit
 import Alamofire
 
-class MoreViewController: UIViewController {
+var counter = 0
 
+class MoreTableViewController: UITableViewController {
+
+    @IBOutlet var viewOrder: UITableViewCell!
     @IBAction func changepw(_ sender: Any) {
         let alert = UIAlertController(title: "更改密碼", message: "請輸入舊密碼與新密碼", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "儲存", style: .default, handler: {
@@ -79,13 +82,34 @@ class MoreViewController: UIViewController {
     
     override func viewDidLoad() {
             super.viewDidLoad()
-            let viewFrame = CGRect(x: 0, y: 64, width: view.frame.width, height: ((view.frame.height)-49))
-            let webView = WKWebView(frame: viewFrame)
-            webView.allowsBackForwardNavigationGestures = true
-            let homeURL = URL(string: "http://dinnersys.ddns.net/")
-            let homeRequest = URLRequest(url: homeURL!)
-            webView.load(homeRequest)
-            view.addSubview(webView)
+        Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=login&id=\(user.id)&password=\(user.pw)&plugin=yes").responseData{response in
+            let data = response.data
+            let decoder = JSONDecoder()
+            let uInfo: userInfo
+            uInfo = try! decoder.decode(userInfo.self, from: data!)
+            if uInfo.previleges.contains("系統管理員"){
+                self.viewOrder.isUserInteractionEnabled = true
+                self.viewOrder.textLabel?.isEnabled = true
+            }else{
+                if uInfo.previleges.contains("管午餐的人"){
+                    self.viewOrder.isUserInteractionEnabled = true
+                    self.viewOrder.textLabel?.isEnabled = true
+                }else{
+                    self.viewOrder.isUserInteractionEnabled = false
+                    self.viewOrder.textLabel?.isEnabled = false
+                }
+            }
+        }
     }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2{
+            if counter == 10{
+                counter = 0
+                self.performSegue(withIdentifier: "egg", sender: self)
+            }else{
+                counter += 1
+                self.performSegue(withIdentifier: "normal", sender: self)
+            }
+        }
+    }
 }

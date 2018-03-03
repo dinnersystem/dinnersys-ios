@@ -10,6 +10,7 @@ import UIKit
 
 extension UIAlertController{
     func addImage(image: UIImage){
+        /*
         let maxSize = CGSize(width: view.frame.width, height: view.frame.height)
         let imgsize = image.size
         var sizedImage = image
@@ -21,7 +22,11 @@ extension UIAlertController{
         
         let imgAction = UIAlertAction(title: "", style: .default, handler: nil)
         imgAction.isEnabled = false
-        imgAction.setValue(sizedImage.withRenderingMode(.alwaysOriginal), forKey: "image")
-        self.addAction(imgAction)
+        imgAction.setValue(sizedImage.withRenderingMode(.alwaysOriginal), forKey: "image")*/
+        
+        let imgTitle = image
+        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+        imgViewTitle.image = imgTitle
+        self.view.addSubview(imgViewTitle)
     }
 }

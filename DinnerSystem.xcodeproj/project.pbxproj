@@ -26,10 +26,22 @@
 		E653E450200074F9000E35AE /* DinnerSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */; };
 		E661CF5220130E4600292756 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E661CF5120130E4600292756 /* MoreTableViewController.swift */; };
 		E6655D4C20038EE2008C5104 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6655D4B20038EE2008C5104 /* OrderTableViewController.swift */; };
+		E6AB5395204841B900364B46 /* classTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AB5394204841B900364B46 /* classTableViewController.swift */; };
+		E6AB539A2048424C00364B46 /* classOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AB53972048424B00364B46 /* classOrder.swift */; };
+		E6AB539B2048424C00364B46 /* classUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AB53982048424C00364B46 /* classUser.swift */; };
+		E6AB539C2048424C00364B46 /* classDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AB53992048424C00364B46 /* classDish.swift */; };
 		E6C79349201C8EAD00974489 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C79348201C8EAD00974489 /* AlertController.swift */; };
 		E6C8C6332004F54600230836 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C8C6322004F54600230836 /* Order.swift */; };
+		E6CCDBAC20480F7D006533BE /* websiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CCDBAB20480F7D006533BE /* websiteViewController.swift */; };
 		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6E48CA0201DC23F00723A3D /* DLFoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E48C9F201DC23F00723A3D /* DLFoodData.swift */; };
+		E6F78846204A47A4003DC4F9 /* dateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F78845204A47A4003DC4F9 /* dateInfo.swift */; };
+		E6F7884C204A4E66003DC4F9 /* friTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F78847204A4E65003DC4F9 /* friTableViewController.swift */; };
+		E6F7884D204A4E66003DC4F9 /* monTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F78848204A4E66003DC4F9 /* monTableViewController.swift */; };
+		E6F7884E204A4E66003DC4F9 /* tueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F78849204A4E66003DC4F9 /* tueTableViewController.swift */; };
+		E6F7884F204A4E66003DC4F9 /* wedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F7884A204A4E66003DC4F9 /* wedTableViewController.swift */; };
+		E6F78850204A4E66003DC4F9 /* thuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F7884B204A4E66003DC4F9 /* thuTableViewController.swift */; };
+		E6F78852204A5B89003DC4F9 /* userInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F78851204A5B89003DC4F9 /* userInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,10 +105,23 @@
 		E653E451200074F9000E35AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E661CF5120130E4600292756 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		E6655D4B20038EE2008C5104 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
+		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6AB5394204841B900364B46 /* classTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classTableViewController.swift; sourceTree = "<group>"; };
+		E6AB53972048424B00364B46 /* classOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = classOrder.swift; sourceTree = "<group>"; };
+		E6AB53982048424C00364B46 /* classUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = classUser.swift; sourceTree = "<group>"; };
+		E6AB53992048424C00364B46 /* classDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = classDish.swift; sourceTree = "<group>"; };
 		E6C79348201C8EAD00974489 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		E6C8C6322004F54600230836 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		E6CCDBAB20480F7D006533BE /* websiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = websiteViewController.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6E48C9F201DC23F00723A3D /* DLFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLFoodData.swift; sourceTree = "<group>"; };
+		E6F78845204A47A4003DC4F9 /* dateInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dateInfo.swift; sourceTree = "<group>"; };
+		E6F78847204A4E65003DC4F9 /* friTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = friTableViewController.swift; sourceTree = "<group>"; };
+		E6F78848204A4E66003DC4F9 /* monTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = monTableViewController.swift; sourceTree = "<group>"; };
+		E6F78849204A4E66003DC4F9 /* tueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tueTableViewController.swift; sourceTree = "<group>"; };
+		E6F7884A204A4E66003DC4F9 /* wedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wedTableViewController.swift; sourceTree = "<group>"; };
+		E6F7884B204A4E66003DC4F9 /* thuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = thuTableViewController.swift; sourceTree = "<group>"; };
+		E6F78851204A5B89003DC4F9 /* userInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userInfo.swift; sourceTree = "<group>"; };
 		EE5B20602BAFF0EF6CE9C041 /* Pods-DinnerSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystemTests/Pods-DinnerSystemTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +169,7 @@
 		E60AF6E9201DDE0300C48727 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6AB539020483A9A00364B46 /* Alamofire.framework */,
 				E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */,
 				776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */,
 				551BEAC489E8F48309D8368C /* Pods_DinnerSystemTests.framework */,
@@ -166,6 +192,8 @@
 		E63DAA9220142EB000BED0B7 /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
+				E6F78851204A5B89003DC4F9 /* userInfo.swift */,
+				E6F78845204A47A4003DC4F9 /* dateInfo.swift */,
 				E653E431200074F9000E35AE /* ViewController.swift */,
 			);
 			path = LoginPage;
@@ -240,6 +268,8 @@
 		E661CF5320130E5200292756 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				E6CCDBAF20481419006533BE /* Admin */,
+				E6CCDBAB20480F7D006533BE /* websiteViewController.swift */,
 				E661CF5120130E4600292756 /* MoreTableViewController.swift */,
 			);
 			path = More;
@@ -260,6 +290,38 @@
 				E6C8C6322004F54600230836 /* Order.swift */,
 			);
 			path = Order;
+			sourceTree = "<group>";
+		};
+		E6AB53932048419A00364B46 /* Days */ = {
+			isa = PBXGroup;
+			children = (
+				E6F78847204A4E65003DC4F9 /* friTableViewController.swift */,
+				E6F78848204A4E66003DC4F9 /* monTableViewController.swift */,
+				E6F7884B204A4E66003DC4F9 /* thuTableViewController.swift */,
+				E6F78849204A4E66003DC4F9 /* tueTableViewController.swift */,
+				E6F7884A204A4E66003DC4F9 /* wedTableViewController.swift */,
+			);
+			path = Days;
+			sourceTree = "<group>";
+		};
+		E6AB53962048422300364B46 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E6AB53992048424C00364B46 /* classDish.swift */,
+				E6AB53972048424B00364B46 /* classOrder.swift */,
+				E6AB53982048424C00364B46 /* classUser.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		E6CCDBAF20481419006533BE /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				E6AB53962048422300364B46 /* Class */,
+				E6AB53932048419A00364B46 /* Days */,
+				E6AB5394204841B900364B46 /* classTableViewController.swift */,
+			);
+			path = Admin;
 			sourceTree = "<group>";
 		};
 		E6D236E52000B86E0078FBA5 /* images */ = {
@@ -601,16 +663,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				E60CE0812031C97C00ED78E9 /* User.swift in Sources */,
+				E6F78846204A47A4003DC4F9 /* dateInfo.swift in Sources */,
 				E60CE07B20319E4500ED78E9 /* Food.swift in Sources */,
+				E6F7884E204A4E66003DC4F9 /* tueTableViewController.swift in Sources */,
+				E6AB539B2048424C00364B46 /* classUser.swift in Sources */,
+				E6F78852204A5B89003DC4F9 /* userInfo.swift in Sources */,
 				E653E432200074F9000E35AE /* ViewController.swift in Sources */,
 				E60CE07F2031C97C00ED78E9 /* Dish.swift in Sources */,
 				E6C79349201C8EAD00974489 /* AlertController.swift in Sources */,
 				E661CF5220130E4600292756 /* MoreTableViewController.swift in Sources */,
+				E6AB539C2048424C00364B46 /* classDish.swift in Sources */,
+				E6AB5395204841B900364B46 /* classTableViewController.swift in Sources */,
 				E653E430200074F9000E35AE /* AppDelegate.swift in Sources */,
 				E60CE0802031C97C00ED78E9 /* History.swift in Sources */,
 				E6655D4C20038EE2008C5104 /* OrderTableViewController.swift in Sources */,
 				E602DC71201211EE000F4785 /* Structs.swift in Sources */,
+				E6F7884D204A4E66003DC4F9 /* monTableViewController.swift in Sources */,
+				E6CCDBAC20480F7D006533BE /* websiteViewController.swift in Sources */,
+				E6AB539A2048424C00364B46 /* classOrder.swift in Sources */,
+				E6F7884C204A4E66003DC4F9 /* friTableViewController.swift in Sources */,
 				E6E48CA0201DC23F00723A3D /* DLFoodData.swift in Sources */,
+				E6F7884F204A4E66003DC4F9 /* wedTableViewController.swift in Sources */,
+				E6F78850204A4E66003DC4F9 /* thuTableViewController.swift in Sources */,
 				E61B81B8201F337200B27B93 /* HistoryTableViewController.swift in Sources */,
 				E6C8C6332004F54600230836 /* Order.swift in Sources */,
 			);
