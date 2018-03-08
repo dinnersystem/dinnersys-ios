@@ -119,7 +119,10 @@ class OrderViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }else{
-                    let alert = UIAlertController(title: "點餐成功", message: "", preferredStyle: .actionSheet)
+                    let titleFont = [NSAttributedStringKey.font: UIFont(name: "ArialHebrew-Bold", size: 17.0)!]
+                    let messageAttrString = NSMutableAttributedString(string: "點餐成功", attributes: titleFont)
+                    let alert = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+                    alert.setValue(messageAttrString, forKey: "attributedMessage")
                     let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {
                         (action: UIAlertAction!) -> () in
                         self.navigationController?.popViewController(animated: true)

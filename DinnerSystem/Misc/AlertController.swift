@@ -25,7 +25,7 @@ extension UIAlertController{
         imgAction.setValue(sizedImage.withRenderingMode(.alwaysOriginal), forKey: "image")*/
         
         let imgTitle = image
-        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
         imgViewTitle.image = imgTitle
         self.view.addSubview(imgViewTitle)
     }
