@@ -13,10 +13,12 @@ class TaiwanTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=1/").responseData{response in
+        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=1").responseData{response in
+            print(response.data! as NSData)
             let data = response.data!
             let decoder = JSONDecoder()
             menu1Arr = try! decoder.decode([menu].self, from: data)
+            self.tableView.reloadData()
         }
         
     }
@@ -43,17 +45,17 @@ class TaiwanTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store1Cell", for: indexPath)
         let info = menu1Arr[indexPath.row]
         cell.textLabel?.text = info.dishName!
-        cell.detailTextLabel?.text = info.dishCost + "$"
+        cell.detailTextLabel?.text = info.dishCost! + "$"
 
         return cell
     }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let info = menu1Arr[indexPath.row]
-        menuInfo.id = info.dishId
-        menuInfo.cost = info.dishCost
+        menuInfo.id = info.dishId!
+        menuInfo.cost = info.dishCost!
         menuInfo.name = info.dishName!
-        
+        self.performSegue(withIdentifier: "store1Segue", sender: nil)
     }
 
 

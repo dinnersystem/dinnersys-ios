@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 struct dinnersys{
-    static let url = "http://dinnersys2.ddns.net/dinnersys_beta/backend/backend.php"
+    static let url = "http://118.167.23.6/dinnersys_beta/backend/backend.php"
 }
 
 struct ord{

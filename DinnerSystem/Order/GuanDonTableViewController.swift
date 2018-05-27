@@ -23,7 +23,7 @@ class GuanDonTableViewController: UITableViewController{
         orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: .normal)
         orderButton.setTitleColor(.blue, for: .normal)
         orderButton.isEnabled = false
-        
+        tableView.addSubview(orderButton)
         
         //position
         orderButton.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class GuanDonTableViewController: UITableViewController{
         
         orderButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
         orderButton.addTarget(self, action: #selector(self.order(_:)), for: .touchUpInside)
-        tableView.addSubview(orderButton)
+        
     }
     
     @objc func order(_ sender: UIButton){
@@ -60,10 +60,12 @@ class GuanDonTableViewController: UITableViewController{
             }
             i -= 1
         }
+        print(ord.url)
         menuInfo.cost = String(totalCost)
         menuInfo.name = ord.name
         Alamofire.request(ord.url).responseString{response in
             menuInfo.id = response.value!
+            print(menuInfo.id)
         }
         self.performSegue(withIdentifier: "store4Segue", sender: self)
     }
@@ -71,10 +73,11 @@ class GuanDonTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton()
-        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=4/").responseData{response in
+        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=4").responseData{response in
             let data = response.data!
             let decoder = JSONDecoder()
             menu4Arr = try! decoder.decode([menu].self, from: data)
+            self.tableView.reloadData()
         }
     }
     
@@ -104,8 +107,8 @@ class GuanDonTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "store4Cell", for: indexPath)
         let info = menu4Arr[indexPath.row]
         cell.textLabel?.text = info.dishName!
-        cell.detailTextLabel?.text = info.dishCost + "$"
-
+        cell.detailTextLabel?.text = info.dishCost! + "$"
+        
         return cell
     }
     
@@ -132,26 +135,32 @@ class GuanDonTableViewController: UITableViewController{
         print("selected  \(indexPath.row)")
         let info = menu4Arr[indexPath.row]
         
-        totalCost += Int(info.dishCost)!
+        totalCost += Int(info.dishCost!)!
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.isSelected {
                 cell.accessoryType = .checkmark
             }
         }
-        if selected > 0 && selected < 6{
-            orderButton.isEnabled = true
-        }
+        
         if let sr = tableView.indexPathsForSelectedRows {
             print("didDeselectRowAtIndexPath selected rows:\(sr)")
             selected = sr.count
         }
+        if selected > 0 && selected < 6{
+            orderButton.isEnabled = true
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: .normal)
+        }else{
+            orderButton.isEnabled = false
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: .normal)
+        }
+
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         print("deselected  \(indexPath.row)")
         let info = menu4Arr[indexPath.row]
         
-        totalCost -= Int(info.dishCost)!
+        totalCost -= Int(info.dishCost!)!
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .none
         }
@@ -159,6 +168,16 @@ class GuanDonTableViewController: UITableViewController{
         if let sr = tableView.indexPathsForSelectedRows {
             print("didDeselectRow selected rows:\(sr)")
             selected = sr.count
+        }else{
+            print("no selection")
+            selected = 0
+        }
+        if selected > 0 && selected < 6{
+            orderButton.isEnabled = true
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: .normal)
+        }else{
+            orderButton.isEnabled = false
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: .normal)
         }
     }
     
@@ -183,6 +202,7 @@ class GuanDonViewController: UIViewController{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd-HH:mm:ss"
         let date = formatter.string(from: datePicker.date)
+        print(date)
         Alamofire.request("\(dinnersys.url)?cmd=make_order&dish_id=\(menuInfo.id)&time=\(date)").responseString{response in
             
         }

@@ -61,7 +61,7 @@ class RegisterViewController: UIViewController {
         let pwd = userPwd.text!
         let phone = userPhone.text!
         let email = userEmail.text!
-        let regstring = "http://dinnersys2.ddns.net/dinnersys_beta/backend/backend.php?cmd=register&user_name=\(name)&phone_number=\(phone)&is_vege=\(veg)&gender=\(gen)&email=\(email)&login_id=\(id)&password=\(pwd)/"
+        let regstring = "\(dinnersys.url)?cmd=register&user_name=\(name)&phone_number=\(phone)&is_vege=\(veg)&gender=\(gen)&email=\(email)&login_id=\(id)&password=\(pwd)/"
         Alamofire.request(regstring).responseString{response in
             let string = response.result.value!
             if string.contains("repeated login id") {

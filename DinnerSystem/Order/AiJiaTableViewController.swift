@@ -14,10 +14,11 @@ class AiJiaTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=3/").responseData{response in
+        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=3").responseData{response in
             let data = response.data
             let decoder = JSONDecoder()
             menu3Arr = try! decoder.decode([menu].self, from: data!)
+            self.tableView.reloadData()
         }
     }
 
@@ -43,15 +44,16 @@ class AiJiaTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store3Cell", for: indexPath)
         let info = menu3Arr[indexPath.row]
         cell.textLabel?.text = info.dishName!
-        cell.detailTextLabel?.text = info.dishCost + "$"
+        cell.detailTextLabel?.text = info.dishCost! + "$"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let info = menu1Arr[indexPath.row]
-        menuInfo.id = info.dishId
-        menuInfo.cost = info.dishCost
+        let info = menu3Arr[indexPath.row]
+        menuInfo.id = info.dishId!
+        menuInfo.cost = info.dishCost!
         menuInfo.name = info.dishName!
+        self.performSegue(withIdentifier: "store3Segue", sender: nil)
     }
    
     /*
@@ -89,7 +91,13 @@ class AiJiaViewController: UIViewController{
         formatter.dateFormat = "yyyy/MM/dd-HH:mm:ss"
         let date = formatter.string(from: datePicker.date)
         Alamofire.request("\(dinnersys.url)?cmd=make_order&dish_id=\(menuInfo.id)&time=\(date)").responseString{response in
-            
+            let successAlert = UIAlertController(title: "訂餐成功", message: "點餐編號\(response.result.value!)", preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(title: "OK", style: .default ,handler: {
+                (action: UIAlertAction!) -> () in
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+            successAlert.addAction(okAction)
+            self.present(successAlert, animated: true, completion: nil)
         }
     }
     

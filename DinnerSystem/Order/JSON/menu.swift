@@ -1,28 +1,26 @@
 //
 //	menu.swift
 //
-//	Create by Sean Pai on 28/4/2018
+//	Create by Sean Pai on 25/5/2018
 //	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
-
 
 var menu1Arr: [menu] = []
 var menu2Arr: [menu] = []
 var menu3Arr: [menu] = []
 var menu4Arr: [menu] = []
 
-
 struct menu : Codable {
 
-	let dishAble : Bool?
-	let dishCost : String
-	let dishId : String
+	let dishAble : String?
+	let dishCost : String?
+	let dishId : String?
 	let dishName : String?
 	let factory : Factory?
-	let ingreAble : Bool?
-	let isIdle : Bool?
+	let ingreAble : String?
+	let isIdle : String?
 
 
 	enum CodingKeys: String, CodingKey {
@@ -36,13 +34,13 @@ struct menu : Codable {
 	}
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		dishAble = try values.decodeIfPresent(Bool.self, forKey: .dishAble)
-		dishCost = try values.decodeIfPresent(String.self, forKey: .dishCost)!
-		dishId = try values.decodeIfPresent(String.self, forKey: .dishId)!
+		dishAble = try values.decodeIfPresent(String.self, forKey: .dishAble)
+		dishCost = try values.decodeIfPresent(String.self, forKey: .dishCost)
+		dishId = try values.decodeIfPresent(String.self, forKey: .dishId)
 		dishName = try values.decodeIfPresent(String.self, forKey: .dishName)
 		factory = try Factory(from: decoder)
-		ingreAble = try values.decodeIfPresent(Bool.self, forKey: .ingreAble)
-		isIdle = try values.decodeIfPresent(Bool.self, forKey: .isIdle)
+		ingreAble = try values.decodeIfPresent(String.self, forKey: .ingreAble)
+		isIdle = try values.decodeIfPresent(String.self, forKey: .isIdle)
 	}
 
 

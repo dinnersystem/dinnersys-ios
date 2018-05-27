@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         uDefault = UserDefaults.standard
         let usr = uDefault.string(forKey: "userName")!
         let pwd = uDefault.string(forKey: "passWord")!
-        Alamofire.request("http://dinnersys2.ddns.net/dinnersys_beta/backend/backend.php?cmd=login&id=\(usr)&password=\(pwd)").responseData{response in
+        Alamofire.request("\(dinnersys.url)?cmd=login&id=\(usr)&password=\(pwd)").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -55,8 +55,12 @@ class LoginViewController: UIViewController {
                 let decoder = JSONDecoder()
                 userInfo = try! decoder.decode(Login.self, from: response.data!)
                 let alert = UIAlertController(title: "登入成功", message: "伺服器已在記錄本用戶", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    self.performSegue(withIdentifier: "loginSuccess", sender: nil)
+                }))
                 self.present(alert, animated: true, completion: nil)
+                self.performSegue(withIdentifier: "loginSuccess", sender: nil)
             }
         }
     }
@@ -88,8 +92,12 @@ class LoginViewController: UIViewController {
                             self.remLogin.setTitle("以\(usr)登入", for: .normal)
                         }
                         let alert = UIAlertController(title: "登入成功", message: "伺服器已在記錄本用戶", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            self.performSegue(withIdentifier: "loginSuccess", sender: nil)
+                        }))
                         self.present(alert, animated: true, completion: nil)
+                    
                     }
                 }
             }

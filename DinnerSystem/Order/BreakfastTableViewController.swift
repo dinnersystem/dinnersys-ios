@@ -14,11 +14,11 @@ class BreakfastTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=2/").responseData{response in
+        Alamofire.request("\(dinnersys.url)?cmd=show_menu&factory_id=2").responseData{response in
             let data = response.data!
             let decoder = JSONDecoder()
             menu2Arr = try! decoder.decode([menu].self, from: data)
-            
+            self.tableView.reloadData()
         }
     }
 
@@ -45,16 +45,17 @@ class BreakfastTableViewController: UITableViewController {
 
         let info = menu2Arr[indexPath.row]
         cell.textLabel?.text = info.dishName!
-        cell.detailTextLabel?.text = info.dishCost + "$"
+        cell.detailTextLabel?.text = info.dishCost! + "$"
 
         return cell
     }
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let info = menu1Arr[indexPath.row]
-        menuInfo.id = info.dishId
-        menuInfo.cost = info.dishCost
+        let info = menu2Arr[indexPath.row]
+        menuInfo.id = info.dishId!
+        menuInfo.cost = info.dishCost!
         menuInfo.name = info.dishName!
+        self.performSegue(withIdentifier: "store2Segue", sender: nil)
     }
    
     /*
