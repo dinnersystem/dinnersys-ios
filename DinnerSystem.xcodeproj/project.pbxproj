@@ -11,28 +11,15 @@
 		C835445823B77EBB4078C939 /* Pods_DinnerSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4168BB920F7B5D430DDABFD8 /* Pods_DinnerSystemUITests.framework */; };
 		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
-		E62AFBDC208CDAF600F45280 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AFBDA208CDAF500F45280 /* Login.swift */; };
-		E62AFBDD208CDAF600F45280 /* ValidOper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AFBDB208CDAF600F45280 /* ValidOper.swift */; };
-		E6463042208C3C4900D8A12B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673A37A208C21B2005FFA5D /* LoginViewController.swift */; };
-		E64DD2A4209CA1A9006F1690 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64DD2A3209CA1A9006F1690 /* HistoryTableViewController.swift */; };
+		E62156BF21226A8700B43A39 /* font in Resources */ = {isa = PBXBuildFile; fileRef = E62156BE21226A8700B43A39 /* font */; };
+		E62FAE872121481C00B00B30 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62FAE862121481C00B00B30 /* FirstViewController.swift */; };
+		E62FAE8921214D3800B00B30 /* DevViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62FAE8821214D3800B00B30 /* DevViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E653E445200074F9000E35AE /* DinnerSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E444200074F9000E35AE /* DinnerSystemTests.swift */; };
 		E653E450200074F9000E35AE /* DinnerSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */; };
-		E6637AE2208F3E8A00EB88FD /* TaiwanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6637AE1208F3E8A00EB88FD /* TaiwanTableViewController.swift */; };
-		E6637AE5208F3FB600EB88FD /* BreakfastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6637AE4208F3FB600EB88FD /* BreakfastTableViewController.swift */; };
-		E6637AE7208F3FE100EB88FD /* AiJiaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6637AE6208F3FE100EB88FD /* AiJiaTableViewController.swift */; };
-		E6637AE9208F405D00EB88FD /* GuanDonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6637AE8208F405D00EB88FD /* GuanDonTableViewController.swift */; };
-		E6637AED208F427400EB88FD /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6637AEC208F427400EB88FD /* Misc.swift */; };
-		E66A658F2094A3D800E90D99 /* menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66A658E2094A3D800E90D99 /* menu.swift */; };
-		E66A65912094A3F800E90D99 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66A65902094A3F800E90D99 /* Factory.swift */; };
-		E673A37D208C22AF005FFA5D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E673A37C208C22AF005FFA5D /* RegisterViewController.swift */; };
-		E67930D1209D443600D4D41C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67930CC209D443500D4D41C /* User.swift */; };
-		E67930D2209D443600D4D41C /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67930CD209D443500D4D41C /* History.swift */; };
-		E67930D3209D443600D4D41C /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67930CE209D443500D4D41C /* Payment.swift */; };
-		E67930D4209D443600D4D41C /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67930CF209D443600D4D41C /* Dish.swift */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
-		E6838F6720B8327C0002EF5D /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6838F6620B8327C0002EF5D /* MoreTableViewController.swift */; };
+		E69F8E7520D6506E00929BF3 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F8E7420D6506E00929BF3 /* WebViewController.swift */; };
 		E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
@@ -78,9 +65,9 @@
 		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB7593AB4DBC930B1344BDF /* Pods-DinnerSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystemUITests/Pods-DinnerSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		E62AFBDA208CDAF500F45280 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		E62AFBDB208CDAF600F45280 /* ValidOper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidOper.swift; sourceTree = "<group>"; };
-		E64DD2A3209CA1A9006F1690 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		E62156BE21226A8700B43A39 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
+		E62FAE862121481C00B00B30 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		E62FAE8821214D3800B00B30 /* DevViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevViewController.swift; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -90,21 +77,8 @@
 		E653E44B200074F9000E35AE /* DinnerSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DinnerSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemUITests.swift; sourceTree = "<group>"; };
 		E653E451200074F9000E35AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6637AE1208F3E8A00EB88FD /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
-		E6637AE4208F3FB600EB88FD /* BreakfastTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakfastTableViewController.swift; sourceTree = "<group>"; };
-		E6637AE6208F3FE100EB88FD /* AiJiaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiJiaTableViewController.swift; sourceTree = "<group>"; };
-		E6637AE8208F405D00EB88FD /* GuanDonTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewController.swift; sourceTree = "<group>"; };
-		E6637AEC208F427400EB88FD /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
-		E66A658E2094A3D800E90D99 /* menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menu.swift; sourceTree = "<group>"; };
-		E66A65902094A3F800E90D99 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
-		E673A37A208C21B2005FFA5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E673A37C208C22AF005FFA5D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		E67930CC209D443500D4D41C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		E67930CD209D443500D4D41C /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		E67930CE209D443500D4D41C /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
-		E67930CF209D443600D4D41C /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		E6838F6620B8327C0002EF5D /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		E69F8E7420D6506E00929BF3 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -156,25 +130,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E62AFBDE208CDAFC00F45280 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E62AFBDA208CDAF500F45280 /* Login.swift */,
-				E62AFBDB208CDAF600F45280 /* ValidOper.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E6463041208C3A8500D8A12B /* LoginPage */ = {
-			isa = PBXGroup;
-			children = (
-				E62AFBDE208CDAFC00F45280 /* JSON */,
-				E673A37A208C21B2005FFA5D /* LoginViewController.swift */,
-				E673A37C208C22AF005FFA5D /* RegisterViewController.swift */,
-			);
-			path = LoginPage;
-			sourceTree = "<group>";
-		};
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
@@ -201,15 +156,14 @@
 		E653E42E200074F9000E35AE /* DinnerSystem */ = {
 			isa = PBXGroup;
 			children = (
-				E6838F6520B832630002EF5D /* More */,
-				E6E936EF209B38AC0097EBCC /* History */,
+				E62156BE21226A8700B43A39 /* font */,
 				E6CA389C208DF4D5002801DD /* AppDelegate.swift */,
 				E6EA6583208C2163001C9A37 /* Info.plist */,
 				E6E455252020A2710006F0A2 /* GoogleService-Info.plist */,
 				E653E460200075D4000E35AE /* Storyboards */,
-				E6463041208C3A8500D8A12B /* LoginPage */,
-				E6637AE3208F3E9A00EB88FD /* Order */,
-				E6637AEC208F427400EB88FD /* Misc.swift */,
+				E69F8E7420D6506E00929BF3 /* WebViewController.swift */,
+				E62FAE862121481C00B00B30 /* FirstViewController.swift */,
+				E62FAE8821214D3800B00B30 /* DevViewController.swift */,
 			);
 			path = DinnerSystem;
 			sourceTree = "<group>";
@@ -239,55 +193,6 @@
 				E6EA6580208C2113001C9A37 /* Main.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		E6637AE3208F3E9A00EB88FD /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				E6637AEE208F480200EB88FD /* JSON */,
-				E6637AE1208F3E8A00EB88FD /* TaiwanTableViewController.swift */,
-				E6637AE4208F3FB600EB88FD /* BreakfastTableViewController.swift */,
-				E6637AE6208F3FE100EB88FD /* AiJiaTableViewController.swift */,
-				E6637AE8208F405D00EB88FD /* GuanDonTableViewController.swift */,
-			);
-			path = Order;
-			sourceTree = "<group>";
-		};
-		E6637AEE208F480200EB88FD /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E66A65902094A3F800E90D99 /* Factory.swift */,
-				E66A658E2094A3D800E90D99 /* menu.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E67930CA209D442600D4D41C /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E67930CF209D443600D4D41C /* Dish.swift */,
-				E67930CD209D443500D4D41C /* History.swift */,
-				E67930CE209D443500D4D41C /* Payment.swift */,
-				E67930CC209D443500D4D41C /* User.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E6838F6520B832630002EF5D /* More */ = {
-			isa = PBXGroup;
-			children = (
-				E6838F6620B8327C0002EF5D /* MoreTableViewController.swift */,
-			);
-			path = More;
-			sourceTree = "<group>";
-		};
-		E6E936EF209B38AC0097EBCC /* History */ = {
-			isa = PBXGroup;
-			children = (
-				E67930CA209D442600D4D41C /* JSON */,
-				E64DD2A3209CA1A9006F1690 /* HistoryTableViewController.swift */,
-			);
-			path = History;
 			sourceTree = "<group>";
 		};
 		F732A48A9F12DB2BEA72190F /* Pods */ = {
@@ -377,7 +282,7 @@
 				TargetAttributes = {
 					E653E42B200074F9000E35AE = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -387,11 +292,13 @@
 					};
 					E653E43F200074F9000E35AE = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E653E42B200074F9000E35AE;
 					};
 					E653E44A200074F9000E35AE = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E653E42B200074F9000E35AE;
 					};
@@ -424,6 +331,7 @@
 			files = (
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
 				E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */,
+				E62156BF21226A8700B43A39 /* font in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
 			);
@@ -454,13 +362,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DinnerSystem/Pods-DinnerSystem-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,12 +438,13 @@
 			files = (
 			);
 			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -542,24 +453,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E62AFBDD208CDAF600F45280 /* ValidOper.swift in Sources */,
-				E67930D3209D443600D4D41C /* Payment.swift in Sources */,
-				E6463042208C3C4900D8A12B /* LoginViewController.swift in Sources */,
-				E64DD2A4209CA1A9006F1690 /* HistoryTableViewController.swift in Sources */,
-				E62AFBDC208CDAF600F45280 /* Login.swift in Sources */,
-				E6637AED208F427400EB88FD /* Misc.swift in Sources */,
-				E6637AE2208F3E8A00EB88FD /* TaiwanTableViewController.swift in Sources */,
+				E62FAE8921214D3800B00B30 /* DevViewController.swift in Sources */,
+				E62FAE872121481C00B00B30 /* FirstViewController.swift in Sources */,
+				E69F8E7520D6506E00929BF3 /* WebViewController.swift in Sources */,
 				E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */,
-				E67930D1209D443600D4D41C /* User.swift in Sources */,
-				E6637AE5208F3FB600EB88FD /* BreakfastTableViewController.swift in Sources */,
-				E6838F6720B8327C0002EF5D /* MoreTableViewController.swift in Sources */,
-				E67930D2209D443600D4D41C /* History.swift in Sources */,
-				E6637AE7208F3FE100EB88FD /* AiJiaTableViewController.swift in Sources */,
-				E66A65912094A3F800E90D99 /* Factory.swift in Sources */,
-				E673A37D208C22AF005FFA5D /* RegisterViewController.swift in Sources */,
-				E67930D4209D443600D4D41C /* Dish.swift in Sources */,
-				E6637AE9208F405D00EB88FD /* GuanDonTableViewController.swift in Sources */,
-				E66A658F2094A3D800E90D99 /* menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -736,14 +633,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -758,13 +657,15 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -781,7 +682,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinnerSystem.app/DinnerSystem";
 			};
@@ -799,7 +700,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinnerSystem.app/DinnerSystem";
 			};
@@ -816,7 +717,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DinnerSystem;
 			};
@@ -833,7 +734,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DinnerSystem;
 			};

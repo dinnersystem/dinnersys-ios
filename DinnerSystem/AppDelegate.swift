@@ -19,11 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert]){(granted,error) in
-        
-        }
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-6339811672933955~9147969503")
         FirebaseApp.configure()
         return true
     }
