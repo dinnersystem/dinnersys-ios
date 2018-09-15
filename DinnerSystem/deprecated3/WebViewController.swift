@@ -8,11 +8,13 @@
 
 import UIKit
 import WebKit
+import Reachability
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var frontButton: UIBarButtonItem!
+    let reachability = Reachability()!
     var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,11 @@ class WebViewController: UIViewController, WKNavigationDelegate {
             frontButton.isEnabled = true
         }else{
             frontButton.isEnabled = false
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if reachability.connection == .none{
+            self.dismiss(animated: true, completion: nil)
         }
     }
     @IBAction func back(_ sender: Any) {

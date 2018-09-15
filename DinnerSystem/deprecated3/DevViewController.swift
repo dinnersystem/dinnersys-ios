@@ -21,7 +21,6 @@ class DevViewController: UIViewController {
     }
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            performSegue(withIdentifier: "bonusSegue", sender: self)
         }
     }
 
