@@ -13,7 +13,7 @@ class MainOrderTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let decoder = JSONDecoder()
+        
         var foodCount = 0
         Alamofire.request(dsURL("show_dish")).responseData{ response in
             mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
@@ -65,7 +65,7 @@ class orderViewController: UIViewController{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         let currentDate = formatter.string(from: date)
-        let decoder = JSONDecoder()
+        
         //time lock
         let calander = Calendar.current
         let lower_bound = calander.date(bySettingHour: 10, minute: 0, second: 0, of: date)

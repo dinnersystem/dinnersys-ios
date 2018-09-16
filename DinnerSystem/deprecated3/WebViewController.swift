@@ -18,7 +18,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - toolBar.frame.height)
+        let viewFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - toolBar.frame.height - (tabBarController?.tabBar.frame.height)!)
         webView = WKWebView(frame: viewFrame)
         webView.allowsBackForwardNavigationGestures = true
         webView.navigationDelegate = self

@@ -13,6 +13,8 @@
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
 		E60E4D0C214A094B007C4412 /* MainOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */; };
 		E60E4D10214A105E007C4412 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
+		E6108BCB214D7E14007A47AC /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */; };
+		E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCC214D81F2007A47AC /* WebViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E653E445200074F9000E35AE /* DinnerSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E444200074F9000E35AE /* DinnerSystemTests.swift */; };
@@ -89,6 +91,8 @@
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOrderTableViewController.swift; sourceTree = "<group>"; };
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
+		E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		E6108BCC214D81F2007A47AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = DinnerSystem/deprecated3/WebViewController.swift; sourceTree = SOURCE_ROOT; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,6 +189,15 @@
 			path = Order;
 			sourceTree = "<group>";
 		};
+		E6108BC9214D7DFB007A47AC /* More */ = {
+			isa = PBXGroup;
+			children = (
+				E6108BCC214D81F2007A47AC /* WebViewController.swift */,
+				E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +224,7 @@
 		E653E42E200074F9000E35AE /* DinnerSystem */ = {
 			isa = PBXGroup;
 			children = (
+				E6108BC9214D7DFB007A47AC /* More */,
 				E69A88AB214D13100062B6C8 /* History */,
 				E6EF4DD6214C0A2D00FF0A8B /* Login */,
 				E60E4D0A214A08C3007C4412 /* Order */,
@@ -592,6 +606,7 @@
 				E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */,
 				E6AEF869214A135B00C96D64 /* Menu.swift in Sources */,
 				E6B6922C214AAA63005D0C22 /* TaiwanTableViewController.swift in Sources */,
+				E6108BCB214D7E14007A47AC /* MoreTableViewController.swift in Sources */,
 				E69A88BA214D20040062B6C8 /* History.swift in Sources */,
 				E6EF4DEA214C157400FF0A8B /* Order.swift in Sources */,
 				E6EF4DEC214C157400FF0A8B /* OrderMaker.swift in Sources */,
@@ -601,6 +616,7 @@
 				E6EF4DD5214C07D100FF0A8B /* AiJiaTableViewController.swift in Sources */,
 				E6EF4DDE214C0AEF00FF0A8B /* LoginValidOper.swift in Sources */,
 				E69A88B9214D20040062B6C8 /* HistoryOrderMaker.swift in Sources */,
+				E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */,
 				E69A88B7214D20040062B6C8 /* HistoryContent.swift in Sources */,
 				E69A88BB214D20040062B6C8 /* HistoryPayment.swift in Sources */,
 				E6EF4DED214C157400FF0A8B /* OrderPayment.swift in Sources */,
