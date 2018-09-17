@@ -15,6 +15,11 @@ class HistoryTableViewController: UITableViewController {
         super.viewDidLoad()
         
         Alamofire.request(dsURL("select_self")).responseData{response in
+            if response.error != nil {
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
             let responseStr = String(data: response.data!, encoding: .utf8)
             if responseStr == ""{
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
@@ -61,6 +66,11 @@ class HistoryTableViewController: UITableViewController {
         
         Alamofire.request(dsURL("select_self")).responseData{response in
             let responseStr = String(data: response.data!, encoding: .utf8)
+            if response.error != nil {
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
             if responseStr == ""{
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -118,9 +128,20 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let info = historyArr[indexPath.row]
         if editingStyle == .delete {
-            Alamofire.request("\(dsURL("delete_self"))&order_id=\(info.id!)").responseData{response in}
+            Alamofire.request("\(dsURL("delete_self"))&order_id=\(info.id!)").responseData{response in
+                if response.error != nil {
+                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+            }
             
             Alamofire.request(dsURL("select_self")).responseData{response in
+                if response.error != nil {
+                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
                 let responseStr = String(data: response.data!, encoding: .utf8)
                 if responseStr == ""{
                     let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
@@ -157,9 +178,20 @@ class HistoryTableViewController: UITableViewController {
         paidAction.isEnabled = false
         paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let unpaidAction = UIAlertAction(title: "取消訂單", style: .destructive, handler: {(action: UIAlertAction!) -> () in
-            Alamofire.request("\(dsURL("delete_self"))&order_id=\(info.id!)").responseData{response in}
+            Alamofire.request("\(dsURL("delete_self"))&order_id=\(info.id!)").responseData{response in
+                if response.error != nil {
+                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+            }
             
             Alamofire.request(dsURL("select_self")).responseData{response in
+                if response.error != nil {
+                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
                 let responseStr = String(data: response.data!, encoding: .utf8)
                 if responseStr == ""{
                     let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)

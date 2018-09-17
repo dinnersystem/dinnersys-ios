@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Reachability
 
 class LoginViewController: UIViewController {
     //MARK: - Declaration
@@ -38,17 +39,23 @@ class LoginViewController: UIViewController {
     //MARK: - login
     @IBAction func remLogin(_ sender: Any) {
         uDefault = UserDefaults.standard
-        let usr = uDefault.string(forKey: "userName")!
-        let pwd = uDefault.string(forKey: "passWord")!
+        usr = uDefault.string(forKey: "userName")!
+        pwd = uDefault.string(forKey: "passWord")!
+        let reach = Reachability()!
+        if(reach.connection == .none){                      //no Internet
+            let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }else{
         Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }
-            let string = String(data: response.data!, encoding: .utf8)
-            if (string?.contains("無法登入。"))!{
-                let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤，或是否註冊。", preferredStyle: .alert)
+            let string = String(data: response.data!, encoding: .utf8)!
+            if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid")){
+                let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else{
@@ -63,29 +70,35 @@ class LoginViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 self.performSegue(withIdentifier: "loginSuccess", sender: nil)
             }
+            
+            }
         }
     }
     @IBAction func login(_ sender: Any) {
-        var usr = ""
-        var pwd = ""
         usr = self.username.text!
         pwd = self.password.text!
-        self.username.text = ""
-        self.password.text = ""
-        
+        let reach = Reachability()!
+        if(reach.connection == .none){                      //no Internet
+            let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }else{
         Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡開發者。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
-                let string = String(data: response.data!, encoding: .utf8)
-                if ((string?.contains("No account."))! || (string?.contains("Invalid"))!){
-                    let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤，或是否註冊。", preferredStyle: .alert)
+                let string = String(data: response.data!, encoding: .utf8)!
+                if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid")){
+                    let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }else{
-                        
+                        usr = self.username.text!
+                        pwd = self.password.text!
+                        self.username.text = ""
+                        self.password.text = ""
                         userInfo = try! decoder.decode(Login.self, from: response.data!)
                         userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
                         //remember user
@@ -108,7 +121,7 @@ class LoginViewController: UIViewController {
             }
         
         
-        
+        }
         
     }
     

@@ -25,3 +25,6 @@ func logout(){
     Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData{ response in}
 }
 
+
+var usr = ""
+var pwd = ""

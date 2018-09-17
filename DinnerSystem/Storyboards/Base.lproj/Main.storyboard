@@ -739,6 +739,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="更多功能" id="9Sj-bS-VC9">
+                        <barButtonItem key="leftBarButtonItem" title="更改密碼" id="UA6-z7-ySh">
+                            <connections>
+                                <action selector="chgPass:" destination="xOJ-bD-jax" id="AHm-Bh-smZ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="登出" id="8Qj-rx-euj">
                             <connections>
                                 <action selector="Logout:" destination="xOJ-bD-jax" id="j6x-aA-OUg"/>

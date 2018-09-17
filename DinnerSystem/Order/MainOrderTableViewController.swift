@@ -8,14 +8,23 @@
 
 import UIKit
 import Alamofire
+import TrueTime
 
 class MainOrderTableViewController: UITableViewController {
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         var foodCount = 0
         Alamofire.request(dsURL("show_dish")).responseData{ response in
+            if response.error != nil {
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+            mainMenuArr = []
+            taiwanMenuArr = []
+            aiJiaMenuArr = []
             mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
             for food in mainMenuArr{
                 if food.isIdle! == "1"{
@@ -54,14 +63,20 @@ class MainOrderTableViewController: UITableViewController {
 
 class orderViewController: UIViewController{
     @IBOutlet var label: UILabel!
+    let ttime = TrueTimeClient.sharedInstance
     override func viewDidLoad() {
-        label.text! = "您選擇的餐點是\(selectedFood.name)，價錢為\(selectedFood.cost)元，確定請按訂餐。"
+        label.text! = "您選擇的餐點是\(selectedFood.name)，價錢為\(selectedFood.cost)元，確定請按訂餐。\n請注意早上十點後將無法點餐!"
         label.sizeToFit()
+        ttime.start()
     }
     
-    @IBAction func order(_ sender: Any) {
+    override func viewDidDisappear(_ animated: Bool) {
+        ttime.pause()
+    }
+    
+    @IBAction func order(_ sender: Any)  {
         var orderResult = ""
-        let date = Date()
+        let date = ttime.referenceTime!.now()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         let currentDate = formatter.string(from: date)
@@ -79,6 +94,11 @@ class orderViewController: UIViewController{
             self.present(alert, animated: true)
         }else{
         Alamofire.request("\(dsURL("make_self_order"))&dish_id=\(selectedFood.id)&time=\(currentDate)-23:59:00").responseData{response in
+            if response.error != nil {
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
             let responseString = String(data: response.data!, encoding: .utf8)!
             if responseString.contains("廠商需要"){
                 orderResult = "DTError"
