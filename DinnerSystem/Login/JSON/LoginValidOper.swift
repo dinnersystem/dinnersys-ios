@@ -22,6 +22,7 @@ struct LoginValidOper : Codable {
 	let showDish : String?
 	let showFactory : String?
 	let showMenu : String?
+    let selectClass : String?
 
 
 	enum CodingKeys: String, CodingKey {
@@ -38,9 +39,26 @@ struct LoginValidOper : Codable {
 		case showDish = "show_dish"
 		case showFactory = "show_factory"
 		case showMenu = "show_menu"
+        case selectClass = "select_class"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
+    //: String? = nil,
+	init(changePassword: String? = nil,
+        checkRecv: String? = nil,
+        deleteSelf: String? = nil,
+        getDate: String? = nil,
+        getDatetime: String? = nil,
+        login: String? = nil,
+        logout: String? = nil,
+        makeSelfOrder: String? = nil,
+        register: String? = nil,
+        selectSelf: String? = nil,
+        showDish: String? = nil,
+        showFactory: String? = nil,
+        showMenu: String? = nil,
+        selectClass: String? = nil
+        ){
+		/*
+        let values = try decoder.container(keyedBy: CodingKeys.self)
 		changePassword = try values.decodeIfPresent(String.self, forKey: .changePassword)
 		checkRecv = try values.decodeIfPresent(String.self, forKey: .checkRecv)
 		deleteSelf = try values.decodeIfPresent(String.self, forKey: .deleteSelf)
@@ -54,6 +72,21 @@ struct LoginValidOper : Codable {
 		showDish = try values.decodeIfPresent(String.self, forKey: .showDish)
 		showFactory = try values.decodeIfPresent(String.self, forKey: .showFactory)
 		showMenu = try values.decodeIfPresent(String.self, forKey: .showMenu)
+ */
+        self.changePassword = changePassword
+        self.checkRecv = checkRecv
+        self.deleteSelf = deleteSelf
+        self.getDate = getDate
+        self.getDatetime = getDatetime
+        self.login = login
+        self.logout = logout
+        self.makeSelfOrder = makeSelfOrder
+        self.register = register
+        self.selectSelf = selectSelf
+        self.showDish = showDish
+        self.showFactory = showFactory
+        self.showMenu = showMenu
+        self.selectClass = selectClass
 	}
 
 

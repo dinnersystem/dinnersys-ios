@@ -15,7 +15,7 @@ class MoreTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     @IBAction func Logout(_ sender: Any) {
-        Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -84,7 +84,7 @@ class MoreTableViewController: UITableViewController {
                         let alert = UIAlertController(title: "您已經登出", message: "請重新登入", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
-                            Alamofire.request("http://dinnersys.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                            Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
                             self.dismiss(animated: true, completion: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)

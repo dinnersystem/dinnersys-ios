@@ -28,3 +28,6 @@ func logout(){
 
 var usr = ""
 var pwd = ""
+var fcmToken = ""
+
+let seatNumArr = Array(1...50)

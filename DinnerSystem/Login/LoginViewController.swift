@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Reachability
+import FirebaseMessaging
 
 class LoginViewController: UIViewController {
     //MARK: - Declaration
@@ -26,6 +27,12 @@ class LoginViewController: UIViewController {
         if let name = uDefault.string(forKey: "studentName"){
             self.remLogin.isEnabled = true
             self.remLogin.setTitle("以\(name)登入", for: UIControl.State.normal)
+        }
+        fcmToken = Messaging.messaging().fcmToken ?? ""
+        if fcmToken == ""{
+            print("getToken failed")
+        }else{
+            print("token:"+fcmToken)
         }
     }
     
@@ -77,6 +84,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         usr = self.username.text!
         pwd = self.password.text!
+        
         let reach = Reachability()!
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
@@ -109,13 +117,21 @@ class LoginViewController: UIViewController {
                             self.remLogin.isEnabled = true
                             self.remLogin.setTitle("以\(userInfo.name!)登入", for: UIControl.State.normal)
                         }
+                    if userInfo.validOper?[6].selectClass != nil{
+                        let alert = UIAlertController(title: "無法登入", message: "抱歉，目前點餐系統沒有開放午餐股長管理功能，請使用網路版進行管理。", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            Alamofire.request(dsURL("logout")).responseData{response in}
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }else{
                         let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userInfo.name!)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
                             self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)
-                    
+                    }
                     }
                 }
             }

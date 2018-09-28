@@ -17,6 +17,7 @@ struct Login : Codable {
 	let seatNo : String?
 	let validOper : [LoginValidOper]?
 	let vege : LoginVege?
+    
 
 
 	enum CodingKeys: String, CodingKey {
@@ -26,19 +27,22 @@ struct Login : Codable {
 		case seatNo = "seat_no"
 		case validOper = "valid_oper"
 		case vege
+        
 	}
     init(classNo: String? = nil,
          id: String? = nil,
          name: String? = nil,
          validOper: [LoginValidOper]? = nil,
          seatNo : String? = nil,
-         vege : LoginVege? = nil){
+         vege : LoginVege? = nil,
+         selectClass: String? = nil){
         self.classNo = classNo
         self.id = id
         self.name = name
         self.validOper = validOper
         self.seatNo = seatNo
         self.vege = vege
+        
     }
 
 

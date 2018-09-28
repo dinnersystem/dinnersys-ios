@@ -63,20 +63,14 @@ class MainOrderTableViewController: UITableViewController {
 
 class orderViewController: UIViewController{
     @IBOutlet var label: UILabel!
-    let ttime = TrueTimeClient.sharedInstance
     override func viewDidLoad() {
         label.text! = "您選擇的餐點是\(selectedFood.name)，價錢為\(selectedFood.cost)元，確定請按訂餐。\n請注意早上十點後將無法點餐!"
         label.sizeToFit()
-        ttime.start()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        ttime.pause()
     }
     
     @IBAction func order(_ sender: Any)  {
         var orderResult = ""
-        let date = ttime.referenceTime!.now()
+        let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         let currentDate = formatter.string(from: date)
