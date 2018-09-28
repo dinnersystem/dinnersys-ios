@@ -94,7 +94,7 @@ class orderViewController: UIViewController{
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseString = String(data: response.data!, encoding: .utf8)!
-            if responseString.contains("廠商需要"){
+            if responseString.contains("廠商"){
                 orderResult = "DTError"
             }else if responseString == "" {
                 orderResult = "Logout"
