@@ -87,17 +87,19 @@ class orderViewController: UIViewController{
             }))
             self.present(alert, animated: true)
         }else{
-        Alamofire.request("\(dsURL("make_self_order"))&dish_id=\(selectedFood.id)&time=\(currentDate)-23:59:00").responseData{response in
+            Alamofire.request("\(dsURL("make_self_order"))&dish_id=\(selectedFood.id)&time=\(currentDate)-12:00:00").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseString = String(data: response.data!, encoding: .utf8)!
-            if responseString.contains("廠商需要"){
+            if responseString.contains("廠商"){
                 orderResult = "DTError"
             }else if responseString == "" {
                 orderResult = "Logout"
+            }else if responseString.contains("Invalid"){
+                orderResult = "Error"
             }else{
                 orderInfo = try! decoder.decode([Order].self, from: response.data!)
                 orderResult = "Success"
@@ -119,6 +121,10 @@ class orderViewController: UIViewController{
                     (action: UIAlertAction!) -> () in
                     self.navigationController?.popViewController(animated: true)
                 }))
+                self.present(alert, animated: true)
+            case "Error":
+                let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true)
             default:
                 let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
