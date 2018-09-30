@@ -10,11 +10,15 @@ import UIKit
 import Alamofire
 
 class HistoryTableViewController: UITableViewController {
-
+    let date = Date()
+    let formatter = DateFormatter()
+    var today = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Alamofire.request(dsURL("select_self")).responseData{response in
+        formatter.dateFormat = "yyyy/MM/dd"
+        today = formatter.string(from: date)
+        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -41,7 +45,10 @@ class HistoryTableViewController: UITableViewController {
         }
     }
 
-    @IBAction func reloadButton(_ sender: Any) { Alamofire.request(dsURL("select_self")).responseData{response in
+    @IBAction func reloadButton(_ sender: Any) {
+        formatter.dateFormat = "yyyy/MM/dd"
+        today = formatter.string(from: date)
+        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
             let responseStr = String(data: response.data!, encoding: .utf8)
             if responseStr == ""{
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
@@ -63,8 +70,9 @@ class HistoryTableViewController: UITableViewController {
         }
     }
     @IBAction func reloadData(_ sender: Any) {
-        
-        Alamofire.request(dsURL("select_self")).responseData{response in
+        formatter.dateFormat = "yyyy/MM/dd"
+        today = formatter.string(from: date)
+        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
             let responseStr = String(data: response.data!, encoding: .utf8)
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
@@ -110,7 +118,7 @@ class HistoryTableViewController: UITableViewController {
         let range = info.recvDate!.range(of: " ")
         info.recvDate!.removeSubrange((range?.lowerBound)!..<info.recvDate!.endIndex)
         cell.textLabel?.text! = (info.dish?.dishName!)!
-        cell.detailTextLabel?.text! = "\(info.recvDate!), \(info.payment![0].paid! == "true" ? "已付款" : "未付款")"
+        cell.detailTextLabel?.text! = "\((info.dish?.dishCost!)!), \(info.payment![0].paid! == "true" ? "已付款" : "未付款")"
         return cell
     }
  

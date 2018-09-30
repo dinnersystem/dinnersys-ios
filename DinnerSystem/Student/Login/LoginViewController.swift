@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Reachability
+import FirebaseMessaging
 
 class LoginViewController: UIViewController {
     //MARK: - Declaration
@@ -26,6 +27,12 @@ class LoginViewController: UIViewController {
         if let name = uDefault.string(forKey: "studentName"){
             self.remLogin.isEnabled = true
             self.remLogin.setTitle("以\(name)登入", for: UIControl.State.normal)
+        }
+        fcmToken = Messaging.messaging().fcmToken ?? ""
+        if fcmToken == ""{
+            print("getToken failed")
+        }else{
+            print("token:"+fcmToken)
         }
     }
     
