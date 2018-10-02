@@ -61,7 +61,7 @@ class LoginViewController: UIViewController {
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let string = String(data: response.data!, encoding: .utf8)!
-            if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid")){
+            if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "")){
                 let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -105,7 +105,7 @@ class LoginViewController: UIViewController {
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
                 let string = String(data: response.data!, encoding: .utf8)!
-                if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid")){
+                if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "")){
                     let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)

@@ -365,7 +365,7 @@
             </objects>
             <point key="canvasLocation" x="824.79999999999995" y="-259.52023988005999"/>
         </scene>
-        <!--檢視訂單-->
+        <!--檢視今日訂單-->
         <scene sceneID="7EX-26-DtL">
             <objects>
                 <tableViewController id="T4u-Of-io7" customClass="HistoryTableViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
@@ -404,7 +404,7 @@
                             <outlet property="delegate" destination="T4u-Of-io7" id="QKR-MX-Vav"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="檢視訂單" id="7Z3-Bk-cWH">
+                    <navigationItem key="navigationItem" title="檢視今日訂單" id="7Z3-Bk-cWH">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="kPd-Tp-zsX">
                             <connections>
                                 <action selector="reloadButton:" destination="T4u-Of-io7" id="L25-oO-qcH"/>
@@ -1122,6 +1122,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="管理訂單" id="luZ-fR-eVT">
+                        <barButtonItem key="leftBarButtonItem" title="上傳訂單" style="plain" id="5zA-If-L4B"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hc1-7i-JnS">
                             <connections>
                                 <action selector="refreshButton:" destination="kdQ-cL-2IF" id="b8f-ti-TEm"/>
