@@ -12,19 +12,53 @@ import TrueTime
 
 class MainOrderTableViewController: UITableViewController {
     
-    
+    var activityIndicator = UIActivityIndicatorView()
+    var indicatorBackView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
         var foodCount = 0
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicatorBackView.center = self.view.center
+        indicatorBackView.isHidden = true
+        indicatorBackView.layer.cornerRadius = 20
+        indicatorBackView.alpha = 0.5
+        indicatorBackView.backgroundColor = UIColor.black
+        self.view.addSubview(indicatorBackView)
+        self.view.addSubview(activityIndicator)
+        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.activityIndicator.startAnimating()
+        self.indicatorBackView.isHidden = false
+        
         Alamofire.request(dsURL("show_dish")).responseData{ response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                    self.dismiss(animated: true, completion: nil)
+                }))
                 self.present(errorAlert, animated: true, completion: nil)
-            }
+            }else{
+                
+            let responseStr = String(data: response.data!, encoding: .utf8)
+            if responseStr == ""{
+                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }else{
             mainMenuArr = []
             taiwanMenuArr = []
             aiJiaMenuArr = []
+            cafetMenuArr = []
             mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
             for food in mainMenuArr{
                 if food.isIdle! == "1"{
@@ -38,11 +72,19 @@ class MainOrderTableViewController: UITableViewController {
                     taiwanMenuArr.append(food)
                 }else if food.factory?.name! == "愛佳便當"{
                     aiJiaMenuArr.append(food)
+                }else if food.factory?.name! == "合作社"{
+                    cafetMenuArr.append(food)
                 }else{
+                    
                 }
             }
         }
-       
+                
+            }
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
     }
 
     // MARK: - Table view data source
@@ -54,7 +96,7 @@ class MainOrderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
 
 
@@ -90,7 +132,11 @@ class orderViewController: UIViewController{
             Alamofire.request("\(dsURL("make_self_order"))&dish_id=\(selectedFood.id)&time=\(currentDate)-12:00:00").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                    self.dismiss(animated: true, completion: nil)
+                }))
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseString = String(data: response.data!, encoding: .utf8)!

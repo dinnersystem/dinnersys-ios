@@ -10,6 +10,8 @@
 		5ED8D7AD5E351947C85938A1 /* Pods_DinnerSystemTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BEAC489E8F48309D8368C /* Pods_DinnerSystemTests.framework */; };
 		C835445823B77EBB4078C939 /* Pods_DinnerSystemUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4168BB920F7B5D430DDABFD8 /* Pods_DinnerSystemUITests.framework */; };
 		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
+		E601FC062166526200A2F3F0 /* BreakfastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601FC052166526200A2F3F0 /* BreakfastTableViewController.swift */; };
+		E601FC082166549700A2F3F0 /* adminCafetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E601FC072166549700A2F3F0 /* adminCafetTableViewController.swift */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
 		E60E4D0C214A094B007C4412 /* MainOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */; };
 		E60E4D10214A105E007C4412 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
@@ -100,6 +102,8 @@
 		551BEAC489E8F48309D8368C /* Pods_DinnerSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEB7593AB4DBC930B1344BDF /* Pods-DinnerSystemUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystemUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystemUITests/Pods-DinnerSystemUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E601FC052166526200A2F3F0 /* BreakfastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakfastTableViewController.swift; sourceTree = "<group>"; };
+		E601FC072166549700A2F3F0 /* adminCafetTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adminCafetTableViewController.swift; sourceTree = "<group>"; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOrderTableViewController.swift; sourceTree = "<group>"; };
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				E6AEF865214A130C00C96D64 /* JSON */,
+				E601FC052166526200A2F3F0 /* BreakfastTableViewController.swift */,
 				E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */,
 				E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */,
 				E6EF4DD4214C07D100FF0A8B /* AiJiaTableViewController.swift */,
@@ -250,10 +255,10 @@
 			isa = PBXGroup;
 			children = (
 				E6CD90F9215FE01300523989 /* DM */,
-				E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */,
 				E6F5DCA1215DCEBE0052A428 /* Student */,
 				E653E460200075D4000E35AE /* Storyboards */,
 				E6CA389C208DF4D5002801DD /* AppDelegate.swift */,
+				E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */,
 				E6EA6583208C2163001C9A37 /* Info.plist */,
 				E6E455252020A2710006F0A2 /* GoogleService-Info.plist */,
 				E60E4D0F214A105E007C4412 /* misc.swift */,
@@ -359,6 +364,7 @@
 				E6CD9106215FE01300523989 /* adminAiJiaTableViewController.swift */,
 				E6CD9107215FE01300523989 /* adminMainOrderTableViewController.swift */,
 				E6CD9108215FE01300523989 /* AdminTaiwanTableViewController.swift */,
+				E601FC072166549700A2F3F0 /* adminCafetTableViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -512,6 +518,9 @@
 							};
 							com.apple.Push = {
 								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
 							};
 						};
 					};
@@ -688,6 +697,7 @@
 				E6CD9114215FE01300523989 /* adminFactory.swift in Sources */,
 				E6CD9117215FE01300523989 /* adminPayment.swift in Sources */,
 				E6EF4DEF214C157400FF0A8B /* OrderVege.swift in Sources */,
+				E601FC062166526200A2F3F0 /* BreakfastTableViewController.swift in Sources */,
 				E6EF4DDD214C0AEF00FF0A8B /* Login.swift in Sources */,
 				E60E4D10214A105E007C4412 /* misc.swift in Sources */,
 				E69A88AD214D13210062B6C8 /* HistoryTableViewController.swift in Sources */,
@@ -719,6 +729,7 @@
 				E69A88B8214D20040062B6C8 /* HistoryFactory.swift in Sources */,
 				E6CD9115215FE01300523989 /* adminHistory.swift in Sources */,
 				E6CD911A215FE01300523989 /* adminMainOrderTableViewController.swift in Sources */,
+				E601FC082166549700A2F3F0 /* adminCafetTableViewController.swift in Sources */,
 				E6CD911B215FE01300523989 /* AdminTaiwanTableViewController.swift in Sources */,
 				E6EF4DDF214C0AEF00FF0A8B /* LoginVege.swift in Sources */,
 				E6EF4DEE214C157400FF0A8B /* OrderContent.swift in Sources */,

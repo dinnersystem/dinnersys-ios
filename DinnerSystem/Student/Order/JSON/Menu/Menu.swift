@@ -10,6 +10,7 @@ import Foundation
 var mainMenuArr:[Menu] = []
 var taiwanMenuArr:[Menu] = []
 var aiJiaMenuArr:[Menu] = []
+var cafetMenuArr:[Menu] = []
 
 struct Menu : Codable {
 

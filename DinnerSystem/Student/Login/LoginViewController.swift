@@ -18,11 +18,25 @@ class LoginViewController: UIViewController {
     @IBOutlet var remLogin: UIButton!
     @IBOutlet var remPW: UISwitch!
     var uDefault: UserDefaults!
-    
+    var activityIndicator = UIActivityIndicatorView()
+    var indicatorBackView = UIView()
     
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicatorBackView.center = self.view.center
+        indicatorBackView.isHidden = true
+        indicatorBackView.layer.cornerRadius = 20
+        indicatorBackView.alpha = 0.5
+        indicatorBackView.backgroundColor = UIColor.black
+        self.view.addSubview(indicatorBackView)
+        self.view.addSubview(activityIndicator)
+        
         uDefault = UserDefaults.standard
         if let name = uDefault.string(forKey: "studentName"){
             self.remLogin.isEnabled = true
@@ -54,6 +68,9 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
         }else{
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            self.activityIndicator.startAnimating()
+            self.indicatorBackView.isHidden = false
         Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&device_id=\(fcmToken)").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
@@ -85,7 +102,9 @@ class LoginViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
             }
-            
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
             }
         }
     }
@@ -98,12 +117,16 @@ class LoginViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
         }else{
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            self.activityIndicator.startAnimating()
+            self.indicatorBackView.isHidden = false
         Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&device_id=\(fcmToken)").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡開發者。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
+                
                 let string = String(data: response.data!, encoding: .utf8)!
                 if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "")){
                     let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
@@ -141,6 +164,9 @@ class LoginViewController: UIViewController {
                     }
                     }
                 }
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
             }
         
         

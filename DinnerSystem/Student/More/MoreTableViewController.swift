@@ -61,7 +61,11 @@ class MoreTableViewController: UITableViewController {
                 Alamofire.request("\(dsURL("change_password"))&old_pswd=\(oldPassword)&new_pswd=\(newPassword)").responseData{ response in
                     if response.error != nil {
                         let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                            self.dismiss(animated: true, completion: nil)
+                        }))
                         self.present(errorAlert, animated: true, completion: nil)
                     }
                     let responseString = String(data: response.data!, encoding: .utf8)!
