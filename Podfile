@@ -8,6 +8,7 @@ target 'DinnerSystem' do
   pod 'Alamofire'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  # pod 'Firebase/Performance'
   pod 'Fabric', '~> 1.7.3'
   pod 'Crashlytics', '~> 3.10.0'
   pod 'ReachabilitySwift'

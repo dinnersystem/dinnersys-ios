@@ -19,12 +19,10 @@ class adminHistoryTableViewController: UITableViewController {
     var unpaidTotal = 0
     var adminPaidArr:[adminHistory] = []
     var adminUnpaidArr:[adminHistory] = []
+    var paidTotal = 0
     
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
-    
-    
-    
     
     
     override func viewDidLoad() {
@@ -61,7 +59,7 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)
@@ -79,14 +77,16 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{
                 adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                 self.unpaidTotal = 0
+                self.paidTotal = 0
                 for item in adminHistArr{
                     if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                         self.adminPaidArr.append(item)
+                        self.paidTotal += Int(item.dish!.dishCost!)!
                     }else{
                         self.adminUnpaidArr.append(item)
                         self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -97,7 +97,7 @@ class adminHistoryTableViewController: UITableViewController {
                 }else{
                     self.send.isEnabled = true
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.tableView.reloadData()
             }
@@ -123,7 +123,7 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)
@@ -142,14 +142,16 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{
                 adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                 self.unpaidTotal = 0
+                self.paidTotal = 0
                 for item in adminHistArr{
                     if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                         self.adminPaidArr.append(item)
+                        self.paidTotal += Int(item.dish!.dishCost!)!
                     }else{
                         self.adminUnpaidArr.append(item)
                         self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -160,7 +162,7 @@ class adminHistoryTableViewController: UITableViewController {
                 }else{
                     self.send.isEnabled = true
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.tableView.reloadData()
             }
@@ -204,14 +206,16 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{
                 adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                 self.unpaidTotal = 0
+                self.paidTotal = 0
                 for item in adminHistArr{
                     if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                         self.adminPaidArr.append(item)
+                        self.paidTotal += Int(item.dish!.dishCost!)!
                     }else{
                         self.adminUnpaidArr.append(item)
                         self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -222,7 +226,7 @@ class adminHistoryTableViewController: UITableViewController {
                 }else{
                     self.send.isEnabled = true
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.tableView.reloadData()
             }
@@ -245,7 +249,7 @@ class adminHistoryTableViewController: UITableViewController {
                     if self.unpaidTotal == 0{
                         self.send.isEnabled = false
                     }
-                    self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                    self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                     self.present(errorAlert, animated: true, completion: nil)
                 }
                 let responseStr = String(data: response.data!, encoding: .utf8)!
@@ -292,7 +296,7 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)
@@ -310,14 +314,16 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{
                 adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                 self.unpaidTotal = 0
+                self.paidTotal = 0
                 for item in adminHistArr{
                     if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                         self.adminPaidArr.append(item)
+                        self.paidTotal += Int(item.dish!.dishCost!)!
                     }else{
                         self.adminUnpaidArr.append(item)
                         self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -328,7 +334,7 @@ class adminHistoryTableViewController: UITableViewController {
                 }else{
                     self.send.isEnabled = true
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.tableView.reloadData()
             }
@@ -433,9 +439,11 @@ class adminHistoryTableViewController: UITableViewController {
                         }else{
                             adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                             self.unpaidTotal = 0
+                            self.paidTotal = 0
                             for item in adminHistArr{
                                 if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                                     self.adminPaidArr.append(item)
+                                    self.paidTotal += Int(item.dish!.dishCost!)!
                                 }else{
                                     self.adminUnpaidArr.append(item)
                                     self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -446,7 +454,7 @@ class adminHistoryTableViewController: UITableViewController {
                             }else{
                                 self.send.isEnabled = true
                             }
-                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                             self.totalLabel.sizeToFit()
                             self.tableView.reloadData()
                         }
@@ -525,9 +533,11 @@ class adminHistoryTableViewController: UITableViewController {
                         }else{
                             adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                             self.unpaidTotal = 0
+                            self.paidTotal = 0
                             for item in adminHistArr{
                                 if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                                     self.adminPaidArr.append(item)
+                                    self.paidTotal += Int(item.dish!.dishCost!)!
                                 }else{
                                     self.adminUnpaidArr.append(item)
                                     self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -538,7 +548,7 @@ class adminHistoryTableViewController: UITableViewController {
                             }else{
                                 self.send.isEnabled = true
                             }
-                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                             self.totalLabel.sizeToFit()
                             self.tableView.reloadData()
                         }
@@ -625,9 +635,11 @@ class adminHistoryTableViewController: UITableViewController {
                         }else{
                             adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
                             self.unpaidTotal = 0
+                            self.paidTotal = 0
                             for item in adminHistArr{
                                 if item.payment![0].paid! == "false" || item.payment![1].paid! == "true"{
                                     self.adminPaidArr.append(item)
+                                    self.paidTotal += Int(item.dish!.dishCost!)!
                                 }else{
                                     self.adminUnpaidArr.append(item)
                                     self.unpaidTotal += Int(item.dish!.dishCost!)!
@@ -638,7 +650,7 @@ class adminHistoryTableViewController: UITableViewController {
                             }else{
                                 self.send.isEnabled = true
                             }
-                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)"
+                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                             self.totalLabel.sizeToFit()
                             self.tableView.reloadData()
                         }
