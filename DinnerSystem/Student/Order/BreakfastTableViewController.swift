@@ -41,8 +41,7 @@ class BreakfastTableViewController: UITableViewController {
         let info = cafetMenuArr[indexPath.row]
         cell.textLabel?.text = info.dishName!
         cell.detailTextLabel?.text = info.dishCost! + "$"
-        cell.textLabel?.sizeToFit()
-        cell.detailTextLabel?.sizeToFit()
+
         return cell
     }
  
