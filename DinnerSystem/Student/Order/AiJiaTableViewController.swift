@@ -34,7 +34,8 @@ class AiJiaTableViewController: UITableViewController {
         let info = aiJiaMenuArr[indexPath.row]
         cell.textLabel?.text = info.dishName!
         cell.detailTextLabel?.text = "\(info.dishCost!)$"
-
+        cell.textLabel?.sizeToFit()
+        cell.detailTextLabel?.sizeToFit()
         return cell
     }
     
