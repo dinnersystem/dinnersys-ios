@@ -14,7 +14,7 @@ import TrueTime
 
 class adminHistoryTableViewController: UITableViewController {
     
-    //MARK - Declaration
+    // MARK: - Declaration
     @IBOutlet var totalLabel: UILabel!
     @IBOutlet var send: UIButton!
     let decoder = JSONDecoder()
@@ -113,7 +113,7 @@ class adminHistoryTableViewController: UITableViewController {
         }
         
     }
-    //MARK - ReloadData
+    // MARK: - ReloadData
     @IBAction func refresh(_ sender: Any) {                 //pullToRefresh
         
         //startResresh
@@ -254,7 +254,7 @@ class adminHistoryTableViewController: UITableViewController {
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
-    //MARK - UploadContent
+    // MARK: - UploadContent
     @IBAction func sendButton(_ sender: Any) {
         for selectInfo in adminUnpaidArr{               //each in unpaid
             Alamofire.request("\(dsURL("payment_dm"))&target=true&order_id=\(selectInfo.id!)").responseData{ response in
@@ -389,7 +389,7 @@ class adminHistoryTableViewController: UITableViewController {
         cell.paidText?.text! = "\((histInfo.payment![0].paid! == "true" ? "已付款" : "未付款"))，\((histInfo.payment![1].paid! == "true" ? "已上傳" : "未上傳"))"
         return cell
     }
-    //MARK - Selected Cell
+    // MARK: - Selected Cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectInfo = adminHistArr[indexPath.row]                //declare
         let range = selectInfo.recvDate!.range(of: " ")             //declare range when space
