@@ -59,7 +59,19 @@ class MainOrderTableViewController: UITableViewController {
             taiwanMenuArr = []
             aiJiaMenuArr = []
             cafetMenuArr = []
-            mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
+            //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
+                do{
+                    mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
             for food in mainMenuArr{
                 if food.isIdle! == "1"{
                     mainMenuArr.remove(at: foodCount)
@@ -147,7 +159,19 @@ class orderViewController: UIViewController{
             }else if responseString.contains("Invalid"){
                 orderResult = "Error"
             }else{
-                orderInfo = try! decoder.decode([Order].self, from: response.data!)
+                
+                do{
+                    orderInfo = try decoder.decode([Order].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 orderResult = "Success"
             }
             let result = orderResult

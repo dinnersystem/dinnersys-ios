@@ -84,7 +84,15 @@ class LoginViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }else{
                 
-                userInfo = try! decoder.decode(Login.self, from: response.data!)
+                //userInfo = try! decoder.decode(Login.self, from: response.data!)
+                do{
+                    userInfo = try decoder.decode(Login.self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
                 userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
                 if userInfo.validOper?[6].selectClass != nil{
                     let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classNo!)的午餐股長", preferredStyle: .alert)
@@ -137,7 +145,14 @@ class LoginViewController: UIViewController {
                         pwd = self.password.text!
                         self.username.text = ""
                         self.password.text = ""
-                        userInfo = try! decoder.decode(Login.self, from: response.data!)
+                        do{
+                            userInfo = try decoder.decode(Login.self, from: response.data!)
+                        }catch let error{
+                            print(error)
+                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。", preferredStyle: .alert)
+                            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            self.present(errorAlert, animated: true, completion: nil)
+                        }
                         userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
                         //remember user
                         if (self.remPW.isOn){

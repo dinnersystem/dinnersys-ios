@@ -61,7 +61,19 @@ class HistoryTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else{
-                historyArr = try! decoder.decode([History].self, from: response.data!)
+                //historyArr = try! decoder.decode([History].self, from: response.data!)
+                do{
+                    historyArr = try decoder.decode([History].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 historyArr.reverse()
                 self.tableView.reloadData()
             }
@@ -92,7 +104,19 @@ class HistoryTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else{
-                historyArr = try! decoder.decode([History].self, from: response.data!)
+                //historyArr = try! decoder.decode([History].self, from: response.data!)
+                do{
+                    historyArr = try decoder.decode([History].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 historyArr.reverse()
                 self.tableView.reloadData()
             }
@@ -128,7 +152,19 @@ class HistoryTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else{
-                historyArr = try! decoder.decode([History].self, from: response.data!)
+                //historyArr = try! decoder.decode([History].self, from: response.data!)
+                do{
+                    historyArr = try decoder.decode([History].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 historyArr.reverse()
                 self.tableView.reloadData()
             }
@@ -296,7 +332,19 @@ class HistoryTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                     self.tableView.reloadData()
                 }else{
-                    historyArr = try! decoder.decode([History].self, from: response.data!)
+                    //historyArr = try! decoder.decode([History].self, from: response.data!)
+                    do{
+                        historyArr = try decoder.decode([History].self, from: response.data!)
+                    }catch let error{
+                        print(error)
+                        let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                     historyArr.reverse()
                     self.tableView.reloadData()
                 }

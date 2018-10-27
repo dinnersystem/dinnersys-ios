@@ -83,7 +83,19 @@ class adminHistoryTableViewController: UITableViewController {
                 self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{                                      //parse JSON
-                adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                do{
+                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 //reset variables
                 self.unpaidTotal = 0
                 self.paidTotal = 0
@@ -160,7 +172,19 @@ class adminHistoryTableViewController: UITableViewController {
                 self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{                              //parse JSON
-                adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                do{
+                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 self.unpaidTotal = 0
                 self.paidTotal = 0
                 for item in adminHistArr{
@@ -226,7 +250,19 @@ class adminHistoryTableViewController: UITableViewController {
                 self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{                              //parseJSON
-                adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                do{
+                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 self.unpaidTotal = 0
                 self.paidTotal = 0
                 for item in adminHistArr{                   //ask if paid
@@ -338,7 +374,19 @@ class adminHistoryTableViewController: UITableViewController {
                 self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.present(alert, animated: true, completion: nil)
             }else{                                  //parseJSON
-                adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                do{
+                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 self.unpaidTotal = 0
                 self.paidTotal = 0
                 for item in adminHistArr{           //ask paid
@@ -461,7 +509,19 @@ class adminHistoryTableViewController: UITableViewController {
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }else{          //parseJSON
-                            adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                            //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                            do{
+                                adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                            }catch let error{
+                                print(error)
+                                let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                                    self.dismiss(animated: true, completion: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
                             self.unpaidTotal = 0
                             self.paidTotal = 0
                             for item in adminHistArr{               //ask if paid
@@ -559,7 +619,19 @@ class adminHistoryTableViewController: UITableViewController {
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }else{           //parseJson
-                            adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                            //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                            do{
+                                adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                            }catch let error{
+                                print(error)
+                                let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                                    self.dismiss(animated: true, completion: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
                             self.unpaidTotal = 0
                             self.paidTotal = 0
                             for item in adminHistArr{           //ask paid
@@ -667,7 +739,19 @@ class adminHistoryTableViewController: UITableViewController {
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }else{              //parseJson
-                            adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                            //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
+                            do{
+                                adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
+                            }catch let error{
+                                print(error)
+                                let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                                    self.dismiss(animated: true, completion: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
                             self.unpaidTotal = 0
                             self.paidTotal = 0
                             for item in adminHistArr{           //ask paid
