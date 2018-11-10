@@ -15,7 +15,7 @@ class MoreTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     @IBAction func Logout(_ sender: Any) {
-        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+        logout()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -63,7 +63,7 @@ class MoreTableViewController: UITableViewController {
                         let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
-                            Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                            logout()
                             self.dismiss(animated: true, completion: nil)
                         }))
                         self.present(errorAlert, animated: true, completion: nil)
@@ -88,7 +88,7 @@ class MoreTableViewController: UITableViewController {
                         let alert = UIAlertController(title: "您已經登出", message: "請重新登入", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
-                            Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                            logout()
                             self.dismiss(animated: true, completion: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)

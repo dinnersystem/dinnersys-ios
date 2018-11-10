@@ -1,7 +1,7 @@
 //
 //	MenuFactory.swift
 //
-//	Create by Sean Pai on 13/9/2018
+//	Create by Sean Pai on 1/11/2018
 //	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
@@ -25,15 +25,20 @@ struct MenuFactory : Codable {
 		case prepareTime = "prepare_time"
 		case upperBound = "upper_bound"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		disabled = try values.decodeIfPresent(String.self, forKey: .disabled)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		lowerBound = try values.decodeIfPresent(String.self, forKey: .lowerBound)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		prepareTime = try values.decodeIfPresent(String.self, forKey: .prepareTime)
-		upperBound = try values.decodeIfPresent(String.self, forKey: .upperBound)
-	}
+    init(disabled : String? = nil,
+         id : String? = nil,
+         lowerBound : String? = nil,
+         name : String? = nil,
+         prepareTime : String? = nil,
+         upperBound : String? = nil
+        ){
+        self.disabled = disabled
+        self.id = id
+        self.lowerBound = lowerBound
+        self.name = name
+        self.prepareTime = prepareTime
+        self.upperBound = upperBound
+    }
 
 
 }

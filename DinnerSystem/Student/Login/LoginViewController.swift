@@ -94,8 +94,8 @@ class LoginViewController: UIViewController {
                     self.present(errorAlert, animated: true, completion: nil)
                 }
                 userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
-                if userInfo.validOper?[6].selectClass != nil{
-                    let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classNo!)的午餐股長", preferredStyle: .alert)
+                if userInfo.validOper?[2].selectClass != nil{
+                    let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         self.performSegue(withIdentifier: "dmLoginSuccess", sender: nil)
@@ -162,8 +162,8 @@ class LoginViewController: UIViewController {
                             self.remLogin.isEnabled = true
                             self.remLogin.setTitle("以\(userInfo.name!)登入", for: UIControl.State.normal)
                         }
-                    if userInfo.validOper?[6].selectClass != nil{
-                        let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classNo!)的午餐股長", preferredStyle: .alert)
+                    if userInfo.validOper?[2].selectClass != nil{
+                        let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
                             self.performSegue(withIdentifier: "dmLoginSuccess", sender: nil)

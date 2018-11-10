@@ -24,26 +24,35 @@
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
 		E69A88AD214D13210062B6C8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88AC214D13210062B6C8 /* HistoryTableViewController.swift */; };
 		E69A88B6214D20040062B6C8 /* HistoryVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88AF214D20040062B6C8 /* HistoryVege.swift */; };
-		E69A88B7214D20040062B6C8 /* HistoryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B0214D20040062B6C8 /* HistoryContent.swift */; };
 		E69A88B8214D20040062B6C8 /* HistoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B1214D20040062B6C8 /* HistoryFactory.swift */; };
 		E69A88B9214D20040062B6C8 /* HistoryOrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B2214D20040062B6C8 /* HistoryOrderMaker.swift */; };
 		E69A88BA214D20040062B6C8 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B3214D20040062B6C8 /* History.swift */; };
 		E69A88BB214D20040062B6C8 /* HistoryPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B4214D20040062B6C8 /* HistoryPayment.swift */; };
 		E69A88BC214D20040062B6C8 /* HistoryDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B5214D20040062B6C8 /* HistoryDish.swift */; };
+		E6A2A473218F417200E6A784 /* adminHistoryDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A46A218F417100E6A784 /* adminHistoryDish.swift */; };
+		E6A2A474218F417200E6A784 /* adminHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A46B218F417200E6A784 /* adminHistory.swift */; };
+		E6A2A475218F417200E6A784 /* adminHistoryVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A46C218F417200E6A784 /* adminHistoryVege.swift */; };
+		E6A2A476218F417200E6A784 /* adminHistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A46D218F417200E6A784 /* adminHistoryClas.swift */; };
+		E6A2A477218F417200E6A784 /* adminHistoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A46E218F417200E6A784 /* adminHistoryFactory.swift */; };
+		E6A2A478218F417200E6A784 /* adminHistoryOrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A46F218F417200E6A784 /* adminHistoryOrderMaker.swift */; };
+		E6A2A479218F417200E6A784 /* adminHistoryPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A470218F417200E6A784 /* adminHistoryPayment.swift */; };
+		E6A2A47A218F417200E6A784 /* adminHistoryMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A471218F417200E6A784 /* adminHistoryMoney.swift */; };
+		E6A2A47B218F417200E6A784 /* adminHistoryDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A472218F417200E6A784 /* adminHistoryDepartment.swift */; };
+		E6A2A47F218F418000E6A784 /* HistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A47C218F418000E6A784 /* HistoryClas.swift */; };
+		E6A2A480218F418000E6A784 /* HistoryDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A47D218F418000E6A784 /* HistoryDepartment.swift */; };
+		E6A2A481218F418000E6A784 /* HistoryMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A47E218F418000E6A784 /* HistoryMoney.swift */; };
+		E6A2A485218F418D00E6A784 /* OrderDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A482218F418D00E6A784 /* OrderDepartment.swift */; };
+		E6A2A486218F418D00E6A784 /* OrderClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A483218F418D00E6A784 /* OrderClas.swift */; };
+		E6A2A487218F418D00E6A784 /* OrderMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A484218F418D00E6A784 /* OrderMoney.swift */; };
+		E6A2A48A218F419500E6A784 /* MenuDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A488218F419400E6A784 /* MenuDepartment.swift */; };
+		E6A2A48B218F419500E6A784 /* MenuVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A489218F419400E6A784 /* MenuVege.swift */; };
+		E6A2A48F218F419F00E6A784 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A48D218F419F00E6A784 /* LoginClas.swift */; };
 		E6AEF869214A135B00C96D64 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF866214A135B00C96D64 /* Menu.swift */; };
-		E6AEF86A214A135B00C96D64 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF867214A135B00C96D64 /* MenuContent.swift */; };
 		E6AEF86B214A135B00C96D64 /* MenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF868214A135B00C96D64 /* MenuFactory.swift */; };
 		E6B6922C214AAA63005D0C22 /* TaiwanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */; };
 		E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6CD9110215FE01300523989 /* adminHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD90FB215FE01300523989 /* adminHistoryCell.swift */; };
 		E6CD9111215FE01300523989 /* adminHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD90FC215FE01300523989 /* adminHistoryTableViewController.swift */; };
-		E6CD9112215FE01300523989 /* adminContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD90FE215FE01300523989 /* adminContent.swift */; };
-		E6CD9113215FE01300523989 /* adminDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD90FF215FE01300523989 /* adminDish.swift */; };
-		E6CD9114215FE01300523989 /* adminFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9100215FE01300523989 /* adminFactory.swift */; };
-		E6CD9115215FE01300523989 /* adminHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9101215FE01300523989 /* adminHistory.swift */; };
-		E6CD9116215FE01300523989 /* adminOrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9102215FE01300523989 /* adminOrderMaker.swift */; };
-		E6CD9117215FE01300523989 /* adminPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9103215FE01300523989 /* adminPayment.swift */; };
-		E6CD9118215FE01300523989 /* adminVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9104215FE01300523989 /* adminVege.swift */; };
 		E6CD9119215FE01300523989 /* adminAiJiaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9106215FE01300523989 /* adminAiJiaTableViewController.swift */; };
 		E6CD911A215FE01300523989 /* adminMainOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9107215FE01300523989 /* adminMainOrderTableViewController.swift */; };
 		E6CD911B215FE01300523989 /* AdminTaiwanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD9108215FE01300523989 /* AdminTaiwanTableViewController.swift */; };
@@ -59,7 +68,6 @@
 		E6EF4DEB214C157400FF0A8B /* OrderDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE4214C157400FF0A8B /* OrderDish.swift */; };
 		E6EF4DEC214C157400FF0A8B /* OrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE5214C157400FF0A8B /* OrderMaker.swift */; };
 		E6EF4DED214C157400FF0A8B /* OrderPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE6214C157400FF0A8B /* OrderPayment.swift */; };
-		E6EF4DEE214C157400FF0A8B /* OrderContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE7214C157400FF0A8B /* OrderContent.swift */; };
 		E6EF4DEF214C157400FF0A8B /* OrderVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE8214C157400FF0A8B /* OrderVege.swift */; };
 /* End PBXBuildFile section */
 
@@ -122,27 +130,36 @@
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E69A88AC214D13210062B6C8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E69A88AF214D20040062B6C8 /* HistoryVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVege.swift; sourceTree = "<group>"; };
-		E69A88B0214D20040062B6C8 /* HistoryContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryContent.swift; sourceTree = "<group>"; };
 		E69A88B1214D20040062B6C8 /* HistoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFactory.swift; sourceTree = "<group>"; };
 		E69A88B2214D20040062B6C8 /* HistoryOrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderMaker.swift; sourceTree = "<group>"; };
 		E69A88B3214D20040062B6C8 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		E69A88B4214D20040062B6C8 /* HistoryPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryPayment.swift; sourceTree = "<group>"; };
 		E69A88B5214D20040062B6C8 /* HistoryDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDish.swift; sourceTree = "<group>"; };
+		E6A2A46A218F417100E6A784 /* adminHistoryDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryDish.swift; sourceTree = "<group>"; };
+		E6A2A46B218F417200E6A784 /* adminHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistory.swift; sourceTree = "<group>"; };
+		E6A2A46C218F417200E6A784 /* adminHistoryVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryVege.swift; sourceTree = "<group>"; };
+		E6A2A46D218F417200E6A784 /* adminHistoryClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryClas.swift; sourceTree = "<group>"; };
+		E6A2A46E218F417200E6A784 /* adminHistoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryFactory.swift; sourceTree = "<group>"; };
+		E6A2A46F218F417200E6A784 /* adminHistoryOrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryOrderMaker.swift; sourceTree = "<group>"; };
+		E6A2A470218F417200E6A784 /* adminHistoryPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryPayment.swift; sourceTree = "<group>"; };
+		E6A2A471218F417200E6A784 /* adminHistoryMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryMoney.swift; sourceTree = "<group>"; };
+		E6A2A472218F417200E6A784 /* adminHistoryDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryDepartment.swift; sourceTree = "<group>"; };
+		E6A2A47C218F418000E6A784 /* HistoryClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryClas.swift; sourceTree = "<group>"; };
+		E6A2A47D218F418000E6A784 /* HistoryDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDepartment.swift; sourceTree = "<group>"; };
+		E6A2A47E218F418000E6A784 /* HistoryMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoney.swift; sourceTree = "<group>"; };
+		E6A2A482218F418D00E6A784 /* OrderDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDepartment.swift; sourceTree = "<group>"; };
+		E6A2A483218F418D00E6A784 /* OrderClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderClas.swift; sourceTree = "<group>"; };
+		E6A2A484218F418D00E6A784 /* OrderMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderMoney.swift; sourceTree = "<group>"; };
+		E6A2A488218F419400E6A784 /* MenuDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDepartment.swift; sourceTree = "<group>"; };
+		E6A2A489218F419400E6A784 /* MenuVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVege.swift; sourceTree = "<group>"; };
+		E6A2A48D218F419F00E6A784 /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AEF866214A135B00C96D64 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		E6AEF867214A135B00C96D64 /* MenuContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
 		E6AEF868214A135B00C96D64 /* MenuFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
 		E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6CD90FB215FE01300523989 /* adminHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryCell.swift; sourceTree = "<group>"; };
 		E6CD90FC215FE01300523989 /* adminHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryTableViewController.swift; sourceTree = "<group>"; };
-		E6CD90FE215FE01300523989 /* adminContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminContent.swift; sourceTree = "<group>"; };
-		E6CD90FF215FE01300523989 /* adminDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminDish.swift; sourceTree = "<group>"; };
-		E6CD9100215FE01300523989 /* adminFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminFactory.swift; sourceTree = "<group>"; };
-		E6CD9101215FE01300523989 /* adminHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistory.swift; sourceTree = "<group>"; };
-		E6CD9102215FE01300523989 /* adminOrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminOrderMaker.swift; sourceTree = "<group>"; };
-		E6CD9103215FE01300523989 /* adminPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminPayment.swift; sourceTree = "<group>"; };
-		E6CD9104215FE01300523989 /* adminVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminVege.swift; sourceTree = "<group>"; };
 		E6CD9106215FE01300523989 /* adminAiJiaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminAiJiaTableViewController.swift; sourceTree = "<group>"; };
 		E6CD9107215FE01300523989 /* adminMainOrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminMainOrderTableViewController.swift; sourceTree = "<group>"; };
 		E6CD9108215FE01300523989 /* AdminTaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTaiwanTableViewController.swift; sourceTree = "<group>"; };
@@ -159,7 +176,6 @@
 		E6EF4DE4214C157400FF0A8B /* OrderDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDish.swift; sourceTree = "<group>"; };
 		E6EF4DE5214C157400FF0A8B /* OrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderMaker.swift; sourceTree = "<group>"; };
 		E6EF4DE6214C157400FF0A8B /* OrderPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPayment.swift; sourceTree = "<group>"; };
-		E6EF4DE7214C157400FF0A8B /* OrderContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderContent.swift; sourceTree = "<group>"; };
 		E6EF4DE8214C157400FF0A8B /* OrderVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderVege.swift; sourceTree = "<group>"; };
 		EE5B20602BAFF0EF6CE9C041 /* Pods-DinnerSystemTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystemTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystemTests/Pods-DinnerSystemTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,8 +321,10 @@
 		E69A88AE214D13260062B6C8 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2A47C218F418000E6A784 /* HistoryClas.swift */,
+				E6A2A47D218F418000E6A784 /* HistoryDepartment.swift */,
+				E6A2A47E218F418000E6A784 /* HistoryMoney.swift */,
 				E69A88B3214D20040062B6C8 /* History.swift */,
-				E69A88B0214D20040062B6C8 /* HistoryContent.swift */,
 				E69A88B5214D20040062B6C8 /* HistoryDish.swift */,
 				E69A88B1214D20040062B6C8 /* HistoryFactory.swift */,
 				E69A88B2214D20040062B6C8 /* HistoryOrderMaker.swift */,
@@ -347,13 +365,15 @@
 		E6CD90FD215FE01300523989 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				E6CD90FE215FE01300523989 /* adminContent.swift */,
-				E6CD90FF215FE01300523989 /* adminDish.swift */,
-				E6CD9100215FE01300523989 /* adminFactory.swift */,
-				E6CD9101215FE01300523989 /* adminHistory.swift */,
-				E6CD9102215FE01300523989 /* adminOrderMaker.swift */,
-				E6CD9103215FE01300523989 /* adminPayment.swift */,
-				E6CD9104215FE01300523989 /* adminVege.swift */,
+				E6A2A46B218F417200E6A784 /* adminHistory.swift */,
+				E6A2A46D218F417200E6A784 /* adminHistoryClas.swift */,
+				E6A2A472218F417200E6A784 /* adminHistoryDepartment.swift */,
+				E6A2A46A218F417100E6A784 /* adminHistoryDish.swift */,
+				E6A2A46E218F417200E6A784 /* adminHistoryFactory.swift */,
+				E6A2A471218F417200E6A784 /* adminHistoryMoney.swift */,
+				E6A2A46F218F417200E6A784 /* adminHistoryOrderMaker.swift */,
+				E6A2A470218F417200E6A784 /* adminHistoryPayment.swift */,
+				E6A2A46C218F417200E6A784 /* adminHistoryVege.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -381,6 +401,7 @@
 		E6EF4DD9214C0A8500FF0A8B /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2A48D218F419F00E6A784 /* LoginClas.swift */,
 				E6EF4DDA214C0AEF00FF0A8B /* Login.swift */,
 				E6EF4DDB214C0AEF00FF0A8B /* LoginValidOper.swift */,
 				E6EF4DDC214C0AEF00FF0A8B /* LoginVege.swift */,
@@ -391,8 +412,9 @@
 		E6EF4DE0214C155600FF0A8B /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2A488218F419400E6A784 /* MenuDepartment.swift */,
+				E6A2A489218F419400E6A784 /* MenuVege.swift */,
 				E6AEF866214A135B00C96D64 /* Menu.swift */,
-				E6AEF867214A135B00C96D64 /* MenuContent.swift */,
 				E6AEF868214A135B00C96D64 /* MenuFactory.swift */,
 			);
 			path = Menu;
@@ -401,8 +423,10 @@
 		E6EF4DE1214C156000FF0A8B /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				E6A2A483218F418D00E6A784 /* OrderClas.swift */,
+				E6A2A482218F418D00E6A784 /* OrderDepartment.swift */,
+				E6A2A484218F418D00E6A784 /* OrderMoney.swift */,
 				E6EF4DE3214C157400FF0A8B /* Order.swift */,
-				E6EF4DE7214C157400FF0A8B /* OrderContent.swift */,
 				E6EF4DE4214C157400FF0A8B /* OrderDish.swift */,
 				E6EF4DE2214C157400FF0A8B /* OrderFactory.swift */,
 				E6EF4DE5214C157400FF0A8B /* OrderMaker.swift */,
@@ -694,47 +718,55 @@
 			files = (
 				E69A88B6214D20040062B6C8 /* HistoryVege.swift in Sources */,
 				E69A88BC214D20040062B6C8 /* HistoryDish.swift in Sources */,
-				E6CD9114215FE01300523989 /* adminFactory.swift in Sources */,
-				E6CD9117215FE01300523989 /* adminPayment.swift in Sources */,
 				E6EF4DEF214C157400FF0A8B /* OrderVege.swift in Sources */,
 				E601FC062166526200A2F3F0 /* BreakfastTableViewController.swift in Sources */,
+				E6A2A480218F418000E6A784 /* HistoryDepartment.swift in Sources */,
 				E6EF4DDD214C0AEF00FF0A8B /* Login.swift in Sources */,
+				E6A2A47B218F417200E6A784 /* adminHistoryDepartment.swift in Sources */,
+				E6A2A47A218F417200E6A784 /* adminHistoryMoney.swift in Sources */,
 				E60E4D10214A105E007C4412 /* misc.swift in Sources */,
+				E6A2A486218F418D00E6A784 /* OrderClas.swift in Sources */,
 				E69A88AD214D13210062B6C8 /* HistoryTableViewController.swift in Sources */,
+				E6A2A475218F417200E6A784 /* adminHistoryVege.swift in Sources */,
 				E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */,
+				E6A2A479218F417200E6A784 /* adminHistoryPayment.swift in Sources */,
 				E6AEF869214A135B00C96D64 /* Menu.swift in Sources */,
 				E6B6922C214AAA63005D0C22 /* TaiwanTableViewController.swift in Sources */,
 				E6108BCB214D7E14007A47AC /* MoreTableViewController.swift in Sources */,
 				E6CD9123215FE02100523989 /* LoginViewController.swift in Sources */,
+				E6A2A48F218F419F00E6A784 /* LoginClas.swift in Sources */,
 				E69A88BA214D20040062B6C8 /* History.swift in Sources */,
 				E6EF4DEA214C157400FF0A8B /* Order.swift in Sources */,
 				E6CD9119215FE01300523989 /* adminAiJiaTableViewController.swift in Sources */,
 				E6EF4DEC214C157400FF0A8B /* OrderMaker.swift in Sources */,
-				E6AEF86A214A135B00C96D64 /* MenuContent.swift in Sources */,
 				E6EF4DE9214C157400FF0A8B /* OrderFactory.swift in Sources */,
 				E60E4D0C214A094B007C4412 /* MainOrderTableViewController.swift in Sources */,
-				E6CD9112215FE01300523989 /* adminContent.swift in Sources */,
 				E6EF4DD5214C07D100FF0A8B /* AiJiaTableViewController.swift in Sources */,
+				E6A2A48B218F419500E6A784 /* MenuVege.swift in Sources */,
+				E6A2A474218F417200E6A784 /* adminHistory.swift in Sources */,
+				E6A2A485218F418D00E6A784 /* OrderDepartment.swift in Sources */,
+				E6A2A481218F418000E6A784 /* HistoryMoney.swift in Sources */,
+				E6A2A473218F417200E6A784 /* adminHistoryDish.swift in Sources */,
 				E6EF4DDE214C0AEF00FF0A8B /* LoginValidOper.swift in Sources */,
 				E69A88B9214D20040062B6C8 /* HistoryOrderMaker.swift in Sources */,
-				E6CD9113215FE01300523989 /* adminDish.swift in Sources */,
 				E6CD9110215FE01300523989 /* adminHistoryCell.swift in Sources */,
 				E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */,
-				E69A88B7214D20040062B6C8 /* HistoryContent.swift in Sources */,
 				E69A88BB214D20040062B6C8 /* HistoryPayment.swift in Sources */,
+				E6A2A47F218F418000E6A784 /* HistoryClas.swift in Sources */,
 				E6EF4DED214C157400FF0A8B /* OrderPayment.swift in Sources */,
 				E6EF4DEB214C157400FF0A8B /* OrderDish.swift in Sources */,
-				E6CD9118215FE01300523989 /* adminVege.swift in Sources */,
-				E6CD9116215FE01300523989 /* adminOrderMaker.swift in Sources */,
 				E69A88B8214D20040062B6C8 /* HistoryFactory.swift in Sources */,
-				E6CD9115215FE01300523989 /* adminHistory.swift in Sources */,
+				E6A2A478218F417200E6A784 /* adminHistoryOrderMaker.swift in Sources */,
 				E6CD911A215FE01300523989 /* adminMainOrderTableViewController.swift in Sources */,
 				E601FC082166549700A2F3F0 /* adminCafetTableViewController.swift in Sources */,
+				E6A2A48A218F419500E6A784 /* MenuDepartment.swift in Sources */,
 				E6CD911B215FE01300523989 /* AdminTaiwanTableViewController.swift in Sources */,
 				E6EF4DDF214C0AEF00FF0A8B /* LoginVege.swift in Sources */,
-				E6EF4DEE214C157400FF0A8B /* OrderContent.swift in Sources */,
 				E6CD9111215FE01300523989 /* adminHistoryTableViewController.swift in Sources */,
 				E6AEF86B214A135B00C96D64 /* MenuFactory.swift in Sources */,
+				E6A2A476218F417200E6A784 /* adminHistoryClas.swift in Sources */,
+				E6A2A487218F418D00E6A784 /* OrderMoney.swift in Sources */,
+				E6A2A477218F417200E6A784 /* adminHistoryFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

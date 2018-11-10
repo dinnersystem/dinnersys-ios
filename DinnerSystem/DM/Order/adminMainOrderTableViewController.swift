@@ -38,7 +38,7 @@ class adminMainOrderTableViewController: UITableViewController {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
-                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                    logout()
                     self.dismiss(animated: true, completion: nil)
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
@@ -48,7 +48,7 @@ class adminMainOrderTableViewController: UITableViewController {
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
-                    Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                    logout()
                     self.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -59,13 +59,13 @@ class adminMainOrderTableViewController: UITableViewController {
             cafetMenuArr = []
             //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                 do{
-                    historyArr = try decoder.decode([History].self, from: response.data!)
+                    mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
                 }catch let error{
                     print(error)
                     let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
-                        Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                        logout()
                         self.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
@@ -150,9 +150,9 @@ class adminOrderViewController: UIViewController, UITableViewDelegate, UITableVi
             let indexNum = index[1]
             let seatNum = seatNumArr[indexNum]
             if seatNum/10 == 0{
-                selArray.append("\(userInfo.classNo!)0\(String(seatNum))")
+                selArray.append("\(userInfo.classField!.classNo!)0\(String(seatNum))")
             }else{
-                selArray.append("\(userInfo.classNo!)\(String(seatNum))")
+                selArray.append("\(userInfo.classField!.classNo!)\(String(seatNum))")
             }
         }
             //time lock
@@ -173,7 +173,7 @@ class adminOrderViewController: UIViewController, UITableViewDelegate, UITableVi
                         let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
-                            Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                            logout()
                             self.dismiss(animated: true, completion: nil)
                         }))
                         self.present(errorAlert, animated: true, completion: nil)
@@ -193,7 +193,7 @@ class adminOrderViewController: UIViewController, UITableViewDelegate, UITableVi
                             let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
-                                Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData {data in}
+                                logout()
                                 self.dismiss(animated: true, completion: nil)
                             }))
                             self.present(alert, animated: true, completion: nil)

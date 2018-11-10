@@ -1,7 +1,7 @@
 //
 //	LoginVege.swift
 //
-//	Create by Sean Pai on 14/9/2018
+//	Create by Sean Pai on 1/11/2018
 //	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
@@ -17,10 +17,10 @@ struct LoginVege : Codable {
 		case name = "name"
 		case number = "number"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		number = try values.decodeIfPresent(String.self, forKey: .number)
+    init(name:String? = nil,
+         number:String? = nil){
+		self.name = name
+        self.number = number
 	}
 
 
