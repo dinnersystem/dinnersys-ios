@@ -28,125 +28,7 @@ class adminHistoryTableViewController: UITableViewController {
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //date init
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = formatter.string(from: date)
-        
-        //activityIndicator init
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
-        indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        indicatorBackView.center = self.view.center
-        indicatorBackView.isHidden = true
-        indicatorBackView.layer.cornerRadius = 20
-        indicatorBackView.alpha = 0.5
-        indicatorBackView.backgroundColor = UIColor.black
-        self.view.addSubview(indicatorBackView)
-        self.view.addSubview(activityIndicator)
-        //load start
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        self.activityIndicator.startAnimating()
-        self.indicatorBackView.isHidden = false
-        //mainRecieveData
-        Alamofire.request("\(dsURL("select_class"))&esti_start=\(currentDate)-00:00:00&esti_end=\(currentDate)-23:59:59").responseData{response in
-            if response.error != nil {              //responseErr
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                if self.unpaidTotal == 0{           //set total as 0
-                    self.send.isEnabled = false
-                }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-            let responseStr = String(data: response.data!, encoding: .utf8)     //parseString
-            if responseStr == ""{                       //blank string
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "[]"{               //blank Array
-                let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                if self.unpaidTotal == 0{               //set total as 0
-                    self.send.isEnabled = false
-                }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.present(alert, animated: true, completion: nil)
-            }else{                                      //parse JSON
-                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
-                do{
-                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                //reset variables
-                self.unpaidTotal = 0
-                self.paidTotal = 0
-                for item in adminHistArr{               //ask if upload, list upload and unupload
-                    let userArr = item.money!.payment!.filter({ $0.name == "user"})
-                    let filterArr = item.money!.payment!.filter({ $0.name == "dinnerman"})
-                    if userArr.first!.paid! != "true"{
-                        self.adminUnmarkArr.append(item)
-                        self.unmarkTotal += Int(item.dish!.dishCost!)!
-                    }
-                    else if filterArr.first!.paid! != "true"{
-                        self.adminUnpaidArr.append(item)
-                        self.unpaidTotal += Int(item.dish!.dishCost!)!
-                    }else{
-                        self.adminPaidArr.append(item)
-                        self.paidTotal += Int(item.dish!.dishCost!)!
-                    }
-                    /*
-                    if item.money!.payment![1].paid! == "true"{               //payment[0]=markAsPaid,[1]=uploaded
-                        self.adminPaidArr.append(item)
-                        self.paidTotal += Int(item.dish!.dishCost!)!
-                    }else{
-                        self.adminUnpaidArr.append(item)
-                        self.unpaidTotal += Int(item.dish!.dishCost!)!
-                    }
-                    */
-                }
-                if self.adminUnpaidArr.isEmpty{               //check if unsent
-                    self.send.isEnabled = false
-                }else{
-                    self.send.isEnabled = true
-                }
-                //set label
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.totalLabel.sizeToFit()
-                self.tableView.reloadData()
-            }
-            //load finish
-            self.indicatorBackView.isHidden = true
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-        }
-        
-    }
-    // MARK: - ReloadData
-    @IBAction func refresh(_ sender: Any) {                 //pullToRefresh
-        
+    private func fetchData(){
         //startResresh
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
@@ -173,7 +55,7 @@ class adminHistoryTableViewController: UITableViewController {
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)             //parse string
-            if responseStr == ""{               //blank string  
+            if responseStr == ""{               //blank string
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
@@ -239,108 +121,40 @@ class adminHistoryTableViewController: UITableViewController {
                 self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.tableView.reloadData()
-                self.indicatorBackView.isHidden = true
-                self.activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
+                
             }
-        }
-        self.refreshControl?.endRefreshing()
-    }
-    
-    @IBAction func refreshButton(_ sender: Any) {           //reloadButton
-        //date
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = formatter.string(from: date)
-        //beginIndicator
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        self.activityIndicator.startAnimating()
-        self.indicatorBackView.isHidden = false
-        //MainReq
-        Alamofire.request("\(dsURL("select_class"))&esti_start=\(currentDate)-00:00:00&esti_end=\(currentDate)-23:59:59").responseData{response in
-            if response.error != nil {                  //internetErr
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-            let responseStr = String(data: response.data!, encoding: .utf8)             //parseString
-            if responseStr == ""{               //emptyStr
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "[]"{       //emptyArr
-                let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.unpaidTotal = 0
-                if self.unpaidTotal == 0{
-                    self.send.isEnabled = false
-                }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.present(alert, animated: true, completion: nil)
-            }else{                              //parseJSON
-                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
-                do{
-                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                self.unpaidTotal = 0
-                self.paidTotal = 0
-                for item in adminHistArr{               //ask if upload, list upload and unupload
-                    let userArr = item.money!.payment!.filter({ $0.name == "user"})
-                    let filterArr = item.money!.payment!.filter({ $0.name == "dinnerman"})
-                    if userArr.first!.paid! != "true"{
-                        self.adminUnmarkArr.append(item)
-                        self.unmarkTotal += Int(item.dish!.dishCost!)!
-                    }
-                    else if filterArr.first!.paid! != "true"{
-                        self.adminUnpaidArr.append(item)
-                        self.unpaidTotal += Int(item.dish!.dishCost!)!
-                    }else{
-                        self.adminPaidArr.append(item)
-                        self.paidTotal += Int(item.dish!.dishCost!)!
-                    }
-                    /*
-                     if item.money!.payment![1].paid! == "true"{               //payment[0]=markAsPaid,[1]=uploaded
-                     self.adminPaidArr.append(item)
-                     self.paidTotal += Int(item.dish!.dishCost!)!
-                     }else{
-                     self.adminUnpaidArr.append(item)
-                     self.unpaidTotal += Int(item.dish!.dishCost!)!
-                     }
-                     */
-                }
-                if self.adminUnpaidArr.isEmpty{               //check if unsent
-                    self.send.isEnabled = false
-                }else{
-                    self.send.isEnabled = true
-                }
-                //set label
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.totalLabel.sizeToFit()
-                self.tableView.reloadData()
-            }
-            //stop refresh
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //activityIndicator init
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicatorBackView.center = self.view.center
+        indicatorBackView.isHidden = true
+        indicatorBackView.layer.cornerRadius = 20
+        indicatorBackView.alpha = 0.5
+        indicatorBackView.backgroundColor = UIColor.black
+        self.view.addSubview(indicatorBackView)
+        self.view.addSubview(activityIndicator)
+        //load start
+        //mainRecieveData
+        fetchData()
+    }
+    // MARK: - ReloadData
+    @IBAction func refresh(_ sender: Any) {                 //pullToRefresh
+        fetchData()
+        self.refreshControl?.endRefreshing()
+    }
+    
+    @IBAction func refreshButton(_ sender: Any) {           //reloadButton
+        fetchData()
     }
     // MARK: - UploadContent
     @IBAction func sendButton(_ sender: Any) {
@@ -383,103 +197,7 @@ class adminHistoryTableViewController: UITableViewController {
                 }
             }
         }
-        //get date
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = formatter.string(from: date)
-        //startRefresh
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        self.activityIndicator.startAnimating()
-        self.indicatorBackView.isHidden = false
-        //mainReq
-        Alamofire.request("\(dsURL("select_class"))&esti_start=\(currentDate)-00:00:00&esti_end=\(currentDate)-23:59:59").responseData{response in
-            if response.error != nil {          //internetErr
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                if self.unpaidTotal == 0{       //set as 0
-                    self.send.isEnabled = false
-                }
-                //set label
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.present(errorAlert, animated: true, completion: nil)
-            }                                                               
-            let responseStr = String(data: response.data!, encoding: .utf8)                 //parseString
-            if responseStr == ""{           //emptyStr
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "{}"{            //emptyArr
-                let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                if self.unpaidTotal == 0{
-                    self.send.isEnabled = false
-                }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.present(alert, animated: true, completion: nil)
-            }else{                                  //parseJSON
-                //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
-                do{
-                    adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                self.unpaidTotal = 0
-                self.paidTotal = 0
-                for item in adminHistArr{               //ask if upload, list upload and unupload
-                    let userArr = item.money!.payment!.filter({ $0.name == "user"})
-                    let filterArr = item.money!.payment!.filter({ $0.name == "dinnerman"})
-                    if userArr.first!.paid! != "true"{
-                        self.adminUnmarkArr.append(item)
-                        self.unmarkTotal += Int(item.dish!.dishCost!)!
-                    }
-                    else if filterArr.first!.paid! != "true"{
-                        self.adminUnpaidArr.append(item)
-                        self.unpaidTotal += Int(item.dish!.dishCost!)!
-                    }else{
-                        self.adminPaidArr.append(item)
-                        self.paidTotal += Int(item.dish!.dishCost!)!
-                    }
-                    /*
-                     if item.money!.payment![1].paid! == "true"{               //payment[0]=markAsPaid,[1]=uploaded
-                     self.adminPaidArr.append(item)
-                     self.paidTotal += Int(item.dish!.dishCost!)!
-                     }else{
-                     self.adminUnpaidArr.append(item)
-                     self.unpaidTotal += Int(item.dish!.dishCost!)!
-                     }
-                     */
-                }
-                if self.adminUnpaidArr.isEmpty{               //check if unsent
-                    self.send.isEnabled = false
-                }else{
-                    self.send.isEnabled = true
-                }
-                //set label
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                self.totalLabel.sizeToFit()
-                self.tableView.reloadData()
-            }
-            //stop refresh
-            self.indicatorBackView.isHidden = true
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-        }
+        fetchData()
     }
     
     
@@ -553,99 +271,11 @@ class adminHistoryTableViewController: UITableViewController {
                     }))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{              //payment success, return menu, update
-                    //date init
-                    let date = Date()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy/MM/dd"
-                    let currentDate = formatter.string(from: date)
-                    //begin Indicator
-                    UIApplication.shared.beginIgnoringInteractionEvents()
-                    self.activityIndicator.startAnimating()
-                    self.indicatorBackView.isHidden = false
-                    //mainReq
-                    Alamofire.request("\(dsURL("select_class"))&esti_start=\(currentDate)-00:00:00&esti_end=\(currentDate)-23:59:59").responseData{response in
-                        if response.error != nil {  //interErr
-                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(errorAlert, animated: true, completion: nil)
-                        }
-                        let responseStr = String(data: response.data!, encoding: .utf8)         //parseStr
-                        if responseStr == ""{           //emptyStr
-                            let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }else if responseStr == "{}"{       //emptyArr
-                            let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        }else{          //parseJSON
-                            //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
-                            do{
-                                adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
-                            }catch let error{
-                                print(error)
-                                let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                    (action: UIAlertAction!) -> () in
-                                    logout()
-                                    self.dismiss(animated: true, completion: nil)
-                                }))
-                                self.present(alert, animated: true, completion: nil)
-                            }
-                            self.unpaidTotal = 0
-                            self.paidTotal = 0
-                            for item in adminHistArr{               //ask if upload, list upload and unupload
-                                let userArr = item.money!.payment!.filter({ $0.name == "user"})
-                                let filterArr = item.money!.payment!.filter({ $0.name == "dinnerman"})
-                                if userArr.first!.paid! != "true"{
-                                    self.adminUnmarkArr.append(item)
-                                    self.unmarkTotal += Int(item.dish!.dishCost!)!
-                                }
-                                else if filterArr.first!.paid! != "true"{
-                                    self.adminUnpaidArr.append(item)
-                                    self.unpaidTotal += Int(item.dish!.dishCost!)!
-                                }else{
-                                    self.adminPaidArr.append(item)
-                                    self.paidTotal += Int(item.dish!.dishCost!)!
-                                }
-                                /*
-                                 if item.money!.payment![1].paid! == "true"{               //payment[0]=markAsPaid,[1]=uploaded
-                                 self.adminPaidArr.append(item)
-                                 self.paidTotal += Int(item.dish!.dishCost!)!
-                                 }else{
-                                 self.adminUnpaidArr.append(item)
-                                 self.unpaidTotal += Int(item.dish!.dishCost!)!
-                                 }
-                                 */
-                            }
-                            if self.adminUnpaidArr.isEmpty{               //check if unsent
-                                self.send.isEnabled = false
-                            }else{
-                                self.send.isEnabled = true
-                            }
-                            //set Label
-                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                            self.totalLabel.sizeToFit()
-                            self.tableView.reloadData()
-                        }
-                        //stop Indicator
-                        self.indicatorBackView.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        UIApplication.shared.endIgnoringInteractionEvents()
-                    }
+                    self.fetchData()
+                    self.tableView.isUserInteractionEnabled = true
                 }
             }
-            //stopRequest
-            self.tableView.isUserInteractionEnabled = true
-        })
+            })
         
         
         
@@ -681,100 +311,10 @@ class adminHistoryTableViewController: UITableViewController {
                     }))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{              //success, reload
-                    //date  init
-                    let date = Date()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy/MM/dd"
-                    let currentDate = formatter.string(from: date)
-                    //startRefresh
-                    UIApplication.shared.beginIgnoringInteractionEvents()
-                    self.activityIndicator.startAnimating()
-                    self.indicatorBackView.isHidden = false
-                    //mainReq
-                    Alamofire.request("\(dsURL("select_class"))&esti_start=\(currentDate)-00:00:00&esti_end=\(currentDate)-23:59:59").responseData{response in
-                        if response.error != nil {                      //interErr
-                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(errorAlert, animated: true, completion: nil)
-                        }
-                        let responseStr = String(data: response.data!, encoding: .utf8)             //parseStr
-                        if responseStr == ""{               //emptyStr
-                            let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }else if responseStr == "{}"{           //emptyArr
-                            let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        }else{           //parseJson
-                            //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
-                            do{
-                                adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
-                            }catch let error{
-                                print(error)
-                                let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                    (action: UIAlertAction!) -> () in
-                                    logout()
-                                    self.dismiss(animated: true, completion: nil)
-                                }))
-                                self.present(alert, animated: true, completion: nil)
-                            }
-                            self.unpaidTotal = 0
-                            self.paidTotal = 0
-                            for item in adminHistArr{               //ask if upload, list upload and unupload
-                                let userArr = item.money!.payment!.filter({ $0.name == "user"})
-                                let filterArr = item.money!.payment!.filter({ $0.name == "dinnerman"})
-                                if userArr.first!.paid! != "true"{
-                                    self.adminUnmarkArr.append(item)
-                                    self.unmarkTotal += Int(item.dish!.dishCost!)!
-                                }
-                                else if filterArr.first!.paid! != "true"{
-                                    self.adminUnpaidArr.append(item)
-                                    self.unpaidTotal += Int(item.dish!.dishCost!)!
-                                }else{
-                                    self.adminPaidArr.append(item)
-                                    self.paidTotal += Int(item.dish!.dishCost!)!
-                                }
-                                /*
-                                 if item.money!.payment![1].paid! == "true"{               //payment[0]=markAsPaid,[1]=uploaded
-                                 self.adminPaidArr.append(item)
-                                 self.paidTotal += Int(item.dish!.dishCost!)!
-                                 }else{
-                                 self.adminUnpaidArr.append(item)
-                                 self.unpaidTotal += Int(item.dish!.dishCost!)!
-                                 }
-                                 */
-                            }
-                            if self.adminUnpaidArr.isEmpty{               //check if unsent
-                                self.send.isEnabled = false
-                            }else{
-                                self.send.isEnabled = true
-                            }
-                            //set Label
-                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                            self.totalLabel.sizeToFit()
-                            self.tableView.reloadData()
-                        }
-                        //stop refresh
-                        self.indicatorBackView.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        UIApplication.shared.endIgnoringInteractionEvents()
-                        
-                    }
+                    self.fetchData()
+                    self.tableView.isUserInteractionEnabled = true
                 }
-            }
-            //stop refresh
-            self.tableView.isUserInteractionEnabled = true
-        } )
+            }})
         let delOrderAct = UIAlertAction(title: "刪除訂單", style: .destructive, handler: {              //Delete Order
             (action: UIAlertAction!) -> () in
             self.tableView.isUserInteractionEnabled = false
@@ -815,98 +355,9 @@ class adminHistoryTableViewController: UITableViewController {
                     }))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{                  //success, reload
-                    //date init
-                    let date = Date()
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyy/MM/dd"
-                    let currentDate = formatter.string(from: date)
-                    //start indicator
-                    UIApplication.shared.beginIgnoringInteractionEvents()
-                    self.activityIndicator.startAnimating()
-                    self.indicatorBackView.isHidden = false
-                    //mainreq
-                    Alamofire.request("\(dsURL("select_class"))&esti_start=\(currentDate)-00:00:00&esti_end=\(currentDate)-23:59:59").responseData{response in
-                        if response.error != nil {          //interErr
-                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(errorAlert, animated: true, completion: nil)
-                        }
-                        let responseStr = String(data: response.data!, encoding: .utf8)         //parseStr
-                        if responseStr == ""{                   //emptyStr
-                            let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }else if responseStr == "{}"{           //emptyArr
-                            let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        }else{              //parseJson
-                            //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
-                            do{
-                                adminHistArr = try self.decoder.decode([adminHistory].self, from: response.data!)
-                            }catch let error{
-                                print(error)
-                                let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                    (action: UIAlertAction!) -> () in
-                                    logout()
-                                    self.dismiss(animated: true, completion: nil)
-                                }))
-                                self.present(alert, animated: true, completion: nil)
-                            }
-                            self.unpaidTotal = 0
-                            self.paidTotal = 0
-                            for item in adminHistArr{               //ask if upload, list upload and unupload
-                                let userArr = item.money!.payment!.filter({ $0.name == "user"})
-                                let filterArr = item.money!.payment!.filter({ $0.name == "dinnerman"})
-                                if userArr.first!.paid! != "true"{
-                                    self.adminUnmarkArr.append(item)
-                                    self.unmarkTotal += Int(item.dish!.dishCost!)!
-                                }
-                                else if filterArr.first!.paid! != "true"{
-                                    self.adminUnpaidArr.append(item)
-                                    self.unpaidTotal += Int(item.dish!.dishCost!)!
-                                }else{
-                                    self.adminPaidArr.append(item)
-                                    self.paidTotal += Int(item.dish!.dishCost!)!
-                                }
-                                /*
-                                 if item.money!.payment![1].paid! == "true"{               //payment[0]=markAsPaid,[1]=uploaded
-                                 self.adminPaidArr.append(item)
-                                 self.paidTotal += Int(item.dish!.dishCost!)!
-                                 }else{
-                                 self.adminUnpaidArr.append(item)
-                                 self.unpaidTotal += Int(item.dish!.dishCost!)!
-                                 }
-                                 */
-                            }
-                            if self.adminUnpaidArr.isEmpty{               //check if unsent
-                                self.send.isEnabled = false
-                            }else{
-                                self.send.isEnabled = true
-                            }
-                            //set label
-                            self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
-                            self.totalLabel.sizeToFit()
-                            self.tableView.reloadData()
-                        }
-                        //stop indicator
-                        self.indicatorBackView.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        UIApplication.shared.endIgnoringInteractionEvents()
-                        
-                    }
-                }
-            }
+                    self.fetchData()
             self.tableView.isUserInteractionEnabled = true
+                }}
         })
         
         
