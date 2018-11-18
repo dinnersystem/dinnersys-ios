@@ -28,6 +28,8 @@ class adminHistoryTableViewController: UITableViewController {
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
     
+    
+    //MARK - function Declaration
     private func fetchData(){
         //startResresh
         UIApplication.shared.beginIgnoringInteractionEvents()
@@ -51,7 +53,8 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{               //set total as 0
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
+                self.totalLabel.text = "未上傳總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
+                self.totalLabel.sizeToFit()
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)             //parse string
@@ -70,7 +73,8 @@ class adminHistoryTableViewController: UITableViewController {
                 if self.unpaidTotal == 0{       //reset total
                     self.send.isEnabled = false
                 }
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
+                self.totalLabel.text = "未上傳總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
+                self.totalLabel.sizeToFit()
                 self.present(alert, animated: true, completion: nil)
             }else{                              //parse JSON
                 //adminHistArr = try! self.decoder.decode([adminHistory].self, from: response.data!)
@@ -118,7 +122,7 @@ class adminHistoryTableViewController: UITableViewController {
                     self.send.isEnabled = true
                 }
                 //set text
-                self.totalLabel.text = "尚未上傳的訂單總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
+                self.totalLabel.text = "未上傳總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.tableView.reloadData()
                 
@@ -219,25 +223,26 @@ class adminHistoryTableViewController: UITableViewController {
         let lastSeat = String((histInfo.user?.seatNo!.suffix(2))!)
         let userArr = histInfo.money!.payment!.filter({ $0.name == "user"})
         let dmArr = histInfo.money!.payment!.filter({ $0.name == "dinnerman"})
+        
         cell.mainText?.text! = (histInfo.user?.name!)! + "(" + lastSeat + ")"
         cell.detailText?.text! = ((histInfo.dish?.dishName!)!) + "(" + (histInfo.dish?.dishCost!)! + "$)"
         cell.paidText?.text! = "\((userArr.first!.paid! == "true" ? "已付款" : "未付款"))，\(dmArr.first!.paid! == "true" ? "已上傳" : "未上傳")"
         return cell
     }
+    
+    
     // MARK: - Selected Cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var selectInfo = adminHistArr[indexPath.row]                //declare
         let userArr = selectInfo.money!.payment!.filter({ $0.name == "user"})
         let dmArr = selectInfo.money!.payment!.filter({ $0.name == "dinnerman"})
+        let cafetArr = selectInfo.money!.payment!.filter({ $0.name == "cafeteria"})
         let range = selectInfo.recvDate!.range(of: " ")             //declare range when space
         selectInfo.recvDate!.removeSubrange((range?.lowerBound)!..<selectInfo.recvDate!.endIndex)               //remove date after space(00:00:00)
-        let alert = UIAlertController(title: "", message: "訂餐編號：\(selectInfo.id!)\n訂餐日期：\(selectInfo.recvDate!)\n餐點金額：\(selectInfo.dish!.dishCost!)$\n付款狀態：\(userArr.first!.paid! == "true" ? "已付款" : "未付款")\n", preferredStyle: .actionSheet)      //mainMenu
-        
+        let alert = UIAlertController(title: "\(selectInfo.user!.name!)\n\(selectInfo.dish!.dishName!)", message: "訂餐編號：\(selectInfo.id!)\n訂餐日期：\(selectInfo.recvDate!)\n餐點金額：\(selectInfo.dish!.dishCost!)$\n付款狀態：\(userArr.first!.paid! == "true" ? "已付款" : "未付款")\n合作社收款狀態：\(cafetArr.first!.paid! == "true" ? "已收款" : "未收款")\n", preferredStyle: .actionSheet)      //mainMenu
         
         
         let cancelAct = UIAlertAction(title: "返回", style: .cancel, handler: nil)        //back
-        
-        
         
         
         let paymentAct = UIAlertAction(title: "標記為已付款", style: .default, handler: {                 //Mark as paid
@@ -278,7 +283,6 @@ class adminHistoryTableViewController: UITableViewController {
             })
         
         
-        
         let unpaymentAct = UIAlertAction(title: "標記為未付款", style: .destructive, handler: {                   //unpaidAct
             (action: UIAlertAction!) -> () in
             self.tableView.isUserInteractionEnabled = false
@@ -315,6 +319,8 @@ class adminHistoryTableViewController: UITableViewController {
                     self.tableView.isUserInteractionEnabled = true
                 }
             }})
+        
+        
         let delOrderAct = UIAlertAction(title: "刪除訂單", style: .destructive, handler: {              //Delete Order
             (action: UIAlertAction!) -> () in
             self.tableView.isUserInteractionEnabled = false
@@ -356,20 +362,15 @@ class adminHistoryTableViewController: UITableViewController {
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{                  //success, reload
                     self.fetchData()
-            self.tableView.isUserInteractionEnabled = true
+                    self.tableView.isUserInteractionEnabled = true
                 }}
         })
         
-        
-        
-        
         let paidAction = UIAlertAction(title: "已上傳訂單，無法標記為未付款或刪除訂單。", style: .default, handler: nil)            //paidAct
-        
         
         //paidAct init
         paidAction.isEnabled = false
         paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
-        
         
         
         alert.addAction(cancelAct)
@@ -386,5 +387,4 @@ class adminHistoryTableViewController: UITableViewController {
         self.present(alert, animated: true)     //present mainMenu
         self.tableView.deselectRow(at: indexPath, animated: true)           //deselect Row
     }
-    
 }

@@ -17,6 +17,7 @@
 		E60E4D10214A105E007C4412 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
 		E6108BCB214D7E14007A47AC /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */; };
 		E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCC214D81F2007A47AC /* WebViewController.swift */; };
+		E653D08A21A196F20042E2CE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D08921A196F20042E2CE /* OrderViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E653E445200074F9000E35AE /* DinnerSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E444200074F9000E35AE /* DinnerSystemTests.swift */; };
@@ -118,6 +119,7 @@
 		E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		E6108BCC214D81F2007A47AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = DinnerSystem/Student/More/WebViewController.swift; sourceTree = SOURCE_ROOT; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
+		E653D08921A196F20042E2CE /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */,
 				E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */,
 				E6EF4DD4214C07D100FF0A8B /* AiJiaTableViewController.swift */,
+				E653D08921A196F20042E2CE /* OrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				E69A88AD214D13210062B6C8 /* HistoryTableViewController.swift in Sources */,
 				E6A2A475218F417200E6A784 /* adminHistoryVege.swift in Sources */,
 				E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */,
+				E653D08A21A196F20042E2CE /* OrderViewController.swift in Sources */,
 				E6A2A479218F417200E6A784 /* adminHistoryPayment.swift in Sources */,
 				E6AEF869214A135B00C96D64 /* Menu.swift in Sources */,
 				E6B6922C214AAA63005D0C22 /* TaiwanTableViewController.swift in Sources */,
@@ -943,6 +947,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinnerSystem/DinnerSystem.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
@@ -968,6 +973,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinnerSystem/DinnerSystem.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = NO;

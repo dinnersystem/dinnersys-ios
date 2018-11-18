@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f9G-Zk-c4b">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f9G-Zk-c4b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="123.ttf">
-            <string>GoogleSans-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="Yva-no-U72">
@@ -536,97 +531,6 @@
             </objects>
             <point key="canvasLocation" x="2588" y="728"/>
         </scene>
-        <!--First View Controller-->
-        <scene sceneID="weI-UN-FIN">
-            <objects>
-                <viewController id="8WB-0Q-N3o" customClass="FirstViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JWs-5G-qh5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="無法連線到網路" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFb-yy-48b">
-                                <rect key="frame" x="117" y="83" width="140" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="05S-Bg-9Ky"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GoogleSans-Regular" family="Google Sans" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="tMg-mR-azx">
-                                <rect key="frame" x="34" y="292" width="306" height="83"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="83" id="w8V-kG-5OE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="既然沒網路，要不要來看看我們的開發者名單？"/>
-                                <connections>
-                                    <segue destination="lea-iF-q2M" kind="show" id="VZV-GI-yt2"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="eKA-GL-zkd" firstAttribute="bottom" secondItem="tMg-mR-azx" secondAttribute="bottom" constant="292" id="8y5-Zs-qRI"/>
-                            <constraint firstItem="sFb-yy-48b" firstAttribute="centerX" secondItem="tMg-mR-azx" secondAttribute="centerX" id="AYb-Co-j2q"/>
-                            <constraint firstItem="eKA-GL-zkd" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tMg-mR-azx" secondAttribute="trailing" id="EX1-YQ-Mqv"/>
-                            <constraint firstItem="eKA-GL-zkd" firstAttribute="trailing" secondItem="sFb-yy-48b" secondAttribute="trailing" constant="118" id="RCq-b7-t69"/>
-                            <constraint firstItem="tMg-mR-azx" firstAttribute="leading" secondItem="eKA-GL-zkd" secondAttribute="leading" constant="34" id="WuX-P4-HYY"/>
-                            <constraint firstItem="sFb-yy-48b" firstAttribute="top" secondItem="eKA-GL-zkd" secondAttribute="top" constant="63" id="fsc-I9-6DQ"/>
-                            <constraint firstItem="sFb-yy-48b" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eKA-GL-zkd" secondAttribute="leading" id="wXj-Wk-7ib"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="eKA-GL-zkd"/>
-                    </view>
-                    <connections>
-                        <outlet property="button" destination="tMg-mR-azx" id="g2b-UW-bTe"/>
-                        <outlet property="label" destination="sFb-yy-48b" id="7Fm-mo-X3u"/>
-                        <segue destination="FAY-WO-s9m" kind="show" identifier="internet" id="H4w-YT-sMR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PyH-Qv-sx5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2590" y="1515"/>
-        </scene>
-        <!--Dev View Controller-->
-        <scene sceneID="54h-qd-l2f">
-            <objects>
-                <viewController id="lea-iF-q2M" customClass="DevViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WPX-UF-6aS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="EKS-re-esB">
-                                <rect key="frame" x="0.0" y="58" width="375" height="589"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efm-GD-nDo">
-                                <rect key="frame" x="304" y="20" width="48" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PNf-ML-Yxa"/>
-                                </constraints>
-                                <state key="normal" title="返回"/>
-                                <connections>
-                                    <segue destination="8WB-0Q-N3o" kind="show" id="xhq-lg-ukt"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="efm-GD-nDo" firstAttribute="leading" relation="lessThanOrEqual" secondItem="hEk-iE-NQy" secondAttribute="leading" constant="304" id="4m6-VQ-C9z"/>
-                            <constraint firstAttribute="trailing" secondItem="EKS-re-esB" secondAttribute="trailing" id="5J3-bR-Qaj"/>
-                            <constraint firstItem="efm-GD-nDo" firstAttribute="top" secondItem="hEk-iE-NQy" secondAttribute="top" id="FcK-ti-leZ"/>
-                            <constraint firstItem="EKS-re-esB" firstAttribute="leading" secondItem="WPX-UF-6aS" secondAttribute="leading" id="OVR-dd-ugU"/>
-                            <constraint firstItem="hEk-iE-NQy" firstAttribute="trailing" secondItem="efm-GD-nDo" secondAttribute="trailing" constant="23" id="dpz-O6-rhE"/>
-                            <constraint firstAttribute="bottom" secondItem="EKS-re-esB" secondAttribute="bottom" constant="20" symbolic="YES" id="kzy-HO-ORv"/>
-                            <constraint firstItem="hEk-iE-NQy" firstAttribute="trailing" secondItem="efm-GD-nDo" secondAttribute="trailing" constant="23" id="rg7-IY-Ua5"/>
-                            <constraint firstItem="EKS-re-esB" firstAttribute="top" secondItem="efm-GD-nDo" secondAttribute="bottom" constant="8" symbolic="YES" id="s9o-ds-Cil"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="hEk-iE-NQy"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P1R-Jv-zsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2588" y="2259"/>
-        </scene>
         <!--Web View Controller-->
         <scene sceneID="Tul-Op-8Q5">
             <objects>
@@ -669,7 +573,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46K-uO-vhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3446" y="1515"/>
+            <point key="canvasLocation" x="2588" y="1379"/>
         </scene>
         <!--點餐-->
         <scene sceneID="0lW-lz-0dD">
@@ -807,10 +711,10 @@
             </objects>
             <point key="canvasLocation" x="-95" y="1380"/>
         </scene>
-        <!--View Controller-->
+        <!--開發者致謝-->
         <scene sceneID="bRR-we-7ZY">
             <objects>
-                <viewController id="kjd-uX-HoU" sceneMemberID="viewController">
+                <viewController title="開發者致謝" id="kjd-uX-HoU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J7z-BT-yTx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1360,10 +1264,8 @@
         <image name="ordering" width="25.600000381469727" height="25.600000381469727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VZV-GI-yt2"/>
         <segue reference="PgB-40-rea"/>
         <segue reference="ewL-UG-15H"/>
-        <segue reference="BCh-Y0-T3L"/>
         <segue reference="H90-CT-CJj"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,8 +16,11 @@ class HistoryTableViewController: UITableViewController {
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
     
-    /*
+    
+    //+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59"
     private func fetchData(){
+        formatter.dateFormat = "yyyy/MM/dd"
+        today = formatter.string(from: date)
         Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
@@ -58,13 +61,12 @@ class HistoryTableViewController: UITableViewController {
                 historyArr.reverse()
                 self.tableView.reloadData()
             }
-            print("im at front")
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
-    */
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,57 +88,8 @@ class HistoryTableViewController: UITableViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
-        
-        
-        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
-            if response.error != nil {
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-            let responseStr = String(data: response.data!, encoding: .utf8)
-            if responseStr == ""{
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "{}"{
-                let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }else{
-                //historyArr = try! decoder.decode([History].self, from: response.data!)
-                do{
-                    historyArr = try decoder.decode([History].self, from: response.data!)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                historyArr.reverse()
-                self.tableView.reloadData()
-            }
-            self.indicatorBackView.isHidden = true
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-        }
-        
-        /*
         fetchData()
-        print("im at back")
-        */
+        
     }
 
     @IBAction func reloadButton(_ sender: Any) {
@@ -145,89 +98,13 @@ class HistoryTableViewController: UITableViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
-        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
-            let responseStr = String(data: response.data!, encoding: .utf8)
-            if responseStr == ""{
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "{}"{
-                let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }else{
-                //historyArr = try! decoder.decode([History].self, from: response.data!)
-                do{
-                    historyArr = try decoder.decode([History].self, from: response.data!)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                historyArr.reverse()
-                self.tableView.reloadData()
-            }
-            self.indicatorBackView.isHidden = true
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-        }
+        fetchData()
     }
     @IBAction func reloadData(_ sender: Any) {
-        formatter.dateFormat = "yyyy/MM/dd"
-        today = formatter.string(from: date)
-        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
-            let responseStr = String(data: response.data!, encoding: .utf8)
-            if response.error != nil {
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-            if responseStr == ""{
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "{}"{
-                let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }else{
-                //historyArr = try! decoder.decode([History].self, from: response.data!)
-                do{
-                    historyArr = try decoder.decode([History].self, from: response.data!)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-                historyArr.reverse()
-                self.tableView.reloadData()
-                self.indicatorBackView.isHidden = true
-                self.activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
-            }
-        }
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.activityIndicator.startAnimating()
+        self.indicatorBackView.isHidden = false
+        fetchData()
         self.refreshControl?.endRefreshing()
     }
     // MARK: - Table view data source
@@ -264,56 +141,6 @@ class HistoryTableViewController: UITableViewController {
  
 
     
-    // Override to support editing the table view.
-    /*override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let info = historyArr[indexPath.row]
-        if editingStyle == .delete {
-            Alamofire.request("\(dsURL("delete_self"))&order_id=\(info.id!)").responseData{response in
-                if response.error != nil {
-                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-     (action: UIAlertAction!) -> () in
-     logout()
-     self.dismiss(animated: true, completion: nil)
-     }))
-                    self.present(errorAlert, animated: true, completion: nil)
-                }
-            }
-            
-            Alamofire.request(dsURL("select_self")).responseData{response in
-                if response.error != nil {
-                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-     (action: UIAlertAction!) -> () in
-     logout()
-     self.dismiss(animated: true, completion: nil)
-     }))
-                    self.present(errorAlert, animated: true, completion: nil)
-                }
-                let responseStr = String(data: response.data!, encoding: .utf8)
-                if responseStr == ""{
-                    let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }else if responseStr == "{}"{
-                    historyArr = []
-                    let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    self.tableView.reloadData()
-                }else{
-                    historyArr = try! decoder.decode([History].self, from: response.data!)
-                    historyArr.reverse()
-                    self.tableView.reloadData()
-                }
-            }
-        }
-    }
-    */
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info = historyArr[indexPath.row]
         let range = info.recvDate!.range(of: " ")
@@ -367,52 +194,7 @@ class HistoryTableViewController: UITableViewController {
             UIApplication.shared.beginIgnoringInteractionEvents()
             self.activityIndicator.startAnimating()
             self.indicatorBackView.isHidden = false
-            Alamofire.request(dsURL("select_self")+"&esti_start=" + self.today + "-00:00:00&esti_end=" + self.today + "-23:59:59").responseData{response in
-                if response.error != nil {
-                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(errorAlert, animated: true, completion: nil)
-                }
-                let responseStr = String(data: response.data!, encoding: .utf8)
-                if responseStr == ""{
-                    let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }else if responseStr == "{}"{
-                    historyArr = []
-                    let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    self.tableView.reloadData()
-                }else{
-                    //historyArr = try! decoder.decode([History].self, from: response.data!)
-                    do{
-                        historyArr = try decoder.decode([History].self, from: response.data!)
-                    }catch let error{
-                        print(error)
-                        let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                            (action: UIAlertAction!) -> () in
-                            logout()
-                            self.dismiss(animated: true, completion: nil)
-                        }))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                    historyArr.reverse()
-                    self.tableView.reloadData()
-                }
-                self.indicatorBackView.isHidden = true
-                self.activityIndicator.stopAnimating()
-                UIApplication.shared.endIgnoringInteractionEvents()
-            }
+            self.fetchData()
         })
         let cancelAction = UIAlertAction(title: "返回", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
