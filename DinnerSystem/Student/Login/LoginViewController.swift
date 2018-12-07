@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import Reachability
 import FirebaseMessaging
+import Crashlytics
 
 class LoginViewController: UIViewController {
     //MARK: - Declaration
@@ -76,19 +77,21 @@ class LoginViewController: UIViewController {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
-            }
+            }else{
             let string = String(data: response.data!, encoding: .utf8)!
+                Crashlytics.sharedInstance().setObjectValue(string, forKey: "httpResponse")
             if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "")){
                 let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }else{
-                
+                Crashlytics.sharedInstance().setUserIdentifier(usr)
                 //userInfo = try! decoder.decode(Login.self, from: response.data!)
                 do{
                     userInfo = try decoder.decode(Login.self, from: response.data!)
                 }catch let error{
                     print(error)
+                    Crashlytics.sharedInstance().recordError(error)
                     let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
@@ -114,6 +117,7 @@ class LoginViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
             }
+            }
         }
     }
     @IBAction func login(_ sender: Any) {
@@ -134,7 +138,7 @@ class LoginViewController: UIViewController {
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
-                
+                Crashlytics.sharedInstance().setObjectValue(String(data: response.data!, encoding: .utf8), forKey: "httpResponse")
                 let string = String(data: response.data!, encoding: .utf8)!
                 if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "")){
                     let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
@@ -145,10 +149,12 @@ class LoginViewController: UIViewController {
                         pwd = self.password.text!
                         self.username.text = ""
                         self.password.text = ""
+                        Crashlytics.sharedInstance().setUserIdentifier(usr)
                         do{
                             userInfo = try decoder.decode(Login.self, from: response.data!)
                         }catch let error{
                             print(error)
+                            Crashlytics.sharedInstance().recordError(error)
                             let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)
