@@ -67,12 +67,14 @@ class adminHistoryTableViewController: UITableViewController {
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else if responseStr == "[]"{       //blank array
+                adminHistArr = []
                 let alert = UIAlertController(title: "無點餐紀錄", message: "請嘗試重新整理或進行點餐！", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.unpaidTotal = 0
                 if self.unpaidTotal == 0{       //reset total
                     self.send.isEnabled = false
                 }
+                self.tableView.reloadData()
                 self.totalLabel.text = "未上傳總額：\(self.unpaidTotal)，已上傳總額：\(self.paidTotal)"
                 self.totalLabel.sizeToFit()
                 self.present(alert, animated: true, completion: nil)
