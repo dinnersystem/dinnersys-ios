@@ -11,6 +11,7 @@ var mainMenuArr:[Menu] = []
 var taiwanMenuArr:[Menu] = []
 var aiJiaMenuArr:[Menu] = []
 var cafetMenuArr:[Menu] = []
+var guanDonMenuArr:[Menu] = []
 
 
 struct Menu : Codable {

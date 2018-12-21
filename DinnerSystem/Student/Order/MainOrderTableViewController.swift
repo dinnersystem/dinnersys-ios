@@ -86,8 +86,8 @@ class MainOrderTableViewController: UITableViewController {
                     aiJiaMenuArr.append(food)
                 }else if food.factory?.name! == "合作社"{
                     cafetMenuArr.append(food)
-                }else{
-                    
+                }else if food.factory?.name! == "關東煮"{
+                    guanDonMenuArr.append(food)
                 }
             }
         }
@@ -108,7 +108,7 @@ class MainOrderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
 
 
