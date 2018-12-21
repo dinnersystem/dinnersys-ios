@@ -50,6 +50,7 @@
 		E6A2A48F218F419F00E6A784 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A48D218F419F00E6A784 /* LoginClas.swift */; };
 		E6AEF869214A135B00C96D64 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF866214A135B00C96D64 /* Menu.swift */; };
 		E6AEF86B214A135B00C96D64 /* MenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF868214A135B00C96D64 /* MenuFactory.swift */; };
+		E6B2520621CA8B9800050883 /* GuanDonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2520521CA8B9800050883 /* GuanDonTableViewController.swift */; };
 		E6B6922C214AAA63005D0C22 /* TaiwanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */; };
 		E6CA389D208DF4D5002801DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6CD9110215FE01300523989 /* adminHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CD90FB215FE01300523989 /* adminHistoryCell.swift */; };
@@ -158,6 +159,7 @@
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AEF866214A135B00C96D64 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E6AEF868214A135B00C96D64 /* MenuFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
+		E6B2520521CA8B9800050883 /* GuanDonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewController.swift; sourceTree = "<group>"; };
 		E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6CD90FB215FE01300523989 /* adminHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = adminHistoryCell.swift; sourceTree = "<group>"; };
@@ -230,10 +232,11 @@
 			children = (
 				E6AEF865214A130C00C96D64 /* JSON */,
 				E601FC052166526200A2F3F0 /* BreakfastTableViewController.swift */,
-				E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */,
+				E6B2520521CA8B9800050883 /* GuanDonTableViewController.swift */,
 				E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */,
 				E6EF4DD4214C07D100FF0A8B /* AiJiaTableViewController.swift */,
 				E653D08921A196F20042E2CE /* OrderViewController.swift */,
+				E60E4D0B214A094B007C4412 /* MainOrderTableViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				E6A2A478218F417200E6A784 /* adminHistoryOrderMaker.swift in Sources */,
 				E6CD911A215FE01300523989 /* adminMainOrderTableViewController.swift in Sources */,
 				E601FC082166549700A2F3F0 /* adminCafetTableViewController.swift in Sources */,
+				E6B2520621CA8B9800050883 /* GuanDonTableViewController.swift in Sources */,
 				E6A2A48A218F419500E6A784 /* MenuDepartment.swift in Sources */,
 				E6CD911B215FE01300523989 /* AdminTaiwanTableViewController.swift in Sources */,
 				E6EF4DDF214C0AEF00FF0A8B /* LoginVege.swift in Sources */,
