@@ -13,6 +13,7 @@ target 'DinnerSystem' do
   pod 'Crashlytics', '~> 3.10.0'
   pod 'ReachabilitySwift'
   pod 'TrueTime', git: 'https://github.com/instacart/TrueTime.swift'
+  pod 'CryptoSwift'
   target 'DinnerSystemTests' do
     inherit! :search_paths
     # Pods for testing

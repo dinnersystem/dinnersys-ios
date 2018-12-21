@@ -16,6 +16,7 @@ class GuanDonTableViewController: UITableViewController{
     var selected = 0
     var totalCost = 0
      
+    
     var orderButton = UIButton.init(type: UIButton.ButtonType.roundedRect)
     
     private func addButton(){
@@ -101,14 +102,18 @@ class GuanDonTableViewController: UITableViewController{
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "store4Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "store4Cell", for: indexPath) as! GuanDonTableViewCell
         let info = guanDonMenuArr[indexPath.row]
-        cell.textLabel?.text = info.dishName!
-        cell.detailTextLabel?.text = info.dishCost! + "$"
-        
+        cell.titleText.text = info.dishName!
+        cell.subtitleText.text = "\(info.dishCost!)$"
+        cell.stepper.tag = indexPath.row
+        cell.stepper.addTarget(self, action: #selector(stepperChanged(sender:)), for: .valueChanged)
         return cell
     }
     
+    @objc func stepperChanged(sender: UIStepper){
+        //MARK: - do something here
+    }
     
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -181,34 +186,6 @@ class GuanDonTableViewController: UITableViewController{
     
     
 
-}
-
-
-
-class GuanDonViewController: UIViewController{
-    
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
-    
-    override func viewDidLoad() {
-        label.text = "您選的餐點是\(selectedFood.name)，價格總共\(selectedFood.cost)元，確定請選擇日期和時間後按下訂餐（取餐日期限制：該週週一到週五，取餐時間：）"
-    }
-    
-    @IBAction func order(_ sender: Any) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd-HH:mm:ss"
-        let date = formatter.string(from: datePicker.date)
-        print(date)
-        Alamofire.request("\(ord.url)&time=\(date)").responseString{response in
-            
-        }
-    }
-    
-    
-    
-    
-    
 }
 
 

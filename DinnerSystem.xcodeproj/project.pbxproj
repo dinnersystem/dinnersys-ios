@@ -17,6 +17,8 @@
 		E60E4D10214A105E007C4412 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
 		E6108BCB214D7E14007A47AC /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */; };
 		E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCC214D81F2007A47AC /* WebViewController.swift */; };
+		E63D850821CD13BC00A4D847 /* GuanDonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D850721CD13BC00A4D847 /* GuanDonTableViewCell.swift */; };
+		E63D850A21CD165600A4D847 /* GuanDonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D850921CD165600A4D847 /* GuanDonViewController.swift */; };
 		E653D08A21A196F20042E2CE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D08921A196F20042E2CE /* OrderViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
@@ -119,6 +121,8 @@
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		E6108BCC214D81F2007A47AC /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = DinnerSystem/Student/More/WebViewController.swift; sourceTree = SOURCE_ROOT; };
+		E63D850721CD13BC00A4D847 /* GuanDonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewCell.swift; sourceTree = "<group>"; };
+		E63D850921CD165600A4D847 /* GuanDonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuanDonViewController.swift; sourceTree = "<group>"; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
 		E653D08921A196F20042E2CE /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,9 +234,9 @@
 		E60E4D0A214A08C3007C4412 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				E63D850B21CD166800A4D847 /* GuanDon */,
 				E6AEF865214A130C00C96D64 /* JSON */,
 				E601FC052166526200A2F3F0 /* BreakfastTableViewController.swift */,
-				E6B2520521CA8B9800050883 /* GuanDonTableViewController.swift */,
 				E6B6922B214AAA63005D0C22 /* TaiwanTableViewController.swift */,
 				E6EF4DD4214C07D100FF0A8B /* AiJiaTableViewController.swift */,
 				E653D08921A196F20042E2CE /* OrderViewController.swift */,
@@ -248,6 +252,16 @@
 				E6108BCC214D81F2007A47AC /* WebViewController.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		E63D850B21CD166800A4D847 /* GuanDon */ = {
+			isa = PBXGroup;
+			children = (
+				E6B2520521CA8B9800050883 /* GuanDonTableViewController.swift */,
+				E63D850721CD13BC00A4D847 /* GuanDonTableViewCell.swift */,
+				E63D850921CD165600A4D847 /* GuanDonViewController.swift */,
+			);
+			path = GuanDon;
 			sourceTree = "<group>";
 		};
 		E653E423200074F8000E35AE = {
@@ -625,6 +639,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DinnerSystem/Pods-DinnerSystem-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
@@ -635,6 +650,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
@@ -744,9 +760,11 @@
 				E6A2A48F218F419F00E6A784 /* LoginClas.swift in Sources */,
 				E69A88BA214D20040062B6C8 /* History.swift in Sources */,
 				E6EF4DEA214C157400FF0A8B /* Order.swift in Sources */,
+				E63D850821CD13BC00A4D847 /* GuanDonTableViewCell.swift in Sources */,
 				E6CD9119215FE01300523989 /* adminAiJiaTableViewController.swift in Sources */,
 				E6EF4DEC214C157400FF0A8B /* OrderMaker.swift in Sources */,
 				E6EF4DE9214C157400FF0A8B /* OrderFactory.swift in Sources */,
+				E63D850A21CD165600A4D847 /* GuanDonViewController.swift in Sources */,
 				E60E4D0C214A094B007C4412 /* MainOrderTableViewController.swift in Sources */,
 				E6EF4DD5214C07D100FF0A8B /* AiJiaTableViewController.swift in Sources */,
 				E6A2A48B218F419500E6A784 /* MenuVege.swift in Sources */,

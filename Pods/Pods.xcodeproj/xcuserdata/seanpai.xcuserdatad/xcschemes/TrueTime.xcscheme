@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F4F2536CC4AB7C5052BADF936126EBFB"
+               BlueprintIdentifier = "882DF1BA8613252BC4F21FA3D027ABA5"
                BuildableName = "TrueTime.framework"
                BlueprintName = "TrueTime"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F4F2536CC4AB7C5052BADF936126EBFB"
+            BlueprintIdentifier = "882DF1BA8613252BC4F21FA3D027ABA5"
             BuildableName = "TrueTime.framework"
             BlueprintName = "TrueTime"
             ReferencedContainer = "container:Pods.xcodeproj">
