@@ -24,10 +24,7 @@ struct selectedFood {
 func logout(){
     Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData{ response in}
 }
-struct ord{
-    static var url = ""
-    static var name = ""
-}
+
 
 var usr = ""
 var pwd = ""

@@ -37,7 +37,7 @@ class orderViewController: UIViewController{
             }))
             self.present(alert, animated: true)
         }else{
-            Alamofire.request("\(dsURL("make_self_order"))&dish_id[]=\(selectedFood.id)&time=\(currentDate)-12:00:00").responseData{response in
+            Alamofire.request("\(dsURL("make_self_order"))&dish_id=\(selectedFood.id)&time=\(currentDate)-12:00:00").responseData{response in
                 if response.error != nil {
                     let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
