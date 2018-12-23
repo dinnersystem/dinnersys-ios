@@ -59,6 +59,7 @@ class MainOrderTableViewController: UITableViewController {
             taiwanMenuArr = []
             aiJiaMenuArr = []
             cafetMenuArr = []
+            originMenuArr = []
             //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                 do{
                     mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
@@ -72,6 +73,7 @@ class MainOrderTableViewController: UITableViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
+                originMenuArr = mainMenuArr
             for food in mainMenuArr{
                 if food.isIdle! == "1"{
                     mainMenuArr.remove(at: foodCount)

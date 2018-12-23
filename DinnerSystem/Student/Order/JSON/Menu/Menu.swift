@@ -12,7 +12,7 @@ var taiwanMenuArr:[Menu] = []
 var aiJiaMenuArr:[Menu] = []
 var cafetMenuArr:[Menu] = []
 var guanDonMenuArr:[Menu] = []
-
+var originMenuArr:[Menu] = []
 
 struct Menu : Codable {
 

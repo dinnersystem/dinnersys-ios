@@ -15,7 +15,7 @@ class GuanDonTableViewController: UITableViewController{
     var limit = 5
     var selected = 0
     var totalCost = 0
-     
+    var orderDict = ["default":0]
     
     var orderButton = UIButton.init(type: UIButton.ButtonType.roundedRect)
     
@@ -48,8 +48,10 @@ class GuanDonTableViewController: UITableViewController{
     @objc func order(_ sender: UIButton){
         ord.name = ""
         ord.url = ""
-        let sr = tableView.indexPathsForSelectedRows
+        //let sr = tableView.indexPathsForSelectedRows
         ord.url = dsURL("make_self_order")
+        
+        /*
         var i = selected - 1
         while i>=0 {
             let info = guanDonMenuArr[sr![i][1]]
@@ -61,6 +63,18 @@ class GuanDonTableViewController: UITableViewController{
             }
             i -= 1
         }
+        */
+        for item in orderDict{
+            var i=0
+            while i<item.value{
+                ord.url += "&dish_id[]=\(item.key)"
+                i+=1
+            }
+        }
+        for item in orderDict{
+            ord.name += "\(originMenuArr[item.value].dishName!)*\(item.value)+"
+        }
+        ord.name = String(ord.name.dropLast())
         print(ord.url)
         selectedFood.cost = String(totalCost)
         selectedFood.name = ord.name
@@ -77,10 +91,6 @@ class GuanDonTableViewController: UITableViewController{
         super.viewDidLoad()
         addButton()
         self.tableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,15 +117,32 @@ class GuanDonTableViewController: UITableViewController{
         cell.titleText.text = info.dishName!
         cell.subtitleText.text = "\(info.dishCost!)$"
         cell.stepper.tag = indexPath.row
-        cell.stepper.addTarget(self, action: #selector(stepperChanged(sender:)), for: .valueChanged)
+        cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
+        
         return cell
     }
     
     @objc func stepperChanged(sender: UIStepper){
         //MARK: - do something here
+        let ingInfo = guanDonMenuArr[sender.tag]
+        orderDict.updateValue(Int(sender.value), forKey: ingInfo.dishId!)
+        selected = 0
+        totalCost = 0
+        for item in orderDict{
+            selected += item.value
+            totalCost += (item.value * Int(ingInfo.dishCost!)!)
+        }
+        if selected > 0{
+            orderButton.isEnabled = true
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
+        }else{
+            orderButton.isEnabled = false
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
+        }
     }
     
     
+    /*
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let sr = tableView.indexPathsForSelectedRows {
             if sr.count > limit {
@@ -131,8 +158,10 @@ class GuanDonTableViewController: UITableViewController{
         
         return indexPath
     }
+    */
     
     
+    /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected  \(indexPath.row)")
         let info = guanDonMenuArr[indexPath.row]
@@ -157,7 +186,9 @@ class GuanDonTableViewController: UITableViewController{
         }
 
     }
+    */
     
+    /*
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         print("deselected  \(indexPath.row)")
         let info = guanDonMenuArr[indexPath.row]
@@ -182,6 +213,7 @@ class GuanDonTableViewController: UITableViewController{
             orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
         }
     }
+    */
     
     
     
