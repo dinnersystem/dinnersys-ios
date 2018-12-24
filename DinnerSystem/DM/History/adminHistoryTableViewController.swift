@@ -209,15 +209,15 @@ class adminHistoryTableViewController: UITableViewController {
     
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return adminHistArr.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "adminHistoryCell", for: indexPath) as! adminHistoryCell
@@ -282,7 +282,7 @@ class adminHistoryTableViewController: UITableViewController {
                     self.tableView.isUserInteractionEnabled = true
                 }
             }
-            })
+        })
         
         
         let unpaymentAct = UIAlertAction(title: "標記為未付款", style: .destructive, handler: {                   //unpaidAct

@@ -66,7 +66,7 @@ class HistoryTableViewController: UITableViewController {
             UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
- 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +91,7 @@ class HistoryTableViewController: UITableViewController {
         fetchData()
         
     }
-
+    
     @IBAction func reloadButton(_ sender: Any) {
         formatter.dateFormat = "yyyy/MM/dd"
         today = formatter.string(from: date)
@@ -108,17 +108,17 @@ class HistoryTableViewController: UITableViewController {
         self.refreshControl?.endRefreshing()
     }
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return historyArr.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCells", for: indexPath)
@@ -130,16 +130,16 @@ class HistoryTableViewController: UITableViewController {
         cell.detailTextLabel?.text! = "\((info.dish?.dishCost!)!)$, \(filterArr.first!.paid! == "true" ? "已付款" : "未付款")"
         return cell
     }
- 
-
+    
+    
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return false
     }
- 
-
+    
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info = historyArr[indexPath.row]
@@ -148,8 +148,8 @@ class HistoryTableViewController: UITableViewController {
         let filterArr = info.money!.payment!.filter({ $0.name == "user"})
         let paid:Bool = filterArr.first!.paid! == "true" ? true : false
         let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.dish!.dishCost!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
-                                      message: "",
-                                      preferredStyle: .actionSheet)
+            message: "",
+            preferredStyle: .actionSheet)
         let paidAction = UIAlertAction(title: "已付款者請先退款再行取消", style: .default, handler: nil)
         paidAction.isEnabled = false
         paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
@@ -207,5 +207,5 @@ class HistoryTableViewController: UITableViewController {
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
-
+    
 }
