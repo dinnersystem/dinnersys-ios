@@ -15,12 +15,25 @@ class HistoryTableViewController: UITableViewController {
     var today = ""
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
-    
+    var balance = 0
     
     //+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59"
     private func fetchData(){
         formatter.dateFormat = "yyyy/MM/dd"
         today = formatter.string(from: date)
+        Alamofire.request(dsURL("get_money")).responseString{ response in
+            if response.error != nil {
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    logout()
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(errorAlert, animated: true, completion: nil)
+            }else{
+                self.balance = Int(String(data: response.data!, encoding: .utf8)!)!
+            }
+        }
         Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
@@ -150,7 +163,7 @@ class HistoryTableViewController: UITableViewController {
         let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.dish!.dishCost!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
             message: "",
             preferredStyle: .actionSheet)
-        let paidAction = UIAlertAction(title: "已付款者請先退款再行取消", style: .default, handler: nil)
+        let paidAction = UIAlertAction(title: "已付款者請聯絡合作社取消", style: .default, handler: nil)
         paidAction.isEnabled = false
         paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
         let unpaidAction = UIAlertAction(title: "取消訂單", style: .destructive, handler: {(action: UIAlertAction!) -> () in
@@ -196,11 +209,87 @@ class HistoryTableViewController: UITableViewController {
             self.indicatorBackView.isHidden = false
             self.fetchData()
         })
+        
+        let paymentAction = UIAlertAction(title: "以學生證付款(餘額：\(balance))", style: .default, handler: {(action: UIAlertAction!) -> () in
+            
+            self.tableView.isUserInteractionEnabled = false                 //prevent from bugging
+            var hash = ""
+            var payment_pw = ""
+            let timeStamp = String(Int(Date().timeIntervalSince1970))
+            let pwAttempt = UIAlertController(title: "請輸入繳款密碼", message: "預設為身分證字號後三碼", preferredStyle: .alert)
+            let sendAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction!) -> () in
+                
+                UIApplication.shared.beginIgnoringInteractionEvents()
+                self.activityIndicator.startAnimating()
+                self.indicatorBackView.isHidden = false
+                
+                let paymentTextFields = pwAttempt.textFields![0] as UITextField
+                paymentTextFields.isSecureTextEntry = true
+                paymentTextFields.keyboardType = UIKeyboardType.numberPad
+                payment_pw = paymentTextFields.text!
+                hash = "{\"usr_id\":\"\(usr)\",\"pmt_password\":\"\(payment_pw)\",\"id\":\"\(info.id!)\",\"usr_password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()
+                Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&hash=\(hash)&time=\(timeStamp)").responseData{ response in
+                    if response.error != nil {              //internetErr
+                        let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            logout()
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }
+                    let responseStr = String(data: response.data!, encoding: .utf8)!            //parseStr
+                    if responseStr == ""{               //empty str
+                        let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            logout()
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }else if responseStr.contains("denied"){                //no permission to act
+                        let errorAlert = UIAlertController(title: "Error", message: "請嘗試重新登入", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            logout()
+                            self.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }else if responseStr.contains("wrong"){                //wrong payment password
+                        let errorAlert = UIAlertController(title: "Error", message: "請確認密碼是否正確", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }else if responseStr.contains("punish"){                //too many times
+                        let errorAlert = UIAlertController(title: "Error", message: "您輸入錯誤太多次，請稍候(約六十秒後)再試。", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(errorAlert, animated: true, completion: nil)
+                    }else{                                                  //payment success, return menu, update
+                        let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        self.fetchData()
+                        self.tableView.isUserInteractionEnabled = true
+                    }
+                    self.indicatorBackView.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            })
+            pwAttempt.addAction(sendAction)
+            self.present(pwAttempt, animated: true)
+        })
         let cancelAction = UIAlertAction(title: "返回", style: .cancel, handler: nil)
+        let brokeAction = UIAlertAction(title: "餘額不足(您只剩\(balance)元)", style: .default, handler: nil)
+        paidAction.isEnabled = false
+        paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
         alert.addAction(cancelAction)
         if paid {
             alert.addAction(paidAction)
+        }else if balance >= Int(info.dish!.dishCost!)!{
+            alert.addAction(paymentAction)
+            alert.addAction(unpaidAction)
         }else{
+            alert.addAction(brokeAction)
             alert.addAction(unpaidAction)
         }
         self.present(alert, animated: true)

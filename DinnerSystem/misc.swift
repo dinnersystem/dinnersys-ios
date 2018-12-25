@@ -21,6 +21,13 @@ struct selectedFood {
     static var cost: String = ""
 }
 
+/*
+struct loginInfo{
+    static var usr = ""
+    static var pwd = ""
+}
+*/
+
 func logout(){
     Alamofire.request("http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=logout").responseData{ response in}
 }

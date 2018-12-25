@@ -105,6 +105,7 @@ class LoginViewController: UIViewController {
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)
                         }
+                        
                         userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
                         if userInfo.validOper?[2].selectClass != nil{
                             let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
@@ -135,7 +136,7 @@ class LoginViewController: UIViewController {
         let timeStamp = String(Int(Date().timeIntervalSince1970))
         let reach = Reachability()!
         //MARK: - hash
-        let hash = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()
+        let hash = "{\"password\":\"\(pwd)\",\"id\":\"\(usr)\",\"time\":\"\(timeStamp)\"}".sha512()
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
