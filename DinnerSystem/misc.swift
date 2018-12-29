@@ -12,7 +12,7 @@ import Alamofire
 let decoder = JSONDecoder()
 
 func dsURL(_ cmd: String) -> String{
-    return "http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
+    return "https://dstmp.ddns.net/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
 }
 
 struct selectedFood {

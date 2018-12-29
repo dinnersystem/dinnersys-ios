@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
                         }
                         
                         userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
-                        if userInfo.validOper?[2].selectClass != nil{
+                        if userInfo.validOper?.contains("select_class") != nil{
                             let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
@@ -134,9 +134,11 @@ class LoginViewController: UIViewController {
         usr = self.username.text!
         pwd = self.password.text!
         let timeStamp = String(Int(Date().timeIntervalSince1970))
+        print(timeStamp)
         let reach = Reachability()!
         //MARK: - hash
-        let hash = "{\"password\":\"\(pwd)\",\"id\":\"\(usr)\",\"time\":\"\(timeStamp)\"}".sha512()
+        let hash = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()
+        print(hash)
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -153,6 +155,7 @@ class LoginViewController: UIViewController {
                 }else{
                     Crashlytics.sharedInstance().setObjectValue(String(data: response.data!, encoding: .utf8), forKey: "httpResponse")
                     let string = String(data: response.data!, encoding: .utf8)!
+                    print(string)
                     if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "")){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -181,7 +184,7 @@ class LoginViewController: UIViewController {
                             self.remLogin.isEnabled = true
                             self.remLogin.setTitle("以\(userInfo.name!)登入", for: UIControl.State.normal)
                         }
-                        if userInfo.validOper?[2].selectClass != nil{
+                        if (userInfo.validOper?.contains("select_class"))!{
                             let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in

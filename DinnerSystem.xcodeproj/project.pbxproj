@@ -63,7 +63,6 @@
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 		E6EF4DD5214C07D100FF0A8B /* AiJiaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DD4214C07D100FF0A8B /* AiJiaTableViewController.swift */; };
 		E6EF4DDD214C0AEF00FF0A8B /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DDA214C0AEF00FF0A8B /* Login.swift */; };
-		E6EF4DDE214C0AEF00FF0A8B /* LoginValidOper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DDB214C0AEF00FF0A8B /* LoginValidOper.swift */; };
 		E6EF4DDF214C0AEF00FF0A8B /* LoginVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DDC214C0AEF00FF0A8B /* LoginVege.swift */; };
 		E6EF4DE9214C157400FF0A8B /* OrderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE2214C157400FF0A8B /* OrderFactory.swift */; };
 		E6EF4DEA214C157400FF0A8B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EF4DE3214C157400FF0A8B /* Order.swift */; };
@@ -172,7 +171,6 @@
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6EF4DD4214C07D100FF0A8B /* AiJiaTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiJiaTableViewController.swift; sourceTree = "<group>"; };
 		E6EF4DDA214C0AEF00FF0A8B /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		E6EF4DDB214C0AEF00FF0A8B /* LoginValidOper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginValidOper.swift; sourceTree = "<group>"; };
 		E6EF4DDC214C0AEF00FF0A8B /* LoginVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVege.swift; sourceTree = "<group>"; };
 		E6EF4DE2214C157400FF0A8B /* OrderFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFactory.swift; sourceTree = "<group>"; };
 		E6EF4DE3214C157400FF0A8B /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -415,7 +413,6 @@
 			children = (
 				E6A2A48D218F419F00E6A784 /* LoginClas.swift */,
 				E6EF4DDA214C0AEF00FF0A8B /* Login.swift */,
-				E6EF4DDB214C0AEF00FF0A8B /* LoginValidOper.swift */,
 				E6EF4DDC214C0AEF00FF0A8B /* LoginVege.swift */,
 			);
 			path = JSON;
@@ -726,7 +723,6 @@
 				E6A2A485218F418D00E6A784 /* OrderDepartment.swift in Sources */,
 				E6A2A481218F418000E6A784 /* HistoryMoney.swift in Sources */,
 				E6A2A473218F417200E6A784 /* adminHistoryDish.swift in Sources */,
-				E6EF4DDE214C0AEF00FF0A8B /* LoginValidOper.swift in Sources */,
 				E69A88B9214D20040062B6C8 /* HistoryOrderMaker.swift in Sources */,
 				E6CD9110215FE01300523989 /* adminHistoryCell.swift in Sources */,
 				E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */,
