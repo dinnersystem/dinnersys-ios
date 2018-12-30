@@ -17,6 +17,7 @@
 		E6108BCD214D81F2007A47AC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6108BCC214D81F2007A47AC /* WebViewController.swift */; };
 		E63D850821CD13BC00A4D847 /* GuanDonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D850721CD13BC00A4D847 /* GuanDonTableViewCell.swift */; };
 		E63D850A21CD165600A4D847 /* GuanDonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63D850921CD165600A4D847 /* GuanDonViewController.swift */; };
+		E650499E21D903F000D0794F /* version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E650499D21D903F000D0794F /* version.swift */; };
 		E653D08A21A196F20042E2CE /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653D08921A196F20042E2CE /* OrderViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
@@ -118,6 +119,7 @@
 		E63D850721CD13BC00A4D847 /* GuanDonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewCell.swift; sourceTree = "<group>"; };
 		E63D850921CD165600A4D847 /* GuanDonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuanDonViewController.swift; sourceTree = "<group>"; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
+		E650499D21D903F000D0794F /* version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = version.swift; sourceTree = "<group>"; };
 		E653D08921A196F20042E2CE /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				E6A2A48D218F419F00E6A784 /* LoginClas.swift */,
 				E6EF4DDA214C0AEF00FF0A8B /* Login.swift */,
 				E6EF4DDC214C0AEF00FF0A8B /* LoginVege.swift */,
+				E650499D21D903F000D0794F /* version.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				E6A2A480218F418000E6A784 /* HistoryDepartment.swift in Sources */,
 				E6EF4DDD214C0AEF00FF0A8B /* Login.swift in Sources */,
 				E6A2A47B218F417200E6A784 /* adminHistoryDepartment.swift in Sources */,
+				E650499E21D903F000D0794F /* version.swift in Sources */,
 				E6A2A47A218F417200E6A784 /* adminHistoryMoney.swift in Sources */,
 				E60E4D10214A105E007C4412 /* misc.swift in Sources */,
 				E6A2A486218F418D00E6A784 /* OrderClas.swift in Sources */,

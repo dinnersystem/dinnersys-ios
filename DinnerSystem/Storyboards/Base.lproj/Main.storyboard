@@ -571,7 +571,7 @@
                                 <connections>
                                     <outlet property="qtyText" destination="HPr-o7-onH" id="s4B-Db-asj"/>
                                     <outlet property="stepper" destination="vwd-xs-obo" id="XIJ-lk-NNp"/>
-                                    <outlet property="subtitleCell" destination="Eq5-YY-Ugj" id="W87-dP-Utr"/>
+                                    <outlet property="subtitleText" destination="Eq5-YY-Ugj" id="Rv6-jF-6V4"/>
                                     <outlet property="titleText" destination="gpW-tn-IPC" id="a1a-Jv-U9g"/>
                                 </connections>
                             </tableViewCell>
