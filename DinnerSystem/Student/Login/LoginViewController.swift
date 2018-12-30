@@ -83,6 +83,9 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = false
             Alamofire.request("\(dsURL("login"))&id=\(usr)&hash=\(hash)&time=\(timeStamp)&device_id=\(fcmToken)").responseData{response in
                 if response.error != nil {
+                    self.indicatorBackView.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
@@ -149,6 +152,9 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = false
             Alamofire.request("\(dsURL("login"))&id=\(usr)&hash=\(hash)&time=\(timeStamp)&device_id=\(fcmToken)").responseData{response in
                 if response.error != nil {
+                    self.indicatorBackView.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡開發者。", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
