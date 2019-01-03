@@ -1,8 +1,8 @@
 //
 //	OrderMoney.swift
 //
-//	Create by Sean Pai on 1/11/2018
-//	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
+//	Create by Sean Pai on 4/1/2019
+//	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
@@ -19,14 +19,12 @@ struct OrderMoney : Codable {
 		case id = "id"
 		case payment = "payment"
 	}
-    init(charge : String? = nil,
-         id : String? = nil,
-         payment : [OrderPayment]? = nil
-        ){
-        self.charge = charge
-        self.id = id
-        self.payment = payment
-    }
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		charge = try values.decodeIfPresent(String.self, forKey: .charge)
+		id = try values.decodeIfPresent(String.self, forKey: .id)
+		payment = try values.decodeIfPresent([OrderPayment].self, forKey: .payment)
+	}
 
 
 }

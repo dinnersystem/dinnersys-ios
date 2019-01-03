@@ -1,8 +1,8 @@
 //
 //	MenuDepartment.swift
 //
-//	Create by Sean Pai on 1/11/2018
-//	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
+//	Create by Sean Pai on 4/1/2019
+//	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
@@ -19,14 +19,12 @@ struct MenuDepartment : Codable {
 		case id = "id"
 		case name = "name"
 	}
-    init(factory : MenuFactory? = nil,
-         id : String? = nil,
-         name : String? = nil
-        ){
-        self.factory = factory
-        self.id = id
-        self.name = name
-    }
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		factory = try MenuFactory(from: decoder)
+		id = try values.decodeIfPresent(String.self, forKey: .id)
+		name = try values.decodeIfPresent(String.self, forKey: .name)
+	}
 
 
 }

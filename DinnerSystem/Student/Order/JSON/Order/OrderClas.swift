@@ -1,8 +1,8 @@
 //
 //	OrderClas.swift
 //
-//	Create by Sean Pai on 1/11/2018
-//	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
+//	Create by Sean Pai on 4/1/2019
+//	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
@@ -21,16 +21,13 @@ struct OrderClas : Codable {
 		case id = "id"
 		case year = "year"
 	}
-    init(classNo : String? = nil,
-         grade : String? = nil,
-         id : String? = nil,
-         year : String? = nil
-        ){
-        self.classNo = classNo
-        self.grade = grade
-        self.id = id
-        self.year = year
-    }
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		classNo = try values.decodeIfPresent(String.self, forKey: .classNo)
+		grade = try values.decodeIfPresent(String.self, forKey: .grade)
+		id = try values.decodeIfPresent(String.self, forKey: .id)
+		year = try values.decodeIfPresent(String.self, forKey: .year)
+	}
 
 
 }

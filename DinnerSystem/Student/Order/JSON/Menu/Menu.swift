@@ -1,8 +1,8 @@
 //
 //	Menu.swift
 //
-//	Create by Sean Pai on 1/11/2018
-//	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
+//	Create by Sean Pai on 4/1/2019
+//	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
@@ -34,22 +34,16 @@ struct Menu : Codable {
 		case isIdle = "is_idle"
 		case vege
 	}
-    init(department : MenuDepartment? = nil,
-         dishCost : String? = nil,
-         dishId : String? = nil,
-         dishName : String? = nil,
-         factory : MenuFactory? = nil,
-         isIdle : String? = nil,
-         vege : MenuVege? = nil
-        ){
-        self.department = department
-        self.dishCost = dishCost
-        self.dishId = dishId
-        self.dishName = dishName
-        self.factory = factory
-        self.isIdle = isIdle
-        self.vege = vege
-    }
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		department = try MenuDepartment(from: decoder)
+		dishCost = try values.decodeIfPresent(String.self, forKey: .dishCost)
+		dishId = try values.decodeIfPresent(String.self, forKey: .dishId)
+		dishName = try values.decodeIfPresent(String.self, forKey: .dishName)
+		factory = try MenuFactory(from: decoder)
+		isIdle = try values.decodeIfPresent(String.self, forKey: .isIdle)
+		vege = try MenuVege(from: decoder)
+	}
 
 
 }
