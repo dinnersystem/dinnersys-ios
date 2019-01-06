@@ -1,28 +1,21 @@
 //
-//	Menu.swift
+//	HistoryDish.swift
 //
-//	Create by Sean Pai on 4/1/2019
+//	Create by Sean Pai on 6/1/2019
 //	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-var mainMenuArr:[Menu] = []
-var taiwanMenuArr:[Menu] = []
-var aiJiaMenuArr:[Menu] = []
-var cafetMenuArr:[Menu] = []
-var guanDonMenuArr:[Menu] = []
-var originMenuArr:[Menu] = []
+struct HistoryDish : Codable {
 
-struct Menu : Codable {
-
-	let department : MenuDepartment?
+	let department : HistoryDepartment?
 	let dishCost : String?
 	let dishId : String?
 	let dishName : String?
-	let factory : MenuFactory?
+	let factory : HistoryFactory?
 	let isIdle : String?
-	let vege : MenuVege?
+	let vege : HistoryVege?
 
 
 	enum CodingKeys: String, CodingKey {
@@ -34,13 +27,13 @@ struct Menu : Codable {
 		case isIdle = "is_idle"
 		case vege
 	}
-    init(department : MenuDepartment? = nil,
+    init(department : HistoryDepartment? = nil,
          dishCost : String? = nil,
          dishId : String? = nil,
          dishName : String? = nil,
-         factory : MenuFactory? = nil,
+         factory : HistoryFactory? = nil,
          isIdle : String? = nil,
-         vege : MenuVege? = nil
+         vege : HistoryVege? = nil
         ){
         self.department = department
         self.dishCost = dishCost

@@ -25,15 +25,21 @@ struct OrderMaker : Codable {
 		case seatNo = "seat_no"
 		case vege
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		classField = try OrderClas(from: decoder)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		prevSum = try values.decodeIfPresent(String.self, forKey: .prevSum)
-		seatNo = try values.decodeIfPresent(String.self, forKey: .seatNo)
-		vege = try OrderVege(from: decoder)
-	}
+    init(classField : OrderClas? = nil,
+         id : String? = nil,
+         name : String? = nil,
+         prevSum : String? = nil,
+         seatNo : String? = nil,
+         vege : OrderVege? = nil
+        ){
+        self.classField = classField
+        self.id = id
+        self.name = name
+        self.prevSum = prevSum
+        self.seatNo = seatNo
+        self.vege = vege
+    }
+
 
 
 }

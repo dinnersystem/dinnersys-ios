@@ -21,13 +21,16 @@ struct OrderClas : Codable {
 		case id = "id"
 		case year = "year"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		classNo = try values.decodeIfPresent(String.self, forKey: .classNo)
-		grade = try values.decodeIfPresent(String.self, forKey: .grade)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		year = try values.decodeIfPresent(String.self, forKey: .year)
-	}
+    init(classNo : String? = nil,
+         grade : String? = nil,
+         id : String? = nil,
+         year : String? = nil
+        ){
+        self.classNo = classNo
+        self.grade = grade
+        self.id = id
+        self.year = year
+    }
 
 
 }

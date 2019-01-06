@@ -19,12 +19,14 @@ struct MenuDepartment : Codable {
 		case id = "id"
 		case name = "name"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		factory = try MenuFactory(from: decoder)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-	}
+    init(factory : MenuFactory? = nil,
+         id : String? = nil,
+         name : String? = nil
+        ){
+        self.factory = factory
+        self.id = id
+        self.name = name
+    }
 
 
 }

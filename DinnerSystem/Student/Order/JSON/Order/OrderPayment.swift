@@ -27,16 +27,22 @@ struct OrderPayment : Codable {
 		case paidDt = "paid_dt"
 		case reversable = "reversable"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		ableDt = try values.decodeIfPresent(String.self, forKey: .ableDt)
-		freezeDt = try values.decodeIfPresent(String.self, forKey: .freezeDt)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-		paid = try values.decodeIfPresent(Bool.self, forKey: .paid)
-		paidDt = try values.decodeIfPresent(String.self, forKey: .paidDt)
-		reversable = try values.decodeIfPresent(String.self, forKey: .reversable)
-	}
+    init(ableDt : String? = nil,
+         freezeDt : String? = nil,
+         id : String? = nil,
+         name : String? = nil,
+         paid : Bool? = nil,
+         paidDt : String? = nil,
+         reversable : String? = nil
+        ){
+        self.ableDt = ableDt
+        self.freezeDt = freezeDt
+        self.id = id
+        self.name = name
+        self.paid = paid
+        self.paidDt = paidDt
+        self.reversable = reversable
+    }
 
 
 }

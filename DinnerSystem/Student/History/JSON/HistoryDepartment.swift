@@ -1,32 +1,33 @@
 //
-//	OrderMoney.swift
+//	HistoryDepartment.swift
 //
-//	Create by Sean Pai on 4/1/2019
+//	Create by Sean Pai on 6/1/2019
 //	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
 
-struct OrderMoney : Codable {
+struct HistoryDepartment : Codable {
 
-	let charge : String?
+	let factory : HistoryFactory?
 	let id : String?
-	let payment : [OrderPayment]?
+	let name : String?
 
 
 	enum CodingKeys: String, CodingKey {
-		case charge = "charge"
+		case factory
 		case id = "id"
-		case payment = "payment"
+		case name = "name"
 	}
-    init(charge : String? = nil,
+    init(factory : HistoryFactory? = nil,
          id : String? = nil,
-         payment : [OrderPayment]? = nil
+         name : String? = nil
         ){
-        self.charge = charge
+        self.factory = factory
         self.id = id
-        self.payment = payment
+        self.name = name
     }
+
 
 
 }

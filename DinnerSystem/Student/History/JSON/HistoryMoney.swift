@@ -1,7 +1,7 @@
 //
 //	HistoryMoney.swift
 //
-//	Create by Sean Pai on 4/1/2019
+//	Create by Sean Pai on 6/1/2019
 //	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
@@ -19,12 +19,14 @@ struct HistoryMoney : Codable {
 		case id = "id"
 		case payment = "payment"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		charge = try values.decodeIfPresent(String.self, forKey: .charge)
-		id = try values.decodeIfPresent(String.self, forKey: .id)
-		payment = try values.decodeIfPresent([HistoryPayment].self, forKey: .payment)
-	}
+    init(charge : String? = nil,
+         id : String? = nil,
+         payment : [HistoryPayment]? = nil
+        ){
+        self.charge = charge
+        self.id = id
+        self.payment = payment
+    }
 
 
 }
