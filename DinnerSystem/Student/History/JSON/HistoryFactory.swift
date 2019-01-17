@@ -9,7 +9,7 @@ import Foundation
 
 struct HistoryFactory : Codable {
 
-	let allowCustom : Bool?
+	let allowCustom : String?
 	let disabled : String?
 	let id : String?
 	let lowerBound : String?

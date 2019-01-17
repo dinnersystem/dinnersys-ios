@@ -55,6 +55,40 @@ class LoginViewController: UIViewController {
         }else{
             print("token:"+fcmToken)
         }
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.activityIndicator.startAnimating()
+        self.indicatorBackView.isHidden = false
+        Alamofire.request("\(dinnersysURL)/frontend/version.txt").responseString{ response in
+            if response.error != nil {
+                self.indicatorBackView.isHidden = true
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(errorAlert, animated: true, completion: nil)
+            }else{
+                let decoder = JSONDecoder()
+                do{
+                    currentVersion = try decoder.decode(appVersion.self, from: response.data!)
+                }catch let error{
+                    let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    Crashlytics.sharedInstance().recordError(error)
+                    self.present(alert,animated: true, completion: nil)
+                }
+                if currentVersion.ios! < versionNumber{
+                    let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {(action: UIAlertAction!) -> () in
+                        UIApplication.shared.openURL(URL(string: "itms://itunes.apple.com/app/id1352943874")!)
+                    })
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                }
+                self.indicatorBackView.isHidden = true
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+            }
+        }
     }
     
     // MARK: - quitKeyboard
@@ -198,7 +232,7 @@ class LoginViewController: UIViewController {
                             }))
                             self.present(alert, animated: true, completion: nil)
                         }else{
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userInfo.name!)", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userInfo.name!)/n", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
                                 self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)

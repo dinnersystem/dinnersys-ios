@@ -9,7 +9,7 @@ import Foundation
 
 struct MenuFactory : Codable {
 
-	let allowCustom : Bool?
+	let allowCustom : String?
 	let disabled : String?
 	let id : String?
 	let lowerBound : String?
@@ -27,7 +27,7 @@ struct MenuFactory : Codable {
 		case prepareTime = "prepare_time"
 		case upperBound = "upper_bound"
 	}
-    init(allowCustom : Bool? = nil,
+    init(allowCustom : String? = nil,
          disabled : String? = nil,
          id : String? = nil,
          lowerBound : String? = nil,

@@ -8,9 +8,9 @@
 
 import Foundation
 
-let verClass = version()
+var currentVersion = appVersion()
 
-class version: Codable{
+struct appVersion: Codable{
     var ios: Int?
     
     init(ios: Int? = nil){

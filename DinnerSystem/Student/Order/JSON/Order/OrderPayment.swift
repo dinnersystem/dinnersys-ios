@@ -13,7 +13,7 @@ struct OrderPayment : Codable {
 	let freezeDt : String?
 	let id : String?
 	let name : String?
-	let paid : Bool?
+	let paid : String?
 	let paidDt : String?
 	let reversable : String?
 
@@ -31,7 +31,7 @@ struct OrderPayment : Codable {
          freezeDt : String? = nil,
          id : String? = nil,
          name : String? = nil,
-         paid : Bool? = nil,
+         paid : String? = nil,
          paidDt : String? = nil,
          reversable : String? = nil
         ){

@@ -13,7 +13,7 @@ struct HistoryPayment : Codable {
     let freezeDt : String?
     let id : String?
     let name : String?
-    let paid : Bool?
+    let paid : String?
     let paidDt : String?
     let reversable : String?
     
