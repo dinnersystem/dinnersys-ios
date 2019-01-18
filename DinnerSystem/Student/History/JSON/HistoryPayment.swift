@@ -31,7 +31,7 @@ struct HistoryPayment : Codable {
          freezeDt : String? = nil,
          id : String? = nil,
          name : String? = nil,
-         paid : Bool? = nil,
+         paid : String? = nil,
          paidDt : String? = nil,
          reversable : String? = nil
         ){

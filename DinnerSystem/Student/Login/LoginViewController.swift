@@ -76,10 +76,11 @@ class LoginViewController: UIViewController {
                     Crashlytics.sharedInstance().recordError(error)
                     self.present(alert,animated: true, completion: nil)
                 }
-                if currentVersion.ios! < versionNumber{
+                if currentVersion.ios! > versionNumber{
                     let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {(action: UIAlertAction!) -> () in
-                        UIApplication.shared.openURL(URL(string: "itms://itunes.apple.com/app/id1352943874")!)
+                    let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        UIApplication.shared.openURL(itmsURL)
                     })
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
@@ -144,21 +145,14 @@ class LoginViewController: UIViewController {
                         }
                         
                         userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
-                        if userInfo.validOper?.contains("select_class") != nil{
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                self.performSegue(withIdentifier: "dmLoginSuccess", sender: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }else{
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userInfo.name!)", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }
+                        let userString = userInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userString)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        
                     }
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
@@ -224,21 +218,15 @@ class LoginViewController: UIViewController {
                             self.remLogin.isEnabled = true
                             self.remLogin.setTitle("以\(userInfo.name!)登入", for: UIControl.State.normal)
                         }
-                        if (userInfo.validOper?.contains("select_class"))!{
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎\(userInfo.classField!.classNo!)的午餐股長", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                self.performSegue(withIdentifier: "dmLoginSuccess", sender: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }else{
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userInfo.name!)/n", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }
+                        
+                        let nameString = userInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines)
+                        let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        
                     }
                 }
                 self.indicatorBackView.isHidden = true

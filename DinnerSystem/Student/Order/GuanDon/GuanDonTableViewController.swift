@@ -15,18 +15,20 @@ class GuanDonTableViewController: UITableViewController{
     var limit = 5
     var selected = 0
     var totalCost = 0
-    var orderDict = ["default":0]
+    var orderDict:[String:Int] = [:]
     
-    var orderButton = UIButton.init(type: UIButton.ButtonType.roundedRect)
+    @IBOutlet var orderButton: UIButton!
+    
     
     private func addButton(){
         orderButton.backgroundColor = .white
         orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
         orderButton.setTitleColor(.blue, for: UIControl.State.normal)
         orderButton.isEnabled = false
-        tableView.addSubview(orderButton)
+        //tableView.addSubview(orderButton)
         
         //position
+        /*
         orderButton.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {
             orderButton.leftAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.leftAnchor).isActive = true
@@ -39,8 +41,9 @@ class GuanDonTableViewController: UITableViewController{
             orderButton.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
             orderButton.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
         }
+        */
         
-        orderButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        //orderButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
         orderButton.addTarget(self, action: #selector(self.order(_:)), for: UIControl.Event.touchUpInside)
         
     }
@@ -72,7 +75,7 @@ class GuanDonTableViewController: UITableViewController{
             }
         }
         for item in orderDict{
-            ord.name += "\(originMenuArr[item.value].dishName!)*\(item.value)+"
+            ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
         }
         ord.name = String(ord.name.dropLast())
         print(ord.url)
@@ -116,7 +119,7 @@ class GuanDonTableViewController: UITableViewController{
         let info = guanDonMenuArr[indexPath.row]
         cell.titleText.text = info.dishName!
         cell.subtitleText.text = "\(info.dishCost!)$"
-        
+        cell.stepper.tag = indexPath.row
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
         
         return cell

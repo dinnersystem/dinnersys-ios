@@ -27,7 +27,7 @@ struct HistoryFactory : Codable {
 		case prepareTime = "prepare_time"
 		case upperBound = "upper_bound"
 	}
-    init(allowCustom : Bool? = nil,
+    init(allowCustom : String? = nil,
          disabled : String? = nil,
          id : String? = nil,
          lowerBound : String? = nil,

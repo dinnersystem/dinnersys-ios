@@ -38,6 +38,7 @@ class GuanDonViewController: UIViewController{
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseString = String(data: response.data!, encoding: .utf8)!
+            print(responseString)
             if responseString.contains("廠商"){
                 orderResult = "DTError"
             }else if responseString == "" {

@@ -16,7 +16,7 @@ class GuanDonTableViewCell: UITableViewCell {
     @IBOutlet var qtyText: UILabel!
     
     @IBAction func addval(_ sender: Any) {
-        qtyText.text = "\(stepper.value)份"
+        qtyText.text = "\(Int(stepper.value))份"
     }
     
     override func awakeFromNib() {

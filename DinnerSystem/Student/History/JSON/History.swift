@@ -15,7 +15,7 @@ struct History : Codable {
 	let id : String?
 	let money : HistoryMoney?
 	let orderMaker : HistoryOrderMaker?
-	let recvDate : String?
+	var recvDate : String?
 	let user : HistoryOrderMaker?
 
 

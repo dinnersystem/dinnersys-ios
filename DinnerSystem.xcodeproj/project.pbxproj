@@ -24,6 +24,7 @@
 		E653E445200074F9000E35AE /* DinnerSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E444200074F9000E35AE /* DinnerSystemTests.swift */; };
 		E653E450200074F9000E35AE /* DinnerSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
+		E6853F3F21F2243C00F05B16 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6853F3E21F2243C00F05B16 /* HistoryList.swift */; };
 		E69A88AD214D13210062B6C8 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88AC214D13210062B6C8 /* HistoryTableViewController.swift */; };
 		E69A88B6214D20040062B6C8 /* HistoryVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88AF214D20040062B6C8 /* HistoryVege.swift */; };
 		E69A88B8214D20040062B6C8 /* HistoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69A88B1214D20040062B6C8 /* HistoryFactory.swift */; };
@@ -128,6 +129,7 @@
 		E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemUITests.swift; sourceTree = "<group>"; };
 		E653E451200074F9000E35AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E6853F3E21F2243C00F05B16 /* HistoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
 		E69A88AC214D13210062B6C8 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E69A88AF214D20040062B6C8 /* HistoryVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVege.swift; sourceTree = "<group>"; };
 		E69A88B1214D20040062B6C8 /* HistoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFactory.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				E69A88B2214D20040062B6C8 /* HistoryOrderMaker.swift */,
 				E69A88B4214D20040062B6C8 /* HistoryPayment.swift */,
 				E69A88AF214D20040062B6C8 /* HistoryVege.swift */,
+				E6853F3E21F2243C00F05B16 /* HistoryList.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 				E6CD9111215FE01300523989 /* adminHistoryTableViewController.swift in Sources */,
 				E6AEF86B214A135B00C96D64 /* MenuFactory.swift in Sources */,
 				E6A2A476218F417200E6A784 /* adminHistoryClas.swift in Sources */,
+				E6853F3F21F2243C00F05B16 /* HistoryList.swift in Sources */,
 				E6A2A487218F418D00E6A784 /* OrderMoney.swift in Sources */,
 				E6A2A477218F417200E6A784 /* adminHistoryFactory.swift in Sources */,
 			);

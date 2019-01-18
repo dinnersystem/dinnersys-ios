@@ -21,6 +21,7 @@ class HistoryTableViewController: UITableViewController {
     private func fetchData(){
         formatter.dateFormat = "yyyy/MM/dd"
         today = formatter.string(from: date)
+        historyTableList = []
         Alamofire.request(dsURL("get_money")).responseString{ response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
@@ -31,7 +32,9 @@ class HistoryTableViewController: UITableViewController {
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
-                self.balance = Int(String(data: response.data!, encoding: .utf8)!)!
+                print(response.result.value!)
+                let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
+                self.balance = Int(string)!
             }
         }
         Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
@@ -72,6 +75,26 @@ class HistoryTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
                 historyArr.reverse()
+                
+                for order in historyArr{
+                    if order.dish!.count == 1{
+                        let tmp = HistoryList(id: order.id, dishName: order.dish![0].dishName, dishCost: order.dish![0].dishCost, recvDate: order.recvDate, money: order.money)
+                        historyTableList.append(tmp)
+                    }else{
+                        var dName = ""
+                        var dCost = 0
+                        for dish in order.dish!{
+                            dName += "\(dish.dishName!)+"
+                            dCost += Int(dish.dishCost!)!
+                        }
+                        dName = String(dName.dropLast(1))
+                        let tmp = HistoryList(id: order.id, dishName: dName, dishCost: String(dCost), recvDate: order.recvDate, money: order.money)
+                        historyTableList.append(tmp)
+                    }
+                }
+                
+                
+                
                 self.tableView.reloadData()
             }
             self.indicatorBackView.isHidden = true
@@ -129,18 +152,18 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return historyArr.count
+        return historyTableList.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCells", for: indexPath)
-        var info = historyArr[indexPath.row]
+        var info = historyTableList[indexPath.row]
         let range = info.recvDate!.range(of: " ")
         info.recvDate!.removeSubrange((range?.lowerBound)!..<info.recvDate!.endIndex)
         let filterArr = info.money!.payment!.filter({ $0.name == "user"})
-        cell.textLabel?.text! = (info.dish?.dishName!)!
-        cell.detailTextLabel?.text! = "\((info.dish?.dishCost!)!)$, \(filterArr.first!.paid! == "true" ? "已付款" : "未付款")"
+        cell.textLabel?.text! = info.dishName!
+        cell.detailTextLabel?.text! = "\(info.dishCost!)$, \(filterArr.first!.paid! == "true" ? "已付款" : "未付款")"
         return cell
     }
     
@@ -155,12 +178,12 @@ class HistoryTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var info = historyArr[indexPath.row]
+        var info = historyTableList[indexPath.row]
         let range = info.recvDate!.range(of: " ")
         info.recvDate!.removeSubrange((range?.lowerBound)!..<info.recvDate!.endIndex)
         let filterArr = info.money!.payment!.filter({ $0.name == "user"})
         let paid:Bool = filterArr.first!.paid! == "true" ? true : false
-        let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.dish!.dishCost!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
+        let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.dishCost!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
             message: "",
             preferredStyle: .actionSheet)
         let paidAction = UIAlertAction(title: "已付款者請聯絡合作社取消", style: .default, handler: nil)
@@ -285,7 +308,7 @@ class HistoryTableViewController: UITableViewController {
         alert.addAction(cancelAction)
         if paid {
             alert.addAction(paidAction)
-        }else if balance >= Int(info.dish!.dishCost!)!{
+        }else if balance >= Int(info.dishCost!)!{
             alert.addAction(paymentAction)
             alert.addAction(unpaidAction)
         }else{

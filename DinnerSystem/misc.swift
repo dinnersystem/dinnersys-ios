@@ -10,12 +10,12 @@ import Foundation
 import Alamofire
 
 let decoder = JSONDecoder()
-let versionNumber = 2019001
+let versionNumber = 201900001
 func dsURL(_ cmd: String) -> String{
-    return "https://dstmp.ddns.net/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
+    return "http://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
 }
-
-let dinnersysURL = "https://dstmp.ddns.net/dinnersys_beta/"
+let itmsURL = URL(string: "itms-apps://itunes.apple.com/app/id1352943874")!
+let dinnersysURL = "http://dinnersystem.ddns.net/dinnersys_beta/"
 
 struct selectedFood {
     static var name: String = ""
