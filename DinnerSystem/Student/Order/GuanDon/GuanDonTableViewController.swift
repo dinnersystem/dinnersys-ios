@@ -23,7 +23,7 @@ class GuanDonTableViewController: UITableViewController{
     private func addButton(){
         orderButton.backgroundColor = .white
         orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
-        orderButton.setTitleColor(.blue, for: UIControl.State.normal)
+        //orderButton.setTitleColor(.blue, for: UIControl.State.normal)
         orderButton.isEnabled = false
         //tableView.addSubview(orderButton)
         

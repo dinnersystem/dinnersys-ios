@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-
+    var counter=0
 class MoreTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -134,6 +134,16 @@ class MoreTableViewController: UITableViewController {
         return 2
     }
 
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1{
+            if counter == 13{
+                counter = 0
+                self.performSegue(withIdentifier: "bonusSegue", sender: self)
+            }else{
+                counter += 1
+                self.performSegue(withIdentifier: "normalSegue", sender: self)
+            }
+        }
+    }
 
 }

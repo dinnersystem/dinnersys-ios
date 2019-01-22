@@ -49,6 +49,7 @@
 		E6A2A48A218F419500E6A784 /* MenuDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A488218F419400E6A784 /* MenuDepartment.swift */; };
 		E6A2A48B218F419500E6A784 /* MenuVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A489218F419400E6A784 /* MenuVege.swift */; };
 		E6A2A48F218F419F00E6A784 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A2A48D218F419F00E6A784 /* LoginClas.swift */; };
+		E6A7FAB821F759BB00769FBC /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A7FAB721F759BB00769FBC /* BonusViewController.swift */; };
 		E6AEF869214A135B00C96D64 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF866214A135B00C96D64 /* Menu.swift */; };
 		E6AEF86B214A135B00C96D64 /* MenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6AEF868214A135B00C96D64 /* MenuFactory.swift */; };
 		E6B2520621CA8B9800050883 /* GuanDonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B2520521CA8B9800050883 /* GuanDonTableViewController.swift */; };
@@ -154,6 +155,7 @@
 		E6A2A488218F419400E6A784 /* MenuDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDepartment.swift; sourceTree = "<group>"; };
 		E6A2A489218F419400E6A784 /* MenuVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVege.swift; sourceTree = "<group>"; };
 		E6A2A48D218F419F00E6A784 /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
+		E6A7FAB721F759BB00769FBC /* BonusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6AEF866214A135B00C96D64 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		E6AEF868214A135B00C96D64 /* MenuFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				E6108BCA214D7E14007A47AC /* MoreTableViewController.swift */,
 				E6108BCC214D81F2007A47AC /* WebViewController.swift */,
+				E6A7FAB721F759BB00769FBC /* BonusViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				E6CD9123215FE02100523989 /* LoginViewController.swift in Sources */,
 				E6A2A48F218F419F00E6A784 /* LoginClas.swift in Sources */,
 				E69A88BA214D20040062B6C8 /* History.swift in Sources */,
+				E6A7FAB821F759BB00769FBC /* BonusViewController.swift in Sources */,
 				E6EF4DEA214C157400FF0A8B /* Order.swift in Sources */,
 				E63D850821CD13BC00A4D847 /* GuanDonTableViewCell.swift in Sources */,
 				E6CD9119215FE01300523989 /* adminAiJiaTableViewController.swift in Sources */,
