@@ -30,7 +30,7 @@ struct HistoryOrderMaker : Codable {
          name : String? = nil,
          prevSum : String? = nil,
          seatNo : String? = nil,
-         vege : HistoryVege? = nil
+         vege : Vege? = nil
         ){
         self.classField = classField
         self.id = id
