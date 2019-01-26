@@ -9,13 +9,13 @@ import Foundation
 
 struct HistoryDish : Codable {
 
-	let department : HistoryDepartment?
+	let department : Department?
 	let dishCost : String?
 	let dishId : String?
 	let dishName : String?
-	let factory : HistoryFactory?
+	let factory : Factory?
 	let isIdle : String?
-	let vege : HistoryVege?
+	let vege : Vege?
 
 
 	enum CodingKeys: String, CodingKey {
@@ -27,13 +27,13 @@ struct HistoryDish : Codable {
 		case isIdle = "is_idle"
 		case vege
 	}
-    init(department : HistoryDepartment? = nil,
+    init(department : Department? = nil,
          dishCost : String? = nil,
          dishId : String? = nil,
          dishName : String? = nil,
-         factory : HistoryFactory? = nil,
+         factory : Factory? = nil,
          isIdle : String? = nil,
-         vege : HistoryVege? = nil
+         vege : Vege? = nil
         ){
         self.department = department
         self.dishCost = dishCost

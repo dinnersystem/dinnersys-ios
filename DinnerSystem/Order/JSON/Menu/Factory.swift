@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MenuFactory : Codable {
+struct Factory : Codable {
 
 	let allowCustom : String?
 	let disabled : String?

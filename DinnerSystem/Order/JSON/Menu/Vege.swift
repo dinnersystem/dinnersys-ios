@@ -1,5 +1,5 @@
 //
-//	MenuDepartment.swift
+//	MenuVege.swift
 //
 //	Create by Sean Pai on 26/1/2019
 //	Copyright © 2019 New Taipei Municipal Banqiao Senior High School. All rights reserved.
@@ -7,25 +7,21 @@
 
 import Foundation
 
-struct MenuDepartment : Codable {
+struct Vege : Codable {
 
-	let factory : MenuFactory?
-	let id : String?
 	let name : String?
+	let number : String?
 
 
 	enum CodingKeys: String, CodingKey {
-		case factory
-		case id = "id"
 		case name = "name"
+		case number = "number"
 	}
-    init(factory : MenuFactory? = nil,
-         id : String? = nil,
-         name : String? = nil
+    init(name : String? = nil,
+         number : String? = nil
         ){
-        self.factory = factory
-        self.id = id
         self.name = name
+        self.number = number
     }
 
 

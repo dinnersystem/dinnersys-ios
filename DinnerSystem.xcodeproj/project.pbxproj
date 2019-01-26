@@ -17,14 +17,11 @@
 		E6995B8521FC24F100F8C8F1 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */; };
 		E6995B8621FC24F100F8C8F1 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3021FC23ED00F8C8F1 /* History.swift */; };
 		E6995B8721FC24F100F8C8F1 /* HistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */; };
-		E6995B8821FC24F100F8C8F1 /* HistoryDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3221FC23ED00F8C8F1 /* HistoryDepartment.swift */; };
 		E6995B8921FC24F100F8C8F1 /* HistoryDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3321FC23ED00F8C8F1 /* HistoryDish.swift */; };
-		E6995B8A21FC24F100F8C8F1 /* HistoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3421FC23ED00F8C8F1 /* HistoryFactory.swift */; };
 		E6995B8B21FC24F100F8C8F1 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3521FC23ED00F8C8F1 /* HistoryList.swift */; };
 		E6995B8C21FC24F100F8C8F1 /* HistoryMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3621FC23ED00F8C8F1 /* HistoryMoney.swift */; };
 		E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3721FC23ED00F8C8F1 /* HistoryOrderMaker.swift */; };
 		E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3821FC23ED00F8C8F1 /* HistoryPayment.swift */; };
-		E6995B8F21FC24F100F8C8F1 /* HistoryVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3921FC23ED00F8C8F1 /* HistoryVege.swift */; };
 		E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3C21FC23ED00F8C8F1 /* Login.swift */; };
 		E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3D21FC23ED00F8C8F1 /* LoginClas.swift */; };
 		E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3E21FC23ED00F8C8F1 /* LoginVege.swift */; };
@@ -39,9 +36,9 @@
 		E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */; };
 		E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */; };
 		E6995B9E21FC24F100F8C8F1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5021FC23ED00F8C8F1 /* Menu.swift */; };
-		E6995B9F21FC24F100F8C8F1 /* MenuDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5121FC23ED00F8C8F1 /* MenuDepartment.swift */; };
-		E6995BA021FC24F100F8C8F1 /* MenuFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5221FC23ED00F8C8F1 /* MenuFactory.swift */; };
-		E6995BA121FC24F100F8C8F1 /* MenuVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5321FC23ED00F8C8F1 /* MenuVege.swift */; };
+		E6995B9F21FC24F100F8C8F1 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5121FC23ED00F8C8F1 /* Department.swift */; };
+		E6995BA021FC24F100F8C8F1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5221FC23ED00F8C8F1 /* Factory.swift */; };
+		E6995BA121FC24F100F8C8F1 /* Vege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5321FC23ED00F8C8F1 /* Vege.swift */; };
 		E6995BA821FC24F100F8C8F1 /* MainOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */; };
 		E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */; };
 		E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */; };
@@ -104,14 +101,11 @@
 		E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E6995B3021FC23ED00F8C8F1 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryClas.swift; sourceTree = "<group>"; };
-		E6995B3221FC23ED00F8C8F1 /* HistoryDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDepartment.swift; sourceTree = "<group>"; };
 		E6995B3321FC23ED00F8C8F1 /* HistoryDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDish.swift; sourceTree = "<group>"; };
-		E6995B3421FC23ED00F8C8F1 /* HistoryFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryFactory.swift; sourceTree = "<group>"; };
 		E6995B3521FC23ED00F8C8F1 /* HistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
 		E6995B3621FC23ED00F8C8F1 /* HistoryMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoney.swift; sourceTree = "<group>"; };
 		E6995B3721FC23ED00F8C8F1 /* HistoryOrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderMaker.swift; sourceTree = "<group>"; };
 		E6995B3821FC23ED00F8C8F1 /* HistoryPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryPayment.swift; sourceTree = "<group>"; };
-		E6995B3921FC23ED00F8C8F1 /* HistoryVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryVege.swift; sourceTree = "<group>"; };
 		E6995B3C21FC23ED00F8C8F1 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E6995B3D21FC23ED00F8C8F1 /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
 		E6995B3E21FC23ED00F8C8F1 /* LoginVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVege.swift; sourceTree = "<group>"; };
@@ -126,9 +120,9 @@
 		E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewController.swift; sourceTree = "<group>"; };
 		E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonViewController.swift; sourceTree = "<group>"; };
 		E6995B5021FC23ED00F8C8F1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		E6995B5121FC23ED00F8C8F1 /* MenuDepartment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDepartment.swift; sourceTree = "<group>"; };
-		E6995B5221FC23ED00F8C8F1 /* MenuFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuFactory.swift; sourceTree = "<group>"; };
-		E6995B5321FC23ED00F8C8F1 /* MenuVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVege.swift; sourceTree = "<group>"; };
+		E6995B5121FC23ED00F8C8F1 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		E6995B5221FC23ED00F8C8F1 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		E6995B5321FC23ED00F8C8F1 /* Vege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vege.swift; sourceTree = "<group>"; };
 		E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainOrderTableViewController.swift; sourceTree = "<group>"; };
 		E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
@@ -262,14 +256,11 @@
 			children = (
 				E6995B3021FC23ED00F8C8F1 /* History.swift */,
 				E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */,
-				E6995B3221FC23ED00F8C8F1 /* HistoryDepartment.swift */,
 				E6995B3321FC23ED00F8C8F1 /* HistoryDish.swift */,
-				E6995B3421FC23ED00F8C8F1 /* HistoryFactory.swift */,
 				E6995B3521FC23ED00F8C8F1 /* HistoryList.swift */,
 				E6995B3621FC23ED00F8C8F1 /* HistoryMoney.swift */,
 				E6995B3721FC23ED00F8C8F1 /* HistoryOrderMaker.swift */,
 				E6995B3821FC23ED00F8C8F1 /* HistoryPayment.swift */,
-				E6995B3921FC23ED00F8C8F1 /* HistoryVege.swift */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -341,9 +332,9 @@
 			isa = PBXGroup;
 			children = (
 				E6995B5021FC23ED00F8C8F1 /* Menu.swift */,
-				E6995B5121FC23ED00F8C8F1 /* MenuDepartment.swift */,
-				E6995B5221FC23ED00F8C8F1 /* MenuFactory.swift */,
-				E6995B5321FC23ED00F8C8F1 /* MenuVege.swift */,
+				E6995B5121FC23ED00F8C8F1 /* Department.swift */,
+				E6995B5221FC23ED00F8C8F1 /* Factory.swift */,
+				E6995B5321FC23ED00F8C8F1 /* Vege.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -592,15 +583,12 @@
 				E6995B8521FC24F100F8C8F1 /* HistoryTableViewController.swift in Sources */,
 				E6995B8621FC24F100F8C8F1 /* History.swift in Sources */,
 				E6995B8721FC24F100F8C8F1 /* HistoryClas.swift in Sources */,
-				E6995B8821FC24F100F8C8F1 /* HistoryDepartment.swift in Sources */,
 				E6995B8921FC24F100F8C8F1 /* HistoryDish.swift in Sources */,
-				E6995B8A21FC24F100F8C8F1 /* HistoryFactory.swift in Sources */,
 				E6995BB421FC296300F8C8F1 /* Order.swift in Sources */,
 				E6995B8B21FC24F100F8C8F1 /* HistoryList.swift in Sources */,
 				E6995B8C21FC24F100F8C8F1 /* HistoryMoney.swift in Sources */,
 				E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */,
 				E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */,
-				E6995B8F21FC24F100F8C8F1 /* HistoryVege.swift in Sources */,
 				E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */,
 				E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */,
 				E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */,
@@ -615,9 +603,9 @@
 				E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */,
 				E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */,
 				E6995B9E21FC24F100F8C8F1 /* Menu.swift in Sources */,
-				E6995B9F21FC24F100F8C8F1 /* MenuDepartment.swift in Sources */,
-				E6995BA021FC24F100F8C8F1 /* MenuFactory.swift in Sources */,
-				E6995BA121FC24F100F8C8F1 /* MenuVege.swift in Sources */,
+				E6995B9F21FC24F100F8C8F1 /* Department.swift in Sources */,
+				E6995BA021FC24F100F8C8F1 /* Factory.swift in Sources */,
+				E6995BA121FC24F100F8C8F1 /* Vege.swift in Sources */,
 				E6995BA821FC24F100F8C8F1 /* MainOrderTableViewController.swift in Sources */,
 				E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */,
 				E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */,

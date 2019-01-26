@@ -9,7 +9,7 @@ import Foundation
 
 struct HistoryDepartment : Codable {
 
-	let factory : HistoryFactory?
+	let factory : Factory?
 	let id : String?
 	let name : String?
 
@@ -19,7 +19,7 @@ struct HistoryDepartment : Codable {
 		case id = "id"
 		case name = "name"
 	}
-    init(factory : HistoryFactory? = nil,
+    init(factory : Factory? = nil,
          id : String? = nil,
          name : String? = nil
         ){

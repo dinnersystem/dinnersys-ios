@@ -18,13 +18,13 @@ struct Menu : Codable {
     
 
 	let dailyProduce : String?
-	let department : MenuDepartment?
+	let department : Department?
 	let dishCost : String?
 	let dishId : String?
 	let dishName : String?
 	let isIdle : String?
 	var remaining : String?
-	let vege : MenuVege?
+	let vege : Vege?
 
 
 	enum CodingKeys: String, CodingKey {
@@ -38,13 +38,13 @@ struct Menu : Codable {
 		case vege
 	}
     init(dailyProduce : String? = nil,
-         department : MenuDepartment? = nil,
+         department : Department? = nil,
          dishCost : String? = nil,
          dishId : String? = nil,
          dishName : String? = nil,
          isIdle : String? = nil,
          remaining : String? = nil,
-         vege : MenuVege? = nil
+         vege : Vege? = nil
         ){
         self.dailyProduce = dailyProduce
         self.department = department
