@@ -31,7 +31,7 @@
   "preserve_paths": "Sources/CTrueTime/module.modulemap",
   "dependencies": {
     "Result": [
-      "~> 3.0"
+      "~> 4.0"
     ]
   }
 }
