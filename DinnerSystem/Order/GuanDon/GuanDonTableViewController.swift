@@ -75,7 +75,10 @@ class GuanDonTableViewController: UITableViewController{
             }
         }
         for item in orderDict{
-            ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
+            if(item.value > 0){
+                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
+            }
+            
         }
         ord.name = String(ord.name.dropLast())
         print(ord.url)
@@ -118,7 +121,8 @@ class GuanDonTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "store4Cell", for: indexPath) as! GuanDonTableViewCell
         let info = guanDonMenuArr[indexPath.row]
         cell.titleText.text = info.dishName!
-        cell.subtitleText.text = "\(info.dishCost!)$"
+        cell.subtitleText.text = "\(info.dishCost!)$，剩\(info.remaining!)個(低消30元)"
+        cell.stepper.maximumValue = (Double(Int(info.remaining!)!)) > 5 ? 5.0 : (Double(Int(info.remaining!)!) > 0 ? Double(Int(info.remaining!)!) : 0 )
         cell.stepper.tag = indexPath.row
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
         
@@ -126,15 +130,18 @@ class GuanDonTableViewController: UITableViewController{
     }
     
     @objc func stepperChanged(sender: UIStepper){
+        print(sender.tag)
         let ingInfo = guanDonMenuArr[sender.tag]
         let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! GuanDonTableViewCell
         orderDict.updateValue(Int(sender.value), forKey: ingInfo.dishId!)
         selected = 0
         totalCost = 0
         for item in orderDict{
+            let dish = guanDonMenuArr.filter{ $0.dishId == item.key }
             selected += item.value
-            totalCost += (item.value * Int(ingInfo.dishCost!)!)
+            totalCost += (item.value * Int(dish[0].dishCost!)!)
         }
+        print(selected)
         if selected>20{
             let alertController = UIAlertController(title: "Oops", message:
                 "已達單次訂餐上限", preferredStyle: .alert)
@@ -149,13 +156,13 @@ class GuanDonTableViewController: UITableViewController{
             }))
             self.present(alertController, animated: true, completion: nil)
         }
-        
-        if selected > 0{
+        print(orderDict)
+        if selected > 0 && totalCost >= 30{
             orderButton.isEnabled = true
-            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消30元)", for: UIControl.State.normal)
         }else{
             orderButton.isEnabled = false
-            orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消30元)", for: UIControl.State.normal)
         }
     }
     

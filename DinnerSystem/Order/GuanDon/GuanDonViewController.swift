@@ -20,14 +20,27 @@ class GuanDonViewController: UIViewController{
     }
     
     @IBAction func sendOrder(_ sender: Any) {
-        let selectedTime = (picker.selectedSegmentIndex == 0 ? "-11:00:00" : "12:00:00")
+        let selectedTime = (picker.selectedSegmentIndex == 0 ? "-11:00:00" : "-15:00:00")
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         var orderResult = ""
         var currentDate = formatter.string(from: date)
         currentDate += selectedTime
-        Alamofire.request("\(ord.url)&time=\(currentDate)").responseData{response in
+        print("\(ord.url)&time=\(currentDate)")
+        //time lock
+        let calander = Calendar.current
+        let lower_bound = calander.date(bySettingHour: 10, minute: 0, second: 0, of: date)
+        //end
+        if date > lower_bound! {
+            let alert = UIAlertController(title: "超過訂餐時間", message: "早上十點後無法訂餐，明日請早", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                (action: UIAlertAction!) -> () in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true)
+        }else{
+            Alamofire.request("\(ord.url)&time=\(currentDate)").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -88,7 +101,7 @@ class GuanDonViewController: UIViewController{
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true)
             }
-        }
+        }}
     }
     
     

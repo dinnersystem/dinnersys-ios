@@ -149,7 +149,7 @@ class LoginViewController: UIViewController {
                         let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userString)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
-                            self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)
+                            self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)
                         
@@ -223,7 +223,7 @@ class LoginViewController: UIViewController {
                         let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
-                            self.performSegue(withIdentifier: "stuLoginSuccess", sender: nil)
+                            self.performSegue(withIdentifier: "loginSuccess", sender: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)
                         

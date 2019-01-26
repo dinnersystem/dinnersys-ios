@@ -37,7 +37,7 @@ class HistoryTableViewController: UITableViewController {
                 self.balance = Int(string)!
             }
         }
-        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59").responseData{response in
+        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59" + "&history=true").responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -161,9 +161,8 @@ class HistoryTableViewController: UITableViewController {
         var info = historyTableList[indexPath.row]
         let range = info.recvDate!.range(of: " ")
         info.recvDate!.removeSubrange((range?.lowerBound)!..<info.recvDate!.endIndex)
-        let filterArr = info.money!.payment!.filter({ $0.name == "user"})
-        cell.textLabel?.text! = info.dishName!
-        cell.detailTextLabel?.text! = "\(info.dishCost!)$, \(filterArr.first!.paid! == "true" ? "已付款" : "未付款")"
+        cell.textLabel?.text! = historyArr[indexPath.row].dish!.count > 1 ? "自訂套餐(\(historyArr[indexPath.row].dish!.count)樣)" : (info.dishName!)
+        cell.detailTextLabel?.text! = "\(info.money!.charge!)$, \(info.money!.payment![0].paid! == "true" ? "已付款" : "未付款")"
         return cell
     }
     
@@ -179,11 +178,9 @@ class HistoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info = historyTableList[indexPath.row]
-        let range = info.recvDate!.range(of: " ")
-        info.recvDate!.removeSubrange((range?.lowerBound)!..<info.recvDate!.endIndex)
-        let filterArr = info.money!.payment!.filter({ $0.name == "user"})
-        let paid:Bool = filterArr.first!.paid! == "true" ? true : false
-        let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.dishCost!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
+        info.recvDate = String(info.recvDate!.dropLast(3))
+        let paid:Bool = info.money!.payment![0].paid! == "true" ? true : false
+        let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n餐點內容：\(info.dishName!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.money!.charge!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
             message: "",
             preferredStyle: .actionSheet)
         let paidAction = UIAlertAction(title: "已付款者請聯絡合作社取消", style: .default, handler: nil)
@@ -250,7 +247,7 @@ class HistoryTableViewController: UITableViewController {
                 paymentTextFields.isSecureTextEntry = true
                 paymentTextFields.keyboardType = UIKeyboardType.numberPad
                 payment_pw = paymentTextFields.text!
-                hash = "{\"usr_id\":\"\(usr)\",\"pmt_password\":\"\(payment_pw)\",\"id\":\"\(info.id!)\",\"usr_password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()
+                hash = "{\"id\":\"\(info.id!)\",\"usr_id\":\"\(usr)\",\"usr_password\":\"\(pwd)\",\"pmt_password\":\"\(payment_pw)\",\"time\":\"\(timeStamp)\"}".sha512()
                 Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&hash=\(hash)&time=\(timeStamp)").responseData{ response in
                     if response.error != nil {              //internetErr
                         let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
@@ -286,19 +283,33 @@ class HistoryTableViewController: UITableViewController {
                         let errorAlert = UIAlertController(title: "Error", message: "您輸入錯誤太多次，請稍候(約六十秒後)再試。", preferredStyle: .alert)
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(errorAlert, animated: true, completion: nil)
+                    }else if responseStr.contains("Unable"){                //too many times
+                        let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(errorAlert, animated: true, completion: nil)
                     }else{                                                  //payment success, return menu, update
                         let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                         self.fetchData()
-                        self.tableView.isUserInteractionEnabled = true
                     }
+                    self.tableView.isUserInteractionEnabled = true
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                 }
             })
             pwAttempt.addAction(sendAction)
+            pwAttempt.addTextField{
+                (textfield:UITextField!) -> Void in
+                textfield.isSecureTextEntry = true
+                textfield.placeholder = "請輸入付款密碼"
+                textfield.keyboardType = .numberPad
+            }
+            pwAttempt.addAction(UIAlertAction(title: "取消", style: .cancel, handler: {
+                (action: UIAlertAction) -> () in
+                self.tableView.isUserInteractionEnabled = true
+            }))
             self.present(pwAttempt, animated: true)
         })
         let cancelAction = UIAlertAction(title: "返回", style: .cancel, handler: nil)

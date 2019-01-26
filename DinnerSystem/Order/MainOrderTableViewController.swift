@@ -59,6 +59,7 @@ class MainOrderTableViewController: UITableViewController {
             taiwanMenuArr = []
             aiJiaMenuArr = []
             cafetMenuArr = []
+            guanDonMenuArr = []
             originMenuArr = []
             //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                 do{
@@ -82,16 +83,31 @@ class MainOrderTableViewController: UITableViewController {
                 }
             }
             for food in mainMenuArr{
-                if food.factory?.name! == "台灣小吃部"{
+                if food.department?.factory?.name! == "台灣小吃部"{
                     taiwanMenuArr.append(food)
-                }else if food.factory?.name! == "愛佳便當"{
+                }else if food.department?.factory?.name! == "愛佳便當"{
                     aiJiaMenuArr.append(food)
-                }else if food.factory?.name! == "合作社"{
+                }else if food.department?.factory?.name! == "合作社"{
                     cafetMenuArr.append(food)
-                }else if food.factory?.name! == "關東煮"{
+                }else if food.department?.factory?.name! == "關東煮"{
                     guanDonMenuArr.append(food)
                 }
             }
+                for i in 0..<guanDonMenuArr.count{
+                    Alamofire.request("\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)").responseString{ remainResponse in
+                        if remainResponse.error != nil {
+                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                (action: UIAlertAction!) -> () in
+                                logout()
+                                self.dismiss(animated: true, completion: nil)
+                            }))
+                            self.present(errorAlert, animated: true, completion: nil)
+                        }else{
+                            guanDonMenuArr[i] = try! decoder.decode(Menu.self, from: remainResponse.data!)
+                        }
+                    }
+                }
         }
                 
             }
