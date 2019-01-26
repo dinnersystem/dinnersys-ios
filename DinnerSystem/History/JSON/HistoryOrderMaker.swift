@@ -14,7 +14,7 @@ struct HistoryOrderMaker : Codable {
 	let name : String?
 	let prevSum : String?
 	let seatNo : String?
-	let vege : HistoryVege?
+	let vege : Vege?
 
 
 	enum CodingKeys: String, CodingKey {
