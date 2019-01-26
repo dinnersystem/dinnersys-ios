@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        application.registerForRemoteNotifications()
+        //application.registerForRemoteNotifications()
         FirebaseApp.configure()
         return true
     }
