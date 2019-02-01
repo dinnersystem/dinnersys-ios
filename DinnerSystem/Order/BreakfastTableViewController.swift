@@ -13,7 +13,7 @@ class BreakfastTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "合作社" + "（餘額: \(balance)）"
         self.tableView.reloadData()
     }
 

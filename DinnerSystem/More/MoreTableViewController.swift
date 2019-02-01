@@ -71,7 +71,7 @@ class MoreTableViewController: UITableViewController {
                     let responseString = String(data: response.data!, encoding: .utf8)!
                     print(responseString)
                     if(responseString == "Invalid string."){
-                        let alert = UIAlertController(title: "輸入格式錯誤", message: "請再試一次\n輸入內容僅限大小寫英數及底線!", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "輸入格式錯誤", message: "輸入內容僅限大小寫英數及底線!", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action:UIAlertAction) -> () in
                             self.present(chgAlert, animated: true, completion: nil)

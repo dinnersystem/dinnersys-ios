@@ -22,7 +22,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView = WKWebView(frame: viewFrame)
         webView.allowsBackForwardNavigationGestures = true
         webView.navigationDelegate = self
-        let homeUrl = URL(string: "http://dinnersystem.ddns.net/dinnersys_beta/frontend/login.html")
+        let homeUrl = URL(string: "https://dinnersystem.ddns.net/dinnersys_beta/frontend/login.html")
         let homeRequest = URLRequest(url: homeUrl!)
         webView.load(homeRequest)
         view.addSubview(webView)

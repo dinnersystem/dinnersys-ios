@@ -12,7 +12,7 @@ class AiJiaTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "愛佳便當" + "（餘額: \(balance)）"
         self.tableView.reloadData()
     }
 

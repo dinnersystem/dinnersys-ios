@@ -96,6 +96,7 @@ class GuanDonTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton()
+        self.title = "關東煮（餘額: \(balance)）"
         self.tableView.reloadData()
     }
     
@@ -121,7 +122,7 @@ class GuanDonTableViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "store4Cell", for: indexPath) as! GuanDonTableViewCell
         let info = guanDonMenuArr[indexPath.row]
         cell.titleText.text = info.dishName!
-        cell.subtitleText.text = "\(info.dishCost!)$，剩\(info.remaining!)個(低消30元)"
+        cell.subtitleText.text = "\(info.dishCost!)$，剩\(info.remaining!)個"
         cell.stepper.maximumValue = (Double(Int(info.remaining!)!)) > 5 ? 5.0 : (Double(Int(info.remaining!)!) > 0 ? Double(Int(info.remaining!)!) : 0 )
         cell.stepper.tag = indexPath.row
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)

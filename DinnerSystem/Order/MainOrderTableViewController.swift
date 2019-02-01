@@ -111,6 +111,21 @@ class MainOrderTableViewController: UITableViewController {
         }
                 
             }
+            Alamofire.request(dsURL("get_money")).responseString{ response in
+                if response.error != nil {
+                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }else{
+                    print(response.result.value!)
+                    let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    balance = Int(string)!
+                }
+            }
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -126,7 +141,7 @@ class MainOrderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
 
 
