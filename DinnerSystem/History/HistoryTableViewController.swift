@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Crashlytics
 
 class HistoryTableViewController: UITableViewController {
     let date = Date()
@@ -236,7 +237,7 @@ class HistoryTableViewController: UITableViewController {
             self.tableView.isUserInteractionEnabled = false                 //prevent from bugging
             var hash = ""
             var payment_pw = ""
-            let timeStamp = String(Int(Date().timeIntervalSince1970))
+            var timeStamp = String(Int(Date().timeIntervalSince1970))
             let pwAttempt = UIAlertController(title: "請輸入繳款密碼", message: "預設為身分證字號後四碼", preferredStyle: .alert)
             let sendAction = UIAlertAction(title: "確認", style: .default, handler: { (action: UIAlertAction!) -> () in
                 
@@ -253,14 +254,19 @@ class HistoryTableViewController: UITableViewController {
                         (action: UIAlertAction!) -> () in
                         self.navigationController?.popViewController(animated: true)
                     }))
+                    self.tableView.isUserInteractionEnabled = true
+                    self.indicatorBackView.isHidden = true
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.present(alert, animated: true)
                 }else{
                     let paymentTextFields = pwAttempt.textFields![0] as UITextField
                     paymentTextFields.isSecureTextEntry = true
                     paymentTextFields.keyboardType = UIKeyboardType.numberPad
+                    timeStamp = String(Int(Date().timeIntervalSince1970))
                     payment_pw = paymentTextFields.text!
                     hash = "{\"id\":\"\(info.id!)\",\"usr_id\":\"\(usr)\",\"usr_password\":\"\(pwd)\",\"pmt_password\":\"\(payment_pw)\",\"time\":\"\(timeStamp)\"}".sha512()
-                    Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&hash=\(hash)&time=\(timeStamp)").responseData{ response in
+                    Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&hash=\(hash)").responseData{ response in
                         if response.error != nil {              //internetErr
                             let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -268,6 +274,10 @@ class HistoryTableViewController: UITableViewController {
                                 logout()
                                 self.dismiss(animated: true, completion: nil)
                             }))
+                            self.tableView.isUserInteractionEnabled = true
+                            self.indicatorBackView.isHidden = true
+                            self.activityIndicator.stopAnimating()
+                            UIApplication.shared.endIgnoringInteractionEvents()
                             self.present(errorAlert, animated: true, completion: nil)
                         }
                         let responseStr = String(data: response.data!, encoding: .utf8)!            //parseStr
@@ -300,10 +310,41 @@ class HistoryTableViewController: UITableViewController {
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)
                         }else{                                                  //payment success, return menu, update
-                            let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                            self.fetchData()
+                            do{
+                                _ = try JSONSerialization.jsonObject(with: response.data!)
+                                let oldBalance = balance
+                                Alamofire.request(dsURL("get_money")).responseString{ response in
+                                    if response.error != nil {
+                                        let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                            (action: UIAlertAction!) -> () in
+                                            logout()
+                                            self.dismiss(animated: true, completion: nil)
+                                        }))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                    }else{
+                                        print(response.result.value!)
+                                        let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
+                                        balance = Int(string)!
+                                    }
+                                }
+                                if (oldBalance - Int(info.money!.charge!)!) != balance{
+                                    let error = NSError(domain: "dinnersystem.error.balanceNotCorresponding", code: 1313, userInfo: nil)
+                                    Crashlytics.sharedInstance().recordError(error)
+                                }
+                                let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                self.fetchData()
+                                
+                                self.present(alert, animated: true, completion: nil)
+                            }catch let error{
+                                Crashlytics.sharedInstance().recordError(error)
+                                print(String(data: response.data!, encoding: .utf8)!)
+                                print(error)
+                                let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
+                                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                self.present(errorAlert, animated: true, completion: nil)
+                            }
                         }
                         self.tableView.isUserInteractionEnabled = true
                         self.indicatorBackView.isHidden = true
@@ -315,7 +356,7 @@ class HistoryTableViewController: UITableViewController {
             pwAttempt.addTextField{
                 (textfield:UITextField!) -> Void in
                 textfield.isSecureTextEntry = true
-                textfield.placeholder = "請輸入付款密碼"
+                textfield.placeholder = "請輸入付款密碼, 預設為身分證字號後四碼"
                 textfield.keyboardType = .numberPad
             }
             pwAttempt.addAction(UIAlertAction(title: "取消", style: .cancel, handler: {
@@ -326,8 +367,8 @@ class HistoryTableViewController: UITableViewController {
         })
         let cancelAction = UIAlertAction(title: "返回", style: .cancel, handler: nil)
         let brokeAction = UIAlertAction(title: "餘額不足(您只剩\(balance)元)", style: .default, handler: nil)
-        paidAction.isEnabled = false
-        paidAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        brokeAction.isEnabled = false
+        brokeAction.setValue(UIColor.gray, forKey: "titleTextColor")
         alert.addAction(cancelAction)
         if paid {
             alert.addAction(paidAction)

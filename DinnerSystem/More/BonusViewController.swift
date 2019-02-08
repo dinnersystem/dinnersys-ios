@@ -15,7 +15,7 @@ class BonusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Alamofire.request("\(dinnersysURL)/frontend/images/dinnersys0.png").responseData{response in
+        Alamofire.request("\(dinnersysURL)/frontend/u_move_u_dead/dinnersys0.png").responseData{response in
             if response.error != nil{
                 let alert = UIAlertController(title: "請注意網路狀態", message: "讀取資料錯誤", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {

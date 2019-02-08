@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
-        Alamofire.request("\(dinnersysURL)frontend/version.txt").responseString{ response in
+        Alamofire.request("\(dinnersysURL)frontend/u_move_u_dead/version.txt").responseString{ response in
             if response.error != nil {
                 self.indicatorBackView.isHidden = true
                 self.activityIndicator.stopAnimating()
