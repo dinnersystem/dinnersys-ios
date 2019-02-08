@@ -62,6 +62,7 @@ class GuanDonViewController: UIViewController{
                 
                 do{
                     orderInfo = try decoder.decode([Order].self, from: response.data!)
+                    orderResult = "Success"
                 }catch let error{
                     print(error)
                     let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
@@ -72,7 +73,7 @@ class GuanDonViewController: UIViewController{
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
-                orderResult = "Success"
+                
             }
             let result = orderResult
             switch result {

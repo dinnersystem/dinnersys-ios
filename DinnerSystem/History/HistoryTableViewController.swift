@@ -64,6 +64,24 @@ class HistoryTableViewController: UITableViewController {
                 //historyArr = try! decoder.decode([History].self, from: response.data!)
                 do{
                     historyArr = try decoder.decode([History].self, from: response.data!)
+                    historyArr.reverse()
+                    
+                    for order in historyArr{
+                        if order.dish!.count == 1{
+                            let tmp = HistoryList(id: order.id, dishName: order.dish![0].dishName, dishCost: order.dish![0].dishCost, recvDate: order.recvDate, money: order.money)
+                            historyTableList.append(tmp)
+                        }else{
+                            var dName = ""
+                            var dCost = 0
+                            for dish in order.dish!{
+                                dName += "\(dish.dishName!)+"
+                                dCost += Int(dish.dishCost!)!
+                            }
+                            dName = String(dName.dropLast(1))
+                            let tmp = HistoryList(id: order.id, dishName: dName, dishCost: String(dCost), recvDate: order.recvDate, money: order.money)
+                            historyTableList.append(tmp)
+                        }
+                    }
                 }catch let error{
                     print(error)
                     let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
@@ -74,24 +92,7 @@ class HistoryTableViewController: UITableViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
-                historyArr.reverse()
                 
-                for order in historyArr{
-                    if order.dish!.count == 1{
-                        let tmp = HistoryList(id: order.id, dishName: order.dish![0].dishName, dishCost: order.dish![0].dishCost, recvDate: order.recvDate, money: order.money)
-                        historyTableList.append(tmp)
-                    }else{
-                        var dName = ""
-                        var dCost = 0
-                        for dish in order.dish!{
-                            dName += "\(dish.dishName!)+"
-                            dCost += Int(dish.dishCost!)!
-                        }
-                        dName = String(dName.dropLast(1))
-                        let tmp = HistoryList(id: order.id, dishName: dName, dishCost: String(dCost), recvDate: order.recvDate, money: order.money)
-                        historyTableList.append(tmp)
-                    }
-                }
                 
                 
                 

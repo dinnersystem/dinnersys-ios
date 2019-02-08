@@ -11,9 +11,9 @@ import Foundation
 var currentVersion = appVersion()
 
 struct appVersion: Codable{
-    var ios: Int?
+    var ios: [Int]?
     
-    init(ios: Int? = nil){
+    init(ios: [Int]? = nil){
         self.ios = ios
     }
 }

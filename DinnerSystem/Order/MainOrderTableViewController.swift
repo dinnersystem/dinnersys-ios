@@ -64,6 +64,40 @@ class MainOrderTableViewController: UITableViewController {
             //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                 do{
                     mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
+                    originMenuArr = mainMenuArr
+                    for food in mainMenuArr{
+                        if food.isIdle! == "1"{
+                            mainMenuArr.remove(at: foodCount)
+                        }else{
+                            foodCount += 1
+                        }
+                    }
+                    for food in mainMenuArr{
+                        if food.department?.factory?.name! == "台灣小吃部"{
+                            taiwanMenuArr.append(food)
+                        }else if food.department?.factory?.name! == "愛佳便當"{
+                            aiJiaMenuArr.append(food)
+                        }else if food.department?.factory?.name! == "合作社"{
+                            cafetMenuArr.append(food)
+                        }else if food.department?.factory?.name! == "關東煮"{
+                            guanDonMenuArr.append(food)
+                        }
+                    }
+                    for i in 0..<guanDonMenuArr.count{
+                        Alamofire.request("\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)").responseString{ remainResponse in
+                            if remainResponse.error != nil {
+                                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    logout()
+                                    self.dismiss(animated: true, completion: nil)
+                                }))
+                                self.present(errorAlert, animated: true, completion: nil)
+                            }else{
+                                guanDonMenuArr[i] = try! decoder.decode(Menu.self, from: remainResponse.data!)
+                            }
+                        }
+                    }
                 }catch let error{
                     print(error)
                     let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
@@ -74,40 +108,7 @@ class MainOrderTableViewController: UITableViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
-                originMenuArr = mainMenuArr
-            for food in mainMenuArr{
-                if food.isIdle! == "1"{
-                    mainMenuArr.remove(at: foodCount)
-                }else{
-                    foodCount += 1
-                }
-            }
-            for food in mainMenuArr{
-                if food.department?.factory?.name! == "台灣小吃部"{
-                    taiwanMenuArr.append(food)
-                }else if food.department?.factory?.name! == "愛佳便當"{
-                    aiJiaMenuArr.append(food)
-                }else if food.department?.factory?.name! == "合作社"{
-                    cafetMenuArr.append(food)
-                }else if food.department?.factory?.name! == "關東煮"{
-                    guanDonMenuArr.append(food)
-                }
-            }
-                for i in 0..<guanDonMenuArr.count{
-                    Alamofire.request("\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)").responseString{ remainResponse in
-                        if remainResponse.error != nil {
-                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
-                            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                logout()
-                                self.dismiss(animated: true, completion: nil)
-                            }))
-                            self.present(errorAlert, animated: true, completion: nil)
-                        }else{
-                            guanDonMenuArr[i] = try! decoder.decode(Menu.self, from: remainResponse.data!)
-                        }
-                    }
-                }
+                
         }
                 
             }
