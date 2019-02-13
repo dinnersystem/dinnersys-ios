@@ -22,6 +22,7 @@ class HistoryTableViewController: UITableViewController {
     private func fetchData(){
         formatter.dateFormat = "yyyy/MM/dd"
         today = formatter.string(from: date)
+        print(today)
         historyTableList = []
         Alamofire.request(dsURL("get_money")).responseString{ response in
             if response.error != nil {
@@ -36,6 +37,7 @@ class HistoryTableViewController: UITableViewController {
                 print(response.result.value!)
                 let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
                 balance = Int(string)!
+                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
             }
         }
         Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59" + "&history=true").responseData{response in
@@ -64,6 +66,7 @@ class HistoryTableViewController: UITableViewController {
             }else{
                 //historyArr = try! decoder.decode([History].self, from: response.data!)
                 do{
+                    print(String(data: response.data!, encoding: .utf8)!)
                     historyArr = try decoder.decode([History].self, from: response.data!)
                     historyArr.reverse()
                     
@@ -93,10 +96,6 @@ class HistoryTableViewController: UITableViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
-                
-                
-                
-                
                 self.tableView.reloadData()
             }
             self.indicatorBackView.isHidden = true
@@ -248,7 +247,7 @@ class HistoryTableViewController: UITableViewController {
                 let date = Date()
                 let calander = Calendar.current
                 let lower_bound = calander.date(bySettingHour: 10, minute: 30, second: 0, of: date)
-                if date > lower_bound!{
+                if date < lower_bound!{
                     let alert = UIAlertController(title: "超過付款時間", message: "早上十點半後無法付款，明日請早", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in

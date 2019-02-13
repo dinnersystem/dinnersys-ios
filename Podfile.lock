@@ -2,7 +2,7 @@ PODS:
   - Alamofire (4.8.1)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
-  - CryptoSwift (0.13.1)
+  - CryptoSwift (0.14.0)
   - Fabric (1.7.13)
   - Firebase/Core (5.16.0):
     - Firebase/CoreOnly
@@ -148,7 +148,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
-  CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e

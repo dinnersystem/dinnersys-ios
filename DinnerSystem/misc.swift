@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 let decoder = JSONDecoder()
-let versionNumber = 201900003
+let versionNumber = 201900004
 func dsURL(_ cmd: String) -> String{
     return "https://dinnersystem.ddns.net/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
 }

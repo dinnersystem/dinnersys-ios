@@ -62,6 +62,7 @@ class LoginViewController: UIViewController {
                 self.indicatorBackView.isHidden = true
                 self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
+                Crashlytics.sharedInstance().recordError(response.error!)
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
@@ -124,13 +125,14 @@ class LoginViewController: UIViewController {
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
+                    Crashlytics.sharedInstance().recordError(response.error!)
                     let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{
                     let string = String(data: response.data!, encoding: .utf8)!
                     Crashlytics.sharedInstance().setObjectValue(string, forKey: "httpResponse")
-                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Worng") || (string == "punish") || (string == "Punish")){
+                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (string == "punish") || (string == "Punish") || (usr.count != 8)){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
@@ -184,6 +186,7 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = false
             Alamofire.request("\(dsURL("login"))&id=\(usr)&hash=\(hash)&time=\(timeStamp)&device_id=\(fcmToken)").responseData{response in
                 if response.error != nil {
+                    Crashlytics.sharedInstance().recordError(response.error!)
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
@@ -194,7 +197,7 @@ class LoginViewController: UIViewController {
                     Crashlytics.sharedInstance().setObjectValue(String(data: response.data!, encoding: .utf8), forKey: "httpResponse")
                     let string = String(data: response.data!, encoding: .utf8)!
                     print(string)
-                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong")){
+                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (usr.count != 8)){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
