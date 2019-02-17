@@ -247,7 +247,7 @@ class HistoryTableViewController: UITableViewController {
                 let date = Date()
                 let calander = Calendar.current
                 let lower_bound = calander.date(bySettingHour: 10, minute: 30, second: 0, of: date)
-                if date < lower_bound!{
+                if date > lower_bound!{
                     let alert = UIAlertController(title: "超過付款時間", message: "早上十點半後無法付款，明日請早", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
