@@ -682,7 +682,7 @@ Copyright 2019 Google
 
 ## FirebasePerformance
 
-Copyright 2018 Google
+Copyright 2019 Google
 
 ## FirebaseRemoteConfig
 

@@ -26,7 +26,7 @@ class HistoryTableViewController: UITableViewController {
         historyTableList = []
         Alamofire.request(dsURL("get_money")).responseString{ response in
             if response.error != nil {
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
@@ -42,7 +42,7 @@ class HistoryTableViewController: UITableViewController {
         }
         Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59" + "&history=true").responseData{response in
             if response.error != nil {
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
@@ -190,7 +190,7 @@ class HistoryTableViewController: UITableViewController {
         let unpaidAction = UIAlertAction(title: "取消訂單", style: .destructive, handler: {(action: UIAlertAction!) -> () in
             Alamofire.request("\(dsURL("delete_self"))&order_id=\(info.id!)").responseData{response in
                 if response.error != nil {
-                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
@@ -267,7 +267,7 @@ class HistoryTableViewController: UITableViewController {
                     hash = "{\"id\":\"\(info.id!)\",\"usr_id\":\"\(usr)\",\"usr_password\":\"\(pwd)\",\"pmt_password\":\"\(payment_pw)\",\"time\":\"\(timeStamp)\"}".sha512()
                     Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&hash=\(hash)").responseData{ response in
                         if response.error != nil {              //internetErr
-                            let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                            let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
                                 logout()
@@ -314,7 +314,7 @@ class HistoryTableViewController: UITableViewController {
                                 let oldBalance = balance
                                 Alamofire.request(dsURL("get_money")).responseString{ response in
                                     if response.error != nil {
-                                        let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                                        let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                             (action: UIAlertAction!) -> () in
                                             logout()

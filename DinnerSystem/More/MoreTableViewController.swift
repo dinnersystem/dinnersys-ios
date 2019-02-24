@@ -8,7 +8,8 @@
 
 import UIKit
 import Alamofire
-    var counter=0
+
+var counter=0
 class MoreTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -60,7 +61,7 @@ class MoreTableViewController: UITableViewController {
                 print("\(dsURL("change_password"))&old_pswd=\(oldPassword)&new_pswd=\(newPassword)")
                 Alamofire.request("\(dsURL("change_password"))&old_pswd=\(oldPassword)&new_pswd=\(newPassword)").responseData{ response in
                     if response.error != nil {
-                        let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                        let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
                             logout()

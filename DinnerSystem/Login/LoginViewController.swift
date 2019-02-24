@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
                 Crashlytics.sharedInstance().recordError(response.error!)
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\n\(response.error!)", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
@@ -126,7 +126,7 @@ class LoginViewController: UIViewController {
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     Crashlytics.sharedInstance().recordError(response.error!)
-                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡管理員。", preferredStyle: .alert)
+                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{
@@ -190,7 +190,7 @@ class LoginViewController: UIViewController {
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請注意網路連線狀態或聯絡開發者。", preferredStyle: .alert)
+                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\n\(response.error!)", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else{
