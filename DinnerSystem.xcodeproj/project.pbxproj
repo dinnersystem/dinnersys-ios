@@ -45,11 +45,7 @@
 		E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
 		E6995BB421FC296300F8C8F1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995BAE21FC296300F8C8F1 /* Order.swift */; };
-		E6AB60F02228246A0069FBD3 /* 401~416.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6AB60EB2228245F0069FBD3 /* 401~416.pdf */; };
-		E6AB60F12228246A0069FBD3 /* 449~464.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6AB60EC222824610069FBD3 /* 449~464.pdf */; };
-		E6AB60F22228246A0069FBD3 /* 433~448.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6AB60ED222824640069FBD3 /* 433~448.pdf */; };
-		E6AB60F32228246A0069FBD3 /* 465~478,398~400.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6AB60EE222824660069FBD3 /* 465~478,398~400.pdf */; };
-		E6AB60F42228246A0069FBD3 /* 417~432.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E6AB60EF2228246A0069FBD3 /* 417~432.pdf */; };
+		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
 		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -133,12 +129,8 @@
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6AB60EB2228245F0069FBD3 /* 401~416.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "401~416.pdf"; sourceTree = "<group>"; };
-		E6AB60EC222824610069FBD3 /* 449~464.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "449~464.pdf"; sourceTree = "<group>"; };
-		E6AB60ED222824640069FBD3 /* 433~448.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "433~448.pdf"; sourceTree = "<group>"; };
-		E6AB60EE222824660069FBD3 /* 465~478,398~400.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "465~478,398~400.pdf"; sourceTree = "<group>"; };
-		E6AB60EF2228246A0069FBD3 /* 417~432.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "417~432.pdf"; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -361,11 +353,7 @@
 		E6AB60EA222824230069FBD3 /* OK */ = {
 			isa = PBXGroup;
 			children = (
-				E6AB60EB2228245F0069FBD3 /* 401~416.pdf */,
-				E6AB60EF2228246A0069FBD3 /* 417~432.pdf */,
-				E6AB60ED222824640069FBD3 /* 433~448.pdf */,
-				E6AB60EC222824610069FBD3 /* 449~464.pdf */,
-				E6AB60EE222824660069FBD3 /* 465~478,398~400.pdf */,
+				E6E38CA6222A0480007440F8 /* sutra.swift */,
 			);
 			path = OK;
 			sourceTree = "<group>";
@@ -504,15 +492,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6AB60F12228246A0069FBD3 /* 449~464.pdf in Resources */,
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
 				E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
-				E6AB60F42228246A0069FBD3 /* 417~432.pdf in Resources */,
-				E6AB60F02228246A0069FBD3 /* 401~416.pdf in Resources */,
-				E6AB60F32228246A0069FBD3 /* 465~478,398~400.pdf in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
-				E6AB60F22228246A0069FBD3 /* 433~448.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +614,7 @@
 				E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */,
 				E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */,
 				E6995B9E21FC24F100F8C8F1 /* Menu.swift in Sources */,
+				E6E38CA7222A0480007440F8 /* sutra.swift in Sources */,
 				E6995B9F21FC24F100F8C8F1 /* Department.swift in Sources */,
 				E6995BA021FC24F100F8C8F1 /* Factory.swift in Sources */,
 				E6995BA121FC24F100F8C8F1 /* Vege.swift in Sources */,
