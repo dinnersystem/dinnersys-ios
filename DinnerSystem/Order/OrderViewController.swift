@@ -11,13 +11,78 @@ import UIKit
 import Alamofire
 import TrueTime
 
-class orderViewController: UIViewController{
-    @IBOutlet var label: UILabel!
+class orderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    
+    
+    @IBOutlet var nameView: UITableView!
+    @IBOutlet var qtyView: UITableView!
+    @IBOutlet var costView: UITableView!
+    var foodArray: [selectedFoodArray] = []
     override func viewDidLoad() {
-        label.text! = "您選擇的餐點是\(selectedFood.name)，價錢為\(selectedFood.cost)元，確定請按訂餐。\n請注意早上十點後將無法點餐!"
-        label.sizeToFit()
+        foodArray.removeAll()
+        foodArray.append(selectedFoodArray(name: selectedFood.name, qty: "x1", cost: selectedFood.cost))
+        foodArray.append(selectedFoodArray(name: "小計", qty: "x1", cost: selectedFood.cost))
     }
     
+    //MARK: - tableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return foodArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell: UITableViewCell
+        if tableView == nameView{
+            cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
+        }else if tableView == qtyView{
+            cell = tableView.dequeueReusableCell(withIdentifier: "qtyCell", for: indexPath)
+        }else if tableView == costView{
+            cell = tableView.dequeueReusableCell(withIdentifier: "costCell", for: indexPath)
+        }else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
+        }
+        let info = foodArray[indexPath.row]
+        if tableView == nameView{
+            cell.textLabel?.text = info.name
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
+            return cell
+        }else if tableView == qtyView{
+            cell.textLabel?.text = info.qty
+            
+            return cell
+        }else if tableView == costView{
+            cell.textLabel?.text = info.cost
+            return cell
+        }else{
+            cell.textLabel?.text = ""
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch tableView {
+        case nameView: return "名稱"
+        case qtyView: return "數量"
+        case costView: return "價格"
+        default: return nil
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if(self.costView == scrollView){
+            self.nameView.contentOffset = scrollView.contentOffset
+            self.qtyView.contentOffset = scrollView.contentOffset
+        }else if(self.nameView == scrollView){
+            self.costView.contentOffset = scrollView.contentOffset
+            self.qtyView.contentOffset = scrollView.contentOffset
+        }else if(self.qtyView == scrollView){
+            self.costView.contentOffset = scrollView.contentOffset
+            self.nameView.contentOffset = scrollView.contentOffset
+        }
+    }
+    
+    //MARK: - orderButton
     @IBAction func order(_ sender: Any)  {
         var orderResult = ""
         let date = Date()

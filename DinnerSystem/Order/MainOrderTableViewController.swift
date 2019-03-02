@@ -113,7 +113,7 @@ class MainOrderTableViewController: UITableViewController {
                 
             }
             Alamofire.request(dsURL("get_money")).responseString{ response in
-                if response.error != nil {
+                if response.error != nil && response.result.value!.contains("timeout") {
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in

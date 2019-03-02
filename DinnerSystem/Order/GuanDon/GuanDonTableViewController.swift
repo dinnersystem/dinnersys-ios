@@ -53,7 +53,7 @@ class GuanDonTableViewController: UITableViewController{
         ord.url = ""
         //let sr = tableView.indexPathsForSelectedRows
         ord.url = dsURL("make_self_order")
-        
+        foodArr.removeAll()
         /*
          var i = selected - 1
          while i>=0 {
@@ -67,6 +67,7 @@ class GuanDonTableViewController: UITableViewController{
          i -= 1
          }
          */
+        
         for item in orderDict{
             var i=0
             while i<item.value{
@@ -76,7 +77,8 @@ class GuanDonTableViewController: UITableViewController{
         }
         for item in orderDict{
             if(item.value > 0){
-                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
+//                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
+                foodArr.append(selectedFoodArray(name: originMenuArr[Int(item.key)!-1].dishName!, qty: "x\(item.value)", cost: originMenuArr[Int(item.key)!-1].dishCost!))
             }
             
         }
@@ -84,6 +86,7 @@ class GuanDonTableViewController: UITableViewController{
         print(ord.url)
         selectedFood.cost = String(totalCost)
         selectedFood.name = ord.name
+        foodArr.append(selectedFoodArray(name: "小計", qty: "x\(selected)", cost: String(totalCost)))
         /*
          Alamofire.request(ord.url).responseString{response in
          selectedFood.id = response.value!

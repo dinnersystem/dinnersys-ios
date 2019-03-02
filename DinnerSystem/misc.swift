@@ -23,6 +23,19 @@ struct selectedFood {
     static var cost: String = ""
 }
 
+struct selectedFoodArray {
+    var name: String = ""
+    var qty: String = ""
+    var cost: String = ""
+    init (name: String, qty: String, cost: String){
+        self.cost = cost
+        self.qty = qty
+        self.name = name
+    }
+}
+var foodArr: [selectedFoodArray] = []
+
+
 /*
 struct loginInfo{
     static var usr = ""
