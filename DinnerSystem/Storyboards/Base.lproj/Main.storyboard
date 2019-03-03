@@ -513,7 +513,13 @@
                             <outlet property="delegate" destination="ptZ-Lb-irF" id="97p-gj-hXb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="訂餐" id="Ye6-I3-w08"/>
+                    <navigationItem key="navigationItem" title="訂餐" id="Ye6-I3-w08">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="1vf-RU-IMD">
+                            <connections>
+                                <action selector="reload:" destination="ptZ-Lb-irF" id="HHs-1P-RVH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLM-1h-KQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1073,7 +1079,7 @@
                                 <rect key="frame" x="162" y="549" width="197" height="32"/>
                                 <state key="normal" title="訂餐" backgroundImage="confirmButton"/>
                                 <connections>
-                                    <action selector="order:" destination="9NA-bb-m3u" eventType="touchUpInside" id="Y0m-b3-Syy"/>
+                                    <action selector="sendOrder:" destination="9NA-bb-m3u" eventType="touchUpInside" id="Aoc-Aw-MX9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="超過十點後無法點餐，請注意時間！ 請選擇取餐時間後，按下訂餐。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Zjl-Dn-zCI">

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 let decoder = JSONDecoder()
-let versionNumber = 201900004
+let versionNumber = 201900005
 func dsURL(_ cmd: String) -> String{
     return "https://dinnersystem.com/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
 }
@@ -35,6 +35,11 @@ struct selectedFoodArray {
 }
 var foodArr: [selectedFoodArray] = []
 
+extension String {
+    var isInt: Bool {
+        return Int(self) != nil
+    }
+}
 
 /*
 struct loginInfo{

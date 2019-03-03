@@ -63,7 +63,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch tableView {
         case nameView: return "名稱"
         case qtyView: return "數量"
-        case costView: return "價格"
+        case costView: return "單價"
         default: return nil
         }
     }
