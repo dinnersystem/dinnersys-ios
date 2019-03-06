@@ -24,21 +24,30 @@ class HistoryTableViewController: UITableViewController {
         today = formatter.string(from: date)
         print(today)
         historyTableList = []
-        Alamofire.request(dsURL("get_money")).responseString{ response in
-            if response.error != nil {
-                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+        do{
+            let balanceRepsonse = try String(contentsOf: URL(string: dsURL("get_money"))!)
+            if balanceRepsonse.isInt {
+                balance = Int(balanceRepsonse)!
+                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
+            }else{
+                print(balanceRepsonse)
+                let alert = UIAlertController(title: "請重新登入", message: "讀取餘額失敗，請再試一次，若反覆出現請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
                     self.dismiss(animated: true, completion: nil)
                 }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }else{
-                print(response.result.value!)
-                let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
-                balance = Int(string)!
-                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
+                self.present(alert, animated: true, completion: nil)
             }
+        }catch let error{
+            print(error)
+            let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                (action: UIAlertAction!) -> () in
+                logout()
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(errorAlert, animated: true, completion: nil)
         }
         Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59" + "&history=true").responseData{response in
             if response.error != nil {
@@ -312,23 +321,35 @@ class HistoryTableViewController: UITableViewController {
                             do{
                                 _ = try JSONSerialization.jsonObject(with: response.data!)
                                 let oldBalance = balance
-                                Alamofire.request(dsURL("get_money")).responseString{ response in
-                                    if response.error != nil {
-                                        let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                do{
+                                    let balanceRepsonse = try String(contentsOf: URL(string: dsURL("get_money"))!)
+                                    if balanceRepsonse.isInt {
+                                        balance = Int(balanceRepsonse)!
+                                    }else{
+                                        print(balanceRepsonse)
+                                        let alert = UIAlertController(title: "請重新登入", message: "讀取餘額失敗，請再試一次，若反覆出現請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                             (action: UIAlertAction!) -> () in
                                             logout()
                                             self.dismiss(animated: true, completion: nil)
                                         }))
-                                        self.present(errorAlert, animated: true, completion: nil)
-                                    }else{
-                                        print(response.result.value!)
-                                        let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
-                                        balance = Int(string)!
+                                        self.present(alert, animated: true, completion: nil)
                                     }
+                                }catch let error{
+                                    print(error)
+                                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                        (action: UIAlertAction!) -> () in
+                                        logout()
+                                        self.dismiss(animated: true, completion: nil)
+                                    }))
+                                    self.present(errorAlert, animated: true, completion: nil)
                                 }
                                 if (oldBalance - Int(info.money!.charge!)!) != balance{
                                     let error = NSError(domain: "dinnersystem.error.balanceNotCorresponding", code: 1313, userInfo: nil)
+                                    let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
+                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                    self.present(errorAlert, animated: true, completion: nil)
                                     Crashlytics.sharedInstance().recordError(error)
                                 }
                                 let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)

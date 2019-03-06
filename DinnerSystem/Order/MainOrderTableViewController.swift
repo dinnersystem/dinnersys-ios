@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import TrueTime
+import Crashlytics
 
 class MainOrderTableViewController: UITableViewController {
     
@@ -112,8 +113,8 @@ class MainOrderTableViewController: UITableViewController {
                             do{
                                 let remainResponse = try Data(contentsOf: URL(string: "\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)")!)
                                 guanDonMenuArr[i] = try decoder.decode(Menu.self, from: remainResponse)
-                            }catch let error{
-                                print(error)
+                            }catch let responseError{
+                                Crashlytics.sharedInstance().recordError(responseError)
                                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                     (action: UIAlertAction!) -> () in
@@ -124,7 +125,7 @@ class MainOrderTableViewController: UITableViewController {
                             }
                         }
                     }catch let error{
-                        print(error)
+                        Crashlytics.sharedInstance().recordError(error)
                         let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
@@ -169,7 +170,7 @@ class MainOrderTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
             }catch let error{
-                print(error)
+                Crashlytics.sharedInstance().recordError(error)
                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in

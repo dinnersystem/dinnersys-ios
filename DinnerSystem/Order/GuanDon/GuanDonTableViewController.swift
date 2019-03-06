@@ -99,7 +99,7 @@ class GuanDonTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton()
-        self.title = "關東煮（餘額: \(balance)）"
+        self.navigationItem.title = "關東煮（餘額: \(balance)）"
         self.tableView.reloadData()
     }
     
