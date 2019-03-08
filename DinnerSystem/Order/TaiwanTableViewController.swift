@@ -12,7 +12,7 @@ class TaiwanTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.title = "台灣小吃部" + "（餘額: \(balance)）"
+        self.navigationItem.title = "台灣小吃部" + "（餘額: \(balance)）"
         self.tableView.reloadData()
     }
 

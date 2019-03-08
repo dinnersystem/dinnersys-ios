@@ -171,6 +171,7 @@ class MainOrderTableViewController: UITableViewController {
                 }
             }catch let error{
                 Crashlytics.sharedInstance().recordError(error)
+                print(error)
                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
