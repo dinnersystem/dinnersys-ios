@@ -92,10 +92,10 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //time lock
         let calander = Calendar.current
-        let lower_bound = calander.date(bySettingHour: 10, minute: 0, second: 0, of: date)
+        let lower_bound = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
         //end
         if date > lower_bound! {
-            let alert = UIAlertController(title: "超過訂餐時間", message: "早上十點後無法訂餐，明日請早", preferredStyle: .alert)
+            let alert = UIAlertController(title: "超過訂餐時間", message: "早上十點十分後無法訂餐，明日請早", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
                 self.navigationController?.popViewController(animated: true)

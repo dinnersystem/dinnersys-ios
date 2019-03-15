@@ -16,6 +16,7 @@ struct Factory : Codable {
 	let name : String?
 	let prepareTime : String?
 	let upperBound : String?
+    let soldOut: String?
 
 
 	enum CodingKeys: String, CodingKey {
@@ -26,6 +27,7 @@ struct Factory : Codable {
 		case name = "name"
 		case prepareTime = "prepare_time"
 		case upperBound = "upper_bound"
+        case soldOut = "sold_out"
 	}
     init(allowCustom : String? = nil,
          disabled : String? = nil,
@@ -33,7 +35,8 @@ struct Factory : Codable {
          lowerBound : String? = nil,
          name : String? = nil,
          prepareTime : String? = nil,
-         upperBound : String? = nil
+         upperBound : String? = nil,
+         soldOut: String? = nil
         ){
         self.allowCustom = allowCustom
         self.disabled = disabled
@@ -42,6 +45,7 @@ struct Factory : Codable {
         self.name = name
         self.prepareTime = prepareTime
         self.upperBound = upperBound
+        self.soldOut = soldOut
     }
 
 

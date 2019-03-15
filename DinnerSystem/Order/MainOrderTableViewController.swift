@@ -79,6 +79,8 @@ class MainOrderTableViewController: UITableViewController {
                         for food in mainMenuArr{
                             if food.isIdle! == "1"{
                                 mainMenuArr.remove(at: foodCount)
+                            }else if food.department?.factory!.soldOut == "1"{
+                                mainMenuArr.remove(at: foodCount)
                             }else{
                                 foodCount += 1
                             }
@@ -94,6 +96,7 @@ class MainOrderTableViewController: UITableViewController {
                                 guanDonMenuArr.append(food)
                             }
                         }
+                        /*
                         for i in 0..<guanDonMenuArr.count{
                             /*
                             Alamofire.request("\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)").responseString{ remainResponse in
@@ -124,6 +127,7 @@ class MainOrderTableViewController: UITableViewController {
                                 self.present(errorAlert, animated: true, completion: nil)
                             }
                         }
+                        */
                     }catch let error{
                         Crashlytics.sharedInstance().recordError(error)
                         let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)

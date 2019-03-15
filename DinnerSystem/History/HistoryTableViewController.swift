@@ -189,9 +189,11 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info = historyTableList[indexPath.row]
         info.recvDate = String(info.recvDate!.dropLast(3))
+        let timeBool = info.recvDate!.contains("11:00:00")
         let paid:Bool = info.money!.payment![0].paid! == "true" ? true : false
+        let timeAlertString = timeBool ? "付款請於上午九點半前付款！" : "付款請於上午十點半前付款！"
         let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n餐點內容：\(info.dishName!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.money!.charge!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
-            message: "付款請於上午十點半前付款！",
+            message: timeAlertString,
             preferredStyle: .actionSheet)
         let paidAction = UIAlertAction(title: "已付款者請聯絡合作社取消", style: .default, handler: nil)
         paidAction.isEnabled = false
@@ -253,11 +255,14 @@ class HistoryTableViewController: UITableViewController {
                 self.activityIndicator.startAnimating()
                 self.indicatorBackView.isHidden = false
                 //time
+                
                 let date = Date()
                 let calander = Calendar.current
-                let lower_bound = calander.date(bySettingHour: 10, minute: 30, second: 0, of: date)
-                if date > lower_bound!{
-                    let alert = UIAlertController(title: "超過付款時間", message: "早上十點半後無法付款，明日請早", preferredStyle: .alert)
+                let lower_bound_12 = calander.date(bySettingHour: 10, minute: 30, second: 0, of: date)
+                let lower_bound_11 = calander.date(bySettingHour: 9, minute: 30, second: 0, of: date)
+                if ((timeBool && date > lower_bound_11!) || (!timeBool && date > lower_bound_12!)){
+                    let alertStr = timeBool ? "早上九點半後無法付款，明日請早" : "早上十點半後無法付款，明日請早"
+                    let alert = UIAlertController(title: "超過付款時間", message: alertStr, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         self.navigationController?.popViewController(animated: true)
@@ -313,7 +318,7 @@ class HistoryTableViewController: UITableViewController {
                             let errorAlert = UIAlertController(title: "Error", message: "您輸入錯誤太多次，請稍候(約六十秒後)再試。", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)
-                        }else if responseStr.contains("Unable"){                //too many times
+                        }else if responseStr.contains("Unable") || responseStr.contains("dead"){                //too many times
                             let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)

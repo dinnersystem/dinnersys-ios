@@ -93,10 +93,12 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("\(ord.url)&time=\(currentDate)")
         //time lock
         let calander = Calendar.current
-        let lower_bound = calander.date(bySettingHour: 10, minute: 0, second: 0, of: date)
+        let lower_bound_12 = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
+        let lower_bound_11 = calander.date(bySettingHour: 9, minute: 10, second: 0, of: date)
         //end
-        if date > lower_bound! {
-            let alert = UIAlertController(title: "超過訂餐時間", message: "早上十點後無法訂餐，明日請早", preferredStyle: .alert)
+        if ((selectedTime == "-11:00:00" && date > lower_bound_11!) || (selectedTime == "-12:00:00" && date > lower_bound_12!)) {
+            let alertStr = selectedTime == "-11:00:00" ? "早上九點十分後無法訂餐，明日請早" : "早上十點十分後無法訂餐，明日請早"
+            let alert = UIAlertController(title: "超過訂餐時間", message: alertStr, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
                 self.navigationController?.popViewController(animated: true)

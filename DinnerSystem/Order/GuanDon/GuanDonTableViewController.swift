@@ -16,13 +16,13 @@ class GuanDonTableViewController: UITableViewController{
     var selected = 0
     var totalCost = 0
     var orderDict:[String:Int] = [:]
-    
+    var stepperDict:[String:Int] = [:]
     @IBOutlet var orderButton: UIButton!
     
     
     private func addButton(){
         orderButton.backgroundColor = .white
-        orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
+        orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
         //orderButton.setTitleColor(.blue, for: UIControl.State.normal)
         orderButton.isEnabled = false
         //tableView.addSubview(orderButton)
@@ -99,6 +99,10 @@ class GuanDonTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         addButton()
+        for i in 0..<guanDonMenuArr.count{
+            let info = guanDonMenuArr[i]
+            orderDict.updateValue(0, forKey: info.dishId!)
+        }
         self.navigationItem.title = "關東煮（餘額: \(balance)）"
         self.tableView.reloadData()
     }
@@ -126,6 +130,8 @@ class GuanDonTableViewController: UITableViewController{
         let info = guanDonMenuArr[indexPath.row]
         cell.titleText.text = info.dishName!
         cell.subtitleText.text = "\(info.dishCost!)$，剩\(info.remaining!)個"
+        cell.stepper.value = Double(orderDict[info.dishId!]!)
+        cell.qtyText.text = "\(Int(cell.stepper.value))份"
         cell.stepper.maximumValue = (Double(Int(info.remaining!)!)) > 5 ? 5.0 : (Double(Int(info.remaining!)!) > 0 ? Double(Int(info.remaining!)!) : 0 )
         cell.stepper.tag = indexPath.row
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
@@ -152,21 +158,32 @@ class GuanDonTableViewController: UITableViewController{
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
                 sender.value -= 1
-                cell.qtyText.text = String(Int(sender.value))
+                self.orderDict.updateValue(Int(sender.value), forKey: ingInfo.dishId!)
+                cell.qtyText.text = String(Int(sender.value)) + "份"
+                self.selected = 0
+                self.totalCost = 0
                 for item in self.orderDict{
+                    let dish = guanDonMenuArr.filter{ $0.dishId == item.key }
                     self.selected += item.value
-                    self.totalCost += (item.value * Int(ingInfo.dishCost!)!)
+                    self.totalCost += (item.value * Int(dish[0].dishCost!)!)
+                }
+                if self.selected > 0 && self.totalCost >= 40{
+                    self.orderButton.isEnabled = true
+                    self.orderButton.setTitle("共\(self.totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
+                }else{
+                    self.orderButton.isEnabled = false
+                    self.orderButton.setTitle("共\(self.totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
                 }
             }))
             self.present(alertController, animated: true, completion: nil)
         }
         print(orderDict)
-        if selected > 0 && totalCost >= 30{
+        if selected > 0 && totalCost >= 40{
             orderButton.isEnabled = true
-            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消30元)", for: UIControl.State.normal)
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
         }else{
             orderButton.isEnabled = false
-            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消30元)", for: UIControl.State.normal)
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
         }
     }
     
