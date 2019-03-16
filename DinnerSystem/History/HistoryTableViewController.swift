@@ -31,7 +31,7 @@ class HistoryTableViewController: UITableViewController {
                 self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
             }else{
                 print(balanceRepsonse)
-                let alert = UIAlertController(title: "請重新登入", message: "讀取餘額失敗，請再試一次，若反覆出現請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
@@ -332,7 +332,7 @@ class HistoryTableViewController: UITableViewController {
                                         balance = Int(balanceRepsonse)!
                                     }else{
                                         print(balanceRepsonse)
-                                        let alert = UIAlertController(title: "請重新登入", message: "讀取餘額失敗，請再試一次，若反覆出現請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                                        let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                             (action: UIAlertAction!) -> () in
                                             logout()
