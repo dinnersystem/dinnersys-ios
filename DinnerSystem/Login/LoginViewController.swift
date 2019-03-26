@@ -57,6 +57,7 @@ class LoginViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
+        /*
         Alamofire.request("\(dinnersysURL)frontend/u_move_u_dead/version.txt").responseString{ response in
             if response.error != nil {
                 self.indicatorBackView.isHidden = true
@@ -93,6 +94,34 @@ class LoginViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
             }
+        }
+        */
+        do{
+            let versionURL = URL(string: "\(dinnersysURL)frontend/u_move_u_dead/version.txt")!
+            let versionResponse = try Data(contentsOf: versionURL)
+            print(String(data: versionResponse, encoding: .utf8)!)
+            currentVersion = try decoder.decode(appVersion.self, from: versionResponse)
+            if !(currentVersion.ios!.contains(versionNumber)){
+                let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    UIApplication.shared.openURL(itmsURL)
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }catch let error{
+            print(error)
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            Crashlytics.sharedInstance().recordError(error)
+            self.present(alert,animated: true, completion: nil)
         }
     }
     

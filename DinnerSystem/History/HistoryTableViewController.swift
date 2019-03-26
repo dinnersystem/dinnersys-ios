@@ -189,9 +189,9 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info = historyTableList[indexPath.row]
         info.recvDate = String(info.recvDate!.dropLast(3))
-        let timeBool = info.recvDate!.contains("11:00:00")
+        let timeBool = info.recvDate!.contains("11:00")
         let paid:Bool = info.money!.payment![0].paid! == "true" ? true : false
-        let timeAlertString = timeBool ? "付款請於上午九點半前付款！" : "付款請於上午十點半前付款！"
+        let timeAlertString = timeBool ? "請於上午九點半前付款！" : "請於上午十點半前付款！"
         let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n餐點內容：\(info.dishName!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.money!.charge!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
             message: timeAlertString,
             preferredStyle: .actionSheet)

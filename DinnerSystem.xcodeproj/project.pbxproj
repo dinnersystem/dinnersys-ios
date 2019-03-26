@@ -11,8 +11,6 @@
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
-		E653E445200074F9000E35AE /* DinnerSystemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E444200074F9000E35AE /* DinnerSystemTests.swift */; };
-		E653E450200074F9000E35AE /* DinnerSystemUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
 		E6995B8521FC24F100F8C8F1 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */; };
 		E6995B8621FC24F100F8C8F1 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3021FC23ED00F8C8F1 /* History.swift */; };
@@ -50,23 +48,6 @@
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		E653E441200074F9000E35AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E653E424200074F8000E35AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E653E42B200074F9000E35AE;
-			remoteInfo = DinnerSystem;
-		};
-		E653E44C200074F9000E35AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E653E424200074F8000E35AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E653E42B200074F9000E35AE;
-			remoteInfo = DinnerSystem;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		E6996B6D201DE47100E62A5C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -92,12 +73,6 @@
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E653E440200074F9000E35AE /* DinnerSystemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DinnerSystemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E653E444200074F9000E35AE /* DinnerSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemTests.swift; sourceTree = "<group>"; };
-		E653E446200074F9000E35AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E653E44B200074F9000E35AE /* DinnerSystemUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DinnerSystemUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemUITests.swift; sourceTree = "<group>"; };
-		E653E451200074F9000E35AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E6995B3021FC23ED00F8C8F1 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -129,6 +104,10 @@
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6ACC6F3224A7396007B13F4 /* DinnerSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemUITests.swift; sourceTree = "<group>"; };
+		E6ACC6F4224A7396007B13F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6ACC6F6224A7396007B13F4 /* DinnerSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemTests.swift; sourceTree = "<group>"; };
+		E6ACC6F7224A7396007B13F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -144,20 +123,6 @@
 				E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */,
 				E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */,
 				DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E653E43D200074F9000E35AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E653E448200074F9000E35AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,9 +147,9 @@
 			children = (
 				E653E436200074F9000E35AE /* Assets.xcassets */,
 				E653E42E200074F9000E35AE /* DinnerSystem */,
-				E653E443200074F9000E35AE /* DinnerSystemTests */,
-				E653E44E200074F9000E35AE /* DinnerSystemUITests */,
 				E653E42D200074F9000E35AE /* Products */,
+				E6ACC6F5224A7396007B13F4 /* DinnerSystemTests */,
+				E6ACC6F2224A7396007B13F4 /* DinnerSystemUITests */,
 				E60AF6E9201DDE0300C48727 /* Frameworks */,
 				F732A48A9F12DB2BEA72190F /* Pods */,
 			);
@@ -194,8 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				E653E42C200074F9000E35AE /* DinnerSystem.app */,
-				E653E440200074F9000E35AE /* DinnerSystemTests.xctest */,
-				E653E44B200074F9000E35AE /* DinnerSystemUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,24 +179,6 @@
 				E60E4D0F214A105E007C4412 /* misc.swift */,
 			);
 			path = DinnerSystem;
-			sourceTree = "<group>";
-		};
-		E653E443200074F9000E35AE /* DinnerSystemTests */ = {
-			isa = PBXGroup;
-			children = (
-				E653E444200074F9000E35AE /* DinnerSystemTests.swift */,
-				E653E446200074F9000E35AE /* Info.plist */,
-			);
-			path = DinnerSystemTests;
-			sourceTree = "<group>";
-		};
-		E653E44E200074F9000E35AE /* DinnerSystemUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E653E44F200074F9000E35AE /* DinnerSystemUITests.swift */,
-				E653E451200074F9000E35AE /* Info.plist */,
-			);
-			path = DinnerSystemUITests;
 			sourceTree = "<group>";
 		};
 		E653E460200075D4000E35AE /* Storyboards */ = {
@@ -358,6 +303,24 @@
 			path = OK;
 			sourceTree = "<group>";
 		};
+		E6ACC6F2224A7396007B13F4 /* DinnerSystemUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E6ACC6F3224A7396007B13F4 /* DinnerSystemUITests.swift */,
+				E6ACC6F4224A7396007B13F4 /* Info.plist */,
+			);
+			path = DinnerSystemUITests;
+			sourceTree = "<group>";
+		};
+		E6ACC6F5224A7396007B13F4 /* DinnerSystemTests */ = {
+			isa = PBXGroup;
+			children = (
+				E6ACC6F6224A7396007B13F4 /* DinnerSystemTests.swift */,
+				E6ACC6F7224A7396007B13F4 /* Info.plist */,
+			);
+			path = DinnerSystemTests;
+			sourceTree = "<group>";
+		};
 		F732A48A9F12DB2BEA72190F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,42 +354,6 @@
 			productReference = E653E42C200074F9000E35AE /* DinnerSystem.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E653E43F200074F9000E35AE /* DinnerSystemTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E653E457200074F9000E35AE /* Build configuration list for PBXNativeTarget "DinnerSystemTests" */;
-			buildPhases = (
-				E653E43C200074F9000E35AE /* Sources */,
-				E653E43D200074F9000E35AE /* Frameworks */,
-				E653E43E200074F9000E35AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E653E442200074F9000E35AE /* PBXTargetDependency */,
-			);
-			name = DinnerSystemTests;
-			productName = DinnerSystemTests;
-			productReference = E653E440200074F9000E35AE /* DinnerSystemTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E653E44A200074F9000E35AE /* DinnerSystemUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E653E45A200074F9000E35AE /* Build configuration list for PBXNativeTarget "DinnerSystemUITests" */;
-			buildPhases = (
-				E653E447200074F9000E35AE /* Sources */,
-				E653E448200074F9000E35AE /* Frameworks */,
-				E653E449200074F9000E35AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E653E44D200074F9000E35AE /* PBXTargetDependency */,
-			);
-			name = DinnerSystemUITests;
-			productName = DinnerSystemUITests;
-			productReference = E653E44B200074F9000E35AE /* DinnerSystemUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -439,7 +366,7 @@
 				TargetAttributes = {
 					E653E42B200074F9000E35AE = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -452,18 +379,6 @@
 								enabled = 0;
 							};
 						};
-					};
-					E653E43F200074F9000E35AE = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
-						TestTargetID = E653E42B200074F9000E35AE;
-					};
-					E653E44A200074F9000E35AE = {
-						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 1000;
-						ProvisioningStyle = Automatic;
-						TestTargetID = E653E42B200074F9000E35AE;
 					};
 				};
 			};
@@ -481,8 +396,6 @@
 			projectRoot = "";
 			targets = (
 				E653E42B200074F9000E35AE /* DinnerSystem */,
-				E653E43F200074F9000E35AE /* DinnerSystemTests */,
-				E653E44A200074F9000E35AE /* DinnerSystemUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -496,20 +409,6 @@
 				E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E653E43E200074F9000E35AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E653E449200074F9000E35AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,36 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E653E43C200074F9000E35AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E653E445200074F9000E35AE /* DinnerSystemTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E653E447200074F9000E35AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E653E450200074F9000E35AE /* DinnerSystemUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E653E442200074F9000E35AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E653E42B200074F9000E35AE /* DinnerSystem */;
-			targetProxy = E653E441200074F9000E35AE /* PBXContainerItemProxy */;
-		};
-		E653E44D200074F9000E35AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E653E42B200074F9000E35AE /* DinnerSystem */;
-			targetProxy = E653E44C200074F9000E35AE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E653E438200074F9000E35AE /* LaunchScreen.storyboard */ = {
@@ -810,7 +680,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -835,74 +705,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		E653E458200074F9000E35AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22XQ2K3PZY;
-				INFOPLIST_FILE = DinnerSystemTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinnerSystem.app/DinnerSystem";
-			};
-			name = Debug;
-		};
-		E653E459200074F9000E35AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22XQ2K3PZY;
-				INFOPLIST_FILE = DinnerSystemTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DinnerSystem.app/DinnerSystem";
-			};
-			name = Release;
-		};
-		E653E45B200074F9000E35AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22XQ2K3PZY;
-				INFOPLIST_FILE = DinnerSystemUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DinnerSystem;
-			};
-			name = Debug;
-		};
-		E653E45C200074F9000E35AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 22XQ2K3PZY;
-				INFOPLIST_FILE = DinnerSystemUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystemUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = DinnerSystem;
 			};
 			name = Release;
 		};
@@ -923,24 +727,6 @@
 			buildConfigurations = (
 				E653E455200074F9000E35AE /* Debug */,
 				E653E456200074F9000E35AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E653E457200074F9000E35AE /* Build configuration list for PBXNativeTarget "DinnerSystemTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E653E458200074F9000E35AE /* Debug */,
-				E653E459200074F9000E35AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E653E45A200074F9000E35AE /* Build configuration list for PBXNativeTarget "DinnerSystemUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E653E45B200074F9000E35AE /* Debug */,
-				E653E45C200074F9000E35AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

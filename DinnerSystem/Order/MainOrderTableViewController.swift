@@ -79,8 +79,6 @@ class MainOrderTableViewController: UITableViewController {
                         for food in mainMenuArr{
                             if food.isIdle! == "1"{
                                 mainMenuArr.remove(at: foodCount)
-                            }else if food.department?.factory!.soldOut == "1"{
-                                mainMenuArr.remove(at: foodCount)
                             }else{
                                 foodCount += 1
                             }

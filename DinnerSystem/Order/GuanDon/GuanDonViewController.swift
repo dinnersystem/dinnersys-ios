@@ -47,7 +47,6 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
             return cell
         }else if tableView == qtyView{
             cell.textLabel?.text = info.qty
-            
             return cell
         }else if tableView == costView{
             cell.textLabel?.text = info.cost
@@ -123,7 +122,9 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
                     orderResult = "Logout"
                 }else if responseString.contains("Invalid"){
                     orderResult = "Error"
-                }else{
+                }else if responseString.contains("exceed"){
+                    orderResult = "limitExceed"
+                }else {
                     do{
                         orderInfo = try decoder.decode([Order].self, from: response.data!)
                         orderResult = "Success"
@@ -147,8 +148,11 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.present(alert, animated: true)
                 case "Logout":
                     let alert = UIAlertController(title: "您已經登出", message: "請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    logout()
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.dismiss(animated: true, completion: nil)
+                    }))
                     self.present(alert, animated: true)
                 case "Success":
                     let alert = UIAlertController(title: "點餐成功", message: "訂單編號\(orderInfo[0].id!),請記得付款！", preferredStyle: .actionSheet)
@@ -160,6 +164,14 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
                 case "Error":
                     let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                case "limitExceed":
+                    let alert = UIAlertController(title: "餐點已售完", message: "您的訂單中似乎有一或多項餐點已售完", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.dismiss(animated: true, completion: nil)
+                    }))
                     self.present(alert, animated: true)
                 default:
                     let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
