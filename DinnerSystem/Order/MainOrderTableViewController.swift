@@ -80,6 +80,9 @@ class MainOrderTableViewController: UITableViewController {
                             if food.isIdle! == "1"{
                                 mainMenuArr.remove(at: foodCount)
                             }else{
+                                if Int(food.remaining!)! == Int32.max{
+                                    mainMenuArr[foodCount].remaining = "1000"
+                                }
                                 foodCount += 1
                             }
                         }

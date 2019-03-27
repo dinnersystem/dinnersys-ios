@@ -104,10 +104,6 @@
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6ACC6F3224A7396007B13F4 /* DinnerSystemUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemUITests.swift; sourceTree = "<group>"; };
-		E6ACC6F4224A7396007B13F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6ACC6F6224A7396007B13F4 /* DinnerSystemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DinnerSystemTests.swift; sourceTree = "<group>"; };
-		E6ACC6F7224A7396007B13F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -148,8 +144,6 @@
 				E653E436200074F9000E35AE /* Assets.xcassets */,
 				E653E42E200074F9000E35AE /* DinnerSystem */,
 				E653E42D200074F9000E35AE /* Products */,
-				E6ACC6F5224A7396007B13F4 /* DinnerSystemTests */,
-				E6ACC6F2224A7396007B13F4 /* DinnerSystemUITests */,
 				E60AF6E9201DDE0300C48727 /* Frameworks */,
 				F732A48A9F12DB2BEA72190F /* Pods */,
 			);
@@ -246,10 +240,10 @@
 		E6995B4621FC23ED00F8C8F1 /* Order */ = {
 			isa = PBXGroup;
 			children = (
+				E6995B4E21FC23ED00F8C8F1 /* JSON */,
+				E6995B4921FC23ED00F8C8F1 /* GuanDon */,
 				E6995B4721FC23ED00F8C8F1 /* AiJiaTableViewController.swift */,
 				E6995B4821FC23ED00F8C8F1 /* BreakfastTableViewController.swift */,
-				E6995B4921FC23ED00F8C8F1 /* GuanDon */,
-				E6995B4E21FC23ED00F8C8F1 /* JSON */,
 				E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */,
 				E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */,
 				E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */,
@@ -301,24 +295,6 @@
 				E6E38CA6222A0480007440F8 /* sutra.swift */,
 			);
 			path = OK;
-			sourceTree = "<group>";
-		};
-		E6ACC6F2224A7396007B13F4 /* DinnerSystemUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E6ACC6F3224A7396007B13F4 /* DinnerSystemUITests.swift */,
-				E6ACC6F4224A7396007B13F4 /* Info.plist */,
-			);
-			path = DinnerSystemUITests;
-			sourceTree = "<group>";
-		};
-		E6ACC6F5224A7396007B13F4 /* DinnerSystemTests */ = {
-			isa = PBXGroup;
-			children = (
-				E6ACC6F6224A7396007B13F4 /* DinnerSystemTests.swift */,
-				E6ACC6F7224A7396007B13F4 /* Info.plist */,
-			);
-			path = DinnerSystemTests;
 			sourceTree = "<group>";
 		};
 		F732A48A9F12DB2BEA72190F /* Pods */ = {
@@ -674,7 +650,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -700,7 +676,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";

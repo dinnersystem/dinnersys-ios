@@ -37,11 +37,22 @@ class BreakfastTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store2Cell", for: indexPath)
-
+        let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
+        let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
         let info = cafetMenuArr[indexPath.row]
         cell.textLabel?.text = info.dishName!
         cell.detailTextLabel?.text = info.dishCost! + "$"
-
+        if info.bestSeller == "true" {
+            cell.detailTextLabel?.text = cell.detailTextLabel!.text! + "，人氣商品！"
+            cell.backgroundColor = backgroundColor
+            cell.textLabel?.textColor = foregroundColor
+            cell.detailTextLabel?.textColor = foregroundColor
+            cell.detailTextLabel?.alpha = 0.8
+        }else{
+            cell.backgroundColor = UIColor.white
+            cell.textLabel?.textColor = UIColor.darkText
+            cell.detailTextLabel?.textColor = UIColor.darkText
+        }
         return cell
     }
  

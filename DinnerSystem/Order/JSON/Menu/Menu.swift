@@ -16,7 +16,7 @@ var originMenuArr:[Menu] = []
 
 struct Menu : Codable {
     
-
+    let bestSeller : String?
 	let dailyProduce : String?
 	let department : Department?
 	let dishCost : String?
@@ -28,6 +28,7 @@ struct Menu : Codable {
 
 
 	enum CodingKeys: String, CodingKey {
+        case bestSeller = "best_seller"
 		case dailyProduce = "daily_produce"
 		case department
 		case dishCost = "dish_cost"
@@ -37,15 +38,17 @@ struct Menu : Codable {
 		case remaining = "remaining"
 		case vege
 	}
-    init(dailyProduce : String? = nil,
-         department : Department? = nil,
-         dishCost : String? = nil,
-         dishId : String? = nil,
-         dishName : String? = nil,
-         isIdle : String? = nil,
-         remaining : String? = nil,
-         vege : Vege? = nil
+    init(bestSeller : String? = nil,
+        dailyProduce : String? = nil,
+        department : Department? = nil,
+        dishCost : String? = nil,
+        dishId : String? = nil,
+        dishName : String? = nil,
+        isIdle : String? = nil,
+        remaining : String? = nil,
+        vege : Vege? = nil
         ){
+        self.bestSeller = bestSeller
         self.dailyProduce = dailyProduce
         self.department = department
         self.dishCost = dishCost

@@ -135,7 +135,21 @@ class GuanDonTableViewController: UITableViewController{
         cell.stepper.maximumValue = (Double(Int(info.remaining!)!)) > 5 ? 5.0 : (Double(Int(info.remaining!)!) > 0 ? Double(Int(info.remaining!)!) : 0 )
         cell.stepper.tag = indexPath.row
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
-        
+        let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
+        let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
+        if info.bestSeller == "true" {
+            cell.subtitleText.text = cell.subtitleText.text! + "，人氣商品！"
+            cell.backgroundColor = backgroundColor
+            cell.titleText.textColor = foregroundColor
+            cell.subtitleText.textColor = foregroundColor
+            cell.qtyText.textColor = foregroundColor
+            cell.stepper.tintColor = foregroundColor
+            cell.detailTextLabel?.alpha = 0.8
+        }else{
+            cell.backgroundColor = UIColor.white
+            cell.textLabel?.textColor = UIColor.darkText
+            cell.detailTextLabel?.textColor = UIColor.darkText
+        }
         return cell
     }
     
