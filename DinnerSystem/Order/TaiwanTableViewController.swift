@@ -44,10 +44,10 @@ class TaiwanTableViewController: UITableViewController {
             cell.textLabel?.textColor = foregroundColor
             cell.detailTextLabel?.textColor = foregroundColor
             cell.detailTextLabel?.alpha = 0.8
-            cell.layer.borderWidth = 5.0
-            cell.layer.borderColor = foregroundColor.cgColor
+            //cell.layer.borderWidth = 5.0
+            //cell.layer.borderColor = foregroundColor.cgColor
         }else{
-            cell.layer.borderColor = UIColor.white.cgColor
+            //cell.layer.borderColor = UIColor.white.cgColor
             cell.backgroundColor = UIColor.white
             cell.textLabel?.textColor = UIColor.darkText
             cell.detailTextLabel?.textColor = UIColor.darkText
