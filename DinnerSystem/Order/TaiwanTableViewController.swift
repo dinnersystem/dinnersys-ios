@@ -32,8 +32,10 @@ class TaiwanTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store1Cell", for: indexPath)
         let info = taiwanMenuArr[indexPath.row]
-        let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
-        let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
+        //let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
+        let backgroundColor = UIColor.white
+        //let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
+        let foregroundColor = UIColor(red:1.00, green:0.27, blue:0.27, alpha:1.0)
         cell.textLabel?.text = info.dishName!
         cell.detailTextLabel?.text = "\(info.dishCost!)$"
         if info.bestSeller == "true" {
@@ -42,7 +44,10 @@ class TaiwanTableViewController: UITableViewController {
             cell.textLabel?.textColor = foregroundColor
             cell.detailTextLabel?.textColor = foregroundColor
             cell.detailTextLabel?.alpha = 0.8
+            cell.layer.borderWidth = 5.0
+            cell.layer.borderColor = foregroundColor.cgColor
         }else{
+            cell.layer.borderColor = UIColor.white.cgColor
             cell.backgroundColor = UIColor.white
             cell.textLabel?.textColor = UIColor.darkText
             cell.detailTextLabel?.textColor = UIColor.darkText

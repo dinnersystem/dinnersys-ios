@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
   - CryptoSwift (0.15.0)
@@ -98,7 +98,7 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
-  - ReachabilitySwift (4.3.0)
+  - ReachabilitySwift (4.3.1)
   - Result (4.1.0)
   - TrueTime (5.0.0):
     - Result (~> 4.0)
@@ -144,11 +144,11 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   TrueTime:
-    :commit: e8fdc02de15f3ee0c91a7782dc85b58375e11a7b
+    :commit: 228bc5e44f09dcea617013f9c022efdbcc61c9d9
     :git: https://github.com/instacart/TrueTime.swift
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
@@ -167,7 +167,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
-  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   TrueTime: afc518d4cd403fade556b1bed84450fe47b3fa91
 

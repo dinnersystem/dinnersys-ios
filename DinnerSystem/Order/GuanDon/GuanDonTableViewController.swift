@@ -147,8 +147,10 @@ class GuanDonTableViewController: UITableViewController{
             cell.detailTextLabel?.alpha = 0.8
         }else{
             cell.backgroundColor = UIColor.white
-            cell.textLabel?.textColor = UIColor.darkText
-            cell.detailTextLabel?.textColor = UIColor.darkText
+            cell.titleText.textColor = UIColor.darkText
+            cell.subtitleText.textColor = UIColor.darkText
+            cell.qtyText.textColor = UIColor.darkText
+            cell.stepper.tintColor = UIColor.blue
         }
         return cell
     }

@@ -54,9 +54,7 @@ class LoginViewController: UIViewController {
         }else{
             print("token:"+fcmToken)
         }
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        self.activityIndicator.startAnimating()
-        self.indicatorBackView.isHidden = false
+        
         /*
         Alamofire.request("\(dinnersysURL)frontend/u_move_u_dead/version.txt").responseString{ response in
             if response.error != nil {
@@ -96,6 +94,13 @@ class LoginViewController: UIViewController {
             }
         }
         */
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.activityIndicator.startAnimating()
+        self.indicatorBackView.isHidden = false
         do{
             let versionURL = URL(string: "\(dinnersysURL)frontend/u_move_u_dead/version.txt")!
             let versionResponse = try Data(contentsOf: versionURL)
@@ -105,7 +110,7 @@ class LoginViewController: UIViewController {
                 let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
-                    UIApplication.shared.openURL(itmsURL)
+                    UIApplication.shared.open(itmsURL, options: [:], completionHandler: nil)
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
@@ -124,7 +129,6 @@ class LoginViewController: UIViewController {
             self.present(alert,animated: true, completion: nil)
         }
     }
-    
     // MARK: - quitKeyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         username.resignFirstResponder()
