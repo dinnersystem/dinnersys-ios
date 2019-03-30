@@ -16,7 +16,7 @@ class GuanDonTableViewController: UITableViewController{
     var selected = 0
     var totalCost = 0
     var orderDict:[String:Int] = [:]
-    var stepperDict:[String:Int] = [:]
+    var stepperDict:[Int:Int] = [:]
     @IBOutlet var orderButton: UIButton!
     
     
@@ -29,19 +29,19 @@ class GuanDonTableViewController: UITableViewController{
         
         //position
         /*
-        orderButton.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 11.0, *) {
-            orderButton.leftAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.leftAnchor).isActive = true
-            orderButton.rightAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.rightAnchor).isActive = true
-            orderButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor).isActive = true
-            orderButton.widthAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.widthAnchor).isActive = true
-        } else {
-            orderButton.leftAnchor.constraint(equalTo: tableView.leftAnchor).isActive = true
-            orderButton.rightAnchor.constraint(equalTo: tableView.rightAnchor).isActive = true
-            orderButton.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
-            orderButton.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
-        }
-        */
+         orderButton.translatesAutoresizingMaskIntoConstraints = false
+         if #available(iOS 11.0, *) {
+         orderButton.leftAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.leftAnchor).isActive = true
+         orderButton.rightAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.rightAnchor).isActive = true
+         orderButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor).isActive = true
+         orderButton.widthAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.widthAnchor).isActive = true
+         } else {
+         orderButton.leftAnchor.constraint(equalTo: tableView.leftAnchor).isActive = true
+         orderButton.rightAnchor.constraint(equalTo: tableView.rightAnchor).isActive = true
+         orderButton.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+         orderButton.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
+         }
+         */
         
         //orderButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
         orderButton.addTarget(self, action: #selector(self.order(_:)), for: UIControl.Event.touchUpInside)
@@ -77,8 +77,10 @@ class GuanDonTableViewController: UITableViewController{
         }
         for item in orderDict{
             if(item.value > 0){
-//                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
-                foodArr.append(selectedFoodArray(name: originMenuArr[Int(item.key)!-1].dishName!, qty: "x\(item.value)", cost: originMenuArr[Int(item.key)!-1].dishCost!))
+                let food = guanDonMenuArr.filter{ $0.dishId == item.key }[0]
+                //                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
+                //foodArr.append(selectedFoodArray(name: originMenuArr[Int(item.key)!].dishName!, qty: "x\(item.value)", cost: originMenuArr[Int(item.key)!].dishCost!))
+                foodArr.append(selectedFoodArray(name: food.dishName!, qty: "x\(item.value)", cost: food.dishCost!))
             }
             
         }
@@ -133,10 +135,13 @@ class GuanDonTableViewController: UITableViewController{
         cell.stepper.value = Double(orderDict[info.dishId!]!)
         cell.qtyText.text = "\(Int(cell.stepper.value))份"
         cell.stepper.maximumValue = (Double(Int(info.remaining!)!)) > 5 ? 5.0 : (Double(Int(info.remaining!)!) > 0 ? Double(Int(info.remaining!)!) : 0 )
-        cell.stepper.tag = indexPath.row
+        cell.stepper.tag = Int(info.dishId!)!
+        stepperDict[Int(info.dishId!)!] = indexPath.row
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
-        let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
-        let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
+        //let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
+        //let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
+        let backgroundColor = UIColor.white
+        let foregroundColor = UIColor(red:1.00, green:0.27, blue:0.27, alpha:1.0)
         if info.bestSeller == "true" {
             cell.subtitleText.text = cell.subtitleText.text! + "，人氣商品！"
             cell.backgroundColor = backgroundColor
@@ -157,8 +162,8 @@ class GuanDonTableViewController: UITableViewController{
     
     @objc func stepperChanged(sender: UIStepper){
         print(sender.tag)
-        let ingInfo = guanDonMenuArr[sender.tag]
-        let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! GuanDonTableViewCell
+        let ingInfo = guanDonMenuArr.filter{ $0.dishId == String(sender.tag) }[0]
+        let cell = self.tableView.cellForRow(at: IndexPath(row: stepperDict[sender.tag]!, section: 0)) as! GuanDonTableViewCell
         orderDict.updateValue(Int(sender.value), forKey: ingInfo.dishId!)
         selected = 0
         totalCost = 0
