@@ -2,17 +2,17 @@ PODS:
   - Alamofire (4.8.2)
   - Crashlytics (3.10.9):
     - Fabric (~> 1.7.13)
-  - CryptoSwift (0.15.0)
+  - CryptoSwift (1.0.0)
   - Fabric (1.7.13)
-  - Firebase/Core (5.19.0):
+  - Firebase/Core (5.20.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.8.0)
-  - Firebase/CoreOnly (5.19.0):
-    - FirebaseCore (= 5.4.0)
-  - Firebase/Messaging (5.19.0):
+  - Firebase/CoreOnly (5.20.1):
+    - FirebaseCore (= 5.4.1)
+  - Firebase/Messaging (5.20.1):
     - Firebase/CoreOnly
-    - FirebaseMessaging (= 3.4.0)
-  - Firebase/Performance (5.19.0):
+    - FirebaseMessaging (= 3.5.0)
+  - Firebase/Performance (5.20.1):
     - Firebase/Core
     - FirebasePerformance (= 2.2.4)
   - FirebaseABTesting (2.0.0):
@@ -28,14 +28,14 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 5.2)"
     - nanopb (~> 0.3)
   - FirebaseAnalyticsInterop (1.2.0)
-  - FirebaseCore (5.4.0):
+  - FirebaseCore (5.4.1):
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/Logger (~> 5.2)
-  - FirebaseInstanceID (3.8.0):
+  - FirebaseInstanceID (3.8.1):
     - FirebaseCore (~> 5.2)
     - GoogleUtilities/Environment (~> 5.2)
     - GoogleUtilities/UserDefaults (~> 5.2)
-  - FirebaseMessaging (3.4.0):
+  - FirebaseMessaging (3.5.0):
     - FirebaseAnalyticsInterop (~> 1.1)
     - FirebaseCore (~> 5.2)
     - FirebaseInstanceID (~> 3.6)
@@ -150,15 +150,15 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
-  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
-  Firebase: c60d49e9c2630875a96207d15e2affb8364996d1
+  Firebase: 2f5235e62f141cb86181c3af0dfe4509706351ac
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: fd72a26bf8dac84cefba2f0864366f718555a5b0
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
-  FirebaseCore: 22a79a961c3951ef2f77b67bfbc99e454247b319
-  FirebaseInstanceID: cf488df2f4b79782f0e430b04a0e17c0aa7979b2
-  FirebaseMessaging: 2d53d08d752fbe63ce0820428d70be5ab87c11fb
+  FirebaseCore: f1a9a8be1aee4bf71a2fc0f4096df6788bdfda61
+  FirebaseInstanceID: a122b0c258720cf250551bb2bedf48c699f80d90
+  FirebaseMessaging: 4235f949ce1c4e827aeb19705ba5c53f9b85aa10
   FirebasePerformance: 25ecee2a260bcf398d7f32d6f4804438df953100
   FirebaseRemoteConfig: 7e11c65f0769c09bff6947997c209515058c5318
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e

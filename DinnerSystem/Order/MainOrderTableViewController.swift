@@ -10,14 +10,15 @@ import UIKit
 import Alamofire
 import TrueTime
 import Crashlytics
+import FirebaseMessaging
 
 class MainOrderTableViewController: UITableViewController {
-    
+    var uDefault: UserDefaults!
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        uDefault = UserDefaults.standard
         
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -31,6 +32,17 @@ class MainOrderTableViewController: UITableViewController {
         self.view.addSubview(indicatorBackView)
         self.view.addSubview(activityIndicator)
         
+        if usr == "06610233"{                                   //daily order notification
+            if uDefault.bool(forKey: "isSubbed"){
+                Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
+                    if error != nil{
+                        self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
+                    }else{
+                        self.present(createAlert("安安", "每日通知已開啟喔"), animated: true, completion: nil)
+                        self.uDefault.set(true, forKey: "isSubbed")}
+                }
+            }
+        }
         
         fetchData()
         

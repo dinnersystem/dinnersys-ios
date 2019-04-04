@@ -165,7 +165,7 @@ class LoginViewController: UIViewController {
                 }else{
                     let string = String(data: response.data!, encoding: .utf8)!
                     Crashlytics.sharedInstance().setObjectValue(string, forKey: "httpResponse")
-                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (string == "punish") || (string == "Punish") || (usr.count != 8) && (usr != "seanpai") && (usr != "dinnersys")){
+                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (string == "punish") || (string == "Punish") || (usr.count == 5)){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
@@ -230,7 +230,7 @@ class LoginViewController: UIViewController {
                     Crashlytics.sharedInstance().setObjectValue(String(data: response.data!, encoding: .utf8), forKey: "httpResponse")
                     let string = String(data: response.data!, encoding: .utf8)!
                     print(string)
-                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (usr.count != 8) && (usr != "seanpai") && (usr != "dinnersys")){
+                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (usr.count == 5)){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)

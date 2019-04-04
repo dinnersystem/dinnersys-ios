@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 let decoder = JSONDecoder()
-let versionNumber = 201900009
+let versionNumber = 201900011
 func dsURL(_ cmd: String) -> String{
     return "https://dinnersystem.com/dinnersys_beta/backend/backend.php?cmd=\(cmd)"
 }
@@ -61,3 +61,9 @@ var pwd = ""
 var fcmToken = ""
 var balance = 0
 let seatNumArr = Array(1...50)
+
+public func createAlert(_ title: String,_ message: String) -> UIAlertController{
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    return alert
+}
