@@ -33,7 +33,7 @@ class MainOrderTableViewController: UITableViewController {
         self.view.addSubview(activityIndicator)
         
         if usr == "06610233"{                                   //daily order notification
-            if uDefault.bool(forKey: "isSubbed"){
+            if !uDefault.bool(forKey: "isSubbed"){
                 Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
                     if error != nil{
                         self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
