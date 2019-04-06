@@ -12,7 +12,6 @@ struct LoginVege : Codable {
 	let name : String?
 	let number : String?
 
-
 	enum CodingKeys: String, CodingKey {
 		case name = "name"
 		case number = "number"
@@ -23,6 +22,5 @@ struct LoginVege : Codable {
         self.name = name
         self.number = number
     }
-
 
 }

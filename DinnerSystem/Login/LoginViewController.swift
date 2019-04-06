@@ -105,7 +105,7 @@ class LoginViewController: UIViewController {
             let versionURL = URL(string: "\(dinnersysURL)frontend/u_move_u_dead/version.txt")!
             let versionResponse = try Data(contentsOf: versionURL)
             print(String(data: versionResponse, encoding: .utf8)!)
-            currentVersion = try decoder.decode(appVersion.self, from: versionResponse)
+            currentVersion = try decoder.decode(AppVersion.self, from: versionResponse)
             if !(currentVersion.ios!.contains(versionNumber)){
                 let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {

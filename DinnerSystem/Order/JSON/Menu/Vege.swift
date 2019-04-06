@@ -24,5 +24,4 @@ struct Vege : Codable {
         self.number = number
     }
 
-
 }

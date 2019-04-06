@@ -109,38 +109,6 @@ class MainOrderTableViewController: UITableViewController {
                                 guanDonMenuArr.append(food)
                             }
                         }
-                        /*
-                        for i in 0..<guanDonMenuArr.count{
-                            /*
-                            Alamofire.request("\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)").responseString{ remainResponse in
-                                if remainResponse.error != nil {
-                                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                        (action: UIAlertAction!) -> () in
-                                        logout()
-                                        self.dismiss(animated: true, completion: nil)
-                                    }))
-                                    self.present(errorAlert, animated: true, completion: nil)
-                                }else{
-                                    guanDonMenuArr[i] = try! decoder.decode(Menu.self, from: remainResponse.data!)
-                                }
-                            }
-                            */
-                            do{
-                                let remainResponse = try Data(contentsOf: URL(string: "\(dsURL("get_remaining"))&id=\(guanDonMenuArr[i].dishId!)")!)
-                                guanDonMenuArr[i] = try decoder.decode(Menu.self, from: remainResponse)
-                            }catch let responseError{
-                                Crashlytics.sharedInstance().recordError(responseError)
-                                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                    (action: UIAlertAction!) -> () in
-                                    logout()
-                                    self.dismiss(animated: true, completion: nil)
-                                }))
-                                self.present(errorAlert, animated: true, completion: nil)
-                            }
-                        }
-                        */
                     }catch let error{
                         Crashlytics.sharedInstance().recordError(error)
                         let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
@@ -155,23 +123,6 @@ class MainOrderTableViewController: UITableViewController {
                 }
                 
             }
-            /*
-            Alamofire.request(dsURL("get_money")).responseString{ response in
-                if response.error != nil && response.result.value!.contains("timeout") {
-                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(errorAlert, animated: true, completion: nil)
-                }else{
-                    print(response.result.value!)
-                    let string = response.result.value!.trimmingCharacters(in: .whitespacesAndNewlines)
-                    balance = Int(string)!
-                }
-            }
-            */
             do{
                 let balanceRepsonse = try String(contentsOf: URL(string: dsURL("get_money"))!)
                 if balanceRepsonse.isInt {

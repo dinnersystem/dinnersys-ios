@@ -60,9 +60,9 @@ class BreakfastTableViewController: UITableViewController {
  
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let info = cafetMenuArr[indexPath.row]
-        selectedFood.id = info.dishId!
-        selectedFood.cost = info.dishCost!
-        selectedFood.name = info.dishName!
+        SelectedFood.id = info.dishId!
+        SelectedFood.cost = info.dishCost!
+        SelectedFood.name = info.dishName!
         self.performSegue(withIdentifier: "cafeteriaSegue", sender: nil)
     }
    

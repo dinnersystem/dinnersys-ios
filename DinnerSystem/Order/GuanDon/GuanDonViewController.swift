@@ -89,7 +89,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
         var orderResult = ""
         var currentDate = formatter.string(from: date)
         currentDate += selectedTime
-        print("\(ord.url)&time=\(currentDate)")
+        print("\(Ord.url)&time=\(currentDate)")
         //time lock
         let calander = Calendar.current
         let lower_bound_12 = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
@@ -104,7 +104,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
             }))
             self.present(alert, animated: true)
         }else{
-            Alamofire.request("\(ord.url)&time=\(currentDate)").responseData{response in
+            Alamofire.request("\(Ord.url)&time=\(currentDate)").responseData{response in
                 if response.error != nil {
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {

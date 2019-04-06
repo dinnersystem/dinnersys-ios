@@ -57,9 +57,9 @@ class TaiwanTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let info = taiwanMenuArr[indexPath.row]
-        selectedFood.cost = info.dishCost!
-        selectedFood.id = info.dishId!
-        selectedFood.name = info.dishName!
+        SelectedFood.cost = info.dishCost!
+        SelectedFood.id = info.dishId!
+        SelectedFood.name = info.dishName!
         self.performSegue(withIdentifier: "taiwanSegue", sender: nil)
     }
     

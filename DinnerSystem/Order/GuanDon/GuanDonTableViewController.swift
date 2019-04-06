@@ -49,29 +49,16 @@ class GuanDonTableViewController: UITableViewController{
     }
     
     @objc func order(_ sender: UIButton){
-        ord.name = ""
-        ord.url = ""
+        Ord.name = ""
+        Ord.url = ""
         //let sr = tableView.indexPathsForSelectedRows
-        ord.url = dsURL("make_self_order")
+        Ord.url = dsURL("make_self_order")
         foodArr.removeAll()
-        /*
-         var i = selected - 1
-         while i>=0 {
-         let info = guanDonMenuArr[sr![i][1]]
-         ord.url += "&dish_id[]=[\(sr![i][1])]"
-         if i>0 {
-         ord.name += "\(info.dishName!)+"
-         }else{
-         ord.name += "\(info.dishName!)"
-         }
-         i -= 1
-         }
-         */
         
         for item in orderDict{
             var i=0
             while i<item.value{
-                ord.url += "&dish_id[]=\(item.key)"
+                Ord.url += "&dish_id[]=\(item.key)"
                 i+=1
             }
         }
@@ -80,15 +67,15 @@ class GuanDonTableViewController: UITableViewController{
                 let food = guanDonMenuArr.filter{ $0.dishId == item.key }[0]
                 //                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
                 //foodArr.append(selectedFoodArray(name: originMenuArr[Int(item.key)!].dishName!, qty: "x\(item.value)", cost: originMenuArr[Int(item.key)!].dishCost!))
-                foodArr.append(selectedFoodArray(name: food.dishName!, qty: "x\(item.value)", cost: food.dishCost!))
+                foodArr.append(SelectedFoodArray(name: food.dishName!, qty: "x\(item.value)", cost: food.dishCost!))
             }
             
         }
-        ord.name = String(ord.name.dropLast())
-        print(ord.url)
-        selectedFood.cost = String(totalCost)
-        selectedFood.name = ord.name
-        foodArr.append(selectedFoodArray(name: "小計", qty: "x\(selected)", cost: String(totalCost)))
+        Ord.name = String(Ord.name.dropLast())
+        print(Ord.url)
+        SelectedFood.cost = String(totalCost)
+        SelectedFood.name = Ord.name
+        foodArr.append(SelectedFoodArray(name: "小計", qty: "x\(selected)", cost: String(totalCost)))
         /*
          Alamofire.request(ord.url).responseString{response in
          selectedFood.id = response.value!
@@ -208,79 +195,6 @@ class GuanDonTableViewController: UITableViewController{
         }
     }
     
-    
-    /*
-     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-     if let sr = tableView.indexPathsForSelectedRows {
-     if sr.count > limit {
-     let alertController = UIAlertController(title: "Oops", message:
-     "已達單次訂餐上限", preferredStyle: .alert)
-     alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-     self.present(alertController, animated: true, completion: nil)
-     
-     return nil
-     }
-     }
-     
-     
-     return indexPath
-     }
-     */
-    
-    
-    /*
-     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     print("selected  \(indexPath.row)")
-     let info = guanDonMenuArr[indexPath.row]
-     
-     totalCost += Int(info.dishCost!)!
-     if let cell = tableView.cellForRow(at: indexPath) {
-     if cell.isSelected {
-     cell.accessoryType = .checkmark
-     }
-     }
-     
-     if let sr = tableView.indexPathsForSelectedRows {
-     print("didDeselectRowAtIndexPath selected rows:\(sr)")
-     selected = sr.count
-     }
-     if selected > 0 && selected < 6{
-     orderButton.isEnabled = true
-     orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
-     }else{
-     orderButton.isEnabled = false
-     orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
-     }
-     
-     }
-     */
-    
-    /*
-     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-     print("deselected  \(indexPath.row)")
-     let info = guanDonMenuArr[indexPath.row]
-     
-     totalCost -= Int(info.dishCost!)!
-     if let cell = tableView.cellForRow(at: indexPath) {
-     cell.accessoryType = .none
-     }
-     
-     if let sr = tableView.indexPathsForSelectedRows {
-     print("didDeselectRow selected rows:\(sr)")
-     selected = sr.count
-     }else{
-     print("no selection")
-     selected = 0
-     }
-     if selected > 0 && selected < 6{
-     orderButton.isEnabled = true
-     orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
-     }else{
-     orderButton.isEnabled = false
-     orderButton.setTitle("共\(totalCost)元。按下完成點餐", for: UIControl.State.normal)
-     }
-     }
-     */
     
     
     

@@ -17,13 +17,13 @@ func dsURL(_ cmd: String) -> String{
 let itmsURL = URL(string: "itms-apps://itunes.apple.com/app/id1352943874")!
 let dinnersysURL = "https://dinnersystem.com/dinnersys_beta/"
 
-struct selectedFood {
+struct SelectedFood {
     static var name: String = ""
     static var id: String = ""
     static var cost: String = ""
 }
 
-struct selectedFoodArray {
+struct SelectedFoodArray {
     var name: String = ""
     var qty: String = ""
     var cost: String = ""
@@ -33,7 +33,7 @@ struct selectedFoodArray {
         self.name = name
     }
 }
-var foodArr: [selectedFoodArray] = []
+var foodArr: [SelectedFoodArray] = []
 
 extension String {
     var isInt: Bool {
@@ -49,10 +49,10 @@ struct loginInfo{
 */
 
 func logout(){
-    Alamofire.request("https://dinnersystem.com/dinnersys_beta/backend/backend.php?cmd=logout").responseData{ response in}
+    Alamofire.request("https://dinnersystem.com/dinnersys_beta/backend/backend.php?cmd=logout").responseData{_ in}
 }
 
-struct ord{
+struct Ord{
     static var url = ""
     static var name = ""
 }

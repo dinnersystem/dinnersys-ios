@@ -28,7 +28,6 @@ class AiJiaTableViewController: UITableViewController {
         return aiJiaMenuArr.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store3Cell", for: indexPath)
         let info = aiJiaMenuArr[indexPath.row]
@@ -54,9 +53,9 @@ class AiJiaTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let info = aiJiaMenuArr[indexPath.row]
-        selectedFood.cost = info.dishCost!
-        selectedFood.id = info.dishId!
-        selectedFood.name = info.dishName!
+        SelectedFood.cost = info.dishCost!
+        SelectedFood.id = info.dishId!
+        SelectedFood.name = info.dishName!
         self.performSegue(withIdentifier: "aiJiaSegue", sender: nil)
     }
     
