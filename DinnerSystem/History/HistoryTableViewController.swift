@@ -25,12 +25,13 @@ class HistoryTableViewController: UITableViewController {
         print(today)
         historyTableList = []
         do{
-            let balanceRepsonse = try String(contentsOf: URL(string: dsURL("get_money"))!)
-            if balanceRepsonse.isInt {
-                balance = Int(balanceRepsonse)!
-                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
-            }else{
-                print(balanceRepsonse)
+            let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+            do{
+                POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+                balance = Int(POSInfo.money!)!
+            }catch let error{
+                Crashlytics.sharedInstance().recordError(error)
+                print(String(data: balanceRepsonse, encoding: .utf8)!)
                 let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
@@ -40,6 +41,7 @@ class HistoryTableViewController: UITableViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }catch let error{
+            Crashlytics.sharedInstance().recordError(error)
             print(error)
             let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -328,11 +330,13 @@ class HistoryTableViewController: UITableViewController {
                                 _ = try JSONSerialization.jsonObject(with: response.data!)
                                 let oldBalance = balance
                                 do{
-                                    let balanceRepsonse = try String(contentsOf: URL(string: dsURL("get_money"))!)
-                                    if balanceRepsonse.isInt {
-                                        balance = Int(balanceRepsonse)!
-                                    }else{
-                                        print(balanceRepsonse)
+                                    let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+                                    do{
+                                        POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+                                        balance = Int(POSInfo.money!)!
+                                    }catch let error{
+                                        Crashlytics.sharedInstance().recordError(error)
+                                        print(String(data: balanceRepsonse, encoding: .utf8)!)
                                         let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                             (action: UIAlertAction!) -> () in

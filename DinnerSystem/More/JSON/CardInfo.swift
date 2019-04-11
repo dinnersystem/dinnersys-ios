@@ -7,6 +7,8 @@
 
 import Foundation
 
+var POSInfo = CardInfo()
+
 struct CardInfo : Codable {
 
 	let card : String?
@@ -19,12 +21,14 @@ struct CardInfo : Codable {
 		case money = "money"
 		case name = "name"
 	}
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		card = try values.decodeIfPresent(String.self, forKey: .card)
-		money = try values.decodeIfPresent(String.self, forKey: .money)
-		name = try values.decodeIfPresent(String.self, forKey: .name)
-	}
+    init(card : String? = nil,
+         money : String? = nil,
+         name : String? = nil
+        ){
+        self.card = card
+        self.money = money
+        self.name = name
+    }
 
 
 }

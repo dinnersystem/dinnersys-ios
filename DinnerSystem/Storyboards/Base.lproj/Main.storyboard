@@ -877,9 +877,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="L8j-jM-Rdj" kind="show" id="kGR-do-fvg"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -904,6 +901,7 @@
                     <connections>
                         <segue destination="IkS-Bw-cts" kind="show" identifier="bonusSegue" id="eT9-At-rTt"/>
                         <segue destination="kjd-uX-HoU" kind="show" identifier="normalSegue" id="gbe-0n-KgB"/>
+                        <segue destination="L8j-jM-Rdj" kind="show" identifier="barcodeSegue" id="9VN-b4-HtG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb3-9i-tHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -980,22 +978,19 @@
             </objects>
             <point key="canvasLocation" x="193" y="3962"/>
         </scene>
-        <!--View Controller-->
+        <!--Barcode View Controller-->
         <scene sceneID="l6L-Ji-6yB">
             <objects>
-                <viewController id="L8j-jM-Rdj" sceneMemberID="viewController">
+                <viewController id="L8j-jM-Rdj" customClass="BarcodeViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFG-PB-CjQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KAI" translatesAutoresizingMaskIntoConstraints="NO" id="7aQ-Z1-QNh">
-                                <rect key="frame" x="128" y="287" width="231" height="219"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="219" id="Agn-6f-S0g"/>
-                                </constraints>
+                                <rect key="frame" x="72" y="224" width="231" height="219"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!!!! :)))" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-SD-FeU">
-                                <rect key="frame" x="35" y="169" width="150" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon!!!! :)))" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-SD-FeU">
+                                <rect key="frame" x="35" y="111" width="150" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1003,15 +998,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="7aQ-Z1-QNh" firstAttribute="leading" secondItem="h9C-Cr-fNC" secondAttribute="leading" constant="128" id="6ny-3e-tWo"/>
-                            <constraint firstItem="7aQ-Z1-QNh" firstAttribute="top" secondItem="UXc-SD-FeU" secondAttribute="bottom" constant="97" id="GJG-G4-kum"/>
-                            <constraint firstItem="h9C-Cr-fNC" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UXc-SD-FeU" secondAttribute="trailing" symbolic="YES" id="MvG-Sx-aaI"/>
-                            <constraint firstItem="UXc-SD-FeU" firstAttribute="leading" secondItem="h9C-Cr-fNC" secondAttribute="leading" constant="35" id="Raf-7W-z0I"/>
-                            <constraint firstItem="7aQ-Z1-QNh" firstAttribute="trailing" secondItem="WFG-PB-CjQ" secondAttribute="trailingMargin" id="iLq-iz-zzK"/>
-                            <constraint firstItem="UXc-SD-FeU" firstAttribute="top" secondItem="h9C-Cr-fNC" secondAttribute="top" constant="105" id="w3c-YS-Lzi"/>
+                            <constraint firstItem="h9C-Cr-fNC" firstAttribute="bottom" secondItem="7aQ-Z1-QNh" secondAttribute="bottom" constant="175" id="68Q-hh-zo2"/>
+                            <constraint firstItem="h9C-Cr-fNC" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UXc-SD-FeU" secondAttribute="trailing" symbolic="YES" id="SQV-An-nZN"/>
+                            <constraint firstItem="UXc-SD-FeU" firstAttribute="top" secondItem="h9C-Cr-fNC" secondAttribute="top" constant="47" id="Z9I-WH-eLl"/>
+                            <constraint firstItem="7aQ-Z1-QNh" firstAttribute="centerX" secondItem="WFG-PB-CjQ" secondAttribute="centerX" id="gz5-Jh-omS"/>
+                            <constraint firstItem="7aQ-Z1-QNh" firstAttribute="centerY" secondItem="WFG-PB-CjQ" secondAttribute="centerY" id="iLl-0J-C2t"/>
+                            <constraint firstItem="7aQ-Z1-QNh" firstAttribute="leading" secondItem="h9C-Cr-fNC" secondAttribute="leading" constant="72" id="j6y-mm-hqO"/>
+                            <constraint firstItem="UXc-SD-FeU" firstAttribute="leading" secondItem="h9C-Cr-fNC" secondAttribute="leading" constant="35" id="oZb-56-xyo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h9C-Cr-fNC"/>
                     </view>
+                    <connections>
+                        <outlet property="barcodeImage" destination="7aQ-Z1-QNh" id="hOV-6i-3vm"/>
+                        <outlet property="infoText" destination="UXc-SD-FeU" id="TVl-wU-vmp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aJU-jB-EyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

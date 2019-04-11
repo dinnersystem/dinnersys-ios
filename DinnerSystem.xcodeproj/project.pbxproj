@@ -12,6 +12,8 @@
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
+		E69506FE225F9F6E00B86952 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */; };
+		E6950701225F9F9500B86952 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6950700225F9F9500B86952 /* CardInfo.swift */; };
 		E6995B8521FC24F100F8C8F1 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */; };
 		E6995B8621FC24F100F8C8F1 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3021FC23ED00F8C8F1 /* History.swift */; };
 		E6995B8721FC24F100F8C8F1 /* HistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */; };
@@ -74,6 +76,8 @@
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
+		E6950700225F9F9500B86952 /* CardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		E6995B3021FC23ED00F8C8F1 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryClas.swift; sourceTree = "<group>"; };
@@ -184,6 +188,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		E69506FF225F9F9500B86952 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				E6950700225F9F9500B86952 /* CardInfo.swift */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		E6995B2D21FC23ED00F8C8F1 /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,9 +242,11 @@
 		E6995B4221FC23ED00F8C8F1 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				E69506FF225F9F9500B86952 /* JSON */,
 				E6995B4321FC23ED00F8C8F1 /* BonusViewController.swift */,
 				E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */,
 				E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */,
+				E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -404,6 +418,7 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RSBarcodes_Swift/RSBarcodes_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/TrueTime/TrueTime.framework",
@@ -417,6 +432,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSBarcodes_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrueTime.framework",
@@ -473,6 +489,7 @@
 				E6995BB421FC296300F8C8F1 /* Order.swift in Sources */,
 				E6995B8B21FC24F100F8C8F1 /* HistoryList.swift in Sources */,
 				E6995B8C21FC24F100F8C8F1 /* HistoryMoney.swift in Sources */,
+				E6950701225F9F9500B86952 /* CardInfo.swift in Sources */,
 				E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */,
 				E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */,
 				E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */,
@@ -486,6 +503,7 @@
 				E6995B9821FC24F100F8C8F1 /* AiJiaTableViewController.swift in Sources */,
 				E6995B9921FC24F100F8C8F1 /* BreakfastTableViewController.swift in Sources */,
 				E6995B9A21FC24F100F8C8F1 /* GuanDonTableViewCell.swift in Sources */,
+				E69506FE225F9F6E00B86952 /* BarcodeViewController.swift in Sources */,
 				E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */,
 				E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */,
 				E6995B9E21FC24F100F8C8F1 /* Menu.swift in Sources */,

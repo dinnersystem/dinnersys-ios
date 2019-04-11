@@ -14,5 +14,6 @@ target 'DinnerSystem' do
   pod 'ReachabilitySwift'
   pod 'TrueTime', git: 'https://github.com/instacart/TrueTime.swift'
   pod 'CryptoSwift'
+  pod 'RSBarcodes_Swift', '~> 5.0.0'
 
 end

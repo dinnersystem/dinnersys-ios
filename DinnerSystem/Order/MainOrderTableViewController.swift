@@ -124,11 +124,13 @@ class MainOrderTableViewController: UITableViewController {
                 
             }
             do{
-                let balanceRepsonse = try String(contentsOf: URL(string: dsURL("get_money"))!)
-                if balanceRepsonse.isInt {
-                    balance = Int(balanceRepsonse)!
-                }else{
-                    print(balanceRepsonse)
+                let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+                do{
+                    POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+                    balance = Int(POSInfo.money!)!
+                }catch let error{
+                    Crashlytics.sharedInstance().recordError(error)
+                    print(String(data: balanceRepsonse, encoding: .utf8)!)
                     let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
