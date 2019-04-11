@@ -245,7 +245,7 @@ class HistoryTableViewController: UITableViewController {
         let paymentAction = UIAlertAction(title: "以學生證付款(餘額：\(balance))", style: .default, handler: {(action: UIAlertAction!) -> () in
             
             self.tableView.isUserInteractionEnabled = false                 //prevent from bugging
-            var hash = ""
+            var _ = ""  //hash
             var payment_pw = ""
             var timeStamp = String(Int(Date().timeIntervalSince1970))
             let pwAttempt = UIAlertController(title: "請輸入繳款密碼", message: "預設為身分證字號後四碼", preferredStyle: .alert)
@@ -261,6 +261,7 @@ class HistoryTableViewController: UITableViewController {
                 let lower_bound_12 = calander.date(bySettingHour: 10, minute: 30, second: 0, of: date)
                 let lower_bound_11 = calander.date(bySettingHour: 9, minute: 30, second: 0, of: date)
                 if ((timeBool && date > lower_bound_11!) || (!timeBool && date > lower_bound_12!)){
+                //if(false){
                     let alertStr = timeBool ? "早上九點半後無法付款，明日請早" : "早上十點半後無法付款，明日請早"
                     let alert = UIAlertController(title: "超過付款時間", message: alertStr, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -278,8 +279,8 @@ class HistoryTableViewController: UITableViewController {
                     paymentTextFields.keyboardType = UIKeyboardType.numberPad
                     timeStamp = String(Int(Date().timeIntervalSince1970))
                     payment_pw = paymentTextFields.text!
-                    hash = "{\"id\":\"\(info.id!)\",\"usr_id\":\"\(usr)\",\"usr_password\":\"\(pwd)\",\"pmt_password\":\"\(payment_pw)\",\"time\":\"\(timeStamp)\"}".sha512()
-                    Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&hash=\(hash)").responseData{ response in
+                    _ = "{\"id\":\"\(info.id!)\",\"usr_id\":\"\(usr)\",\"usr_password\":\"\(pwd)\",\"pmt_password\":\"\(payment_pw)\",\"time\":\"\(timeStamp)\"}".sha512()   //if lrc made this available again i will kill him :)
+                    Alamofire.request("\(dsURL("payment_self"))&target=true&order_id=\(info.id!)&password=\(payment_pw)").responseData{ response in
                         if response.error != nil {              //internetErr
                             let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -318,7 +319,7 @@ class HistoryTableViewController: UITableViewController {
                             let errorAlert = UIAlertController(title: "Error", message: "您輸入錯誤太多次，請稍候(約六十秒後)再試。", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)
-                        }else if responseStr.contains("Unable") || responseStr.contains("dead"){                //too many times
+                        }else if responseStr.contains("Unable") || responseStr.contains("dead") ||  responseStr.contains("expired"){                //too many times
                             let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             self.present(errorAlert, animated: true, completion: nil)
@@ -394,6 +395,7 @@ class HistoryTableViewController: UITableViewController {
         let brokeAction = UIAlertAction(title: "餘額不足(您只剩\(balance)元)", style: .default, handler: nil)
         brokeAction.isEnabled = false
         brokeAction.setValue(UIColor.gray, forKey: "titleTextColor")
+        
         alert.addAction(cancelAction)
         if paid {
             alert.addAction(paidAction)

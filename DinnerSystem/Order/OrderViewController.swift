@@ -139,7 +139,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let result = orderResult
                 switch result {
                 case "DTError":
-                    let alert = UIAlertController(title: "時間/日期發生錯誤", message: "請確認您手機的日期正確，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "時間/日期發生錯誤", message: "請不要在00:00-04:00之間點餐，或請確認您手機的日期正確，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self.present(alert, animated: true)
                 case "Logout":

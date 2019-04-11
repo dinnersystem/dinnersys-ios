@@ -132,7 +132,7 @@ class MoreTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -144,6 +144,9 @@ class MoreTableViewController: UITableViewController {
                 counter += 1
                 self.performSegue(withIdentifier: "normalSegue", sender: self)
             }
+        }
+        else if indexPath.row == 2{
+            //biometric sensor
         }
     }
 

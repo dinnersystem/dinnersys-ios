@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
         let timeStamp = String(Int(Date().timeIntervalSince1970))
         let reach = Reachability()!
         //MARK: - hash
-        let hash = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()
+        let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()  //hash
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -153,7 +153,8 @@ class LoginViewController: UIViewController {
             UIApplication.shared.beginIgnoringInteractionEvents()
             self.activityIndicator.startAnimating()
             self.indicatorBackView.isHidden = false
-            Alamofire.request("\(dsURL("login"))&id=\(usr)&hash=\(hash)&time=\(timeStamp)&device_id=\(fcmToken)").responseData{response in
+            print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
+            Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS").responseData{response in
                 if response.error != nil {
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
@@ -207,7 +208,7 @@ class LoginViewController: UIViewController {
         print(timeStamp)
         let reach = Reachability()!
         //MARK: - hash
-        let hash = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()
+        let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512() //hash
         print(hash)
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
@@ -217,7 +218,8 @@ class LoginViewController: UIViewController {
             UIApplication.shared.beginIgnoringInteractionEvents()
             self.activityIndicator.startAnimating()
             self.indicatorBackView.isHidden = false
-            Alamofire.request("\(dsURL("login"))&id=\(usr)&hash=\(hash)&time=\(timeStamp)&device_id=\(fcmToken)").responseData{response in
+            print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
+            Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS").responseData{response in
                 if response.error != nil {
                     Crashlytics.sharedInstance().recordError(response.error!)
                     self.indicatorBackView.isHidden = true
