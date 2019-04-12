@@ -17,7 +17,7 @@ class BarcodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         var image = RSUnifiedCodeGenerator.shared.generateCode(POSInfo.card!, machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)!
-        let reImageSize = CGSize(width: image.size.width, height: image.size.height/2)
+        let reImageSize = CGSize(width: image.size.width, height: image.size.height*0.8)
         image = image.resizedImage(newSize: reImageSize)
         barcodeImage.image = image
         infoText.text = """
