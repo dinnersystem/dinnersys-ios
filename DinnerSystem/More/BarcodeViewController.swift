@@ -11,11 +11,13 @@ import RSBarcodes_Swift
 import AVFoundation
 
 class BarcodeViewController: UIViewController {
-
+    var brightness = CGFloat(0.5)
     @IBOutlet var infoText: UILabel!
     @IBOutlet var barcodeImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        brightness = UIScreen.main.brightness
+        UIScreen.main.brightness = CGFloat(1.0)
         var image = RSUnifiedCodeGenerator.shared.generateCode(POSInfo.card!, machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)!
         let reImageSize = CGSize(width: image.size.width, height: image.size.height*0.8)
         image = image.resizedImage(newSize: reImageSize)
@@ -28,7 +30,10 @@ class BarcodeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        UIScreen.main.brightness = brightness
+    }
     /*
     // MARK: - Navigation
 

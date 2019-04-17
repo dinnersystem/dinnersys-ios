@@ -936,7 +936,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-ON-6ap">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Thanks" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-ON-6ap">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1203,8 +1203,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image" width="1725" height="2596"/>
         <image name="KAI" width="410" height="410"/>
+        <image name="Thanks" width="1725" height="2596"/>
         <image name="bg_2" width="1080" height="1920"/>
         <image name="confirmButton" width="568" height="129"/>
         <image name="menu" width="32" height="32"/>
