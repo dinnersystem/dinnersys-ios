@@ -133,7 +133,7 @@ class MoreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -146,23 +146,23 @@ class MoreTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "normalSegue", sender: self)
             }
         }
-        else if indexPath.row == 2{
-            do{
-                let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
-                POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
-                self.performSegue(withIdentifier: "barcodeSegue", sender: self)
-            }catch let error{
-                print(error)
-                Crashlytics.sharedInstance().recordError(error)
-                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }
-            
-        }
+//        else if indexPath.row == 2{
+//            do{
+//                let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+//                POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
+//                self.performSegue(withIdentifier: "barcodeSegue", sender: self)
+//            }catch let error{
+//                print(error)
+//                Crashlytics.sharedInstance().recordError(error)
+//                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+//                    (action: UIAlertAction!) -> () in
+//                    logout()
+//                    self.dismiss(animated: true, completion: nil)
+//                }))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//
+//        }
     }
 }
