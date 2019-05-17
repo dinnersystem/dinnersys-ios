@@ -151,7 +151,31 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     let alert = UIAlertController(title: "點餐成功", message: "訂單編號\(orderInfo[0].id!),請記得付款！", preferredStyle: .actionSheet)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
-                        self.navigationController?.popViewController(animated: true)
+                        let stfuAlert = UIAlertController(title: "午餐系統問卷", message: "請參加我們的問卷調查", preferredStyle: .alert)
+                        stfuAlert.addAction(UIAlertAction(title: "好", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            let adURL = URL(string: "https://forms.gle/ZzhtizScCsuMk5e87")!
+                            UIApplication.shared.open(adURL, options: [:], completionHandler: nil)
+                        }))
+                        stfuAlert.addAction(UIAlertAction(title: "不好", style: .cancel, handler: {
+                            (action: UIAlertAction!) -> () in
+                            do{
+                                let okURL = URL(string: dsURL("data_collected"))
+                                let cancelURL = URL(string: dsURL("delete_self&order_id=\(orderInfo[0].id!)"))
+                                let _ = try String(contentsOf: okURL!)
+                                let _ = try String(contentsOf: cancelURL!)
+                            }catch{
+                                let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                self.present(alert, animated: true)
+                            }
+                        }))
+                        if userInfo.dataCollected == "0"{
+                            self.present(stfuAlert, animated: true, completion: nil)
+                        }else{
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                        
                     }))
                     self.present(alert, animated: true)
                 case "Error":

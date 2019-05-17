@@ -8,7 +8,6 @@
 
 import CTrueTime
 import Foundation
-import Result
 
 typealias NTPConnectionCallback = (NTPConnection, FrozenNetworkTimeResult) -> Void
 
@@ -108,23 +107,18 @@ final class NTPConnection {
     func close(waitUntilFinished wait: Bool = false) {
         let work = {
             self.cancelTimer()
-            if let socket = self.socket, let source = self.source {
-                let disabledFlags = NTPConnection.callbackFlags |
-                                    kCFSocketAutomaticallyReenableDataCallBack |
-                                    kCFSocketAutomaticallyReenableReadCallBack |
-                                    kCFSocketAutomaticallyReenableWriteCallBack |
-                                    kCFSocketAutomaticallyReenableAcceptCallBack
-                CFSocketDisableCallBacks(socket, disabledFlags)
-                CFSocketInvalidate(socket)
-                CFRunLoopRemoveSource(CFRunLoopGetMain(), source, CFRunLoopMode.commonModes)
-                self.socket = nil
-                self.source = nil
-                self.debugLog("Connection closed \(self.address)")
-            }
-            if self.callbackPending {
-                Unmanaged.passUnretained(self).release()
-                self.callbackPending = false
-            }
+            guard let socket = self.socket, let source = self.source else { return }
+            let disabledFlags = NTPConnection.callbackFlags |
+                                kCFSocketAutomaticallyReenableDataCallBack |
+                                kCFSocketAutomaticallyReenableReadCallBack |
+                                kCFSocketAutomaticallyReenableWriteCallBack |
+                                kCFSocketAutomaticallyReenableAcceptCallBack
+            CFSocketDisableCallBacks(socket, disabledFlags)
+            CFSocketInvalidate(socket)
+            CFRunLoopRemoveSource(CFRunLoopGetMain(), source, CFRunLoopMode.commonModes)
+            self.socket = nil
+            self.source = nil
+            self.debugLog("Connection closed \(self.address)")
         }
 
         if wait {
@@ -207,6 +201,10 @@ private extension NTPConnection {
                 onComplete(self, result)
             }
         }
+        if callbackPending {
+            callbackPending = false
+            Unmanaged.passUnretained(self).release()
+        }
     }
 
     func requestTime() {
@@ -245,7 +243,7 @@ private extension NTPConnection {
                 return
             }
 
-            let packet = data.withUnsafeBytes { $0.pointee as ntp_packet_t }.nativeEndian
+            let packet = data.withUnsafeBytes { $0.load(as: ntp_packet_t.self) }.nativeEndian
             let responseTime = startTime.milliseconds + (responseTicks.milliseconds -
                                                          requestTicks.milliseconds)
 

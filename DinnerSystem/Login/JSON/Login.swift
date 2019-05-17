@@ -17,6 +17,7 @@ struct Login : Codable {
 	let prevSum : String?
 	let seatNo : String?
 	let validOper : [String]?
+    let dataCollected: String?
 	let vege : LoginVege?
 
 
@@ -26,6 +27,7 @@ struct Login : Codable {
 		case name = "name"
 		case prevSum = "prev_sum"
 		case seatNo = "seat_no"
+        case dataCollected = "data_collected"
 		case validOper = "valid_oper"
 		case vege
 	}
@@ -34,6 +36,7 @@ struct Login : Codable {
          name : String? = nil,
          prevSum : String? = nil,
          seatNo : String? = nil,
+         dataCollected: String? = nil,
          validOper : [String]? = nil,
          vege : LoginVege? = nil
         ){
@@ -42,6 +45,7 @@ struct Login : Codable {
         self.name = name
         self.prevSum = prevSum
         self.seatNo = seatNo
+        self.dataCollected = dataCollected
         self.validOper = validOper
         self.vege = vege
     }
