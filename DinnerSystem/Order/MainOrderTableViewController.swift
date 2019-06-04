@@ -165,15 +165,11 @@ class MainOrderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4{
-            tableView.deselectRow(at: indexPath, animated: true)
-            let adURL = URL(string: "https://forms.gle/ZzhtizScCsuMk5e87")!
-            UIApplication.shared.open(adURL, options: [:], completionHandler: nil)
-        }
+        
     }
 }
 

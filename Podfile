@@ -7,13 +7,14 @@ target 'DinnerSystem' do
 
   pod 'Alamofire'
   pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Messaging'
   pod 'Firebase/Performance'
-  pod 'Fabric', '~> 1.7.3'
-  pod 'Crashlytics', '~> 3.10.0'
+  pod 'Fabric'
+  pod 'Crashlytics'
   pod 'ReachabilitySwift'
-  pod 'TrueTime', git: 'https://github.com/instacart/TrueTime.swift'
+  pod 'TrueTime'
   pod 'CryptoSwift'
   pod 'RSBarcodes_Swift', '~> 5.0.0'
-
+  pod 'Protobuf', :inhibit_warnings => true
 end

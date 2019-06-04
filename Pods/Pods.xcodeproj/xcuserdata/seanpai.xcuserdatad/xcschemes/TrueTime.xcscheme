@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "704B9A4CE25AB586068D9B5B9A1970C2"
+               BlueprintIdentifier = "CA2551ED7715E6D4F807CE5B878C79AD"
+               BuildableName = "TrueTime.framework"
                BlueprintName = "TrueTime"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "TrueTime.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

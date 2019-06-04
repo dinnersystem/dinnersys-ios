@@ -1,6 +1,6 @@
 {
   "name": "TrueTime",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "summary": "NTP library for Swift. Get the true time impervious to device clock changes.",
   "homepage": "https://github.com/instacart/TrueTime.swift",
   "license": {
@@ -12,8 +12,9 @@
   },
   "source": {
     "git": "https://github.com/instacart/TrueTime.swift.git",
-    "tag": "5.0.1"
+    "tag": "5.0.2"
   },
+  "swift_version": "5.0",
   "requires_arc": true,
   "platforms": {
     "ios": "8.0",

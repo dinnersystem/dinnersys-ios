@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "96AC0F1F60EBC6717DC9A2C5E74B15B6"
+               BlueprintIdentifier = "5895B432FE4D2F6826C8FF25A09DB6D2"
+               BuildableName = "FirebaseMessaging.framework"
                BlueprintName = "FirebaseMessaging"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "FirebaseMessaging.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

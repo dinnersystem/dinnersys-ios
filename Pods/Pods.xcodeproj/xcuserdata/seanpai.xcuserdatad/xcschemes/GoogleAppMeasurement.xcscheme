@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "836B2412A050D73F544069C5C70C7401"
+               BlueprintIdentifier = "B53D977A951AFC38B21751B706C1DF83"
+               BuildableName = "GoogleAppMeasurement"
                BlueprintName = "GoogleAppMeasurement"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "GoogleAppMeasurement">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
