@@ -20,6 +20,15 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var costView: UITableView!
     var foodArray: [SelectedFoodArray] = []
     override func viewDidLoad() {
+        if #available(iOS 13.0, *) {
+            if(traitCollection.userInterfaceStyle == .dark){
+                self.view.backgroundColor = UIColor.black
+            }else{
+                self.view.backgroundColor = UIColor.white
+            }
+        } else {
+            self.view.backgroundColor = UIColor.white
+        }
         foodArray.removeAll()
         foodArray.append(SelectedFoodArray(name: SelectedFood.name, qty: "x1", cost: SelectedFood.cost))
         foodArray.append(SelectedFoodArray(name: "小計", qty: "x1", cost: SelectedFood.cost))

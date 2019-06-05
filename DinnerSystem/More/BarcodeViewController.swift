@@ -41,6 +41,9 @@ class BarcodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        }
         var image = RSUnifiedCodeGenerator.shared.generateCode(POSInfo.card!, machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)!
         let reImageSize = CGSize(width: image.size.width, height: image.size.height*0.8)
         image = image.resizedImage(newSize: reImageSize)

@@ -29,6 +29,7 @@ class HistoryTableViewController: UITableViewController {
             do{
                 POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
                 balance = Int(POSInfo.money!)!
+                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
             }catch let error{
                 Crashlytics.sharedInstance().recordError(error)
                 print(String(data: balanceRepsonse, encoding: .utf8)!)

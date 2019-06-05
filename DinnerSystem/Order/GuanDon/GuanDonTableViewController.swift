@@ -21,7 +21,6 @@ class GuanDonTableViewController: UITableViewController{
     
     
     private func addButton(){
-        orderButton.backgroundColor = .white
         orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
         //orderButton.setTitleColor(.blue, for: UIControl.State.normal)
         orderButton.isEnabled = false
@@ -127,22 +126,34 @@ class GuanDonTableViewController: UITableViewController{
         cell.stepper.addTarget(self, action: #selector(stepperChanged(sender: )), for: .valueChanged)
         //let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
         //let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
-        let backgroundColor = UIColor.white
+        //let backgroundColor = UIColor.white
         let foregroundColor = UIColor(red:1.00, green:0.27, blue:0.27, alpha:1.0)
         if info.bestSeller == "true" {
             cell.subtitleText.text = cell.subtitleText.text! + "，人氣商品！"
-            cell.backgroundColor = backgroundColor
+            //cell.backgroundColor = backgroundColor
             cell.titleText.textColor = foregroundColor
             cell.subtitleText.textColor = foregroundColor
             cell.qtyText.textColor = foregroundColor
             cell.stepper.tintColor = foregroundColor
             cell.detailTextLabel?.alpha = 0.8
         }else{
-            cell.backgroundColor = UIColor.white
-            cell.titleText.textColor = UIColor.darkText
-            cell.subtitleText.textColor = UIColor.darkText
-            cell.qtyText.textColor = UIColor.darkText
-            cell.stepper.tintColor = UIColor.blue
+            //cell.backgroundColor = UIColor.white
+            if #available(iOS 13.0, *) {
+                if(traitCollection.userInterfaceStyle == .light){
+                    cell.titleText.textColor = UIColor.darkText
+                    cell.subtitleText.textColor = UIColor.darkText
+                    cell.qtyText.textColor = UIColor.darkText
+                }else{
+                    cell.titleText.textColor = UIColor.white
+                    cell.subtitleText.textColor = UIColor.white
+                    cell.qtyText.textColor = UIColor.white
+                }
+            } else {
+                cell.titleText.textColor = UIColor.darkText
+                cell.subtitleText.textColor = UIColor.darkText
+                cell.qtyText.textColor = UIColor.darkText
+                cell.stepper.tintColor = UIColor.blue
+            }
         }
         return cell
     }
