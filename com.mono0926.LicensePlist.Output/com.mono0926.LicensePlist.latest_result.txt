@@ -1,0 +1,104 @@
+name: Alamofire, nameSpecified: 
+body: Copyright (c) 2014 A…
+version: 4.8.2
+
+name: Crashlytics, nameSpecified: 
+body: Fabric: Copyright 20…
+version: 3.13.1
+
+name: CryptoSwift, nameSpecified: 
+body: Copyright (C) 2014-2…
+version: 1.0.0
+
+name: Fabric, nameSpecified: 
+body: Fabric: Copyright 20…
+version: 1.10.1
+
+name: Firebase, nameSpecified: 
+body: Copyright 2019 Googl…
+version: 6.2.0
+
+name: FirebaseABTesting, nameSpecified: 
+body: Copyright 2019 Googl…
+version: 3.0.0
+
+name: FirebaseAnalytics, nameSpecified: 
+body: Copyright 2019 Googl…
+version: 6.0.1
+
+name: FirebaseAnalyticsInterop, nameSpecified: 
+body: 
+                   …
+version: 1.2.0
+
+name: FirebaseCore, nameSpecified: 
+body: 
+                   …
+version: 6.0.2
+
+name: FirebaseInstanceID, nameSpecified: 
+body: 
+                   …
+version: 4.1.1
+
+name: FirebaseMessaging, nameSpecified: 
+body: 
+                   …
+version: 4.0.2
+
+name: FirebasePerformance, nameSpecified: 
+body: Copyright 2019 Googl…
+version: 3.0.0
+
+name: FirebaseRemoteConfig, nameSpecified: 
+body: Copyright 2019 Googl…
+version: 4.0.0
+
+name: GoogleAppMeasurement, nameSpecified: 
+body: Copyright 2019 Googl…
+version: 6.0.1
+
+name: GoogleToolboxForMac, nameSpecified: 
+body: 
+                   …
+version: 2.2.1
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 6.2.0
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 1.2.2
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 2.5.0
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 0.3.901
+
+name: Protobuf, nameSpecified: 
+body: Copyright 2008 Googl…
+version: 3.8.0
+
+name: ReachabilitySwift, nameSpecified: 
+body: Copyright (c) 2016 A…
+version: 4.3.1
+
+name: RSBarcodes_Swift, nameSpecified: 
+body: The MIT License (MIT…
+version: 5.0.0
+
+name: TrueTime, nameSpecified: 
+body:                     …
+version: 5.0.2
+
+add-version-numbers: true
+
+LicensePlist Version: 1.8.3

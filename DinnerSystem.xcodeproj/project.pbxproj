@@ -45,6 +45,8 @@
 		E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
 		E6995BB421FC296300F8C8F1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995BAE21FC296300F8C8F1 /* Order.swift */; };
+		E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */; };
+		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
 		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
@@ -108,6 +110,9 @@
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		E6CA0A7922ABE56600DD1B21 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		E6CA0A7B22ABEF0800DD1B21 /* credits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = credits.py; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -145,6 +150,8 @@
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
+				E6CA0A7B22ABEF0800DD1B21 /* credits.py */,
+				E6CA0A7922ABE56600DD1B21 /* Settings.bundle */,
 				E653E436200074F9000E35AE /* Assets.xcassets */,
 				E653E42E200074F9000E35AE /* DinnerSystem */,
 				E653E42D200074F9000E35AE /* Products */,
@@ -247,6 +254,7 @@
 				E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */,
 				E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */,
 				E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */,
+				E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 				1F68245EACF0D2F10C606F65 /* [CP] Embed Pods Frameworks */,
 				E6996B6D201DE47100E62A5C /* Embed Frameworks */,
 				E679A698203EEC81005AE1F9 /* ShellScript */,
+				E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -397,6 +406,7 @@
 			files = (
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
 				E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */,
+				E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
 			);
@@ -473,6 +483,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
+		E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./credits.py -s \"$SRCROOT\" -o \"$SRCROOT/Settings.bundle/Credits.plist\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -491,6 +518,7 @@
 				E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */,
 				E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */,
 				E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */,
+				E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */,
 				E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */,
 				E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */,
 				E6995B9321FC24F100F8C8F1 /* version.swift in Sources */,
@@ -668,6 +696,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -694,6 +723,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
