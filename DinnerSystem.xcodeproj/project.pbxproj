@@ -47,6 +47,7 @@
 		E6995BB421FC296300F8C8F1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995BAE21FC296300F8C8F1 /* Order.swift */; };
 		E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */; };
 		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
+		E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
 		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
@@ -114,6 +115,7 @@
 		E6CA0A7922ABE56600DD1B21 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E6CA0A7B22ABEF0800DD1B21 /* credits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = credits.py; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomOrderViewController.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */,
 				E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */,
 				E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */,
+				E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */,
 				E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */,
 				E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */,
+				E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */,
 				E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -84,6 +84,7 @@ class MainOrderTableViewController: UITableViewController {
                     cafetMenuArr = []
                     guanDonMenuArr = []
                     originMenuArr = []
+                    randomMenuArr = []
                     //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                     do{
                         mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
@@ -101,10 +102,13 @@ class MainOrderTableViewController: UITableViewController {
                         for food in mainMenuArr{
                             if food.department?.factory?.name! == "台灣小吃部"{
                                 taiwanMenuArr.append(food)
+                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "愛佳便當"{
                                 aiJiaMenuArr.append(food)
+                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "合作社"{
                                 cafetMenuArr.append(food)
+                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "關東煮"{
                                 guanDonMenuArr.append(food)
                             }
@@ -165,7 +169,7 @@ class MainOrderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
