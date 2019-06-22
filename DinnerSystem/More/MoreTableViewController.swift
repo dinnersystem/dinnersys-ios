@@ -9,12 +9,22 @@
 import UIKit
 import Alamofire
 import Crashlytics
+import FirebaseMessaging
+import UserNotifications
 
 var counter=0
 class MoreTableViewController: UITableViewController {
+    @IBOutlet var dailySwitch: UISwitch!
+    var uDefault: UserDefaults!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        uDefault = UserDefaults.standard
+        if uDefault.bool(forKey: "dailyNotifiacation") != false{
+            dailySwitch.isOn = true
+        }else{
+            dailySwitch.isOn = false
+        }
     }
     @IBAction func Logout(_ sender: Any) {
         logout()
@@ -124,6 +134,43 @@ class MoreTableViewController: UITableViewController {
         }
         self.present(chgAlert, animated: true)
     }
+    
+    
+    @IBAction func switchedDaily(_ sender: Any) {
+        if dailySwitch.isOn{
+            var canNotify = false
+            let center = UNUserNotificationCenter.current()
+            center.getNotificationSettings(completionHandler: { (setting) in
+                if(setting.authorizationStatus == .authorized){
+                    canNotify = true
+                }
+            })
+            if canNotify{
+                Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
+                    if error != nil{
+                        self.present(createAlert("訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
+                    }else{
+                        self.present(createAlert("訂閱成功", "每日通知已開啟"), animated: true, completion: nil)
+                        self.uDefault.set(true, forKey: "dailyNotifiacation")
+                    }
+                }
+            }else{
+                
+            }
+        }else{              //closed
+            Messaging.messaging().unsubscribe(fromTopic: "com.dinnersystem.dailyNotification"){error in
+                if error != nil{
+                    self.present(createAlert("取消訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
+                }else{
+                    self.present(createAlert("取消訂閱成功", "每日通知已關閉"), animated: true, completion: nil)
+                    self.uDefault.set(false, forKey: "dailyNotifiacation")
+                }
+            }
+        }
+    }
+    
+    
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,7 +180,7 @@ class MoreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -146,23 +193,23 @@ class MoreTableViewController: UITableViewController {
                 self.performSegue(withIdentifier: "normalSegue", sender: self)
             }
         }
-//        else if indexPath.row == 2{
-//            do{
-//                let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
-//                POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
-//                self.performSegue(withIdentifier: "barcodeSegue", sender: self)
-//            }catch let error{
-//                print(error)
-//                Crashlytics.sharedInstance().recordError(error)
-//                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-//                    (action: UIAlertAction!) -> () in
-//                    logout()
-//                    self.dismiss(animated: true, completion: nil)
-//                }))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//
-//        }
+        //        else if indexPath.row == 2{
+        //            do{
+        //                let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+        //                POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
+        //                self.performSegue(withIdentifier: "barcodeSegue", sender: self)
+        //            }catch let error{
+        //                print(error)
+        //                Crashlytics.sharedInstance().recordError(error)
+        //                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+        //                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+        //                    (action: UIAlertAction!) -> () in
+        //                    logout()
+        //                    self.dismiss(animated: true, completion: nil)
+        //                }))
+        //                self.present(alert, animated: true, completion: nil)
+        //            }
+        //
+        //        }
     }
 }
