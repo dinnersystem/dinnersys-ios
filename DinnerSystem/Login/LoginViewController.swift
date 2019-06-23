@@ -12,6 +12,7 @@ import Reachability
 import FirebaseMessaging
 import Crashlytics
 import CryptoSwift
+import FirebaseInstanceID
 
 class LoginViewController: UIViewController {
     //MARK: - Declaration
@@ -49,6 +50,13 @@ class LoginViewController: UIViewController {
             self.remLogin.setTitle("以\(name)登入", for: UIControl.State.normal)
         }
         fcmToken = Messaging.messaging().fcmToken ?? ""
+        InstanceID.instanceID().instanceID { (result, error) in
+            if error != nil{
+                print("instanceID fail")
+                return
+            }
+            fcmToken = result!.token
+        }
         if fcmToken == ""{
             print("getToken failed")
         }else{

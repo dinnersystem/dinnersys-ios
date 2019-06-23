@@ -141,26 +141,63 @@ class MoreTableViewController: UITableViewController {
             var canNotify = false
             let center = UNUserNotificationCenter.current()
             center.getNotificationSettings(completionHandler: { (setting) in
+                print(setting)
                 if(setting.authorizationStatus == .authorized){
+                    print("authed")
                     canNotify = true
-                }
-            })
-            if canNotify{
-                Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
-                    if error != nil{
-                        self.present(createAlert("訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
-                    }else{
-                        self.present(createAlert("訂閱成功", "每日通知已開啟"), animated: true, completion: nil)
-                        self.uDefault.set(true, forKey: "dailyNotifiacation")
+                    Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
+                        if error != nil{
+                            self.present(createAlert("訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
+                            self.dailySwitch.isOn = false
+                        }else{
+                            self.present(createAlert("訂閱成功", "每日通知已開啟"), animated: true, completion: nil)
+                            self.uDefault.set(true, forKey: "dailyNotifiacation")
+                        }
                     }
+
+                }else{
+                    let alert = UIAlertController(title: "尚未開啟通知", message: "請至設定開啟通知", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "跳轉至設定", style: .default, handler: { (action) in
+                        if let url = URL(string:UIApplication.openSettingsURLString) {
+                            if UIApplication.shared.canOpenURL(url) {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
+                        }
+                    }))
+                    alert.addAction(UIAlertAction(title: "取消", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    self.dailySwitch.isOn = false
                 }
-            }else{
                 
-            }
+            })
+            print(canNotify)
+//            if canNotify{
+//                Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
+//                    if error != nil{
+//                        self.present(createAlert("訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
+//                    }else{
+//                        self.present(createAlert("訂閱成功", "每日通知已開啟"), animated: true, completion: nil)
+//                        self.uDefault.set(true, forKey: "dailyNotifiacation")
+//                    }
+//                }
+//            }else{
+//                let alert = UIAlertController(title: "尚未開啟通知", message: "請至設定開啟通知", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "跳轉至設定", style: .default, handler: { (action) in
+//                    if let url = URL(string:UIApplication.openSettingsURLString) {
+//                        if UIApplication.shared.canOpenURL(url) {
+//                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//                        }
+//                    }
+//                }))
+//                alert.addAction(UIAlertAction(title: "取消", style: .default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//                self.dailySwitch.isOn = false
+//            }
         }else{              //closed
             Messaging.messaging().unsubscribe(fromTopic: "com.dinnersystem.dailyNotification"){error in
                 if error != nil{
                     self.present(createAlert("取消訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
+                    self.dailySwitch.isOn = true
                 }else{
                     self.present(createAlert("取消訂閱成功", "每日通知已關閉"), animated: true, completion: nil)
                     self.uDefault.set(false, forKey: "dailyNotifiacation")
