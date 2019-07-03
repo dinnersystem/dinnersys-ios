@@ -14,12 +14,6 @@ PODS:
   - Firebase/Messaging (6.3.0):
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 4.1.0)
-  - Firebase/Performance (6.3.0):
-    - Firebase/CoreOnly
-    - FirebasePerformance (~> 3.1.0)
-  - FirebaseABTesting (3.0.0):
-    - FirebaseCore (~> 6.0)
-    - Protobuf (~> 3.5)
   - FirebaseAnalytics (6.0.2):
     - FirebaseCore (~> 6.0)
     - FirebaseInstanceID (~> 4.2)
@@ -46,55 +40,30 @@ PODS:
     - GoogleUtilities/Reachability (~> 6.2)
     - GoogleUtilities/UserDefaults (~> 6.2)
     - Protobuf (~> 3.1)
-  - FirebasePerformance (3.1.0):
-    - FirebaseCore (~> 6.0)
-    - FirebaseInstanceID (~> 4.2)
-    - FirebaseRemoteConfig (~> 4.1)
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/ISASwizzler (~> 6.0)
-    - GoogleUtilities/MethodSwizzler (~> 6.0)
-    - GTMSessionFetcher/Core (~> 1.1)
-    - Protobuf (~> 3.5)
-  - FirebaseRemoteConfig (4.1.0):
-    - FirebaseABTesting (~> 3.0)
-    - FirebaseCore (~> 6.0)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleUtilities/Environment (~> 6.0)
-    - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - Protobuf (~> 3.5)
   - GoogleAppMeasurement (6.0.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
-  - GoogleToolboxForMac/Defines (2.2.1)
-  - GoogleToolboxForMac/Logger (2.2.1):
-    - GoogleToolboxForMac/Defines (= 2.2.1)
-  - "GoogleToolboxForMac/NSData+zlib (2.2.1)":
-    - GoogleToolboxForMac/Defines (= 2.2.1)
-  - GoogleUtilities/AppDelegateSwizzler (6.2.0):
+  - GoogleUtilities/AppDelegateSwizzler (6.2.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.2.0)
-  - GoogleUtilities/ISASwizzler (6.2.0)
-  - GoogleUtilities/Logger (6.2.0):
+  - GoogleUtilities/Environment (6.2.1)
+  - GoogleUtilities/Logger (6.2.1):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.2.0):
+  - GoogleUtilities/MethodSwizzler (6.2.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.2.0):
+  - GoogleUtilities/Network (6.2.1):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.2.0)"
-  - GoogleUtilities/Reachability (6.2.0):
+  - "GoogleUtilities/NSData+zlib (6.2.1)"
+  - GoogleUtilities/Reachability (6.2.1):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.2.0):
+  - GoogleUtilities/UserDefaults (6.2.1):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.2.2)
   - LicensePlist (2.5.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -104,6 +73,7 @@ PODS:
   - Protobuf (3.8.0)
   - ReachabilitySwift (4.3.1)
   - RSBarcodes_Swift (5.0.0)
+  - SwiftGifOrigin (1.7.0)
   - TrueTime (5.0.2)
 
 DEPENDENCIES:
@@ -114,11 +84,11 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Messaging
-  - Firebase/Performance
   - LicensePlist
   - Protobuf
   - ReachabilitySwift
   - RSBarcodes_Swift (~> 5.0.0)
+  - SwiftGifOrigin (~> 1.7.0)
   - TrueTime
 
 SPEC REPOS:
@@ -128,23 +98,19 @@ SPEC REPOS:
     - CryptoSwift
     - Fabric
     - Firebase
-    - FirebaseABTesting
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
-    - FirebasePerformance
-    - FirebaseRemoteConfig
     - GoogleAppMeasurement
-    - GoogleToolboxForMac
     - GoogleUtilities
-    - GTMSessionFetcher
     - LicensePlist
     - nanopb
     - Protobuf
     - ReachabilitySwift
     - RSBarcodes_Swift
+    - SwiftGifOrigin
     - TrueTime
 
 SPEC CHECKSUMS:
@@ -153,25 +119,21 @@ SPEC CHECKSUMS:
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: 8432d732974498afd5987e9001a05f90f1a3d625
-  FirebaseABTesting: a32c488eb75089a61eb3d86db061dfb909d765db
   FirebaseAnalytics: 470ddab7253b21ad5a40bebd4a9903d7ae19386a
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
   FirebaseCore: 68f8a7f50cdae542715d4e86afa37c4067217dcb
   FirebaseInstanceID: f20243a1d828e0e9a3798b995174dedc16f1b32a
   FirebaseMessaging: 0ac5310133e6ada4cdd44d42e92038855214a5e9
-  FirebasePerformance: 1cf814c294cb0f6e0d36cde0760d09835b13c9ce
-  FirebaseRemoteConfig: 7c64ecec5ca63d7c6b304509c3a6f9a036d403d4
   GoogleAppMeasurement: a35a645835bae31b6bdc0576396bc23908f12a22
-  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
-  GoogleUtilities: 996e0db07153674fd1b54b220fda3a3dc3547cba
-  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  GoogleUtilities: c7a0b08bda3bf808be823ed151f0e28ac6866e71
   LicensePlist: e5f8f2e3465620e53ec4c669955a5a7d0692b9cb
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
   RSBarcodes_Swift: b6bee284eef3ee27f67fabb0d7f07459ed68a3de
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   TrueTime: 511713bd50e53c70f454689aa67031dcd1e6c17f
 
-PODFILE CHECKSUM: a5fbb590f9c07b9c732e0fba8f8703f6345fb7a3
+PODFILE CHECKSUM: 4395eaac6df298ba342219aaafaa1f794a539fc7
 
-COCOAPODS: 1.7.1
+COCOAPODS: 1.7.3

@@ -45,11 +45,12 @@
 		E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
 		E6995BB421FC296300F8C8F1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995BAE21FC296300F8C8F1 /* Order.swift */; };
+		E6C3843922C4DC9600F7CE58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */; };
+		E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E6C3B03522BF87CE008AAE8A /* loading.gif */; };
 		E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */; };
 		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
 		E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
-		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -111,13 +112,14 @@
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E6C3B03522BF87CE008AAE8A /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E6CA0A7922ABE56600DD1B21 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E6CA0A7B22ABEF0800DD1B21 /* credits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = credits.py; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomOrderViewController.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
-		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				E6CA0A7B22ABEF0800DD1B21 /* credits.py */,
+				E6C3B03522BF87CE008AAE8A /* loading.gif */,
 				E6CA0A7922ABE56600DD1B21 /* Settings.bundle */,
 				E653E436200074F9000E35AE /* Assets.xcassets */,
 				E653E42E200074F9000E35AE /* DinnerSystem */,
@@ -181,8 +184,8 @@
 				E653E460200075D4000E35AE /* Storyboards */,
 				E6CA389C208DF4D5002801DD /* AppDelegate.swift */,
 				E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */,
+				E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */,
 				E6EA6583208C2163001C9A37 /* Info.plist */,
-				E6E455252020A2710006F0A2 /* GoogleService-Info.plist */,
 				E60E4D0F214A105E007C4412 /* misc.swift */,
 			);
 			path = DinnerSystem;
@@ -408,8 +411,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
-				E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */,
 				E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */,
+				E6C3843922C4DC9600F7CE58 /* GoogleService-Info.plist in Resources */,
+				E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
 			);
@@ -427,12 +431,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-DinnerSystem/Pods-DinnerSystem-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSBarcodes_Swift/RSBarcodes_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/TrueTime/TrueTime.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -440,12 +443,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSBarcodes_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrueTime.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

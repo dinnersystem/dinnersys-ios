@@ -50,18 +50,18 @@ class LoginViewController: UIViewController {
             self.remLogin.setTitle("以\(name)登入", for: UIControl.State.normal)
         }
         fcmToken = Messaging.messaging().fcmToken ?? ""
-        InstanceID.instanceID().instanceID { (result, error) in
-            if error != nil{
-                print("instanceID fail")
-                return
-            }
-            fcmToken = result!.token
-        }
-        if fcmToken == ""{
-            print("getToken failed")
-        }else{
-            print("token:"+fcmToken)
-        }
+//        InstanceID.instanceID().instanceID { (result, error) in
+//            if error != nil{
+//                print("instanceID fail")
+//                return
+//            }
+//            fcmToken = result!.token
+//        }
+//        if fcmToken == ""{
+//            print("getToken failed")
+//        }else{
+//            print("token:"+fcmToken)
+//        }
         
         /*
          Alamofire.request("\(dinnersysURL)frontend/u_move_u_dead/version.txt").responseString{ response in
@@ -110,7 +110,7 @@ class LoginViewController: UIViewController {
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
         do{
-            let versionURL = URL(string: "\(dinnersysURL)frontend/u_move_u_dead/version.txt")!
+            let versionURL = URL(string: "\(dinnersysURL)/frontend/u_move_u_dead/version.txt")!
             let versionResponse = try Data(contentsOf: versionURL)
             print(String(data: versionResponse, encoding: .utf8)!)
             currentVersion = try decoder.decode(AppVersion.self, from: versionResponse)

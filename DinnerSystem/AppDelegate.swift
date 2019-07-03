@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
 
@@ -33,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
-        FirebaseApp.configure()
+        //FirebaseApp.configure()
         return true
     }
 

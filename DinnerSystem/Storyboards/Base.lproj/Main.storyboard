@@ -942,7 +942,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="347.5" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="開發者致謝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hD4-yz-S5U">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="關於此程式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hD4-yz-S5U">
                                                     <rect key="frame" x="16" y="0.0" width="323.5" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1041,10 +1041,10 @@
             </objects>
             <point key="canvasLocation" x="-760.79999999999995" y="3084.1079460269866"/>
         </scene>
-        <!--About Table View Controller-->
+        <!--關於此程式-->
         <scene sceneID="1QR-TP-ten">
             <objects>
-                <tableViewController autoresizesArchivedViewToFullSize="NO" id="GdU-KB-nKF" customClass="AboutTableViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" title="關於此程式" id="GdU-KB-nKF" customClass="AboutTableViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dqe-VS-vuo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1080,10 +1080,82 @@
                             <outlet property="delegate" destination="GdU-KB-nKF" id="W9z-8h-Gfe"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="JWJ-Ee-bfp" kind="show" identifier="thanksSegue" id="1bK-56-fJC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUK-8A-1xd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1356" y="3935"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xEG-Hy-fWt">
+            <objects>
+                <viewController id="JWJ-Ee-bfp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8D9-MM-2Gi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyD-UF-4gk">
+                                <rect key="frame" x="16" y="70" width="343" height="503"/>
+                                <mutableString key="text" base64-UTF8="YES">
+CeWPr+iDveaykuWkmuWwkeS6uuiqjeitmOaIke+8jOavlOi8g+iqjeitmOWQs+mCpuWvp++8jOS9huaY
+r+mAmUFwcOaYr+aIkeWBmueahOWWlOOAgu+8iOmCgOWKn++8iQrljYfkuIrpq5jkuIDmmYLvvIzmiJHp
+goTkuI3mnIPlr6vnqIvlvI/vvIjlrozlhajkuI3mnIPvvInvvIzkvYbmmK/mirHokZflvp7lsI/liLDl
+pKfnmoTnqIvlvI/lpKLvvIzku6Xlvozmg7PnlbblgIvlt6XnqIvluKvjgILot5/pgqblr6flkIznj63v
+vIzmh4noqbLmmK/mnIDlpb3nmoTmqZ/nt6PkuoblkKfvvIzku5blvp7lnIvlsI/lsLHplovlp4vlrbjv
+vIzlnIvkuK3pp63lhaXlrbjmoKHntrLnq5nvvIzliLDnj77lnKjlgZrlh7rpgJnmnbHopb/jgILmiJHk
+uI3nn6XpgZPmiJHliLDlupXmmK/mgI7purzlub7pgZPnmoTnpo/msKPvvIzorpPmiJHot5/ku5blkIzn
+j63jgILku5bkuIDpgLLlrbjmoKHlsLHljrvmoKHpmorln7noqJPvvIzot5/nj63kuIrlub7kuY7mspLk
+uqTmtYHvvIzmr4/lpKnpgbLliLDmm6DoqrLkuI3oqqrvvIzlj6rnn6XpgZPku5bpm7vohablvojlvLfv
+vIzlr6vkuobkuIDloIblpYfmgKrnmoTmnbHopb/jgILpgornt6PlsazmgKfnmoTmiJHpvJPotbfli4fm
+sKPvvIzplovlp4voqo3orZjku5bvvIzmnpznhLbot5/mg7Plg4/kuK3nmoTkuIDmqKPnmIvnmbLvvIzk
+u5bkuI3oqqrku5bmmK/nj77lhYXpgoTmspLkurrnm7jkv6HjgIIKCgnmn5DlpKnku5bntabmiJHnnIvk
+uIDlgIvku5boh6rlt7Hlr6vnmoRBbmRyb2lk56iL5byP77yM6Kqq5LuW5oOz6KaB55So5omL5qmf6bue
+6aSQ77yM6YCZ5qij5bCx566X6YGy5Yiw5Zyo5a625Lmf5LiN55So5oCl6JGX5Yiw5a245qCh6bue6aSQ
+5LqG44CC5LiK6Z2i55qE5LuL6Z2i6Lef54++5Zyo5L2g55So5Yiw55qE5p2x6KW/5a6M5YWo5LiN5LiA
+5qij77yM5L2G5piv5oiR6LaF5pyJ6IiI6Laj55qE77yM6Kqq6JGX44CM5L2g5YGa5Ye65Ly65pyN5Zmo
+77yM5oiR5bCx5YGaQXBw44CN55qE55iL6Kmx44CCCgoJ5Y+v5piv5oiR5qC55pys5LiN5pyD5a+r56iL
+5byP5ZWK77yB77yB55W25pmC5oiR5bCx5Y+q5pyJ5Zyo5a245qCh5LiKQVDnj63vvIzlj6rmnINpZiBl
+bHNl6ICM5bey77yM5piv6KaB5oCO6bq85YGa5Ye677yI5L2g54++5Zyo5Zyo55So55qE6YCZ5YCL77yJ
+6YCZ6bq86KSH6Zuc55qEQXBw5ZWm44CC5L2G5piv5oiR5piv5YCL5L+h5a6I5om/6Ku+55qE5Lq677yM
+5omA5Lul6LK35LqG5bm+5pys5pu477yM6Lef6JGXR29vZ2xl6YKE5pyJU3RhY2tPdmVyZmxvd+eahOWN
+lOWKqeS4i++8jOesrOS4gOeJiOeahOm7numkkOezu+e1seWHuueUn+S6huOAguWcqOmAmeS5i+S4reeV
+tueEtuacieWQhOeorumiqOmiqOmbqOmbqO+8jOWMheWQq+aIkeWQhOeoruS4jeefpemBk+aAjum6vOWv
+q++8jOmChOaciemCpuWvp+eahOWQhOeoruaUueeJiO+8jOiuk+aIkeaVtOWAi+W0qea9sOOAgueVtueE
+tumChOacieWAi+S6uuWboOe0oOWVpu+8jOWcqOatpOS4jei0hei/sOOAggoKCeaIkeaDs+imgeism+ea
+hOaYr+iIiOi2o+aYr+W+iOmHjeimgeeahOadseilv+OAguWmguaenOeVtuaZguaykuiIiOi2o++8jOWP
+r+iDveacg+i3n+S4gOiIrOS6uuS4gOaoo++8jOiBveiBveWwseeul+S6hu+8jOeVtuS7luaYr+WAi+i/
+veWkouS6uueEtuW+jOelneemj+S7luOAghDmiJHkuZ/pgYfpgY7oqLHlpJrkuI3nn6XpgZPku6Xlvozo
+poHlgZrku4DpurzvvIzlsI3mnKrkvobnmoTkuIDliIfmhJ/liLDov7fmg5jnmoTmnIvlj4vvvIzkuI3n
+n6XpgZPoh6rlt7HnmoTlpKLmg7PvvIzkuZ/kuI3nn6XpgZPlpKflrbjopoHoroDku4DpurzjgILljrvl
+pJrmib7mib7lkITnqK7poZ7lnovnmoTmnbHopb/vvIzlpJrlpJrmjqLntKLvvIzkuI3opoHmgJXlm7Dp
+m6PvvIzlj6ropoHpgYfliLDkuobnnJ/mraPllpzmraHnmoTmnbHopb/vvIzlrbjku4Dpurzpg73kuI3m
+nIPpm6PvvIzpoILlpJrlrbjkuYXkuIDpu57ogIzlt7LjgILmr5TlpoLoqqrllpzmraHkuIDlgIvkurrv
+vIzlpoLmnpzkvaDnnJ/nmoTllpzmraHku5bvvIzkvaDmoLnmnKzkuI3mnIPmgJXpm6PvvIzkvaDmnIPm
+rbvlkb3lnLDljrvov73jgIIKCgnluIzmnJvlpKflrrbmib7liLDlsazmlrzoh6rlt7HnmoTlpKLmg7Pv
+vIzlpoLmnpzkvaDnmoTlpKLmg7Plt7LntpPmmI7norrvvIzlsLHlv6vljrvov73lkKfvvIzmmYLplpPm
+mK/kuI3mnIPnrYnkvaDnmoTjgIIK4oCUIGlPUyAmIEFuZHJvaWQgQXBw6ZaL55m86ICFICDnmb3nv5Tk
+upE
+</mutableString>
+                                <color key="textColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="UyD-UF-4gk" firstAttribute="trailing" secondItem="8D9-MM-2Gi" secondAttribute="trailingMargin" id="TDL-4i-W4t"/>
+                            <constraint firstItem="UyD-UF-4gk" firstAttribute="leading" secondItem="8D9-MM-2Gi" secondAttribute="leadingMargin" id="WNZ-Lx-XiH"/>
+                            <constraint firstItem="UyD-UF-4gk" firstAttribute="top" secondItem="kSA-Mp-OTK" secondAttribute="top" constant="26" id="pwv-6G-RyR"/>
+                            <constraint firstItem="kSA-Mp-OTK" firstAttribute="bottom" secondItem="UyD-UF-4gk" secondAttribute="bottom" constant="25" id="vi6-Ye-Dbi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kSA-Mp-OTK"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUd-bO-KjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1356" y="4627"/>
         </scene>
         <!--Bonus View Controller-->
         <scene sceneID="OCi-7k-b3n">

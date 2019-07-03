@@ -9,6 +9,9 @@
 import UIKit
 
 class AboutTableViewController: UITableViewController {
+    
+    var count = 0
+    
     struct About{
         let title: String?
         let detail: String?
@@ -26,6 +29,7 @@ class AboutTableViewController: UITableViewController {
         dinnersystem.append(About(title: "後續維護", detail: "板橋高中資訊社"))
         dinnersystem.append(About(title: "如有任何問題，歡迎來信[dinnersystem@gmail.com]!", detail: ""))
         dinnersystem.append(About(title: "第三方資料庫之版權聲明請至系統設定查看", detail: ""))
+        dinnersystem.append(About(title: "開發者致謝", detail: ""))
     }
 
     // MARK: - Table view data source
@@ -51,8 +55,16 @@ class AboutTableViewController: UITableViewController {
             cell.textLabel?.font = cell.textLabel?.font.withSize(16.0)
         }else if info.title!.contains("dinnersystem@gmail.com"){
             cell.textLabel?.font = cell.textLabel?.font.withSize(14.0)
+        }else if info.title!.contains("開發者致謝"){
+            cell.accessoryType = .disclosureIndicator
+            cell.isUserInteractionEnabled = true
         }
         return cell
     }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let info = dinnersystem[indexPath.row]
+            if info.title!.contains("開發者致謝"){
+                self.performSegue(withIdentifier: "thanksSegue", sender: self) 
+        }
+    }
 }

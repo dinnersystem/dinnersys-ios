@@ -148,7 +148,10 @@ class MoreTableViewController: UITableViewController {
                     Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
                         if error != nil{
                             self.present(createAlert("訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
-                            self.dailySwitch.isOn = false
+                            DispatchQueue.main.async {
+                                self.dailySwitch.isOn = false 
+                            }
+                            
                         }else{
                             self.present(createAlert("訂閱成功", "每日通知已開啟"), animated: true, completion: nil)
                             self.uDefault.set(true, forKey: "dailyNotifiacation")
@@ -165,8 +168,10 @@ class MoreTableViewController: UITableViewController {
                         }
                     }))
                     alert.addAction(UIAlertAction(title: "取消", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                    self.dailySwitch.isOn = false
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion: nil)
+                        self.dailySwitch.isOn = false
+                    }
                 }
                 
             })
@@ -197,7 +202,10 @@ class MoreTableViewController: UITableViewController {
             Messaging.messaging().unsubscribe(fromTopic: "com.dinnersystem.dailyNotification"){error in
                 if error != nil{
                     self.present(createAlert("取消訂閱過程發生錯誤", "\(error!)"), animated: true, completion: nil)
-                    self.dailySwitch.isOn = true
+                    DispatchQueue.main.async {
+                        self.dailySwitch.isOn = true
+                    }
+                    
                 }else{
                     self.present(createAlert("取消訂閱成功", "每日通知已關閉"), animated: true, completion: nil)
                     self.uDefault.set(false, forKey: "dailyNotifiacation")
