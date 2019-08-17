@@ -104,6 +104,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let lower_bound = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
         //end
         if date > lower_bound! {
+        //if false{
             let alert = UIAlertController(title: "超過訂餐時間", message: "早上十點十分後無法訂餐，明日請早", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
@@ -122,6 +123,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.present(errorAlert, animated: true, completion: nil)
                 }
                 let responseString = String(data: response.data!, encoding: .utf8)!
+                print(responseString)
                 if responseString.contains("Off") || responseString.contains("Impossible"){
                     orderResult = "DTError"
                 }else if responseString == "" {

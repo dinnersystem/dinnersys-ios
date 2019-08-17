@@ -657,6 +657,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="檢視今日訂單" id="7Z3-Bk-cWH">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="iXu-Jc-uWx">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hug-Tl-S9x">
+                                <rect key="frame" x="0.0" y="0.0" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="歷史訂單"/>
+                                <connections>
+                                    <action selector="oldHistorySegue:" destination="T4u-Of-io7" eventType="touchUpInside" id="VoW-Su-psH"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="kPd-Tp-zsX">
                             <connections>
                                 <action selector="reloadButton:" destination="T4u-Of-io7" id="L25-oO-qcH"/>
@@ -670,10 +680,57 @@
                             <action selector="reloadData:" destination="T4u-Of-io7" eventType="valueChanged" id="9Fy-Yw-hOW"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <segue destination="VyL-vT-g4u" kind="show" identifier="oldHistorySegue" id="aQR-Xx-vcn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZR2-dj-Mkw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="159.19999999999999" y="2207.9460269865067"/>
+        </scene>
+        <!--檢視過去訂單-->
+        <scene sceneID="vy1-0P-nBC">
+            <objects>
+                <tableViewController title="檢視過去訂單" id="VyL-vT-g4u" customClass="BeforeHistoryTableViewController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yyd-Fr-l9n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OldHistoryCell" textLabel="2qx-AE-T5t" detailTextLabel="wZO-HP-iB3" style="IBUITableViewCellStyleSubtitle" id="Aqy-mr-tWO">
+                                <rect key="frame" x="0.0" y="28" width="375" height="55.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Aqy-mr-tWO" id="L6i-N0-tS3">
+                                    <rect key="frame" x="0.0" y="0.0" width="347.5" height="55.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2qx-AE-T5t">
+                                            <rect key="frame" x="16" y="10" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wZO-HP-iB3">
+                                            <rect key="frame" x="16" y="31.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VyL-vT-g4u" id="8YE-Xh-Tvh"/>
+                            <outlet property="delegate" destination="VyL-vT-g4u" id="Tii-RG-sjk"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r0F-w8-WnI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1016.8" y="2206.1469265367318"/>
         </scene>
         <!--愛佳便當-->
         <scene sceneID="24b-h0-SLE">
@@ -1098,7 +1155,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UyD-UF-4gk">
                                 <rect key="frame" x="16" y="70" width="343" height="503"/>
-                                <mutableString key="text" base64-UTF8="YES">
+                                <string key="text" base64-UTF8="YES">
 CeWPr+iDveaykuWkmuWwkeS6uuiqjeitmOaIke+8jOavlOi8g+iqjeitmOWQs+mCpuWvp++8jOS9huaY
 r+mAmUFwcOaYr+aIkeWBmueahOWWlOOAgu+8iOmCgOWKn++8iQrljYfkuIrpq5jkuIDmmYLvvIzmiJHp
 goTkuI3mnIPlr6vnqIvlvI/vvIjlrozlhajkuI3mnIPvvInvvIzkvYbmmK/mirHokZflvp7lsI/liLDl
@@ -1137,7 +1194,7 @@ rbvlkb3lnLDljrvov73jgIIKCgnluIzmnJvlpKflrrbmib7liLDlsazmlrzoh6rlt7HnmoTlpKLmg7Pv
 vIzlpoLmnpzkvaDnmoTlpKLmg7Plt7LntpPmmI7norrvvIzlsLHlv6vljrvov73lkKfvvIzmmYLplpPm
 mK/kuI3mnIPnrYnkvaDnmoTjgIIK4oCUIGlPUyAmIEFuZHJvaWQgQXBw6ZaL55m86ICFICDnmb3nv5Tk
 upE
-</mutableString>
+</string>
                                 <color key="textColor" xcode11CocoaTouchSystemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

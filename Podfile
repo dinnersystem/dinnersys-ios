@@ -10,12 +10,11 @@ target 'DinnerSystem' do
   pod 'Alamofire'
   pod 'Firebase/Core'
   pod 'Firebase/Analytics'
-  pod 'Firebase/Messaging'
+  pod 'Firebase/Messaging', :inhibit_warnings => true
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'ReachabilitySwift'
   pod 'TrueTime'
-  pod 'CryptoSwift'
   pod 'RSBarcodes_Swift', '~> 5.0.0'
   pod 'Protobuf', :inhibit_warnings => true
 end
