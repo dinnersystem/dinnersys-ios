@@ -14,22 +14,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>CryptoSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Fabric.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Firebase.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FirebaseABTesting.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -49,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FirebaseCoreDiagnostics.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FirebaseCoreDiagnosticsInterop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FirebaseInstanceID.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -59,32 +59,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>FirebasePerformance.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FirebaseRemoteConfig.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GTMSessionFetcher.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GoogleAppMeasurement.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GoogleToolboxForMac.xcscheme</key>
+		<key>GoogleDataTransport.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleDataTransportCCTSupport.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>GoogleUtilities.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LicensePlist.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -105,6 +100,11 @@
 			<false/>
 		</dict>
 		<key>ReachabilitySwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftGifOrigin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

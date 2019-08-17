@@ -12,6 +12,7 @@ import Reachability
 import FirebaseMessaging
 import Crashlytics
 import CryptoSwift
+import FirebaseInstanceID
 
 class LoginViewController: UIViewController {
     //MARK: - Declaration
@@ -49,11 +50,18 @@ class LoginViewController: UIViewController {
             self.remLogin.setTitle("以\(name)登入", for: UIControl.State.normal)
         }
         fcmToken = Messaging.messaging().fcmToken ?? ""
-        if fcmToken == ""{
-            print("getToken failed")
-        }else{
-            print("token:"+fcmToken)
-        }
+        //        InstanceID.instanceID().instanceID { (result, error) in
+        //            if error != nil{
+        //                print("instanceID fail")
+        //                return
+        //            }
+        //            fcmToken = result!.token
+        //        }
+        //        if fcmToken == ""{
+        //            print("getToken failed")
+        //        }else{
+        //            print("token:"+fcmToken)
+        //        }
         
         /*
          Alamofire.request("\(dinnersysURL)frontend/u_move_u_dead/version.txt").responseString{ response in
@@ -101,12 +109,24 @@ class LoginViewController: UIViewController {
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
+        
+        //        Messaging.messaging().subscribe(toTopic: "seanpai.gsatnotify"){ error in
+        //            if error != nil{
+        //                self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
+        //            }else{
+        //                self.present(createAlert("安安", "每日通知已開啟喔"), animated: true, completion: nil)
+        //            }
+        //        }
+        
         do{
-            let versionURL = URL(string: "\(dinnersysURL)frontend/u_move_u_dead/version.txt")!
+            let versionURL = URL(string: "\(dinnersysURL)/frontend/u_move_u_dead/version.txt")!
             let versionResponse = try Data(contentsOf: versionURL)
             print(String(data: versionResponse, encoding: .utf8)!)
             currentVersion = try decoder.decode(AppVersion.self, from: versionResponse)
             if !(currentVersion.ios!.contains(versionNumber)){
+                self.indicatorBackView.isHidden = true
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
                 let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
@@ -114,16 +134,17 @@ class LoginViewController: UIViewController {
                 })
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
+            }else{
+                self.indicatorBackView.isHidden = true
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
             }
-            self.indicatorBackView.isHidden = true
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
         }catch let error{
             print(error)
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
-            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Crashlytics.sharedInstance().recordError(error)
             self.present(alert,animated: true, completion: nil)
@@ -155,6 +176,8 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = false
             print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
             Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS").responseData{response in
+                
+                print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
                 if response.error != nil {
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()

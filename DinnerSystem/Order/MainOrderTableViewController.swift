@@ -13,12 +13,12 @@ import Crashlytics
 import FirebaseMessaging
 
 class MainOrderTableViewController: UITableViewController {
-    var uDefault: UserDefaults!
+    //var uDefault: UserDefaults!
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
     override func viewDidLoad() {
         super.viewDidLoad()
-        uDefault = UserDefaults.standard
+        //uDefault = UserDefaults.standard
         
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
@@ -32,17 +32,17 @@ class MainOrderTableViewController: UITableViewController {
         self.view.addSubview(indicatorBackView)
         self.view.addSubview(activityIndicator)
         
-        if usr == "06610233"{                                   //daily order notification
-            if !uDefault.bool(forKey: "isSubbed"){
-                Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
-                    if error != nil{
-                        self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
-                    }else{
-                        self.present(createAlert("安安", "每日通知已開啟喔"), animated: true, completion: nil)
-                        self.uDefault.set(true, forKey: "isSubbed")}
-                }
-            }
-        }
+//        if usr == "06610233"{                                   //daily order notification
+//            if !uDefault.bool(forKey: "isSubbed"){
+//                Messaging.messaging().subscribe(toTopic: "com.dinnersystem.dailyNotification"){ error in
+//                    if error != nil{
+//                        self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
+//                    }else{
+//                        self.present(createAlert("安安", "每日通知已開啟喔"), animated: true, completion: nil)
+//                        self.uDefault.set(true, forKey: "isSubbed")}
+//                }
+//            }
+//        }
         
         fetchData()
         
@@ -84,6 +84,7 @@ class MainOrderTableViewController: UITableViewController {
                     cafetMenuArr = []
                     guanDonMenuArr = []
                     originMenuArr = []
+                    randomMenuArr = []
                     //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                     do{
                         mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
@@ -101,10 +102,13 @@ class MainOrderTableViewController: UITableViewController {
                         for food in mainMenuArr{
                             if food.department?.factory?.name! == "台灣小吃部"{
                                 taiwanMenuArr.append(food)
+                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "愛佳便當"{
                                 aiJiaMenuArr.append(food)
+                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "合作社"{
                                 cafetMenuArr.append(food)
+                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "關東煮"{
                                 guanDonMenuArr.append(food)
                             }
@@ -165,7 +169,7 @@ class MainOrderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -29,6 +29,7 @@ class HistoryTableViewController: UITableViewController {
             do{
                 POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
                 balance = Int(POSInfo.money!)!
+                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
             }catch let error{
                 Crashlytics.sharedInstance().recordError(error)
                 print(String(data: balanceRepsonse, encoding: .utf8)!)
@@ -77,7 +78,7 @@ class HistoryTableViewController: UITableViewController {
             }else{
                 //historyArr = try! decoder.decode([History].self, from: response.data!)
                 do{
-                    print(String(data: response.data!, encoding: .utf8)!)
+                    //print(String(data: response.data!, encoding: .utf8)!)
                     historyArr = try decoder.decode([History].self, from: response.data!)
                     historyArr.reverse()
                     
@@ -138,6 +139,69 @@ class HistoryTableViewController: UITableViewController {
         self.indicatorBackView.isHidden = false
         fetchData()
         self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
+    }
+    
+    @IBAction func oldHistorySegue(_ sender: Any) {
+        oldHistoryArr = []
+        oldHistoryTableList = []
+        Alamofire.request(dsURL("select_self") + "&history=true").responseData{ response in
+            if response.error != nil {
+                
+                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    logout()
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+            let responseStr = String(data: response.data!, encoding: .utf8)
+            if responseStr == ""{
+                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    logout()
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }else if responseStr == "{}"{
+                let alert = UIAlertController(title: "無點餐紀錄", message: "過去無點餐紀錄！", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                do{
+                    oldHistoryArr = try decoder.decode([History].self, from: response.data!)
+                    oldHistoryArr.reverse()
+                    print("HI")
+                    for order in oldHistoryArr{
+                        if order.dish!.count == 1{
+                            let tmp = HistoryList(id: order.id, dishName: order.dish![0].dishName, dishCost: order.dish![0].dishCost, recvDate: order.recvDate, money: order.money)
+                            oldHistoryTableList.append(tmp)
+                        }else{
+                            var dName = ""
+                            var dCost = 0
+                            for dish in order.dish!{
+                                dName += "\(dish.dishName!)+"
+                                dCost += Int(dish.dishCost!)!
+                            }
+                            dName = String(dName.dropLast(1))
+                            let tmp = HistoryList(id: order.id, dishName: dName, dishCost: String(dCost), recvDate: order.recvDate, money: order.money)
+                            oldHistoryTableList.append(tmp)
+                        }
+                    }
+                    self.performSegue(withIdentifier: "oldHistorySegue", sender: self)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     @IBAction func reloadButton(_ sender: Any) {
@@ -297,6 +361,7 @@ class HistoryTableViewController: UITableViewController {
                             self.present(errorAlert, animated: true, completion: nil)
                         }
                         let responseStr = String(data: response.data!, encoding: .utf8)!            //parseStr
+                        print(responseStr)
                         if responseStr == ""{               //empty str
                             let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -356,6 +421,7 @@ class HistoryTableViewController: UITableViewController {
                                     self.present(errorAlert, animated: true, completion: nil)
                                 }
                                 if (oldBalance - Int(info.money!.charge!)!) != balance{
+                                    
                                     let error = NSError(domain: "dinnersystem.error.balanceNotCorresponding", code: 1313, userInfo: nil)
                                     let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
                                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

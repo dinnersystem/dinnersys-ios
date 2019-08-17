@@ -13,6 +13,7 @@ var aiJiaMenuArr:[Menu] = []
 var cafetMenuArr:[Menu] = []
 var guanDonMenuArr:[Menu] = []
 var originMenuArr:[Menu] = []
+var randomMenuArr:[Menu] = []
 
 struct Menu : Codable {
     

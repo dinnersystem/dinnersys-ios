@@ -21,6 +21,15 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var picker: UISegmentedControl!
     
     override func viewDidLoad() {
+        if #available(iOS 13.0, *) {
+            if(traitCollection.userInterfaceStyle == .dark){
+                self.view.backgroundColor = UIColor.black
+            }else{
+                self.view.backgroundColor = UIColor.white
+            }
+        } else {
+            self.view.backgroundColor = UIColor.white
+        }
     }
     
     //MARK: - tableView

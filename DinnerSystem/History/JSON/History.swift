@@ -8,6 +8,7 @@
 import Foundation
 
 var historyArr:[History] = []
+var oldHistoryArr:[History] = []
 
 struct History : Codable {
 

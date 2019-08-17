@@ -14,8 +14,21 @@ class BonusViewController: UIViewController {
     @IBOutlet var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        Alamofire.request("\(dinnersysURL)/frontend/u_move_u_dead/dinnersys0.png").responseData{response in
+        var bonusURL = ""
+        
+        if #available(iOS 13.0, *) {
+            if (traitCollection.userInterfaceStyle == .dark){
+                self.view.backgroundColor = UIColor.black
+                bonusURL = "\(dinnersysURL)/frontend/u_move_u_dead/dinnersys0_dark.png"
+            }else{
+                self.view.backgroundColor = UIColor.white
+                bonusURL = "\(dinnersysURL)/frontend/u_move_u_dead/dinnersys0.png"
+            }
+        } else {
+            self.view.backgroundColor = UIColor.white
+            bonusURL = "\(dinnersysURL)/frontend/u_move_u_dead/dinnersys0.png"
+        }
+        Alamofire.request(bonusURL).responseData{response in
             if response.error != nil{
                 let alert = UIAlertController(title: "請注意網路狀態", message: "讀取資料錯誤", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {

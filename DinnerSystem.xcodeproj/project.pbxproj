@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
+		E630303F2305783F007DD07D /* BeforeHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
@@ -45,8 +46,12 @@
 		E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
 		E6995BB421FC296300F8C8F1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995BAE21FC296300F8C8F1 /* Order.swift */; };
+		E6C3843922C4DC9600F7CE58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */; };
+		E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E6C3B03522BF87CE008AAE8A /* loading.gif */; };
+		E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */; };
+		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
+		E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
-		E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6E455252020A2710006F0A2 /* GoogleService-Info.plist */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +76,7 @@
 		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
+		E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHistoryTableViewController.swift; sourceTree = "<group>"; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,9 +114,14 @@
 		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
 		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E6C3B03522BF87CE008AAE8A /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		E6CA0A7922ABE56600DD1B21 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		E6CA0A7B22ABEF0800DD1B21 /* credits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = credits.py; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomOrderViewController.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
-		E6E455252020A2710006F0A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +156,9 @@
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
+				E6CA0A7B22ABEF0800DD1B21 /* credits.py */,
+				E6C3B03522BF87CE008AAE8A /* loading.gif */,
+				E6CA0A7922ABE56600DD1B21 /* Settings.bundle */,
 				E653E436200074F9000E35AE /* Assets.xcassets */,
 				E653E42E200074F9000E35AE /* DinnerSystem */,
 				E653E42D200074F9000E35AE /* Products */,
@@ -172,8 +186,8 @@
 				E653E460200075D4000E35AE /* Storyboards */,
 				E6CA389C208DF4D5002801DD /* AppDelegate.swift */,
 				E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */,
+				E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */,
 				E6EA6583208C2163001C9A37 /* Info.plist */,
-				E6E455252020A2710006F0A2 /* GoogleService-Info.plist */,
 				E60E4D0F214A105E007C4412 /* misc.swift */,
 			);
 			path = DinnerSystem;
@@ -200,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */,
+				E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */,
 				E6995B2F21FC23ED00F8C8F1 /* JSON */,
 			);
 			path = History;
@@ -247,6 +262,7 @@
 				E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */,
 				E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */,
 				E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */,
+				E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -261,6 +277,7 @@
 				E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */,
 				E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */,
 				E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */,
+				E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -334,6 +351,7 @@
 				1F68245EACF0D2F10C606F65 /* [CP] Embed Pods Frameworks */,
 				E6996B6D201DE47100E62A5C /* Embed Frameworks */,
 				E679A698203EEC81005AE1F9 /* ShellScript */,
+				E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -352,7 +370,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = Sean.Inc;
+				ORGANIZATIONNAME = "DinnerSystem Team";
 				TargetAttributes = {
 					E653E42B200074F9000E35AE = {
 						CreatedOnToolsVersion = 9.2;
@@ -396,7 +414,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
-				E6E455262020A2710006F0A2 /* GoogleService-Info.plist in Resources */,
+				E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */,
+				E6C3843922C4DC9600F7CE58 /* GoogleService-Info.plist in Resources */,
+				E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
 			);
@@ -413,26 +433,22 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DinnerSystem/Pods-DinnerSystem-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSBarcodes_Swift/RSBarcodes_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
 				"${BUILT_PRODUCTS_DIR}/TrueTime/TrueTime.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSBarcodes_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrueTime.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -473,6 +489,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
+		E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./credits.py -s \"$SRCROOT\" -o \"$SRCROOT/Settings.bundle/Credits.plist\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -487,10 +520,12 @@
 				E6995BB421FC296300F8C8F1 /* Order.swift in Sources */,
 				E6995B8B21FC24F100F8C8F1 /* HistoryList.swift in Sources */,
 				E6995B8C21FC24F100F8C8F1 /* HistoryMoney.swift in Sources */,
+				E630303F2305783F007DD07D /* BeforeHistoryTableViewController.swift in Sources */,
 				E6950701225F9F9500B86952 /* CardInfo.swift in Sources */,
 				E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */,
 				E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */,
 				E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */,
+				E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */,
 				E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */,
 				E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */,
 				E6995B9321FC24F100F8C8F1 /* version.swift in Sources */,
@@ -513,6 +548,7 @@
 				E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */,
 				E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */,
 				E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */,
+				E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */,
 				E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +704,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -694,6 +731,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -9,6 +9,7 @@
 import Foundation
 
 var historyTableList: [HistoryList] = []
+var oldHistoryTableList: [HistoryList] = []
 
 struct HistoryList: Codable{
     let id :String?
