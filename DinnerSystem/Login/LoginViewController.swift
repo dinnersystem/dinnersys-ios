@@ -11,7 +11,6 @@ import Alamofire
 import Reachability
 import FirebaseMessaging
 import Crashlytics
-import CryptoSwift
 import FirebaseInstanceID
 
 class LoginViewController: UIViewController {
@@ -36,9 +35,10 @@ class LoginViewController: UIViewController {
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.gray
+        activityIndicator.startAnimating()
         indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         indicatorBackView.center = self.view.center
-        indicatorBackView.isHidden = true
+        indicatorBackView.isHidden = false
         indicatorBackView.layer.cornerRadius = 20
         indicatorBackView.alpha = 0.5
         indicatorBackView.backgroundColor = UIColor.black
@@ -107,8 +107,8 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIApplication.shared.beginIgnoringInteractionEvents()
-        self.activityIndicator.startAnimating()
-        self.indicatorBackView.isHidden = false
+//        self.activityIndicator.startAnimating()
+//        self.indicatorBackView.isHidden = false
         
         //        Messaging.messaging().subscribe(toTopic: "seanpai.gsatnotify"){ error in
         //            if error != nil{
@@ -165,7 +165,7 @@ class LoginViewController: UIViewController {
         let timeStamp = String(Int(Date().timeIntervalSince1970))
         let reach = Reachability()!
         //MARK: - hash
-        let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()  //hash
+        //let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()  //hash
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -176,8 +176,6 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = false
             print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
             Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS").responseData{response in
-                
-                print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
                 if response.error != nil {
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
@@ -231,7 +229,7 @@ class LoginViewController: UIViewController {
         print(timeStamp)
         let reach = Reachability()!
         //MARK: - hash
-        let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512() //hash
+        //let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512() //hash
         print(hash)
         if(reach.connection == .none){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)

@@ -15,13 +15,17 @@ class GuanDonTableViewController: UITableViewController{
     var limit = 5
     var selected = 0
     var totalCost = 0
+    var lowestCost = 45
     var orderDict:[String:Int] = [:]
     var stepperDict:[Int:Int] = [:]
+    var noodleID:[String] = []
+    var noodleIndex: [Int] = []
+    var noodleSelected = false
     @IBOutlet var orderButton: UIButton!
     
     
     private func addButton(){
-        orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
+        orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消\(lowestCost)元)", for: UIControl.State.normal)
         //orderButton.setTitleColor(.blue, for: UIControl.State.normal)
         orderButton.isEnabled = false
         //tableView.addSubview(orderButton)
@@ -86,10 +90,14 @@ class GuanDonTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lowestCost = Int(guanDonMenuArr[0].department!.factory!.minimum!)!
         addButton()
         for i in 0..<guanDonMenuArr.count{
             let info = guanDonMenuArr[i]
             orderDict.updateValue(0, forKey: info.dishId!)
+            if(info.department!.name! == "麵類"){
+                noodleID.append(info.dishId!)
+            }
         }
         self.navigationItem.title = "關東煮（餘額: \(balance)）"
         self.tableView.reloadData()
@@ -155,6 +163,10 @@ class GuanDonTableViewController: UITableViewController{
                 cell.stepper.tintColor = UIColor.blue
             }
         }
+        if info.department!.name! == "麵類"{
+            noodleIndex.append(indexPath.row)
+            cell.stepper.maximumValue = 1
+        }
         return cell
     }
     
@@ -170,8 +182,18 @@ class GuanDonTableViewController: UITableViewController{
             selected += item.value
             totalCost += (item.value * Int(dish[0].dishCost!)!)
         }
+        noodleSelected = false
+        var noodleCount = 0
+        for index in noodleID{
+            let noodleCell = self.tableView.cellForRow(at: IndexPath(row: stepperDict[Int(index)!]!, section: 0)) as! GuanDonTableViewCell
+            if noodleCell.stepper.value != 0{
+                noodleCount += 1
+                noodleSelected = noodleCount > 1
+            }
+        }
+        
         print(selected)
-        if selected>20{
+        if selected>20 || noodleSelected{
             let alertController = UIAlertController(title: "Oops", message:
                 "已達單次訂餐上限", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -186,23 +208,23 @@ class GuanDonTableViewController: UITableViewController{
                     self.selected += item.value
                     self.totalCost += (item.value * Int(dish[0].dishCost!)!)
                 }
-                if self.selected > 0 && self.totalCost >= 40{
+                if self.selected > 0 && self.totalCost >= self.lowestCost{
                     self.orderButton.isEnabled = true
-                    self.orderButton.setTitle("共\(self.totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
+                    self.orderButton.setTitle("共\(self.totalCost)元。按下完成點餐(低消\(self.lowestCost)元)", for: UIControl.State.normal)
                 }else{
                     self.orderButton.isEnabled = false
-                    self.orderButton.setTitle("共\(self.totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
+                    self.orderButton.setTitle("共\(self.totalCost)元。按下完成點餐(低消\(self.lowestCost)元)", for: UIControl.State.normal)
                 }
             }))
             self.present(alertController, animated: true, completion: nil)
         }
         print(orderDict)
-        if selected > 0 && totalCost >= 40{
+        if selected > 0 && totalCost >= self.lowestCost{
             orderButton.isEnabled = true
-            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消\(self.lowestCost)元)", for: UIControl.State.normal)
         }else{
             orderButton.isEnabled = false
-            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消40元)", for: UIControl.State.normal)
+            orderButton.setTitle("共\(totalCost)元。按下完成點餐(低消\(self.lowestCost)元)", for: UIControl.State.normal)
         }
     }
     
