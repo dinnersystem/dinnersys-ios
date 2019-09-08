@@ -259,7 +259,7 @@ class HistoryTableViewController: UITableViewController {
         info.recvDate = String(info.recvDate!.dropLast(3))
         let timeBool = info.recvDate!.contains("11:00")
         let paid:Bool = info.money!.payment![0].paid! == "true" ? true : false
-        let timeAlertString = timeBool ? "請於上午九點二十前付款！" : "請於上午十點二十前付款！"
+        let timeAlertString = timeBool ? "請於上午九點十分前付款！" : "請於上午十點十分前付款！"
         let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n餐點內容：\(info.dishName!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.money!.charge!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
             message: timeAlertString,
             preferredStyle: .actionSheet)
@@ -326,8 +326,8 @@ class HistoryTableViewController: UITableViewController {
                 
                 let date = Date()
                 let calander = Calendar.current
-                let lower_bound_12 = calander.date(bySettingHour: 10, minute: 20, second: 0, of: date)
-                let lower_bound_11 = calander.date(bySettingHour: 9, minute: 20, second: 0, of: date)
+                let lower_bound_12 = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
+                let lower_bound_11 = calander.date(bySettingHour: 9, minute: 10, second: 0, of: date)
                 if ((timeBool && date > lower_bound_11!) || (!timeBool && date > lower_bound_12!)){
                 //if(false){
                     let alertStr = timeBool ? "早上九點二十後無法付款，明日請早" : "早上十點二十後無法付款，明日請早"
