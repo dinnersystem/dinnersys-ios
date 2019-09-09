@@ -185,11 +185,16 @@ class GuanDonTableViewController: UITableViewController{
         noodleSelected = false
         var noodleCount = 0
         for index in noodleID{
-            let noodleCell = self.tableView.cellForRow(at: IndexPath(row: stepperDict[Int(index)!]!, section: 0)) as! GuanDonTableViewCell
-            if noodleCell.stepper.value != 0{
-                noodleCount += 1
-                noodleSelected = noodleCount > 1
-            }
+            let noodleQty = orderDict[index]!
+            noodleCount += noodleQty
+            noodleSelected = noodleCount > 1
+//            if stepperDict[Int(index)!] != nil{
+//                let noodleCell = self.tableView.cellForRow(at: IndexPath(row: stepperDict[Int(index)!]!, section: 0)) as! GuanDonTableViewCell
+//                if noodleCell.stepper.value != 0{
+//                    noodleCount += 1
+//                    noodleSelected = noodleCount > 1
+//                }
+//            }
         }
         
         print(selected)
