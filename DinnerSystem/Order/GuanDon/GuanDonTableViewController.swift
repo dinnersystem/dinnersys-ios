@@ -90,7 +90,8 @@ class GuanDonTableViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        lowestCost = Int(guanDonMenuArr[0].department!.factory!.minimum!)!
+        //lowestCost = Int(guanDonMenuArr[0].department!.factory!.minimum!)!
+        lowestCost = guanDonMenuArr.count > 0 ? Int(guanDonMenuArr[0].department!.factory!.minimum!)! : 45
         addButton()
         for i in 0..<guanDonMenuArr.count{
             let info = guanDonMenuArr[i]

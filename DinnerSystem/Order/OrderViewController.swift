@@ -130,6 +130,8 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     orderResult = "Logout"
                 }else if responseString.contains("Invalid"){
                     orderResult = "Error"
+                }else if responseString.contains("exceed"){
+                    orderResult = "limitExceed"
                 }else{
                     
                     do{
@@ -168,6 +170,14 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 case "Error":
                     let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true)
+                case "limitExceed":
+                    let alert = UIAlertController(title: "餐點已售完", message: "您的訂單中似乎有一或多項餐點已售完", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.dismiss(animated: true, completion: nil)
+                    }))
                     self.present(alert, animated: true)
                 default:
                     let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)
