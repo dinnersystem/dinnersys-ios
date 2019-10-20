@@ -163,10 +163,10 @@ class LoginViewController: UIViewController {
         usr = uDefault.string(forKey: "userName")!
         pwd = uDefault.string(forKey: "passWord")!
         let timeStamp = String(Int(Date().timeIntervalSince1970))
-        let reach = Reachability()!
+        let reach = try! Reachability()
         //MARK: - hash
         //let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()  //hash
-        if(reach.connection == .none){                      //no Internet
+        if(reach.connection == .unavailable){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
@@ -227,11 +227,11 @@ class LoginViewController: UIViewController {
         pwd = self.password.text!
         let timeStamp = String(Int(Date().timeIntervalSince1970))
         print(timeStamp)
-        let reach = Reachability()!
+        let reach = try! Reachability()
         //MARK: - hash
         //let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512() //hash
         print(hash)
-        if(reach.connection == .none){                      //no Internet
+        if(reach.connection == .unavailable){                      //no Internet
             let alert = UIAlertController(title: "無網路連接", message: "請注意網路連接是否正常", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)

@@ -14,7 +14,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet var toolBar: UIToolbar!
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var frontButton: UIBarButtonItem!
-    let reachability = Reachability()!
+    let reachability = try! Reachability()
     var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView = WKWebView(frame: viewFrame)
         webView.allowsBackForwardNavigationGestures = true
         webView.navigationDelegate = self
-        let homeUrl = URL(string: "https://dinnersystem.ddns.net/dinnersys_beta/frontend/login.html")
+        let homeUrl = URL(string: "https://dinnersystem.com/dinnersys_beta/frontend/login.html")
         let homeRequest = URLRequest(url: homeUrl!)
         webView.load(homeRequest)
         view.addSubview(webView)
@@ -38,7 +38,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         }
     }
     override func viewDidAppear(_ animated: Bool) {
-        if reachability.connection == .none{
+        if reachability.connection == .unavailable{
             self.dismiss(animated: true, completion: nil)
         }
     }
