@@ -13,7 +13,7 @@ import Crashlytics
 
 class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    
+    let feedbackGenerator = UINotificationFeedbackGenerator()
     
     @IBOutlet var costView: UITableView!
     @IBOutlet var qtyView: UITableView!
@@ -30,6 +30,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             self.view.backgroundColor = UIColor.white
         }
+        feedbackGenerator.prepare()
     }
     
     //MARK: - tableView
@@ -98,13 +99,14 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
         var orderResult = ""
         var currentDate = formatter.string(from: date)
         currentDate += selectedTime
-        print("\(Ord.url)&time=\(currentDate)")
+        guanDonParam.updateValue(currentDate, forKey: "time")
         //time lock
         let calander = Calendar.current
         let lower_bound_12 = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
         let lower_bound_11 = calander.date(bySettingHour: 9, minute: 10, second: 0, of: date)
         //end
         if ((selectedTime == "-11:00:00" && date > lower_bound_11!) || (selectedTime == "-12:00:00" && date > lower_bound_12!)) {
+//        if false {
             let alertStr = selectedTime == "-11:00:00" ? "早上九點十分後無法訂餐，明日請早" : "早上十點十分後無法訂餐，明日請早"
             let alert = UIAlertController(title: "超過訂餐時間", message: alertStr, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -113,7 +115,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
             }))
             self.present(alert, animated: true)
         }else{
-            Alamofire.request("\(Ord.url)&time=\(currentDate)").responseData{response in
+            Alamofire.request(dsRequestURL, method: .post, parameters: guanDonParam).responseData{response in
                 if response.error != nil {
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -125,7 +127,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 let responseString = String(data: response.data!, encoding: .utf8)!
                 print(responseString)
-                if responseString.contains("廠商"){
+                if responseString.contains("Impossible") || responseString.contains("Off") || responseString.contains("tomorrow"){
                     orderResult = "DTError"
                 }else if responseString == "" {
                     orderResult = "Logout"
@@ -169,6 +171,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
                         (action: UIAlertAction!) -> () in
                         self.navigationController?.popViewController(animated: true)
                     }))
+                    self.feedbackGenerator.notificationOccurred(.success)
                     self.present(alert, animated: true)
                 case "Error":
                     let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)

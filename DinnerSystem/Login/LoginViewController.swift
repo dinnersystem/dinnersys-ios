@@ -110,13 +110,13 @@ class LoginViewController: UIViewController {
 //        self.activityIndicator.startAnimating()
 //        self.indicatorBackView.isHidden = false
         
-        //        Messaging.messaging().subscribe(toTopic: "seanpai.gsatnotify"){ error in
-        //            if error != nil{
-        //                self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
-        //            }else{
-        //                self.present(createAlert("安安", "每日通知已開啟喔"), animated: true, completion: nil)
-        //            }
-        //        }
+//                Messaging.messaging().subscribe(toTopic: "seanpai.gsatnotify"){ error in
+//                    if error != nil{
+//                        self.present(createAlert("哎呀呀", "我出了一點問題，快截圖傳給開發人員！\n\(error!)"), animated: true, completion: nil)
+//                    }else{
+//                        self.present(createAlert("安安", "每日通知已開啟喔"), animated: true, completion: nil)
+//                    }
+//                }
         
         do{
             let versionURL = URL(string: "\(dinnersysURL)/frontend/u_move_u_dead/version.txt")!
@@ -164,6 +164,7 @@ class LoginViewController: UIViewController {
         pwd = uDefault.string(forKey: "passWord")!
         let timeStamp = String(Int(Date().timeIntervalSince1970))
         let reach = try! Reachability()
+        let loginParam: Parameters = ["cmd": "login", "id": usr, "password": pwd, "time": timeStamp, "device_id": "HELLO_FROM_IOS"]
         //MARK: - hash
         //let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512()  //hash
         if(reach.connection == .unavailable){                      //no Internet
@@ -174,8 +175,7 @@ class LoginViewController: UIViewController {
             UIApplication.shared.beginIgnoringInteractionEvents()
             self.activityIndicator.startAnimating()
             self.indicatorBackView.isHidden = false
-            print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
-            Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS").responseData{response in
+            Alamofire.request(dsRequestURL, method: .post, parameters: loginParam).responseData{response in
                 if response.error != nil {
                     self.indicatorBackView.isHidden = true
                     self.activityIndicator.stopAnimating()
@@ -228,6 +228,7 @@ class LoginViewController: UIViewController {
         let timeStamp = String(Int(Date().timeIntervalSince1970))
         print(timeStamp)
         let reach = try! Reachability()
+        let loginParam: Parameters = ["cmd": "login", "id": usr, "password": pwd, "time": timeStamp, "device_id": "HELLO_FROM_IOS"]
         //MARK: - hash
         //let _ = "{\"id\":\"\(usr)\",\"password\":\"\(pwd)\",\"time\":\"\(timeStamp)\"}".sha512() //hash
         print(hash)
@@ -239,8 +240,7 @@ class LoginViewController: UIViewController {
             UIApplication.shared.beginIgnoringInteractionEvents()
             self.activityIndicator.startAnimating()
             self.indicatorBackView.isHidden = false
-            print("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS")
-            Alamofire.request("\(dsURL("login"))&id=\(usr)&password=\(pwd)&time=\(timeStamp)&device_id=HELLO_FROM_IOS").responseData{response in
+            Alamofire.request(dsRequestURL, method: .post, parameters: loginParam).responseData{response in
                 if response.error != nil {
                     Crashlytics.sharedInstance().recordError(response.error!)
                     self.indicatorBackView.isHidden = true

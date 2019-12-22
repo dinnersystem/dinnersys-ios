@@ -57,7 +57,8 @@ class MainOrderTableViewController: UITableViewController {
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
         var foodCount = 0
-        Alamofire.request(dsURL("show_dish")).responseData{ response in
+        let param = cmdParam(cmd: "show_dish")
+        Alamofire.request(dsRequestURL, method: .post, parameters: param).responseData{ response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -85,6 +86,7 @@ class MainOrderTableViewController: UITableViewController {
                     guanDonMenuArr = []
                     originMenuArr = []
                     randomMenuArr = []
+                    //singleGDMenuarr = []
                     //mainMenuArr = try! decoder.decode([Menu].self, from: response.data!)
                     do{
                         mainMenuArr = try decoder.decode([Menu].self, from: response.data!)
@@ -109,6 +111,9 @@ class MainOrderTableViewController: UITableViewController {
                             }else if food.department?.factory?.name! == "合作社"{
                                 cafetMenuArr.append(food)
                                 randomMenuArr.append(food)
+//                            }else if food.department?.factory?.name! == "關東煮" && food.department?.name! == "單點"{
+//                                singleGDMenuarr.append(food)
+//                                randomMenuArr.append(food)
                             }else if food.department?.factory?.name! == "關東煮"{
                                 guanDonMenuArr.append(food)
                             }

@@ -10,10 +10,11 @@ import Foundation
 import Alamofire
 
 let decoder = JSONDecoder()
-let versionNumber = 201900019
+let versionNumber = 201900020
 func dsURL(_ cmd: String) -> String{
     return "\(dinnersysURL)/backend/backend.php?cmd=\(cmd)"
 }
+let dsRequestURL = "\(dinnersysURL)/backend/backend.php"
 let itmsURL = URL(string: "itms-apps://itunes.apple.com/app/id1352943874")!
 
 //modify this to change every link in the app
@@ -64,11 +65,17 @@ var pwd = ""
 var fcmToken = ""
 var balance = 0
 let seatNumArr = Array(1...50)
+var guanDonParam: Parameters = [:]
+var dishIDs:[String] = []
 
 public func createAlert(_ title: String,_ message: String) -> UIAlertController{
     let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
     return alert
+}
+
+public func cmdParam(cmd: String) -> Parameters{
+    return ["cmd": cmd]
 }
 
 extension UIImage {

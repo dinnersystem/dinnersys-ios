@@ -57,11 +57,14 @@ class GuanDonTableViewController: UITableViewController{
         //let sr = tableView.indexPathsForSelectedRows
         Ord.url = dsURL("make_self_order")
         foodArr.removeAll()
-        
+        guanDonParam.removeAll()
+        dishIDs.removeAll()
+        guanDonParam.updateValue("make_self_order", forKey: "cmd")
         for item in orderDict{
             var i=0
             while i<item.value{
                 Ord.url += "&dish_id[]=\(item.key)"
+                dishIDs.append(item.key)
                 i+=1
             }
         }
@@ -85,6 +88,7 @@ class GuanDonTableViewController: UITableViewController{
          print(selectedFood.id)
          }
          */
+        guanDonParam.updateValue(dishIDs, forKey: "dish_id")
         self.performSegue(withIdentifier: "store4Segue", sender: self)
     }
     

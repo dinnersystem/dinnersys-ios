@@ -13,7 +13,7 @@ import TrueTime
 
 class orderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    
+    let feedbackGenerator = UINotificationFeedbackGenerator()
     
     @IBOutlet var nameView: UITableView!
     @IBOutlet var qtyView: UITableView!
@@ -29,6 +29,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             self.view.backgroundColor = UIColor.white
         }
+        feedbackGenerator.prepare()
         foodArray.removeAll()
         foodArray.append(SelectedFoodArray(name: SelectedFood.name, qty: "x1", cost: SelectedFood.cost))
         foodArray.append(SelectedFoodArray(name: "小計", qty: "x1", cost: SelectedFood.cost))
@@ -104,7 +105,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let lower_bound = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
         //end
         if date > lower_bound! {
-        //if false{
+//        if false{
             let alert = UIAlertController(title: "超過訂餐時間", message: "早上十點十分後無法訂餐，明日請早", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
@@ -112,7 +113,10 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }))
             self.present(alert, animated: true)
         }else{
-            Alamofire.request("\(dsURL("make_self_order"))&dish_id[]=\(SelectedFood.id)&time=\(currentDate)-12:00:00").responseData{response in
+            dishIDs.removeAll()
+            dishIDs.append(SelectedFood.id)
+            let orderParam: Parameters = ["cmd": "make_self_order","dish_id":dishIDs,"time":"\(currentDate)-12:00:00"]
+            Alamofire.request(dsRequestURL, method: .post, parameters: orderParam).responseData{response in
                 if response.error != nil {
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -166,6 +170,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         (action: UIAlertAction!) -> () in
                         self.navigationController?.popViewController(animated: true)
                     }))
+                    self.feedbackGenerator.notificationOccurred(.success)
                     self.present(alert, animated: true)
                 case "Error":
                     let alert = UIAlertController(title: "Unexpected Error", message: "發生了不知名的錯誤。請嘗試重新登入，或嘗試重新開啟程式，若持續發生問題，請通知開發人員！", preferredStyle: .alert)

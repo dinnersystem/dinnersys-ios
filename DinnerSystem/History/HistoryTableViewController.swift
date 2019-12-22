@@ -52,7 +52,8 @@ class HistoryTableViewController: UITableViewController {
             }))
             self.present(errorAlert, animated: true, completion: nil)
         }
-        Alamofire.request(dsURL("select_self")+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59" + "&history=true").responseData{response in
+        let histParam: Parameters = ["cmd": "select_self", "esti_start": today + "-00:00:00", "esti_end": today + "-23:59:59", "history": "true"]
+        Alamofire.request(dsRequestURL, method: .post, parameters: histParam).responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -146,7 +147,8 @@ class HistoryTableViewController: UITableViewController {
         oldHistoryTableList = []
         formatter.dateFormat = "yyyy/MM/dd"
         today = formatter.string(from: date)
-        Alamofire.request(dsURL("select_self") + "&history=true").responseData{ response in
+        let histParam: Parameters = ["cmd": "select_self", "history": "true"]
+        Alamofire.request(dsRequestURL, method: .post, parameters: histParam).responseData{ response in
             if response.error != nil {
                 
                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
