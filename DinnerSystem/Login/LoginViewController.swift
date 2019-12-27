@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
-            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員!\n\(error)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Crashlytics.sharedInstance().recordError(error)
             self.present(alert,animated: true, completion: nil)
