@@ -12,7 +12,8 @@ class TaiwanTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "台灣小吃部" + "（餘額: \(balance)）"
+        let factoryName = selectedMenuArr[0].department?.factory?.name!
+        self.navigationItem.title = factoryName! + "（餘額: \(balance)）"
         self.tableView.reloadData()
     }
 
@@ -25,13 +26,13 @@ class TaiwanTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return taiwanMenuArr.count
+        return selectedMenuArr.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store1Cell", for: indexPath)
-        let info = taiwanMenuArr[indexPath.row]
+        let info = selectedMenuArr[indexPath.row]
         //let backgroundColor = UIColor(red:0.38, green:0.38, blue:0.38, alpha:1.0)
         //let foregroundColor = UIColor(red:0.92, green:0.49, blue:0.63, alpha:1.0)
         //let backgroundColor = UIColor.white
@@ -66,7 +67,7 @@ class TaiwanTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let info = taiwanMenuArr[indexPath.row]
+        let info = selectedMenuArr[indexPath.row]
         SelectedFood.cost = info.dishCost!
         SelectedFood.id = info.dishId!
         SelectedFood.name = info.dishName!

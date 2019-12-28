@@ -70,7 +70,7 @@ class GuanDonTableViewController: UITableViewController{
         }
         for item in orderDict{
             if(item.value > 0){
-                let food = guanDonMenuArr.filter{ $0.dishId == item.key }[0]
+                let food = selectedMenuArr.filter{ $0.dishId == item.key }[0]
                 //                ord.name += "\(originMenuArr[Int(item.key)!-1].dishName!)*\(item.value)+"
                 //foodArr.append(selectedFoodArray(name: originMenuArr[Int(item.key)!].dishName!, qty: "x\(item.value)", cost: originMenuArr[Int(item.key)!].dishCost!))
                 foodArr.append(SelectedFoodArray(name: food.dishName!, qty: "x\(item.value)", cost: food.dishCost!))
@@ -95,10 +95,10 @@ class GuanDonTableViewController: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         //lowestCost = Int(guanDonMenuArr[0].department!.factory!.minimum!)!
-        lowestCost = guanDonMenuArr.count > 0 ? Int(guanDonMenuArr[0].department!.factory!.minimum!)! : 45
+        lowestCost = selectedMenuArr.count > 0 ? Int(selectedMenuArr[0].department!.factory!.minimum!)! : 45
         addButton()
-        for i in 0..<guanDonMenuArr.count{
-            let info = guanDonMenuArr[i]
+        for i in 0..<selectedMenuArr.count{
+            let info = selectedMenuArr[i]
             orderDict.updateValue(0, forKey: info.dishId!)
             if(info.department!.name! == "麵類"){
                 noodleID.append(info.dishId!)
@@ -122,13 +122,13 @@ class GuanDonTableViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return guanDonMenuArr.count
+        return selectedMenuArr.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "store4Cell", for: indexPath) as! GuanDonTableViewCell
-        let info = guanDonMenuArr[indexPath.row]
+        let info = selectedMenuArr[indexPath.row]
         cell.titleText.text = info.dishName!
         cell.subtitleText.text = "\(info.dishCost!)$，剩\(info.remaining!)個"
         cell.stepper.value = Double(orderDict[info.dishId!]!)
@@ -177,13 +177,13 @@ class GuanDonTableViewController: UITableViewController{
     
     @objc func stepperChanged(sender: UIStepper){
         print(sender.tag)
-        let ingInfo = guanDonMenuArr.filter{ $0.dishId == String(sender.tag) }[0]
+        let ingInfo = selectedMenuArr.filter{ $0.dishId == String(sender.tag) }[0]
         let cell = self.tableView.cellForRow(at: IndexPath(row: stepperDict[sender.tag]!, section: 0)) as! GuanDonTableViewCell
         orderDict.updateValue(Int(sender.value), forKey: ingInfo.dishId!)
         selected = 0
         totalCost = 0
         for item in orderDict{
-            let dish = guanDonMenuArr.filter{ $0.dishId == item.key }
+            let dish = selectedMenuArr.filter{ $0.dishId == item.key }
             selected += item.value
             totalCost += (item.value * Int(dish[0].dishCost!)!)
         }
@@ -214,7 +214,7 @@ class GuanDonTableViewController: UITableViewController{
                 self.selected = 0
                 self.totalCost = 0
                 for item in self.orderDict{
-                    let dish = guanDonMenuArr.filter{ $0.dishId == item.key }
+                    let dish = selectedMenuArr.filter{ $0.dishId == item.key }
                     self.selected += item.value
                     self.totalCost += (item.value * Int(dish[0].dishCost!)!)
                 }

@@ -15,6 +15,8 @@ var guanDonMenuArr:[Menu] = []
 //var singleGDMenuarr:[Menu] = []
 var originMenuArr:[Menu] = []
 var randomMenuArr:[Menu] = []
+var splitMainMenuArr: [String:[Menu]] = [:]
+var selectedMenuArr: [Menu] = []
 
 struct Menu : Codable {
     

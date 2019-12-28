@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
+		E6177CE123B7290700117B27 /* FactoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6177CE023B7290700117B27 /* FactoryTableViewCell.swift */; };
+		E6177CE323B72C0500117B27 /* RandomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6177CE223B72C0500117B27 /* RandomOrderViewController.swift */; };
 		E630303F2305783F007DD07D /* BeforeHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
@@ -31,8 +33,6 @@
 		E6995B9521FC24F100F8C8F1 /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4321FC23ED00F8C8F1 /* BonusViewController.swift */; };
 		E6995B9621FC24F100F8C8F1 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */; };
 		E6995B9721FC24F100F8C8F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */; };
-		E6995B9821FC24F100F8C8F1 /* AiJiaTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4721FC23ED00F8C8F1 /* AiJiaTableViewController.swift */; };
-		E6995B9921FC24F100F8C8F1 /* BreakfastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4821FC23ED00F8C8F1 /* BreakfastTableViewController.swift */; };
 		E6995B9A21FC24F100F8C8F1 /* GuanDonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4A21FC23ED00F8C8F1 /* GuanDonTableViewCell.swift */; };
 		E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */; };
 		E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */; };
@@ -50,7 +50,6 @@
 		E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E6C3B03522BF87CE008AAE8A /* loading.gif */; };
 		E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */; };
 		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
-		E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -76,6 +75,8 @@
 		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
+		E6177CE023B7290700117B27 /* FactoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTableViewCell.swift; sourceTree = "<group>"; };
+		E6177CE223B72C0500117B27 /* RandomOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomOrderViewController.swift; sourceTree = "<group>"; };
 		E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHistoryTableViewController.swift; sourceTree = "<group>"; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,8 +101,6 @@
 		E6995B4321FC23ED00F8C8F1 /* BonusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
 		E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		E6995B4721FC23ED00F8C8F1 /* AiJiaTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AiJiaTableViewController.swift; sourceTree = "<group>"; };
-		E6995B4821FC23ED00F8C8F1 /* BreakfastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakfastTableViewController.swift; sourceTree = "<group>"; };
 		E6995B4A21FC23ED00F8C8F1 /* GuanDonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewCell.swift; sourceTree = "<group>"; };
 		E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewController.swift; sourceTree = "<group>"; };
 		E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +119,6 @@
 		E6CA0A7922ABE56600DD1B21 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E6CA0A7B22ABEF0800DD1B21 /* credits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = credits.py; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomOrderViewController.swift; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -272,12 +270,11 @@
 			children = (
 				E6995B4E21FC23ED00F8C8F1 /* JSON */,
 				E6995B4921FC23ED00F8C8F1 /* GuanDon */,
-				E6995B4721FC23ED00F8C8F1 /* AiJiaTableViewController.swift */,
-				E6995B4821FC23ED00F8C8F1 /* BreakfastTableViewController.swift */,
 				E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */,
 				E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */,
+				E6177CE223B72C0500117B27 /* RandomOrderViewController.swift */,
 				E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */,
-				E6E3474322AFCC9000FE2522 /* RandomOrderViewController.swift */,
+				E6177CE023B7290700117B27 /* FactoryTableViewCell.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -533,8 +530,6 @@
 				E6995B9521FC24F100F8C8F1 /* BonusViewController.swift in Sources */,
 				E6995B9621FC24F100F8C8F1 /* MoreTableViewController.swift in Sources */,
 				E6995B9721FC24F100F8C8F1 /* WebViewController.swift in Sources */,
-				E6995B9821FC24F100F8C8F1 /* AiJiaTableViewController.swift in Sources */,
-				E6995B9921FC24F100F8C8F1 /* BreakfastTableViewController.swift in Sources */,
 				E6995B9A21FC24F100F8C8F1 /* GuanDonTableViewCell.swift in Sources */,
 				E69506FE225F9F6E00B86952 /* BarcodeViewController.swift in Sources */,
 				E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */,
@@ -548,7 +543,8 @@
 				E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */,
 				E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */,
 				E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */,
-				E6E3474422AFCC9000FE2522 /* RandomOrderViewController.swift in Sources */,
+				E6177CE123B7290700117B27 /* FactoryTableViewCell.swift in Sources */,
+				E6177CE323B72C0500117B27 /* RandomOrderViewController.swift in Sources */,
 				E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
