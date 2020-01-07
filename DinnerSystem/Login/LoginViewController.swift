@@ -187,7 +187,7 @@ class LoginViewController: UIViewController {
                 }else{
                     let string = String(data: response.data!, encoding: .utf8)!
                     Crashlytics.sharedInstance().setObjectValue(string, forKey: "httpResponse")
-                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (string == "punish") || (string == "Punish") || (usr.count == 5)){
+                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (string == "punish") || (string == "Punish")){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
@@ -196,14 +196,23 @@ class LoginViewController: UIViewController {
                         //userInfo = try! decoder.decode(Login.self, from: response.data!)
                         do{
                             userInfo = try decoder.decode(Login.self, from: response.data!)
-                            userInfo.name = userInfo.name?.trimmingCharacters(in: .whitespaces)
-                            let userString = userInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines)
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(userString)", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                self.performSegue(withIdentifier: "loginSuccess", sender: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            if userInfo.validOper!.contains("select_class") && !userInfo.validOper!.contains("select_other") {
+                                let nameString = userInfo.classField!.classNo! + "班的午餐股長"
+                                let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    self.performSegue(withIdentifier: "dmSegue", sender: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }else{
+                                let nameString = userInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines)
+                                let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    self.performSegue(withIdentifier: "loginSuccess", sender: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
                         }catch let error{
                             print(error)
                             Crashlytics.sharedInstance().recordError(error)
@@ -253,7 +262,7 @@ class LoginViewController: UIViewController {
                     Crashlytics.sharedInstance().setObjectValue(String(data: response.data!, encoding: .utf8), forKey: "httpResponse")
                     let string = String(data: response.data!, encoding: .utf8)!
                     print(string)
-                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong") || (usr.count == 5)){
+                    if (string.contains("無法登入。")) || (string.contains("No")) || (string.contains("Invalid") || (string == "") || (string == "Wrong")){
                         let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
@@ -274,14 +283,24 @@ class LoginViewController: UIViewController {
                                 self.remLogin.isEnabled = true
                                 self.remLogin.setTitle("以\(userInfo.name!)登入", for: UIControl.State.normal)
                             }
+                            if userInfo.validOper!.contains("select_class") && !userInfo.validOper!.contains("select_other") {
+                                let nameString = userInfo.classField!.classNo! + "班的午餐股長"
+                                let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    self.performSegue(withIdentifier: "dmSegue", sender: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }else{
+                                let nameString = userInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines)
+                                let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                    (action: UIAlertAction!) -> () in
+                                    self.performSegue(withIdentifier: "loginSuccess", sender: nil)
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
                             
-                            let nameString = userInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines)
-                            let alert = UIAlertController(title: "登入成功", message: "歡迎使用點餐系統，\(nameString)", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                (action: UIAlertAction!) -> () in
-                                self.performSegue(withIdentifier: "loginSuccess", sender: nil)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
                             
                         }catch let error{
                             print(error)

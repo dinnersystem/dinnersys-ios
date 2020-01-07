@@ -81,10 +81,6 @@ class MainOrderTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                 }else{
                     mainMenuArr = []
-                    taiwanMenuArr = []
-                    aiJiaMenuArr = []
-                    cafetMenuArr = []
-                    guanDonMenuArr = []
                     originMenuArr = []
                     randomMenuArr = []
                     splitMainMenuArr = [:]

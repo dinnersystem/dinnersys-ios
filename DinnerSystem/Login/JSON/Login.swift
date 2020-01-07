@@ -21,7 +21,7 @@ struct Login : Codable {
 
 
 	enum CodingKeys: String, CodingKey {
-		case classField
+		case classField = "class"
 		case id = "id"
 		case name = "name"
 		case prevSum = "prev_sum"

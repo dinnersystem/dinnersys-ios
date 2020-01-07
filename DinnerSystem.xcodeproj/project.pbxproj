@@ -14,6 +14,8 @@
 		E630303F2305783F007DD07D /* BeforeHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
+		E658B1E123C423EF003BFE76 /* Dinnerman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */; };
+		E658B1E423C42A21003BFE76 /* DMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B1E323C42A21003BFE76 /* DMTableViewController.swift */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
 		E69506FE225F9F6E00B86952 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */; };
 		E6950701225F9F9500B86952 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6950700225F9F9500B86952 /* CardInfo.swift */; };
@@ -82,6 +84,8 @@
 		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dinnerman.storyboard; sourceTree = "<group>"; };
+		E658B1E323C42A21003BFE76 /* DMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableViewController.swift; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
 		E6950700225F9F9500B86952 /* CardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				E6995B3A21FC23ED00F8C8F1 /* Login */,
 				E6995B4221FC23ED00F8C8F1 /* More */,
 				E6995B4621FC23ED00F8C8F1 /* Order */,
+				E658B1E223C429FB003BFE76 /* DM */,
 				E653E460200075D4000E35AE /* Storyboards */,
 				E6CA389C208DF4D5002801DD /* AppDelegate.swift */,
 				E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */,
@@ -196,8 +201,17 @@
 			children = (
 				E653E438200074F9000E35AE /* LaunchScreen.storyboard */,
 				E6EA6580208C2113001C9A37 /* Main.storyboard */,
+				E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E658B1E223C429FB003BFE76 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				E658B1E323C42A21003BFE76 /* DMTableViewController.swift */,
+			);
+			path = DM;
 			sourceTree = "<group>";
 		};
 		E69506FF225F9F9500B86952 /* JSON */ = {
@@ -410,6 +424,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E658B1E123C423EF003BFE76 /* Dinnerman.storyboard in Resources */,
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
 				E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */,
 				E6C3843922C4DC9600F7CE58 /* GoogleService-Info.plist in Resources */,
@@ -522,6 +537,7 @@
 				E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */,
 				E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */,
 				E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */,
+				E658B1E423C42A21003BFE76 /* DMTableViewController.swift in Sources */,
 				E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */,
 				E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */,
 				E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */,
