@@ -225,7 +225,7 @@ class MoreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -237,6 +237,10 @@ class MoreTableViewController: UITableViewController {
                 counter += 1
                 self.performSegue(withIdentifier: "normalSegue", sender: self)
             }
+        }else if indexPath.row == 3{
+            let policiyURL = URL(string: "\(dinnersysURL)/frontend/FoodPolicies.pdf")!
+            UIApplication.shared.open(policiyURL, options: [:], completionHandler: nil)
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
         //        else if indexPath.row == 2{
         //            do{
