@@ -138,7 +138,7 @@
                         <outlet property="remLogin" destination="Wea-oY-RKX" id="0lg-CJ-byu"/>
                         <outlet property="remPW" destination="hGW-sC-eyJ" id="bEN-x1-NLo"/>
                         <outlet property="username" destination="ccE-IJ-h2R" id="Cq0-pc-la2"/>
-                        <segue destination="NRK-yL-rVi" kind="show" identifier="loginSuccess" id="5X7-EZ-qKW"/>
+                        <segue destination="NRK-yL-rVi" kind="presentation" identifier="loginSuccess" id="5X7-EZ-qKW"/>
                         <segue destination="Ois-sm-9aM" kind="show" identifier="dmSegue" id="Gb3-nh-KFm"/>
                     </connections>
                 </viewController>
@@ -590,6 +590,7 @@
                             <outlet property="delegate" destination="VyL-vT-g4u" id="Tii-RG-sjk"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="zvm-FF-0df"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r0F-w8-WnI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -728,6 +729,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="j8p-m2-zKU"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hPp-XV-hGZ"/>
                     <connections>
                         <outlet property="backButton" destination="y7C-vo-fGu" id="6t5-4f-K2t"/>
                         <outlet property="frontButton" destination="p2k-dw-pze" id="pah-nE-bMe"/>
@@ -736,7 +738,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46K-uO-vhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1920.8" y="3083.2083958020994"/>
+            <point key="canvasLocation" x="1356" y="3084"/>
         </scene>
         <!--點餐-->
         <scene sceneID="0lW-lz-0dD">
@@ -973,6 +975,7 @@
                             <outlet property="delegate" destination="GdU-KB-nKF" id="W9z-8h-Gfe"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="hgk-Cd-ePU"/>
                     <connections>
                         <segue destination="JWJ-Ee-bfp" kind="show" identifier="thanksSegue" id="1bK-56-fJC"/>
                     </connections>
@@ -1045,6 +1048,7 @@ upE
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kSA-Mp-OTK"/>
                     </view>
+                    <navigationItem key="navigationItem" id="AXk-1T-9Dm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RUd-bO-KjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1071,6 +1075,7 @@ upE
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="IVn-XW-9JU"/>
                     </view>
+                    <navigationItem key="navigationItem" id="lvG-Kq-ltQ"/>
                     <connections>
                         <outlet property="image" destination="zEC-kO-DmG" id="as7-6X-jmr"/>
                     </connections>
@@ -1313,11 +1318,12 @@ upE
             </objects>
             <point key="canvasLocation" x="-3061" y="2748"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Student Tab Bar Controller-->
         <scene sceneID="M2A-qa-Na4">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NRK-yL-rVi" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="NRK-yL-rVi" customClass="StudentTabBarController" customModule="DinnerSystem" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="hxf-6e-cwd"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0aN-XV-mM3">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
