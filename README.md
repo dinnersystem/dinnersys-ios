@@ -2,7 +2,7 @@ The README file of the iOS app for DinnerSystem.
 
 DinnerSystem iOS App
 ====================
-[![codebeat badge](https://codebeat.co/badges/cbd2cad9-81cf-4853-98b6-c586baadcf12)](https://codebeat.co/projects/github-com-seanpai96-dinnersys-ios-master)
+[![codebeat badge](https://codebeat.co/badges/23faad64-a8f9-4191-9cc3-0691e17c22ec)](https://codebeat.co/projects/github-com-dinnersystem-dinnersys-ios-master)
 
 Introduction
 ------------
