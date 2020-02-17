@@ -9,50 +9,37 @@
 /* Begin PBXBuildFile section */
 		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
-		E6177CE123B7290700117B27 /* FactoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6177CE023B7290700117B27 /* FactoryTableViewCell.swift */; };
-		E6177CE323B72C0500117B27 /* RandomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6177CE223B72C0500117B27 /* RandomOrderViewController.swift */; };
-		E630303F2305783F007DD07D /* BeforeHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */; };
+		E61419D223F7ABB8000E5634 /* RemLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D123F7ABB8000E5634 /* RemLoginViewController.swift */; };
+		E61419DC23F7AE34000E5634 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D523F7AE34000E5634 /* History.swift */; };
+		E61419DD23F7AE34000E5634 /* HistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D623F7AE34000E5634 /* HistoryClas.swift */; };
+		E61419DE23F7AE34000E5634 /* HistoryDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D723F7AE34000E5634 /* HistoryDish.swift */; };
+		E61419DF23F7AE34000E5634 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D823F7AE34000E5634 /* HistoryList.swift */; };
+		E61419E023F7AE34000E5634 /* HistoryMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D923F7AE34000E5634 /* HistoryMoney.swift */; };
+		E61419E123F7AE34000E5634 /* HistoryOrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419DA23F7AE34000E5634 /* HistoryOrderMaker.swift */; };
+		E61419E223F7AE34000E5634 /* HistoryPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419DB23F7AE34000E5634 /* HistoryPayment.swift */; };
+		E61419E723F7AED6000E5634 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419E423F7AED6000E5634 /* Department.swift */; };
+		E61419E823F7AED6000E5634 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419E523F7AED6000E5634 /* Factory.swift */; };
+		E61419E923F7AED6000E5634 /* Vege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419E623F7AED6000E5634 /* Vege.swift */; };
+		E623A89423F8448C002B1489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E623A89323F8448C002B1489 /* LoginViewController.swift */; };
+		E623A89723F868CA002B1489 /* version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E623A89623F868CA002B1489 /* version.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E658B1E123C423EF003BFE76 /* Dinnerman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */; };
 		E658B1E423C42A21003BFE76 /* DMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B1E323C42A21003BFE76 /* DMTableViewController.swift */; };
+		E6672FBF23F6884200493932 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6672FBE23F6884200493932 /* Login.storyboard */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
-		E6863D1F23C704E600317AA3 /* StudentTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6863D1E23C704E600317AA3 /* StudentTabBarController.swift */; };
-		E69506FE225F9F6E00B86952 /* BarcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */; };
-		E6950701225F9F9500B86952 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6950700225F9F9500B86952 /* CardInfo.swift */; };
-		E6995B8521FC24F100F8C8F1 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */; };
-		E6995B8621FC24F100F8C8F1 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3021FC23ED00F8C8F1 /* History.swift */; };
-		E6995B8721FC24F100F8C8F1 /* HistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */; };
-		E6995B8921FC24F100F8C8F1 /* HistoryDish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3321FC23ED00F8C8F1 /* HistoryDish.swift */; };
-		E6995B8B21FC24F100F8C8F1 /* HistoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3521FC23ED00F8C8F1 /* HistoryList.swift */; };
-		E6995B8C21FC24F100F8C8F1 /* HistoryMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3621FC23ED00F8C8F1 /* HistoryMoney.swift */; };
-		E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3721FC23ED00F8C8F1 /* HistoryOrderMaker.swift */; };
-		E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3821FC23ED00F8C8F1 /* HistoryPayment.swift */; };
-		E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3C21FC23ED00F8C8F1 /* Login.swift */; };
-		E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3D21FC23ED00F8C8F1 /* LoginClas.swift */; };
-		E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3E21FC23ED00F8C8F1 /* LoginVege.swift */; };
-		E6995B9321FC24F100F8C8F1 /* version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B3F21FC23ED00F8C8F1 /* version.swift */; };
-		E6995B9421FC24F100F8C8F1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4021FC23ED00F8C8F1 /* LoginViewController.swift */; };
-		E6995B9521FC24F100F8C8F1 /* BonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4321FC23ED00F8C8F1 /* BonusViewController.swift */; };
-		E6995B9621FC24F100F8C8F1 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */; };
-		E6995B9721FC24F100F8C8F1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */; };
-		E6995B9A21FC24F100F8C8F1 /* GuanDonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4A21FC23ED00F8C8F1 /* GuanDonTableViewCell.swift */; };
-		E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */; };
-		E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */; };
-		E6995B9E21FC24F100F8C8F1 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5021FC23ED00F8C8F1 /* Menu.swift */; };
-		E6995B9F21FC24F100F8C8F1 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5121FC23ED00F8C8F1 /* Department.swift */; };
-		E6995BA021FC24F100F8C8F1 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5221FC23ED00F8C8F1 /* Factory.swift */; };
-		E6995BA121FC24F100F8C8F1 /* Vege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5321FC23ED00F8C8F1 /* Vege.swift */; };
-		E6995BA821FC24F100F8C8F1 /* MainOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */; };
-		E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */; };
-		E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */; };
+		E6813EDA23FA649F008F6066 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813ED723FA649E008F6066 /* LoginClas.swift */; };
+		E6813EDB23FA649F008F6066 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813ED823FA649F008F6066 /* Login.swift */; };
+		E6813EDC23FA649F008F6066 /* LoginVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813ED923FA649F008F6066 /* LoginVege.swift */; };
+		E6813EDF23FA89F3008F6066 /* StudentMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813EDE23FA89F3008F6066 /* StudentMainViewController.swift */; };
+		E6813EE123FA8C94008F6066 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813EE023FA8C94008F6066 /* Barcode.swift */; };
+		E6813EE423FA8D69008F6066 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813EE323FA8D69008F6066 /* CardInfo.swift */; };
 		E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA389C208DF4D5002801DD /* AppDelegate.swift */; };
 		E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60E4D0F214A105E007C4412 /* misc.swift */; };
-		E6995BB421FC296300F8C8F1 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6995BAE21FC296300F8C8F1 /* Order.swift */; };
 		E6C3843922C4DC9600F7CE58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */; };
 		E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E6C3B03522BF87CE008AAE8A /* loading.gif */; };
-		E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */; };
 		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
+		E6D05AC023F5915400B8D3A4 /* Student.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D05ABF23F5915400B8D3A4 /* Student.storyboard */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -78,53 +65,40 @@
 		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
-		E6177CE023B7290700117B27 /* FactoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryTableViewCell.swift; sourceTree = "<group>"; };
-		E6177CE223B72C0500117B27 /* RandomOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomOrderViewController.swift; sourceTree = "<group>"; };
-		E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeHistoryTableViewController.swift; sourceTree = "<group>"; };
+		E61419D123F7ABB8000E5634 /* RemLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemLoginViewController.swift; sourceTree = "<group>"; };
+		E61419D523F7AE34000E5634 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		E61419D623F7AE34000E5634 /* HistoryClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryClas.swift; sourceTree = "<group>"; };
+		E61419D723F7AE34000E5634 /* HistoryDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDish.swift; sourceTree = "<group>"; };
+		E61419D823F7AE34000E5634 /* HistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
+		E61419D923F7AE34000E5634 /* HistoryMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoney.swift; sourceTree = "<group>"; };
+		E61419DA23F7AE34000E5634 /* HistoryOrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderMaker.swift; sourceTree = "<group>"; };
+		E61419DB23F7AE34000E5634 /* HistoryPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryPayment.swift; sourceTree = "<group>"; };
+		E61419E423F7AED6000E5634 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		E61419E523F7AED6000E5634 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		E61419E623F7AED6000E5634 /* Vege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vege.swift; sourceTree = "<group>"; };
+		E623A89323F8448C002B1489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E623A89623F868CA002B1489 /* version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = version.swift; path = DinnerSystem/JSON/Version/version.swift; sourceTree = SOURCE_ROOT; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
-		E653E42C200074F9000E35AE /* DinnerSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DinnerSystem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E653E42C200074F9000E35AE /* 點餐系統β.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "點餐系統β.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dinnerman.storyboard; sourceTree = "<group>"; };
 		E658B1E323C42A21003BFE76 /* DMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableViewController.swift; sourceTree = "<group>"; };
+		E6672FBE23F6884200493932 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		E6863D1E23C704E600317AA3 /* StudentTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTabBarController.swift; sourceTree = "<group>"; };
-		E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeViewController.swift; sourceTree = "<group>"; };
-		E6950700225F9F9500B86952 /* CardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
-		E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
-		E6995B3021FC23ED00F8C8F1 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryClas.swift; sourceTree = "<group>"; };
-		E6995B3321FC23ED00F8C8F1 /* HistoryDish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDish.swift; sourceTree = "<group>"; };
-		E6995B3521FC23ED00F8C8F1 /* HistoryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryList.swift; sourceTree = "<group>"; };
-		E6995B3621FC23ED00F8C8F1 /* HistoryMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoney.swift; sourceTree = "<group>"; };
-		E6995B3721FC23ED00F8C8F1 /* HistoryOrderMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryOrderMaker.swift; sourceTree = "<group>"; };
-		E6995B3821FC23ED00F8C8F1 /* HistoryPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryPayment.swift; sourceTree = "<group>"; };
-		E6995B3C21FC23ED00F8C8F1 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		E6995B3D21FC23ED00F8C8F1 /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
-		E6995B3E21FC23ED00F8C8F1 /* LoginVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVege.swift; sourceTree = "<group>"; };
-		E6995B3F21FC23ED00F8C8F1 /* version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = version.swift; sourceTree = "<group>"; };
-		E6995B4021FC23ED00F8C8F1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E6995B4321FC23ED00F8C8F1 /* BonusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
-		E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
-		E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		E6995B4A21FC23ED00F8C8F1 /* GuanDonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewCell.swift; sourceTree = "<group>"; };
-		E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonTableViewController.swift; sourceTree = "<group>"; };
-		E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuanDonViewController.swift; sourceTree = "<group>"; };
-		E6995B5021FC23ED00F8C8F1 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		E6995B5121FC23ED00F8C8F1 /* Department.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		E6995B5221FC23ED00F8C8F1 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
-		E6995B5321FC23ED00F8C8F1 /* Vege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vege.swift; sourceTree = "<group>"; };
-		E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainOrderTableViewController.swift; sourceTree = "<group>"; };
-		E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
-		E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaiwanTableViewController.swift; sourceTree = "<group>"; };
-		E6995BAE21FC296300F8C8F1 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		E6813ED723FA649E008F6066 /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
+		E6813ED823FA649F008F6066 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		E6813ED923FA649F008F6066 /* LoginVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVege.swift; sourceTree = "<group>"; };
+		E6813EDE23FA89F3008F6066 /* StudentMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainViewController.swift; sourceTree = "<group>"; };
+		E6813EE023FA8C94008F6066 /* Barcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
+		E6813EE323FA8D69008F6066 /* CardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C3843822C4DC9600F7CE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E6C3B03522BF87CE008AAE8A /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
-		E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E6CA0A7922ABE56600DD1B21 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		E6CA0A7B22ABEF0800DD1B21 /* credits.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = credits.py; sourceTree = "<group>"; };
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E6D05ABF23F5915400B8D3A4 /* Student.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Student.storyboard; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -157,6 +131,59 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E61419D023F7AB8B000E5634 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E61419D123F7ABB8000E5634 /* RemLoginViewController.swift */,
+				E623A89323F8448C002B1489 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E61419D323F7AE34000E5634 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				E6813EE223FA8D69008F6066 /* CardInfo */,
+				E6813ED023FA640A008F6066 /* Login */,
+				E623A89523F868B4002B1489 /* Version */,
+				E61419E323F7AED6000E5634 /* Menu */,
+				E61419D423F7AE34000E5634 /* History */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		E61419D423F7AE34000E5634 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				E61419D523F7AE34000E5634 /* History.swift */,
+				E61419D623F7AE34000E5634 /* HistoryClas.swift */,
+				E61419D723F7AE34000E5634 /* HistoryDish.swift */,
+				E61419D823F7AE34000E5634 /* HistoryList.swift */,
+				E61419D923F7AE34000E5634 /* HistoryMoney.swift */,
+				E61419DA23F7AE34000E5634 /* HistoryOrderMaker.swift */,
+				E61419DB23F7AE34000E5634 /* HistoryPayment.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		E61419E323F7AED6000E5634 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E61419E423F7AED6000E5634 /* Department.swift */,
+				E61419E523F7AED6000E5634 /* Factory.swift */,
+				E61419E623F7AED6000E5634 /* Vege.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		E623A89523F868B4002B1489 /* Version */ = {
+			isa = PBXGroup;
+			children = (
+				E623A89623F868CA002B1489 /* version.swift */,
+			);
+			path = Version;
+			sourceTree = "<group>";
+		};
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +201,7 @@
 		E653E42D200074F9000E35AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E653E42C200074F9000E35AE /* DinnerSystem.app */,
+				E653E42C200074F9000E35AE /* 點餐系統β.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,11 +209,10 @@
 		E653E42E200074F9000E35AE /* DinnerSystem */ = {
 			isa = PBXGroup;
 			children = (
+				E61419D323F7AE34000E5634 /* JSON */,
+				E6813EDD23FA89BC008F6066 /* StudentMain */,
+				E61419D023F7AB8B000E5634 /* Login */,
 				E6AB60EA222824230069FBD3 /* OK */,
-				E6995B2D21FC23ED00F8C8F1 /* History */,
-				E6995B3A21FC23ED00F8C8F1 /* Login */,
-				E6995B4221FC23ED00F8C8F1 /* More */,
-				E6995B4621FC23ED00F8C8F1 /* Order */,
 				E658B1E223C429FB003BFE76 /* DM */,
 				E653E460200075D4000E35AE /* Storyboards */,
 				E6CA389C208DF4D5002801DD /* AppDelegate.swift */,
@@ -204,6 +230,8 @@
 				E653E438200074F9000E35AE /* LaunchScreen.storyboard */,
 				E6EA6580208C2113001C9A37 /* Main.storyboard */,
 				E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */,
+				E6D05ABF23F5915400B8D3A4 /* Student.storyboard */,
+				E6672FBE23F6884200493932 /* Login.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -216,122 +244,31 @@
 			path = DM;
 			sourceTree = "<group>";
 		};
-		E69506FF225F9F9500B86952 /* JSON */ = {
+		E6813ED023FA640A008F6066 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E6950700225F9F9500B86952 /* CardInfo.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E6995B2D21FC23ED00F8C8F1 /* History */ = {
-			isa = PBXGroup;
-			children = (
-				E6995B2E21FC23ED00F8C8F1 /* HistoryTableViewController.swift */,
-				E630303E2305783F007DD07D /* BeforeHistoryTableViewController.swift */,
-				E6995B2F21FC23ED00F8C8F1 /* JSON */,
-			);
-			path = History;
-			sourceTree = "<group>";
-		};
-		E6995B2F21FC23ED00F8C8F1 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E6995B3021FC23ED00F8C8F1 /* History.swift */,
-				E6995B3121FC23ED00F8C8F1 /* HistoryClas.swift */,
-				E6995B3321FC23ED00F8C8F1 /* HistoryDish.swift */,
-				E6995B3521FC23ED00F8C8F1 /* HistoryList.swift */,
-				E6995B3621FC23ED00F8C8F1 /* HistoryMoney.swift */,
-				E6995B3721FC23ED00F8C8F1 /* HistoryOrderMaker.swift */,
-				E6995B3821FC23ED00F8C8F1 /* HistoryPayment.swift */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E6995B3A21FC23ED00F8C8F1 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				E6995B3B21FC23ED00F8C8F1 /* JSON */,
-				E6995B4021FC23ED00F8C8F1 /* LoginViewController.swift */,
-				E6863D1E23C704E600317AA3 /* StudentTabBarController.swift */,
+				E6813ED823FA649F008F6066 /* Login.swift */,
+				E6813ED723FA649E008F6066 /* LoginClas.swift */,
+				E6813ED923FA649F008F6066 /* LoginVege.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
 		};
-		E6995B3B21FC23ED00F8C8F1 /* JSON */ = {
+		E6813EDD23FA89BC008F6066 /* StudentMain */ = {
 			isa = PBXGroup;
 			children = (
-				E6995B3C21FC23ED00F8C8F1 /* Login.swift */,
-				E6995B3D21FC23ED00F8C8F1 /* LoginClas.swift */,
-				E6995B3E21FC23ED00F8C8F1 /* LoginVege.swift */,
-				E6995B3F21FC23ED00F8C8F1 /* version.swift */,
+				E6813EDE23FA89F3008F6066 /* StudentMainViewController.swift */,
+				E6813EE023FA8C94008F6066 /* Barcode.swift */,
 			);
-			path = JSON;
+			path = StudentMain;
 			sourceTree = "<group>";
 		};
-		E6995B4221FC23ED00F8C8F1 /* More */ = {
+		E6813EE223FA8D69008F6066 /* CardInfo */ = {
 			isa = PBXGroup;
 			children = (
-				E69506FF225F9F9500B86952 /* JSON */,
-				E6995B4321FC23ED00F8C8F1 /* BonusViewController.swift */,
-				E6995B4421FC23ED00F8C8F1 /* MoreTableViewController.swift */,
-				E6995B4521FC23ED00F8C8F1 /* WebViewController.swift */,
-				E69506FD225F9F6E00B86952 /* BarcodeViewController.swift */,
-				E6CA0A7722ABD99E00DD1B21 /* AboutTableViewController.swift */,
+				E6813EE323FA8D69008F6066 /* CardInfo.swift */,
 			);
-			path = More;
-			sourceTree = "<group>";
-		};
-		E6995B4621FC23ED00F8C8F1 /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				E6995B4E21FC23ED00F8C8F1 /* JSON */,
-				E6995B4921FC23ED00F8C8F1 /* GuanDon */,
-				E6995B5B21FC23ED00F8C8F1 /* MainOrderTableViewController.swift */,
-				E6995B5C21FC23ED00F8C8F1 /* OrderViewController.swift */,
-				E6177CE223B72C0500117B27 /* RandomOrderViewController.swift */,
-				E6995B5D21FC23ED00F8C8F1 /* TaiwanTableViewController.swift */,
-				E6177CE023B7290700117B27 /* FactoryTableViewCell.swift */,
-			);
-			path = Order;
-			sourceTree = "<group>";
-		};
-		E6995B4921FC23ED00F8C8F1 /* GuanDon */ = {
-			isa = PBXGroup;
-			children = (
-				E6995B4A21FC23ED00F8C8F1 /* GuanDonTableViewCell.swift */,
-				E6995B4B21FC23ED00F8C8F1 /* GuanDonTableViewController.swift */,
-				E6995B4C21FC23ED00F8C8F1 /* GuanDonViewController.swift */,
-			);
-			path = GuanDon;
-			sourceTree = "<group>";
-		};
-		E6995B4E21FC23ED00F8C8F1 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				E6995BAD21FC296300F8C8F1 /* Order */,
-				E6995B4F21FC23ED00F8C8F1 /* Menu */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		E6995B4F21FC23ED00F8C8F1 /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				E6995B5021FC23ED00F8C8F1 /* Menu.swift */,
-				E6995B5121FC23ED00F8C8F1 /* Department.swift */,
-				E6995B5221FC23ED00F8C8F1 /* Factory.swift */,
-				E6995B5321FC23ED00F8C8F1 /* Vege.swift */,
-			);
-			path = Menu;
-			sourceTree = "<group>";
-		};
-		E6995BAD21FC296300F8C8F1 /* Order */ = {
-			isa = PBXGroup;
-			children = (
-				E6995BAE21FC296300F8C8F1 /* Order.swift */,
-			);
-			path = Order;
+			path = CardInfo;
 			sourceTree = "<group>";
 		};
 		E6AB60EA222824230069FBD3 /* OK */ = {
@@ -373,7 +310,7 @@
 			);
 			name = DinnerSystem;
 			productName = DinnerSystem;
-			productReference = E653E42C200074F9000E35AE /* DinnerSystem.app */;
+			productReference = E653E42C200074F9000E35AE /* 點餐系統β.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -427,6 +364,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6D05AC023F5915400B8D3A4 /* Student.storyboard in Resources */,
 				E658B1E123C423EF003BFE76 /* Dinnerman.storyboard in Resources */,
 				E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */,
 				E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */,
@@ -434,6 +372,7 @@
 				E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
 				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
+				E6672FBF23F6884200493932 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,44 +469,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6995B8521FC24F100F8C8F1 /* HistoryTableViewController.swift in Sources */,
-				E6995B8621FC24F100F8C8F1 /* History.swift in Sources */,
-				E6995B8721FC24F100F8C8F1 /* HistoryClas.swift in Sources */,
-				E6995B8921FC24F100F8C8F1 /* HistoryDish.swift in Sources */,
-				E6995BB421FC296300F8C8F1 /* Order.swift in Sources */,
-				E6995B8B21FC24F100F8C8F1 /* HistoryList.swift in Sources */,
-				E6995B8C21FC24F100F8C8F1 /* HistoryMoney.swift in Sources */,
-				E630303F2305783F007DD07D /* BeforeHistoryTableViewController.swift in Sources */,
-				E6950701225F9F9500B86952 /* CardInfo.swift in Sources */,
-				E6995B8D21FC24F100F8C8F1 /* HistoryOrderMaker.swift in Sources */,
-				E6995B8E21FC24F100F8C8F1 /* HistoryPayment.swift in Sources */,
-				E6995B9021FC24F100F8C8F1 /* Login.swift in Sources */,
+				E61419DF23F7AE34000E5634 /* HistoryList.swift in Sources */,
+				E623A89723F868CA002B1489 /* version.swift in Sources */,
+				E61419DD23F7AE34000E5634 /* HistoryClas.swift in Sources */,
+				E61419DC23F7AE34000E5634 /* History.swift in Sources */,
 				E658B1E423C42A21003BFE76 /* DMTableViewController.swift in Sources */,
-				E6CA0A7822ABD99E00DD1B21 /* AboutTableViewController.swift in Sources */,
-				E6995B9121FC24F100F8C8F1 /* LoginClas.swift in Sources */,
-				E6995B9221FC24F100F8C8F1 /* LoginVege.swift in Sources */,
-				E6995B9321FC24F100F8C8F1 /* version.swift in Sources */,
-				E6995B9421FC24F100F8C8F1 /* LoginViewController.swift in Sources */,
-				E6995B9521FC24F100F8C8F1 /* BonusViewController.swift in Sources */,
-				E6995B9621FC24F100F8C8F1 /* MoreTableViewController.swift in Sources */,
-				E6995B9721FC24F100F8C8F1 /* WebViewController.swift in Sources */,
-				E6863D1F23C704E600317AA3 /* StudentTabBarController.swift in Sources */,
-				E6995B9A21FC24F100F8C8F1 /* GuanDonTableViewCell.swift in Sources */,
-				E69506FE225F9F6E00B86952 /* BarcodeViewController.swift in Sources */,
-				E6995B9B21FC24F100F8C8F1 /* GuanDonTableViewController.swift in Sources */,
-				E6995B9C21FC24F100F8C8F1 /* GuanDonViewController.swift in Sources */,
-				E6995B9E21FC24F100F8C8F1 /* Menu.swift in Sources */,
 				E6E38CA7222A0480007440F8 /* sutra.swift in Sources */,
-				E6995B9F21FC24F100F8C8F1 /* Department.swift in Sources */,
-				E6995BA021FC24F100F8C8F1 /* Factory.swift in Sources */,
-				E6995BA121FC24F100F8C8F1 /* Vege.swift in Sources */,
-				E6995BA821FC24F100F8C8F1 /* MainOrderTableViewController.swift in Sources */,
-				E6995BA921FC24F100F8C8F1 /* OrderViewController.swift in Sources */,
-				E6995BAA21FC24F100F8C8F1 /* TaiwanTableViewController.swift in Sources */,
+				E6813EDA23FA649F008F6066 /* LoginClas.swift in Sources */,
 				E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */,
-				E6177CE123B7290700117B27 /* FactoryTableViewCell.swift in Sources */,
-				E6177CE323B72C0500117B27 /* RandomOrderViewController.swift in Sources */,
+				E61419E823F7AED6000E5634 /* Factory.swift in Sources */,
+				E6813EDF23FA89F3008F6066 /* StudentMainViewController.swift in Sources */,
+				E6813EE123FA8C94008F6066 /* Barcode.swift in Sources */,
+				E61419E923F7AED6000E5634 /* Vege.swift in Sources */,
+				E61419E123F7AE34000E5634 /* HistoryOrderMaker.swift in Sources */,
+				E61419E223F7AE34000E5634 /* HistoryPayment.swift in Sources */,
 				E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */,
+				E6813EDB23FA649F008F6066 /* Login.swift in Sources */,
+				E61419E723F7AED6000E5634 /* Department.swift in Sources */,
+				E623A89423F8448C002B1489 /* LoginViewController.swift in Sources */,
+				E61419E023F7AE34000E5634 /* HistoryMoney.swift in Sources */,
+				E61419DE23F7AE34000E5634 /* HistoryDish.swift in Sources */,
+				E6813EE423FA8D69008F6066 /* CardInfo.swift in Sources */,
+				E6813EDC23FA649F008F6066 /* LoginVege.swift in Sources */,
+				E61419D223F7ABB8000E5634 /* RemLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,8 +648,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.4.1;
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem.beta;
+				PRODUCT_NAME = "點餐系統β";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -752,8 +676,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.4.1;
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem.beta;
+				PRODUCT_NAME = "點餐系統β";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

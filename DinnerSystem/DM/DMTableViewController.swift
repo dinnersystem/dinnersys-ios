@@ -25,7 +25,7 @@ class DMTableViewController: UITableViewController {
         dmHistoryTableList = [:]
         factoryNames.removeAll()
         let histParam: Parameters = ["cmd": "select_class", "esti_start": today + "-00:00:00", "esti_end": today + "-23:59:59", "history": "true"]
-        Alamofire.request(dsRequestURL, method: .post, parameters: histParam).responseData{response in
+        AF.request(dsRequestURL, method: .post, parameters: histParam).responseData{response in
             if response.error != nil {
                 let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {

@@ -53,7 +53,7 @@ struct loginInfo{
 */
 
 func logout(){
-    Alamofire.request("\(dinnersysURL)/dinnersys_beta/backend/backend.php?cmd=logout").responseData{_ in}
+    AF.request("\(dinnersysURL)/dinnersys_beta/backend/backend.php?cmd=logout").responseData{_ in}
 }
 
 struct Ord{
