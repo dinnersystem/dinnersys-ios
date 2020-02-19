@@ -21,12 +21,27 @@ class LoginViewController: UIViewController {
     
     //MARK: - Declarations
     var uDefault: UserDefaults!
+    var activityIndicator = UIActivityIndicatorView()
+    var indicatorBackView = UIView()
     
     //MARK: - VDL
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
+        
+        //indicator
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicatorBackView.center = self.view.center
+        indicatorBackView.isHidden = true
+        indicatorBackView.layer.cornerRadius = 20
+        indicatorBackView.alpha = 0.5
+        indicatorBackView.backgroundColor = UIColor.lightGray
+        self.view.addSubview(indicatorBackView)
+        self.view.addSubview(activityIndicator)
         
         //sry light mode here
         if #available(iOS 13.0, *){
@@ -59,10 +74,15 @@ class LoginViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        self.activityIndicator.startAnimating()
+        self.indicatorBackView.isHidden = false
         
         //actual login
         AF.request(dsRequestURL, method: .post, parameters: loginParam).responseData{ response in
+            
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
             if response.error != nil{
                 Crashlytics.sharedInstance().recordError(response.error!)
                 self.present(createAlert("登入失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(response.error!)"),animated: false)

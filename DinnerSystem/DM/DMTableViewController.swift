@@ -107,7 +107,16 @@ class DMTableViewController: UITableViewController {
         indicatorBackView.isHidden = true
         indicatorBackView.layer.cornerRadius = 20
         indicatorBackView.alpha = 0.5
-        indicatorBackView.backgroundColor = UIColor.black
+        if #available(iOS 12.0, *) {
+            if self.traitCollection.userInterfaceStyle == .dark{
+                //dark mode!
+                indicatorBackView.backgroundColor = UIColor.lightGray
+            }else{
+                indicatorBackView.backgroundColor = UIColor.black
+            }
+        } else {
+            indicatorBackView.backgroundColor = UIColor.black
+        }
         self.view.addSubview(indicatorBackView)
         self.view.addSubview(activityIndicator)
         

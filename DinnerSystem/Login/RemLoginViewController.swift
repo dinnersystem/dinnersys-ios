@@ -20,6 +20,8 @@ class RemLoginViewController: UIViewController {
     
     //MARK: - Declarations
     var uDefault: UserDefaults!
+    var activityIndicator = UIActivityIndicatorView()
+    var indicatorBackView = UIView()
     
     func verCheck() -> Bool{
         do{
@@ -28,8 +30,8 @@ class RemLoginViewController: UIViewController {
             print(String(data: versionResponse, encoding: .utf8)!)
             currentVersion = try decoder.decode(AppVersion.self, from: versionResponse)
             if !(currentVersion.ios!.contains(versionNumber)){
-                //                self.indicatorBackView.isHidden = true
-                //                self.activityIndicator.stopAnimating()
+                self.indicatorBackView.isHidden = true
+                self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
                 let alert = UIAlertController(title: "偵測到更新版本", message: "請至App Store更新最新版本的點餐系統!", preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK(跳轉至AppStore)", style: .default, handler: {
@@ -40,16 +42,16 @@ class RemLoginViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return true
             }else{
-                //                self.indicatorBackView.isHidden = true
-                //                self.activityIndicator.stopAnimating()
+                self.indicatorBackView.isHidden = true
+                self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
             }
         }catch let error{
             print(error)
-            //            self.indicatorBackView.isHidden = true
-            //            self.activityIndicator.stopAnimating()
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
-            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員!\n\(error)", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Oops", message: "發生了不知名的錯誤，請聯繫開發人員!\n\(error.localizedDescription)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             Crashlytics.sharedInstance().recordError(error)
             self.present(alert,animated: true, completion: nil)
@@ -60,6 +62,20 @@ class RemLoginViewController: UIViewController {
     //MARK: - VDL
     override func viewDidLoad() {
         super.viewDidLoad()
+        //indicator
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.gray
+        activityIndicator.startAnimating()
+        indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        indicatorBackView.center = self.view.center
+        indicatorBackView.isHidden = false
+        indicatorBackView.layer.cornerRadius = 20
+        indicatorBackView.alpha = 0.5
+        indicatorBackView.backgroundColor = UIColor.lightGray
+        self.view.addSubview(indicatorBackView)
+        self.view.addSubview(activityIndicator)
+        
         //title layout adapt to smaller device
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
@@ -76,7 +92,6 @@ class RemLoginViewController: UIViewController {
     
     //MARK: - VDA
     override func viewDidAppear(_ animated: Bool) {
-        //TODO - verCheck
         let updatable = verCheck()
         if updatable{
             return

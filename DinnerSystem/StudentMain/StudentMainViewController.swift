@@ -17,14 +17,13 @@ class StudentMainViewController: UIViewController {
     @IBOutlet var cardDetailLabel: UILabel!
     
     //MARK: - Declarations
-    var barcodeImage: UIImage!
+    
     
     override func viewWillAppear(_ animated: Bool) {
         do{
-            let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+            let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)     //get POS info
             POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
-            barcodeImage = getBarcode(POSData: POSInfo)
-            barcodeView.image = barcodeImage
+            barcodeView.image = getBarcode(POSData: POSInfo) //get barcode image
             cardDetailLabel.text = "卡號：\(POSInfo.card!)\n餘額：\(POSInfo.money!)元（非即時）"
             titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
         }catch let error{
@@ -52,7 +51,19 @@ class StudentMainViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func moreButton(_ sender: AnyObject){
+        self.performSegue(withIdentifier: "moreSegue", sender: nil)
+    }
     
-
+    @IBAction func menuButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "menuSegue", sender: nil)
+    }
+    
+    @IBAction func orderButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "historySegue", sender: nil)
+    }
+    
+    @IBAction func cart_button(_ sender: Any) {
+    }
+    
 }
