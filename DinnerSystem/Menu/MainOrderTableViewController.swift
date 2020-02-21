@@ -133,8 +133,13 @@ class MainOrderTableViewController: UITableViewController {
             }
             do{
                 let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+                let factoryResponse = try Data(contentsOf: URL(string: dsURL("show_factory"))!)
                 do{
                     POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+                    let factoryInfo = try decoder.decode([Factory].self, from: factoryResponse)
+                    for factory in factoryInfo{
+                        factoryInfoArray.updateValue(factory, forKey: factory.id!)
+                    }
                     balance = Int(POSInfo.money!)!
                 }catch let error{
                     Crashlytics.sharedInstance().recordError(error)
@@ -189,7 +194,7 @@ class MainOrderTableViewController: UITableViewController {
         let info = factoryName[indexPath.row]
         if info == "Random"{
             self.performSegue(withIdentifier: "randomSegue", sender: nil)
-        }else if splitMainMenuArr[info]![0].department?.factory?.allowCustom! == "false"{       //not allow
+        }else if splitMainMenuArr[info]![0].department?.factory?.allowCustom! == "false"{       //not allow custom dish
             selectedMenuArr = splitMainMenuArr[info]!
             self.performSegue(withIdentifier: "normalSegue", sender: nil)
         }else{

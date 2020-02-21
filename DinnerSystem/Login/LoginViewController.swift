@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        UIApplication.shared.beginIgnoringInteractionEvents()
+//        UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
         self.indicatorBackView.isHidden = false
         

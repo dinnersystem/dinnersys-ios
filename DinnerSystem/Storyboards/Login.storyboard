@@ -116,21 +116,8 @@
                                 <fontDescription key="fontDescription" name="PingFangTC-Medium" family="PingFang TC" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號(ex. 06610089)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQ6-c8-nCI">
-                                <rect key="frame" x="38" y="222" width="190.5" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼(預設為生日 ex. 911023)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6R-Jd-JEW">
-                                <rect key="frame" x="38" y="292" width="299" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="VdW-qF-P2G"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXs-lR-PXm">
-                                <rect key="frame" x="53" y="387" width="269" height="45"/>
+                                <rect key="frame" x="53" y="349" width="269" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.49803921569999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="ccZ-8P-DT6"/>
@@ -147,11 +134,24 @@
                                     <action selector="login:" destination="uBS-bh-PzG" eventType="touchUpInside" id="0Oh-ap-x1o"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號(ex. 06610089)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQ6-c8-nCI">
+                                <rect key="frame" x="38" y="185" width="190.5" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼(預設為生日 ex. 911023)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6R-Jd-JEW">
+                                <rect key="frame" x="38" y="255" width="299" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="VdW-qF-P2G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                            </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVR-fU-ryW">
-                                <rect key="frame" x="272.5" y="238" width="51" height="31"/>
+                                <rect key="frame" x="272.5" y="201" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記住密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-ye-mZy">
-                                <rect key="frame" x="260.5" y="209" width="69.5" height="21"/>
+                                <rect key="frame" x="260.5" y="171" width="69.5" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -160,18 +160,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="OXs-lR-PXm" firstAttribute="leading" secondItem="e6R-Jd-JEW" secondAttribute="leading" constant="15" id="0Ma-6O-upl"/>
+                            <constraint firstItem="OQ6-c8-nCI" firstAttribute="top" secondItem="Sfq-8A-frb" secondAttribute="bottom" constant="107" id="A3z-nm-KWm"/>
                             <constraint firstItem="ogM-ye-mZy" firstAttribute="leading" secondItem="OQ6-c8-nCI" secondAttribute="trailing" constant="32" id="Cw5-nC-NJL"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="centerX" secondItem="Hia-G2-Glc" secondAttribute="centerX" id="DIL-KB-Jbu"/>
                             <constraint firstItem="iWM-33-jy3" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ogM-ye-mZy" secondAttribute="trailing" constant="45" id="IRH-m9-pzD"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="centerX" secondItem="OXs-lR-PXm" secondAttribute="centerX" id="Kqa-i8-HIf"/>
-                            <constraint firstItem="ogM-ye-mZy" firstAttribute="top" secondItem="iWM-33-jy3" secondAttribute="top" constant="209" id="TEx-1m-9cE"/>
+                            <constraint firstItem="ogM-ye-mZy" firstAttribute="top" secondItem="iWM-33-jy3" secondAttribute="top" constant="171" id="TEx-1m-9cE"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="top" secondItem="OQ6-c8-nCI" secondAttribute="bottom" constant="36" id="TNp-Rj-Kwz"/>
                             <constraint firstItem="OQ6-c8-nCI" firstAttribute="leading" secondItem="e6R-Jd-JEW" secondAttribute="leading" id="U2w-uJ-uCs"/>
                             <constraint firstItem="Sfq-8A-frb" firstAttribute="top" secondItem="iWM-33-jy3" secondAttribute="top" constant="50" id="Zg9-3h-F5m"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="top" secondItem="mVR-fU-ryW" secondAttribute="bottom" constant="23" id="c6w-qS-wpc"/>
                             <constraint firstItem="iWM-33-jy3" firstAttribute="trailing" secondItem="Sfq-8A-frb" secondAttribute="trailing" constant="138" id="ejG-nw-EGt"/>
                             <constraint firstItem="mVR-fU-ryW" firstAttribute="leading" secondItem="OQ6-c8-nCI" secondAttribute="trailing" constant="44" id="h11-H5-4ic"/>
-                            <constraint firstItem="OXs-lR-PXm" firstAttribute="top" secondItem="e6R-Jd-JEW" secondAttribute="bottom" constant="61" id="hHh-p9-LDd"/>
+                            <constraint firstItem="OXs-lR-PXm" firstAttribute="top" secondItem="e6R-Jd-JEW" secondAttribute="bottom" constant="60" id="hHh-p9-LDd"/>
                             <constraint firstItem="mVR-fU-ryW" firstAttribute="top" secondItem="ogM-ye-mZy" secondAttribute="bottom" constant="8" id="p9u-BI-dFh"/>
                             <constraint firstItem="Sfq-8A-frb" firstAttribute="leading" secondItem="iWM-33-jy3" secondAttribute="leading" constant="34" id="rOb-8Z-rmm"/>
                             <constraint firstItem="OQ6-c8-nCI" firstAttribute="leading" secondItem="iWM-33-jy3" secondAttribute="leading" constant="38" id="tkK-Kd-Ddw"/>
@@ -194,7 +195,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nim-qq-wxv"/>
-        <segue reference="1ku-Oa-mhk"/>
+        <segue reference="dRz-WM-PGB"/>
+        <segue reference="eGs-Zh-TPU"/>
     </inferredMetricsTieBreakers>
 </document>

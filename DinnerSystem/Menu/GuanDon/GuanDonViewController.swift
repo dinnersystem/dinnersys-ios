@@ -96,10 +96,12 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
-        var orderResult = ""
+        //var orderResult = ""
         var currentDate = formatter.string(from: date)
         currentDate += selectedTime
+        /*
         guanDonParam.updateValue(currentDate, forKey: "time")
+ */
         //time lock
         let calander = Calendar.current
         let lower_bound_12 = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
@@ -115,6 +117,11 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
             }))
             self.present(alert, animated: true)
         }else{
+            orderParameter = guanDonParam
+            ConfirmFood.name = "自助餐點"
+            ConfirmFood.cost = foodArr.last!.cost
+            self.performSegue(withIdentifier: "confirmSegue", sender: self)
+            /*
             AF.request(dsRequestURL, method: .post, parameters: guanDonParam).responseData{response in
                 if response.error != nil {
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
@@ -191,6 +198,7 @@ class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewD
                     self.present(alert, animated: true)
                 }
             }
+ */
         }
     }
 }

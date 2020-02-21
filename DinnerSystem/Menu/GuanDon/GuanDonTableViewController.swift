@@ -30,23 +30,7 @@ class GuanDonTableViewController: UITableViewController{
         orderButton.isEnabled = false
         //tableView.addSubview(orderButton)
         
-        //position
-        /*
-         orderButton.translatesAutoresizingMaskIntoConstraints = false
-         if #available(iOS 11.0, *) {
-         orderButton.leftAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.leftAnchor).isActive = true
-         orderButton.rightAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.rightAnchor).isActive = true
-         orderButton.bottomAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.bottomAnchor).isActive = true
-         orderButton.widthAnchor.constraint(equalTo: tableView.safeAreaLayoutGuide.widthAnchor).isActive = true
-         } else {
-         orderButton.leftAnchor.constraint(equalTo: tableView.leftAnchor).isActive = true
-         orderButton.rightAnchor.constraint(equalTo: tableView.rightAnchor).isActive = true
-         orderButton.bottomAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
-         orderButton.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
-         }
-         */
         
-        //orderButton.heightAnchor.constraint(equalToConstant: 75).isActive = true
         orderButton.addTarget(self, action: #selector(self.order(_:)), for: UIControl.Event.touchUpInside)
         
     }
@@ -82,13 +66,9 @@ class GuanDonTableViewController: UITableViewController{
         SelectedFood.cost = String(totalCost)
         SelectedFood.name = Ord.name
         foodArr.append(SelectedFoodArray(name: "小計", qty: "x\(selected)", cost: String(totalCost)))
-        /*
-         Alamofire.request(ord.url).responseString{response in
-         selectedFood.id = response.value!
-         print(selectedFood.id)
-         }
-         */
+        
         guanDonParam.updateValue(dishIDs, forKey: "dish_id")
+        ConfirmFood.fID = selectedMenuArr[0].department!.factory!.id!
         self.performSegue(withIdentifier: "store4Segue", sender: self)
     }
     

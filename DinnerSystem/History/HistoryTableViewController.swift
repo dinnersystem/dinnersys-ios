@@ -117,6 +117,7 @@ class HistoryTableViewController: UITableViewController {
         }
     }
     
+    /*
     func toOldHistory(){
         oldHistoryArr = []
         oldHistoryTableList = []
@@ -182,6 +183,7 @@ class HistoryTableViewController: UITableViewController {
             }
         }
     }
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,14 +210,7 @@ class HistoryTableViewController: UITableViewController {
     }
     
     @IBAction func oldHistorySegue(_ sender: Any) {
-        let optionList = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        optionList.addAction(UIAlertAction(title: "返回主畫面", style: .default, handler: { _ in
-            self.dismiss(animated: true, completion: nil)
-        }))
-        optionList.addAction(UIAlertAction(title: "檢視過去訂單", style: .default, handler: { _ in
-            self.toOldHistory()
-        }))
-        self.present(optionList, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func reloadButton(_ sender: Any) {

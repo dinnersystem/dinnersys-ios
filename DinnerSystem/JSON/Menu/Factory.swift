@@ -7,9 +7,13 @@
 
 import Foundation
 
+var factoryInfoArray: [String: Factory] = [:]
+
 struct Factory : Codable {
     
     let allowCustom : String?
+    let availUpperBound : String?
+    let bossId : String?
     let dailyProduce : String?
     let id : String?
     let lowerBound : String?
@@ -23,6 +27,8 @@ struct Factory : Codable {
     
     enum CodingKeys: String, CodingKey {
         case allowCustom = "allow_custom"
+        case availUpperBound = "avail_upper_bound"
+        case bossId = "boss_id"
         case dailyProduce = "daily_produce"
         case id = "id"
         case lowerBound = "lower_bound"
@@ -34,6 +40,8 @@ struct Factory : Codable {
         case upperBound = "upper_bound"
     }
     init(allowCustom : String? = nil,
+         availUpperBound : String? = nil,
+         bossId : String? = nil,
          dailyProduce : String? = nil,
          id : String? = nil,
          lowerBound : String? = nil,
@@ -43,8 +51,10 @@ struct Factory : Codable {
          prepareTime : String? = nil,
          remaining : String? = nil,
          upperBound : String? = nil
-        ){
+    ){
         self.allowCustom = allowCustom
+        self.availUpperBound = availUpperBound
+        self.bossId = bossId
         self.dailyProduce = dailyProduce
         self.id = id
         self.lowerBound = lowerBound

@@ -71,6 +71,7 @@ class TaiwanTableViewController: UITableViewController {
         SelectedFood.cost = info.dishCost!
         SelectedFood.id = info.dishId!
         SelectedFood.name = info.dishName!
+        ConfirmFood.fID = info.department!.factory!.id!
         self.performSegue(withIdentifier: "taiwanSegue", sender: nil)
     }
     

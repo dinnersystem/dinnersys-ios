@@ -39,6 +39,12 @@ struct SelectedFoodArray {
 }
 var foodArr: [SelectedFoodArray] = []
 
+struct ConfirmFood {
+    static var name: String = ""
+    static var fID: String = ""
+    static var cost: String = ""
+}
+
 extension String {
     var isInt: Bool {
         return Int(self) != nil
@@ -66,6 +72,7 @@ var fcmToken = ""
 var balance = 0
 let seatNumArr = Array(1...50)
 var guanDonParam: Parameters = [:]
+var orderParameter: Parameters = [:]
 var dishIDs:[String] = []
 
 public func createAlert(_ title: String,_ message: String) -> UIAlertController{

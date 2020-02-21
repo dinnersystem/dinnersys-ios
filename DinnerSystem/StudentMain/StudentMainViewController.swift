@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import Alamofire
 
 class StudentMainViewController: UIViewController {
     
@@ -63,7 +64,68 @@ class StudentMainViewController: UIViewController {
         self.performSegue(withIdentifier: "historySegue", sender: nil)
     }
     
-    @IBAction func cart_button(_ sender: Any) {
+    @IBAction func cart_button(_ sender: Any) {             //turned to oldHistory
+        oldHistoryArr = []
+        oldHistoryTableList = []
+        let histParam: Parameters = ["cmd": "select_self", "history": "true"]
+        AF.request(dsRequestURL, method: .post, parameters: histParam).responseData{ response in
+            if response.error != nil {
+                
+                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    logout()
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(errorAlert, animated: true, completion: nil)
+            }
+            let responseStr = String(data: response.data!, encoding: .utf8)
+            if responseStr == ""{
+                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    logout()
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }else if responseStr == "{}"{
+                let alert = UIAlertController(title: "無點餐紀錄", message: "過去無點餐紀錄！", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                do{
+                    oldHistoryArr = try decoder.decode([History].self, from: response.data!)
+                    oldHistoryArr.reverse()
+                    print("HI")
+                    for order in oldHistoryArr{
+                        if order.dish!.count == 1{
+                            let tmp = HistoryList(id: order.id, dishName: order.dish![0].dishName, dishCost: order.dish![0].dishCost, recvDate: order.recvDate, money: order.money)
+                            oldHistoryTableList.append(tmp)
+                        }else{
+                            var dName = ""
+                            var dCost = 0
+                            for dish in order.dish!{
+                                dName += "\(dish.dishName!)+"
+                                dCost += Int(dish.dishCost!)!
+                            }
+                            dName = String(dName.dropLast(1))
+                            let tmp = HistoryList(id: order.id, dishName: dName, dishCost: String(dCost), recvDate: order.recvDate, money: order.money)
+                            oldHistoryTableList.append(tmp)
+                        }
+                    }
+                    self.performSegue(withIdentifier: "oldHistorySegue", sender: self)
+                }catch let error{
+                    print(error)
+                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     
 }

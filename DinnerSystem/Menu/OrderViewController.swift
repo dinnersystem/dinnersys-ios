@@ -94,11 +94,11 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK: - orderButton
     @IBAction func order(_ sender: Any)  {
-        var orderResult = ""
+        //var orderResult = ""
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
-        let currentDate = formatter.string(from: date)
+        //let currentDate = formatter.string(from: date)
         
         //time lock
         let calander = Calendar.current
@@ -115,6 +115,11 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }else{
             dishIDs.removeAll()
             dishIDs.append(SelectedFood.id)
+            orderParameter = ["cmd": "make_self_order","dish_id":dishIDs]
+            ConfirmFood.name = SelectedFood.name
+            ConfirmFood.cost = SelectedFood.cost
+            self.performSegue(withIdentifier: "confirmSegue", sender: self)
+            /*
             let orderParam: Parameters = ["cmd": "make_self_order","dish_id":dishIDs,"time":"\(currentDate)-12:00:00"]
             AF.request(dsRequestURL, method: .post, parameters: orderParam).responseData{response in
                 if response.error != nil {
@@ -190,6 +195,7 @@ class orderViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     self.present(alert, animated: true)
                 }
             }
+            */
         }
     }
 }
