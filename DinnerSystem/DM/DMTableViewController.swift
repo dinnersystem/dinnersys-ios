@@ -31,7 +31,7 @@ class DMTableViewController: UITableViewController {
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
             }
@@ -41,7 +41,7 @@ class DMTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else if responseStr == "{}"{
@@ -81,7 +81,7 @@ class DMTableViewController: UITableViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }

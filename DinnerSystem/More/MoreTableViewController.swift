@@ -76,7 +76,7 @@ class MoreTableViewController: UITableViewController {
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
                             logout()
-                            self.dismiss(animated: true, completion: nil)
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                         self.present(errorAlert, animated: true, completion: nil)
                     }
@@ -101,7 +101,7 @@ class MoreTableViewController: UITableViewController {
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
                             logout()
-                            self.dismiss(animated: true, completion: nil)
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)
                     }else{
@@ -109,7 +109,7 @@ class MoreTableViewController: UITableViewController {
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action:UIAlertAction) -> () in
                             AF.request("\(dsURL("logout"))").responseString{resp in}
-                            self.dismiss(animated: true, completion: nil)
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)
                     }

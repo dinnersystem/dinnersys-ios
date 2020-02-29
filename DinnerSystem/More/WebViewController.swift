@@ -39,7 +39,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         if reachability.connection == .unavailable{
-            self.dismiss(animated: true, completion: nil)
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
     }
     @IBAction func back(_ sender: Any) {

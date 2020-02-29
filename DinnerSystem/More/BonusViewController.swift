@@ -34,7 +34,7 @@ class BonusViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else{

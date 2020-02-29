@@ -22,6 +22,10 @@
 		E61419E923F7AED6000E5634 /* Vege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419E623F7AED6000E5634 /* Vege.swift */; };
 		E623A89423F8448C002B1489 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E623A89323F8448C002B1489 /* LoginViewController.swift */; };
 		E623A89723F868CA002B1489 /* version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E623A89623F868CA002B1489 /* version.swift */; };
+		E647D50924081AA800054721 /* LegacyBonusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50524081AA800054721 /* LegacyBonusViewController.swift */; };
+		E647D50A24081AA800054721 /* LegacyMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50624081AA800054721 /* LegacyMoreTableViewController.swift */; };
+		E647D50B24081AA800054721 /* LegacyAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50724081AA800054721 /* LegacyAboutTableViewController.swift */; };
+		E647D50C24081AA800054721 /* LegacyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50824081AA800054721 /* LegacyWebViewController.swift */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E658B1E123C423EF003BFE76 /* Dinnerman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */; };
@@ -132,7 +136,11 @@
 		E623A89323F8448C002B1489 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E623A89623F868CA002B1489 /* version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = version.swift; path = DinnerSystem/JSON/Version/version.swift; sourceTree = SOURCE_ROOT; };
 		E64228DE215BA05000E24C35 /* DinnerSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DinnerSystem.entitlements; sourceTree = "<group>"; };
-		E653E42C200074F9000E35AE /* 點餐系統β.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "點餐系統β.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E647D50524081AA800054721 /* LegacyBonusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyBonusViewController.swift; sourceTree = "<group>"; };
+		E647D50624081AA800054721 /* LegacyMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMoreTableViewController.swift; sourceTree = "<group>"; };
+		E647D50724081AA800054721 /* LegacyAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyAboutTableViewController.swift; sourceTree = "<group>"; };
+		E647D50824081AA800054721 /* LegacyWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyWebViewController.swift; sourceTree = "<group>"; };
+		E653E42C200074F9000E35AE /* 點餐系統.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "點餐系統.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dinnerman.storyboard; sourceTree = "<group>"; };
@@ -292,6 +300,17 @@
 			path = Version;
 			sourceTree = "<group>";
 		};
+		E647D50424081A0500054721 /* LegacyMore */ = {
+			isa = PBXGroup;
+			children = (
+				E647D50724081AA800054721 /* LegacyAboutTableViewController.swift */,
+				E647D50524081AA800054721 /* LegacyBonusViewController.swift */,
+				E647D50624081AA800054721 /* LegacyMoreTableViewController.swift */,
+				E647D50824081AA800054721 /* LegacyWebViewController.swift */,
+			);
+			path = LegacyMore;
+			sourceTree = "<group>";
+		};
 		E653E423200074F8000E35AE = {
 			isa = PBXGroup;
 			children = (
@@ -310,7 +329,7 @@
 		E653E42D200074F9000E35AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E653E42C200074F9000E35AE /* 點餐系統β.app */,
+				E653E42C200074F9000E35AE /* 點餐系統.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,6 +337,7 @@
 		E653E42E200074F9000E35AE /* DinnerSystem */ = {
 			isa = PBXGroup;
 			children = (
+				E647D50424081A0500054721 /* LegacyMore */,
 				E61419D323F7AE34000E5634 /* JSON */,
 				E6B7AA6D23FBD845007BDF31 /* History */,
 				E6B7AA5B23FBCF06007BDF31 /* Menu */,
@@ -614,6 +634,7 @@
 				E6996B6D201DE47100E62A5C /* Embed Frameworks */,
 				E679A698203EEC81005AE1F9 /* ShellScript */,
 				E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */,
+				E647D50D24081CBD00054721 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -621,7 +642,7 @@
 			);
 			name = DinnerSystem;
 			productName = DinnerSystem;
-			productReference = E653E42C200074F9000E35AE /* 點餐系統β.app */;
+			productReference = E653E42C200074F9000E35AE /* 點餐系統.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -743,6 +764,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E647D50D24081CBD00054721 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/DinnerSystem/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
+		};
 		E679A698203EEC81005AE1F9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -814,7 +852,9 @@
 				E6B7AA5223FBAA4A007BDF31 /* AboutTableViewController.swift in Sources */,
 				E61419E923F7AED6000E5634 /* Vege.swift in Sources */,
 				E6F9A0812400301E008C32EE /* PickerViewViewController.swift in Sources */,
+				E647D50A24081AA800054721 /* LegacyMoreTableViewController.swift in Sources */,
 				E61419E123F7AE34000E5634 /* HistoryOrderMaker.swift in Sources */,
+				E647D50C24081AA800054721 /* LegacyWebViewController.swift in Sources */,
 				E61419E223F7AE34000E5634 /* HistoryPayment.swift in Sources */,
 				E6995BAC21FC24F100F8C8F1 /* misc.swift in Sources */,
 				E6F9A08A2400301E008C32EE /* Button.swift in Sources */,
@@ -834,6 +874,7 @@
 				E61419DE23F7AE34000E5634 /* HistoryDish.swift in Sources */,
 				E6813EE423FA8D69008F6066 /* CardInfo.swift in Sources */,
 				E6F9A0882400301E008C32EE /* AttributedTextBlock.swift in Sources */,
+				E647D50924081AA800054721 /* LegacyBonusViewController.swift in Sources */,
 				E6F9A0792400301E008C32EE /* PhoneCodeCell.swift in Sources */,
 				E6813EDC23FA649F008F6066 /* LoginVege.swift in Sources */,
 				E6F9A08C2400301E008C32EE /* Label.swift in Sources */,
@@ -851,6 +892,7 @@
 				E6B7AA6B23FBCF06007BDF31 /* RandomOrderViewController.swift in Sources */,
 				E6F9A05F2400301E008C32EE /* String+Extensions.swift in Sources */,
 				E6F9A05D2400301E008C32EE /* Locale+Extensions.swift in Sources */,
+				E647D50B24081AA800054721 /* LegacyAboutTableViewController.swift in Sources */,
 				E6F9A0872400301E008C32EE /* TwoTextFieldsViewController.swift in Sources */,
 				E6F9A0672400301E008C32EE /* UITextField+Extensions.swift in Sources */,
 				E6F9A0752400301E008C32EE /* LocaleStore.swift in Sources */,
@@ -1003,7 +1045,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinnerSystem/DinnerSystem.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1101;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
@@ -1012,9 +1054,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem.beta;
-				PRODUCT_NAME = "點餐系統β";
+				MARKETING_VERSION = 3.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
+				PRODUCT_NAME = "點餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1032,7 +1074,7 @@
 				CODE_SIGN_ENTITLEMENTS = DinnerSystem/DinnerSystem.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1101;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 22XQ2K3PZY;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
@@ -1041,9 +1083,9 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem.beta;
-				PRODUCT_NAME = "點餐系統β";
+				MARKETING_VERSION = 3.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
+				PRODUCT_NAME = "點餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

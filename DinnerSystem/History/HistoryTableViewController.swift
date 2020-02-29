@@ -37,7 +37,7 @@ class HistoryTableViewController: UITableViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -48,7 +48,7 @@ class HistoryTableViewController: UITableViewController {
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
                 logout()
-                self.dismiss(animated: true, completion: nil)
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             }))
             self.present(errorAlert, animated: true, completion: nil)
         }
@@ -59,17 +59,17 @@ class HistoryTableViewController: UITableViewController {
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)
-            if responseStr == ""{
+            if responseStr == "" || responseStr!.contains("Operation not allowed"){
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else if responseStr == "{}"{
@@ -105,7 +105,7 @@ class HistoryTableViewController: UITableViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -117,84 +117,21 @@ class HistoryTableViewController: UITableViewController {
         }
     }
     
-    /*
-    func toOldHistory(){
-        oldHistoryArr = []
-        oldHistoryTableList = []
-        formatter.dateFormat = "yyyy/MM/dd"
-        today = formatter.string(from: date)
-        let histParam: Parameters = ["cmd": "select_self", "history": "true"]
-        AF.request(dsRequestURL, method: .post, parameters: histParam).responseData{ response in
-            if response.error != nil {
-                
-                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }
-            let responseStr = String(data: response.data!, encoding: .utf8)
-            if responseStr == ""{
-                let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
-            }else if responseStr == "{}"{
-                let alert = UIAlertController(title: "無點餐紀錄", message: "過去無點餐紀錄！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }else{
-                do{
-                    oldHistoryArr = try decoder.decode([History].self, from: response.data!)
-                    oldHistoryArr.reverse()
-                    print("HI")
-                    for order in oldHistoryArr{
-                        if order.dish!.count == 1{
-                            let tmp = HistoryList(id: order.id, dishName: order.dish![0].dishName, dishCost: order.dish![0].dishCost, recvDate: order.recvDate, money: order.money)
-                            oldHistoryTableList.append(tmp)
-                        }else{
-                            var dName = ""
-                            var dCost = 0
-                            for dish in order.dish!{
-                                dName += "\(dish.dishName!)+"
-                                dCost += Int(dish.dishCost!)!
-                            }
-                            dName = String(dName.dropLast(1))
-                            let tmp = HistoryList(id: order.id, dishName: dName, dishCost: String(dCost), recvDate: order.recvDate, money: order.money)
-                            oldHistoryTableList.append(tmp)
-                        }
-                    }
-                    self.performSegue(withIdentifier: "oldHistorySegue", sender: self)
-                }catch let error{
-                    print(error)
-                    let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        }
-    }
-    */
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy/MM/dd"
         today = formatter.string(from: date)
         
-        activityIndicator.center = self.view.center
+        
+        let centerX = UIScreen.main.bounds.width / 2
+        let centerY = UIScreen.main.bounds.height / 2
+        activityIndicator.center = CGPoint(x: centerX, y: centerY)
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.gray
         indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        indicatorBackView.center = self.view.center
+        indicatorBackView.center = CGPoint(x: centerX, y: centerY)
         indicatorBackView.isHidden = true
         indicatorBackView.layer.cornerRadius = 20
         indicatorBackView.alpha = 0.5
@@ -264,9 +201,23 @@ class HistoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var info = historyTableList[indexPath.row]
         info.recvDate = String(info.recvDate!.dropLast(3))
-        let timeBool = info.recvDate!.contains("11:00")
+        let factory = historyArr[indexPath.row].dish![0].department!.factory!
+        let paymentTime = factory.paymentTime!.split(separator: ":").map(String.init)
+        print(factory.name!)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let currentDate = formatter.string(from: date)
+        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        let upperBound = formatter.date(from: "\(currentDate) \(factory.upperBound!)")
+        let paymentDeadLine = upperBound!.adding(.hour, value: -1*Int(paymentTime[0])!).adding(.minute, value: -1*Int(paymentTime[1])!).adding(.second, value: -1*Int(paymentTime[2])!)
         let paid:Bool = info.money!.payment![0].paid! == "true" ? true : false
-        let timeAlertString = timeBool ? "請於上午九點十分前付款！" : "請於上午十點十分前付款！"
+        formatter.dateFormat = "aHH:mm"
+        formatter.amSymbol = "上午"
+        formatter.pmSymbol = "下午"
+        formatter.locale = Locale(identifier: "zh_Hant_TW")
+        let time = formatter.string(from: paymentDeadLine)
+        let timeAlertString = "請於\(time)前付款！"
         let alert = UIAlertController(title: "訂餐編號：\(info.id!)\n餐點內容：\(info.dishName!)\n訂餐日期：\(info.recvDate!)\n餐點金額：\(info.money!.charge!)$\n付款狀態：\(paid ? "已付款" : "未付款")\n",
             message: timeAlertString,
             preferredStyle: .actionSheet)
@@ -280,7 +231,7 @@ class HistoryTableViewController: UITableViewController {
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(errorAlert, animated: true, completion: nil)
                 }
@@ -290,7 +241,7 @@ class HistoryTableViewController: UITableViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }else if responseStr.contains("denied"){
@@ -298,7 +249,7 @@ class HistoryTableViewController: UITableViewController {
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(errorAlert, animated: true, completion: nil)
                 }else if responseStr.contains("Invalid"){
@@ -306,7 +257,7 @@ class HistoryTableViewController: UITableViewController {
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(errorAlert, animated: true, completion: nil)
                 }
@@ -331,13 +282,14 @@ class HistoryTableViewController: UITableViewController {
                 self.indicatorBackView.isHidden = false
                 //time
                 
-                let date = Date()
-                let calander = Calendar.current
-                let lower_bound_12 = calander.date(bySettingHour: 10, minute: 10, second: 0, of: date)
-                let lower_bound_11 = calander.date(bySettingHour: 9, minute: 10, second: 0, of: date)
-                if ((timeBool && date > lower_bound_11!) || (!timeBool && date > lower_bound_12!)){
+                if date > paymentDeadLine{
                 //if(false){
-                    let alertStr = timeBool ? "早上九點二十後無法付款，明日請早" : "早上十點二十後無法付款，明日請早"
+                    formatter.dateFormat = "aHH:mm"
+                    formatter.amSymbol = "上午"
+                    formatter.pmSymbol = "下午"
+                    formatter.locale = Locale(identifier: "zh_Hant_TW")
+                    let time = formatter.string(from: paymentDeadLine)
+                    let alertStr = "\(time)後無法付款，明日請早"
                     let alert = UIAlertController(title: "超過付款時間", message: alertStr, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
@@ -361,7 +313,7 @@ class HistoryTableViewController: UITableViewController {
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
                                 logout()
-                                self.dismiss(animated: true, completion: nil)
+                                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                             self.tableView.isUserInteractionEnabled = true
                             self.indicatorBackView.isHidden = true
@@ -376,7 +328,7 @@ class HistoryTableViewController: UITableViewController {
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
                                 logout()
-                                self.dismiss(animated: true, completion: nil)
+                                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                             self.present(alert, animated: true, completion: nil)
                         }else if responseStr.contains("denied"){                //no permission to act
@@ -384,7 +336,7 @@ class HistoryTableViewController: UITableViewController {
                             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                 (action: UIAlertAction!) -> () in
                                 logout()
-                                self.dismiss(animated: true, completion: nil)
+                                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                             }))
                             self.present(errorAlert, animated: true, completion: nil)
                         }else if responseStr.contains("wrong"){                //wrong payment password
@@ -415,7 +367,7 @@ class HistoryTableViewController: UITableViewController {
                                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                             (action: UIAlertAction!) -> () in
                                             logout()
-                                            self.dismiss(animated: true, completion: nil)
+                                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                     }
@@ -425,7 +377,7 @@ class HistoryTableViewController: UITableViewController {
                                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                         (action: UIAlertAction!) -> () in
                                         logout()
-                                        self.dismiss(animated: true, completion: nil)
+                                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                                     }))
                                     self.present(errorAlert, animated: true, completion: nil)
                                 }

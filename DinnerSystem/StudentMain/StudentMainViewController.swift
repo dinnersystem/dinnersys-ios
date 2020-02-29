@@ -18,7 +18,8 @@ class StudentMainViewController: UIViewController {
     @IBOutlet var cardDetailLabel: UILabel!
     
     //MARK: - Declarations
-    
+    var lightened = false
+    var brightness = CGFloat(0.5)
     
     override func viewWillAppear(_ animated: Bool) {
         do{
@@ -34,7 +35,7 @@ class StudentMainViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                 (action: UIAlertAction!) -> () in
                 logout()
-                self.dismiss(animated: true, completion: nil)
+                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
             }))
             self.present(alert, animated: true, completion: nil)
         }
@@ -50,6 +51,24 @@ class StudentMainViewController: UIViewController {
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if lightened{
+            lightened = !lightened
+            UIScreen.main.brightness = brightness
+        }
+    }
+    
+    @IBAction func lightItUp(_ sender: Any) {
+        if lightened{       //lighted up
+            lightened = !lightened
+            UIScreen.main.brightness = brightness
+        }else{              //not lighted up
+            lightened = !lightened
+            brightness = UIScreen.main.brightness
+            UIScreen.main.brightness = CGFloat(1.0)
+        }
     }
     
     @IBAction func moreButton(_ sender: AnyObject){
@@ -75,17 +94,17 @@ class StudentMainViewController: UIViewController {
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
             }
             let responseStr = String(data: response.data!, encoding: .utf8)
-            if responseStr == ""{
+            if responseStr == "" || responseStr!.contains("Operation not allowed"){
                 let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true, completion: nil)
             }else if responseStr == "{}"{
@@ -120,7 +139,7 @@ class StudentMainViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }

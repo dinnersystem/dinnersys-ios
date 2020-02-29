@@ -11,7 +11,7 @@
         <!--更多功能-->
         <scene sceneID="ajw-IO-4EL">
             <objects>
-                <tableViewController id="zHt-bl-WAW" customClass="MoreTableViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zHt-bl-WAW" customClass="LegacyMoreTableViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U9C-ul-RVt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="2962.3188405797105" y="941.51785714285711"/>
         </scene>
-        <!--Web View Controller-->
+        <!--Legacy Web View Controller-->
         <scene sceneID="8H0-ge-5Wz">
             <objects>
-                <viewController id="xy0-wR-1wh" customClass="WebViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xy0-wR-1wh" customClass="LegacyWebViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="03H-wa-MWP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +192,7 @@
         <!--關於此程式-->
         <scene sceneID="1J4-k2-xJa">
             <objects>
-                <tableViewController autoresizesArchivedViewToFullSize="NO" title="關於此程式" id="EVu-VG-F3y" customClass="AboutTableViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" title="關於此程式" id="EVu-VG-F3y" customClass="LegacyAboutTableViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4lq-9n-hbd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -237,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="2051" y="1742"/>
         </scene>
-        <!--Bonus View Controller-->
+        <!--Legacy Bonus View Controller-->
         <scene sceneID="HhF-hl-Cgr">
             <objects>
-                <viewController id="NqZ-Af-s55" customClass="BonusViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NqZ-Af-s55" customClass="LegacyBonusViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ogT-B1-du4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,7 +359,7 @@ upE
         <!--檢視全班訂單-->
         <scene sceneID="Mxy-7S-Dyk">
             <objects>
-                <tableViewController id="oQU-DU-9jr" customClass="DMTableViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oQU-DU-9jr" customClass="DMTableViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fs4-bg-7ej">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

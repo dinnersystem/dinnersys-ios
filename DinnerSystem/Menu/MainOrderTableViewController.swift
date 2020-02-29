@@ -21,11 +21,13 @@ class MainOrderTableViewController: UITableViewController {
         super.viewDidLoad()
         //uDefault = UserDefaults.standard
         
-        activityIndicator.center = self.view.center
+        let centerX = UIScreen.main.bounds.width / 2
+        let centerY = UIScreen.main.bounds.height / 2
+        activityIndicator.center = CGPoint(x: centerX, y: centerY)
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.gray
         indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        indicatorBackView.center = self.view.center
+        indicatorBackView.center = CGPoint(x: centerX, y: centerY)
         indicatorBackView.isHidden = true
         indicatorBackView.layer.cornerRadius = 20
         indicatorBackView.alpha = 0.5
@@ -70,18 +72,18 @@ class MainOrderTableViewController: UITableViewController {
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
             }else{
                 
                 let responseStr = String(data: response.data!, encoding: .utf8)
-                if responseStr == ""{
+                if responseStr == "" || responseStr!.contains("Operation not allowed"){
                     let alert = UIAlertController(title: "請重新登入", message: "您已經登出", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }else{
@@ -123,7 +125,7 @@ class MainOrderTableViewController: UITableViewController {
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
                             logout()
-                            self.dismiss(animated: true, completion: nil)
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         }))
                         self.present(alert, animated: true, completion: nil)
                     }
@@ -148,7 +150,7 @@ class MainOrderTableViewController: UITableViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                         (action: UIAlertAction!) -> () in
                         logout()
-                        self.dismiss(animated: true, completion: nil)
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                     }))
                     self.present(alert, animated: true, completion: nil)
                 }
@@ -159,7 +161,7 @@ class MainOrderTableViewController: UITableViewController {
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in
                     logout()
-                    self.dismiss(animated: true, completion: nil)
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }))
                 self.present(errorAlert, animated: true, completion: nil)
             }
