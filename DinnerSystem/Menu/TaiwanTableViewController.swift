@@ -16,6 +16,7 @@ class TaiwanTableViewController: UITableViewController {
         self.navigationItem.title = factoryName! + "（餘額: \(balance)）"
         self.tableView.reloadData()
     }
+    
 
     // MARK: - Table view data source
 

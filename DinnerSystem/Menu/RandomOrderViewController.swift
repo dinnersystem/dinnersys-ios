@@ -23,6 +23,7 @@ class RandomOrderViewController: UIViewController {
         totalPossibilities = Double(1.0/Double(totalItemCount))
         totalPossibilities = Double(round(totalPossibilities*10000)/100)
         statusLabel.text = "今日共\(totalItemCount)種餐點，每個餐點中獎機率平均，各為\(totalPossibilities)%。"
+        dishNameLabel.sizeToFit()
     }
     
     @IBAction func startRandom(_ sender: Any) {
@@ -42,6 +43,7 @@ class RandomOrderViewController: UIViewController {
                         SelectedFood.cost = item.dishCost!
                         SelectedFood.id = item.dishId!
                         SelectedFood.name = item.dishName!
+                        ConfirmFood.fID = item.department!.factory!.id!
                         self.performSegue(withIdentifier: "randomSegue", sender: nil)
                     })
                 }

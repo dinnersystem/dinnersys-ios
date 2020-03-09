@@ -27,7 +27,7 @@ class AboutTableViewController: UITableViewController {
         dinnersystem.append(About(title: "主要開發者(iOS&Android App)", detail: "白翔云"))
         dinnersystem.append(About(title: "主要開發者(網頁, 後端, 資料庫)", detail: "吳邦寧"))
         dinnersystem.append(About(title: "後續維護", detail: "板橋高中資訊社"))
-        dinnersystem.append(About(title: "如有任何問題，歡迎來信[dinnersystem@gmail.com]!", detail: ""))
+        dinnersystem.append(About(title: "如有任何問題，歡迎來信[dinnersys@gmail.com]!", detail: ""))
         dinnersystem.append(About(title: "第三方資料庫之版權聲明請至系統設定查看", detail: ""))
         dinnersystem.append(About(title: "開發者致謝", detail: ""))
     }
