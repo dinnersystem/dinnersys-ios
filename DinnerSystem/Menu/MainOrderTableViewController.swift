@@ -133,38 +133,74 @@ class MainOrderTableViewController: UITableViewController {
                 }
                 
             }
-            do{
-                let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
-                let factoryResponse = try Data(contentsOf: URL(string: dsURL("show_factory"))!)
-                do{
-                    POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
-                    let factoryInfo = try decoder.decode([Factory].self, from: factoryResponse)
-                    for factory in factoryInfo{
-                        factoryInfoArray.updateValue(factory, forKey: factory.id!)
+            balance = Int(POSInfo.money!)!
+//            do{
+                //let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+//                let factoryResponse = try Data(contentsOf: URL(string: dsURL("show_factory"))!)
+//                do{
+//                    //POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+//                    let factoryInfo = try decoder.decode([Factory].self, from: factoryResponse)
+//                    for factory in factoryInfo{
+//                        factoryInfoArray.updateValue(factory, forKey: factory.id!)
+//                    }
+//                    balance = Int(POSInfo.money!)!
+//                }catch let error{
+//                    Crashlytics.sharedInstance().recordError(error)
+//                    //print(String(data: balanceRepsonse, encoding: .utf8)!)
+//                    let alert = UIAlertController(title: "廠商不見了", message: "無法取得廠商列表，若錯誤重複發生請通知開發人員！！", preferredStyle: UIAlertController.Style.alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+//                        (action: UIAlertAction!) -> () in
+//                        logout()
+//                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//                    }))
+//                    self.present(alert, animated: true, completion: nil)
+//                }
+                let factoryParam: Parameters = ["cmd":"show_factory"]
+                AF.request(dsRequestURL, method: .post, parameters: factoryParam).responseData{response in
+                    if response.error != nil{
+                        let error = response.error!
+                        Crashlytics.sharedInstance().recordError(error)
+                        print(error)
+                        let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            logout()
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(errorAlert, animated: true, completion: nil)
+                        return
                     }
-                    balance = Int(POSInfo.money!)!
-                }catch let error{
-                    Crashlytics.sharedInstance().recordError(error)
-                    print(String(data: balanceRepsonse, encoding: .utf8)!)
-                    let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                        (action: UIAlertAction!) -> () in
-                        logout()
-                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    let factoryResponse = response.data!
+                    do{
+                        //POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+                        let factoryInfo = try decoder.decode([Factory].self, from: factoryResponse)
+                        for factory in factoryInfo{
+                            factoryInfoArray.updateValue(factory, forKey: factory.id!)
+                        }
+                        balance = Int(POSInfo.money!)!
+                    }catch let error{
+                        Crashlytics.sharedInstance().recordError(error)
+                        //print(String(data: balanceRepsonse, encoding: .utf8)!)
+                        let alert = UIAlertController(title: "廠商不見了", message: "無法取得廠商列表，若錯誤重複發生請通知開發人員！！", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                            (action: UIAlertAction!) -> () in
+                            logout()
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
-            }catch let error{
-                Crashlytics.sharedInstance().recordError(error)
-                print(error)
-                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                }))
-                self.present(errorAlert, animated: true, completion: nil)
-            }
+//            }catch let error{
+//                Crashlytics.sharedInstance().recordError(error)
+//                print(error)
+//                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+//                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+//                    (action: UIAlertAction!) -> () in
+//                    logout()
+//                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//                }))
+//                self.present(errorAlert, animated: true, completion: nil)
+//            }
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()

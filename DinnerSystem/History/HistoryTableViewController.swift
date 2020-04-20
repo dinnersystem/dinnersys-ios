@@ -24,34 +24,37 @@ class HistoryTableViewController: UITableViewController {
         today = formatter.string(from: date)
         print(today)
         historyTableList = []
-        do{
-            let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
-            do{
-                POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
-                balance = Int(POSInfo.money!)!
-                self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
-            }catch let error{
-                Crashlytics.sharedInstance().recordError(error)
-                print(String(data: balanceRepsonse, encoding: .utf8)!)
-                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                    (action: UIAlertAction!) -> () in
-                    logout()
-                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert, animated: true, completion: nil)
+            let balanceParam: Parameters = ["cmd":"get_pos"]
+            AF.request(dsRequestURL, method: .post, parameters: balanceParam).responseData{ balanceResponse in
+                if balanceResponse.error != nil{
+                    let error = balanceResponse.error!
+                    Crashlytics.sharedInstance().recordError(error)
+                    print(error)
+                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\nError info: \(error)", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+                do{
+                    POSInfo = try decoder.decode(CardInfo.self, from: balanceResponse.data!)
+                    balance = Int(POSInfo.money!)!
+                    self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
+                }catch let error{
+                    Crashlytics.sharedInstance().recordError(error)
+                    print(String(data: balanceResponse.data!, encoding: .utf8)!)
+                    let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！\(String(data: balanceResponse.data!, encoding: .utf8)!)", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
             }
-        }catch let error{
-            Crashlytics.sharedInstance().recordError(error)
-            print(error)
-            let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-            errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                (action: UIAlertAction!) -> () in
-                logout()
-                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            }))
-            self.present(errorAlert, animated: true, completion: nil)
-        }
         let histParam: Parameters = ["cmd": "select_self", "esti_start": today + "-00:00:00", "esti_end": today + "-23:59:59", "history": "true"]
         AF.request(dsRequestURL, method: .post, parameters: histParam).responseData{response in
             if response.error != nil {
@@ -355,14 +358,68 @@ class HistoryTableViewController: UITableViewController {
                             do{
                                 _ = try JSONSerialization.jsonObject(with: response.data!)
                                 let oldBalance = balance
-                                do{
-                                    let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+//                                do{
+//                                    let balanceRepsonse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)
+//                                    do{
+//                                        POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+//                                        balance = Int(POSInfo.money!)!
+//                                    }catch let error{
+//                                        Crashlytics.sharedInstance().recordError(error)
+//                                        print(String(data: balanceRepsonse, encoding: .utf8)!)
+//                                        let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
+//                                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+//                                            (action: UIAlertAction!) -> () in
+//                                            logout()
+//                                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//                                        }))
+//                                        self.present(alert, animated: true, completion: nil)
+//                                    }
+//                                }catch let error{
+//                                    print(error)
+//                                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
+//                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+//                                        (action: UIAlertAction!) -> () in
+//                                        logout()
+//                                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//                                    }))
+//                                    self.present(errorAlert, animated: true, completion: nil)
+//                                }
+//                                if (oldBalance - Int(info.money!.charge!)!) != balance{
+//
+//                                    let error = NSError(domain: "dinnersystem.error.balanceNotCorresponding", code: 1313, userInfo: nil)
+//                                    let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
+//                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                                    self.present(errorAlert, animated: true, completion: nil)
+//                                    Crashlytics.sharedInstance().recordError(error)
+//                                }
+//                                let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
+//                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                                self.fetchData()
+//
+//                                self.present(alert, animated: true, completion: nil)
+                                
+                                let checkParam: Parameters = ["cmd": "get_pos"]
+                                AF.request(dsRequestURL, method: .post, parameters: checkParam).responseData{response in
+                                    if response.error != nil{
+                                        let error = response.error!
+                                        Crashlytics.sharedInstance().recordError(error)
+                                        print(error)
+                                        let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\nError info: \(error)", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                                            (action: UIAlertAction!) -> () in
+                                            logout()
+                                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                                        }))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                        return
+                                    }
+                                    let balanceResponse = response.data!
                                     do{
-                                        POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
+                                        POSInfo = try decoder.decode(CardInfo.self, from: balanceResponse)
                                         balance = Int(POSInfo.money!)!
                                     }catch let error{
                                         Crashlytics.sharedInstance().recordError(error)
-                                        print(String(data: balanceRepsonse, encoding: .utf8)!)
+                                        print(String(data: balanceResponse, encoding: .utf8)!)
                                         let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                                             (action: UIAlertAction!) -> () in
@@ -370,30 +427,23 @@ class HistoryTableViewController: UITableViewController {
                                             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                                         }))
                                         self.present(alert, animated: true, completion: nil)
+                                        return
                                     }
-                                }catch let error{
-                                    print(error)
-                                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
-                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                                        (action: UIAlertAction!) -> () in
-                                        logout()
-                                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                                    }))
-                                    self.present(errorAlert, animated: true, completion: nil)
-                                }
-                                if (oldBalance - Int(info.money!.charge!)!) != balance{
+                                    if (oldBalance - Int(info.money!.charge!)!) != balance{
+                                        
+                                        let error = NSError(domain: "dinnersystem.error.balanceNotCorresponding", code: 1313, userInfo: nil)
+                                        let errorAlert = UIAlertController(title: "Error", message: "扣款錯誤，請聯絡開發人員", preferredStyle: .alert)
+                                        errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                        self.present(errorAlert, animated: true, completion: nil)
+                                        Crashlytics.sharedInstance().recordError(error)
+                                    }
+                                    let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                                    self.fetchData()
                                     
-                                    let error = NSError(domain: "dinnersystem.error.balanceNotCorresponding", code: 1313, userInfo: nil)
-                                    let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
-                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                                    self.present(errorAlert, animated: true, completion: nil)
-                                    Crashlytics.sharedInstance().recordError(error)
+                                    self.present(alert, animated: true, completion: nil)
                                 }
-                                let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                                self.fetchData()
                                 
-                                self.present(alert, animated: true, completion: nil)
                             }catch let error{
                                 Crashlytics.sharedInstance().recordError(error)
                                 print(String(data: response.data!, encoding: .utf8)!)

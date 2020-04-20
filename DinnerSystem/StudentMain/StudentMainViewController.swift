@@ -22,22 +22,58 @@ class StudentMainViewController: UIViewController {
     var brightness = CGFloat(0.5)
     
     override func viewWillAppear(_ animated: Bool) {
-        do{
-            let cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)     //get POS info
-            POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
-            barcodeView.image = getBarcode(POSData: POSInfo) //get barcode image
-            cardDetailLabel.text = "卡號：\(POSInfo.card!)\n餘額：\(POSInfo.money!)元（非即時）"
-            titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
-        }catch let error{
-            print(error)
-            Crashlytics.sharedInstance().recordError(error)
-            let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-                (action: UIAlertAction!) -> () in
-                logout()
-                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-            }))
-            self.present(alert, animated: true, completion: nil)
+//        var cardResponse = "placeholder_no_data_fetched".data(using: .utf8)!
+//        do{
+//            cardResponse = try Data(contentsOf: URL(string: dsURL("get_pos"))!)     //get POS info
+//            POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
+//            barcodeView.image = getBarcode(POSData: POSInfo) //get barcode image
+//            cardDetailLabel.text = "卡號：\(POSInfo.card!)\n餘額：\(POSInfo.money!)元（非即時）"
+//            titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
+//        }catch let error{
+//            print(error)
+//            Crashlytics.sharedInstance().recordError(error)
+//            let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！\n錯誤訊息：\(String(data: cardResponse, encoding: .utf8)!)", preferredStyle: UIAlertController.Style.alert)
+//            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+//                (action: UIAlertAction!) -> () in
+//                logout()
+//                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+//            }))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+        let cardParam: Parameters = ["cmd":"get_pos"]
+        AF.request(dsRequestURL, method: .post, parameters: cardParam).responseData{response in
+            if response.error != nil{
+                if response.error != nil{
+                    let error = response.error!
+                    Crashlytics.sharedInstance().recordError(error)
+                    print(error)
+                    let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\nError info: \(error)", preferredStyle: .alert)
+                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                        (action: UIAlertAction!) -> () in
+                        logout()
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    }))
+                    self.present(errorAlert, animated: true, completion: nil)
+                }
+                return
+            }
+            let cardResponse = response.data!
+            do{
+                POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
+                self.barcodeView.image = getBarcode(POSData: POSInfo) //get barcode image
+                self.cardDetailLabel.text = "卡號：\(POSInfo.card!)\n餘額：\(POSInfo.money!)元（非即時）"
+                self.titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
+            }catch let error{
+                print(error)
+                Crashlytics.sharedInstance().recordError(error)
+                let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！\n錯誤訊息：\(String(data: cardResponse, encoding: .utf8)!)", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+                    (action: UIAlertAction!) -> () in
+                    logout()
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     override func viewDidLoad() {
