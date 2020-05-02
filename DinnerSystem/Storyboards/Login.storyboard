@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uXY-wS-Xra">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uXY-wS-Xra">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Rem Login View Controller-->
         <scene sceneID="GNo-NN-Prb">
             <objects>
-                <viewController id="uXY-wS-Xra" customClass="RemLoginViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uXY-wS-Xra" customClass="RemLoginViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iSD-ea-zT2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -103,13 +103,13 @@
         <!--Login View Controller-->
         <scene sceneID="HAN-7d-kBT">
             <objects>
-                <viewController id="uBS-bh-PzG" customClass="LoginViewController" customModule="點餐系統β" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uBS-bh-PzG" customClass="LoginViewController" customModule="點餐系統" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hia-G2-Glc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="板 橋 高 中 點 餐 系 統" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-8A-frb">
-                                <rect key="frame" x="34" y="50" width="203" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="點 餐 系 統" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-8A-frb">
+                                <rect key="frame" x="50" y="50" width="187" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="4sa-O6-Kr7"/>
                                 </constraints>
@@ -156,6 +156,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJQ-pA-10Y">
+                                <rect key="frame" x="38" y="129" width="191" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="191" id="Qsx-WB-BV2"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="circleCorner" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="chooseOrg:" destination="uBS-bh-PzG" eventType="touchUpInside" id="cef-iJ-yNv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -164,23 +186,27 @@
                             <constraint firstItem="ogM-ye-mZy" firstAttribute="leading" secondItem="OQ6-c8-nCI" secondAttribute="trailing" constant="32" id="Cw5-nC-NJL"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="centerX" secondItem="Hia-G2-Glc" secondAttribute="centerX" id="DIL-KB-Jbu"/>
                             <constraint firstItem="iWM-33-jy3" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ogM-ye-mZy" secondAttribute="trailing" constant="45" id="IRH-m9-pzD"/>
+                            <constraint firstItem="OQ6-c8-nCI" firstAttribute="top" secondItem="HJQ-pA-10Y" secondAttribute="bottom" constant="26" id="IS3-tg-g1r"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="centerX" secondItem="OXs-lR-PXm" secondAttribute="centerX" id="Kqa-i8-HIf"/>
                             <constraint firstItem="ogM-ye-mZy" firstAttribute="top" secondItem="iWM-33-jy3" secondAttribute="top" constant="171" id="TEx-1m-9cE"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="top" secondItem="OQ6-c8-nCI" secondAttribute="bottom" constant="36" id="TNp-Rj-Kwz"/>
                             <constraint firstItem="OQ6-c8-nCI" firstAttribute="leading" secondItem="e6R-Jd-JEW" secondAttribute="leading" id="U2w-uJ-uCs"/>
+                            <constraint firstItem="HJQ-pA-10Y" firstAttribute="centerX" secondItem="OQ6-c8-nCI" secondAttribute="centerX" id="W0U-Xc-xGz"/>
                             <constraint firstItem="Sfq-8A-frb" firstAttribute="top" secondItem="iWM-33-jy3" secondAttribute="top" constant="50" id="Zg9-3h-F5m"/>
                             <constraint firstItem="e6R-Jd-JEW" firstAttribute="top" secondItem="mVR-fU-ryW" secondAttribute="bottom" constant="23" id="c6w-qS-wpc"/>
                             <constraint firstItem="iWM-33-jy3" firstAttribute="trailing" secondItem="Sfq-8A-frb" secondAttribute="trailing" constant="138" id="ejG-nw-EGt"/>
                             <constraint firstItem="mVR-fU-ryW" firstAttribute="leading" secondItem="OQ6-c8-nCI" secondAttribute="trailing" constant="44" id="h11-H5-4ic"/>
                             <constraint firstItem="OXs-lR-PXm" firstAttribute="top" secondItem="e6R-Jd-JEW" secondAttribute="bottom" constant="60" id="hHh-p9-LDd"/>
                             <constraint firstItem="mVR-fU-ryW" firstAttribute="top" secondItem="ogM-ye-mZy" secondAttribute="bottom" constant="8" id="p9u-BI-dFh"/>
-                            <constraint firstItem="Sfq-8A-frb" firstAttribute="leading" secondItem="iWM-33-jy3" secondAttribute="leading" constant="34" id="rOb-8Z-rmm"/>
+                            <constraint firstItem="Sfq-8A-frb" firstAttribute="leading" secondItem="iWM-33-jy3" secondAttribute="leading" constant="50" id="rOb-8Z-rmm"/>
                             <constraint firstItem="OQ6-c8-nCI" firstAttribute="leading" secondItem="iWM-33-jy3" secondAttribute="leading" constant="38" id="tkK-Kd-Ddw"/>
+                            <constraint firstItem="iWM-33-jy3" firstAttribute="trailing" secondItem="OQ6-c8-nCI" secondAttribute="trailing" constant="146.5" id="ycs-4I-Vuo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iWM-33-jy3"/>
                     </view>
                     <navigationItem key="navigationItem" id="psi-T0-rCI"/>
                     <connections>
+                        <outlet property="orgButton" destination="HJQ-pA-10Y" id="YcY-3a-hjh"/>
                         <outlet property="password" destination="e6R-Jd-JEW" id="OSi-Qc-KCH"/>
                         <outlet property="remSwitch" destination="mVR-fU-ryW" id="xsU-8R-iEf"/>
                         <outlet property="titleLabel" destination="Sfq-8A-frb" id="LTf-bB-KVf"/>

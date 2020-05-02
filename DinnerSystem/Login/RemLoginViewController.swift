@@ -119,9 +119,15 @@ class RemLoginViewController: UIViewController {
         uDefault = UserDefaults.standard
         usr = uDefault.string(forKey: "userName")!
         pwd = uDefault.string(forKey: "passWord")!
+        let orgID = uDefault.string(forKey: "orgID") ?? "1"
+        var noOrg = false
+        if uDefault.string(forKey: "orgID") == nil{
+            noOrg = true
+            print("unset\n\n\n\n\n")
+        }
         
         //POST Param
-        let loginParam: Parameters = ["cmd": "login", "id": usr, "password": pwd, "device_id": "Hello_From_iOS"]
+        let loginParam: Parameters = ["cmd": "login", "id": usr, "password": pwd, "device_id": "Hello_From_iOS", "org_id": orgID]
         
         //internet reachablity
         let reach = try! Reachability()
@@ -154,7 +160,9 @@ class RemLoginViewController: UIViewController {
                 print(responseString)
                 //JSON
                 userInfo = try decoder.decode(Login.self, from: response.data!)
-                
+                if noOrg{
+                    self.uDefault.setValue(userInfo.organization?.id!, forKey: "orgID")
+                }
                 //determine stu or pm
                 if userInfo.validOper!.contains("select_class") && !userInfo.validOper!.contains("select_other") {
                     self.performSegue(withIdentifier: "dmSegue", sender: nil)

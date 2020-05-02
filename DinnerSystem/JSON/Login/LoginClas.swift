@@ -1,8 +1,8 @@
 //
 //	LoginClas.swift
 //
-//	Create by Sean Pai on 29/12/2018
-//	Copyright © 2018 New Taipei Municipal Banqiao Senior High School. All rights reserved.
+//	Create by Sean Pai on 2/5/2020
+//	Copyright © 2020 New Taipei Municipal Banqiao Senior High School. All rights reserved.
 //	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
 
 import Foundation
@@ -21,7 +21,8 @@ struct LoginClas : Codable {
 		case id = "id"
 		case year = "year"
 	}
-    init(classNo : String? = nil,
+    
+	init(classNo : String? = nil,
     grade : String? = nil,
     id : String? = nil,
     year : String? = nil
@@ -31,8 +32,6 @@ struct LoginClas : Codable {
     self.id = id
     self.year = year
     }
-
-    
 
 
 }

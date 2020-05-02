@@ -84,7 +84,8 @@ class GuanDonTableViewController: UITableViewController{
                 noodleID.append(info.dishId!)
             }
         }
-        self.navigationItem.title = "關東煮（餘額: \(balance)）"
+        let factoryName = selectedMenuArr[0].department!.factory!.name!
+        self.navigationItem.title = factoryName + "（餘額: \(balance)）"
         self.tableView.reloadData()
     }
     

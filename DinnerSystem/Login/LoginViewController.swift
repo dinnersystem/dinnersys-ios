@@ -18,11 +18,39 @@ class LoginViewController: UIViewController {
     @IBOutlet var username: UITextField!
     @IBOutlet var password: UITextField!
     @IBOutlet var remSwitch: UISwitch!
+    @IBOutlet var orgButton: UIButton!
     
     //MARK: - Declarations
     var uDefault: UserDefaults!
     var activityIndicator = UIActivityIndicatorView()
     var indicatorBackView = UIView()
+    var selOrgName = ""
+    var selOrgId = ""
+    
+    //MARK: - VWA
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let orgParam: Parameters = ["cmd":"show_organization"]
+        AF.request(dsRequestURL, method: .post, parameters: orgParam).responseData{response in
+            if response.error != nil{
+                Crashlytics.sharedInstance().recordError(response.error!)
+                self.present(createAlert("連線失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(response.error!)"),animated: false)
+                return
+            }
+            do{
+                orgInfo = try decoder.decode([Organization].self, from: response.data!)
+                if(orgInfo.count > 0){
+                    self.selOrgId = orgInfo[0].id!
+                    self.selOrgName = orgInfo[0].name!
+                }
+                self.orgButton.setTitle(self.selOrgName, for: .normal)
+            } catch let error{
+                Crashlytics.sharedInstance().recordError(error)
+                self.present(createAlert("取得內容失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(error)"),animated: false)
+                return
+            }
+        }
+    }
     
     //MARK: - VDL
     override func viewDidLoad() {
@@ -47,6 +75,9 @@ class LoginViewController: UIViewController {
         if #available(iOS 13.0, *){
             overrideUserInterfaceStyle = .light
         }
+        
+        //set org name
+        orgButton.setTitle(selOrgName, for: .normal)
     }
     
     // MARK: - quitKeyboard
@@ -65,7 +96,7 @@ class LoginViewController: UIViewController {
         pwd = password.text!
         
         //POST Param
-        let loginParam: Parameters = ["cmd": "login", "id": usr, "password": pwd, "device_id": "Hello_From_iOS"]
+        let loginParam: Parameters = ["cmd": "login", "id": usr, "password": pwd, "device_id": "Hello_From_iOS", "org_id": selOrgId]
         
         //internet reachablity
         let reach = try! Reachability()
@@ -92,7 +123,7 @@ class LoginViewController: UIViewController {
             //respondable fallback
             let responseString = String(data: response.data!, encoding: .utf8)!
             if (responseString.contains("無法登入。")) || (responseString.contains("No")) || (responseString.contains("Invalid") || (responseString == "") || (responseString == "Wrong") || (responseString == "punish") || (responseString == "Punish")){
-                let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤。\n錯誤敘述：\(responseString)", preferredStyle: .alert)
+                let alert = UIAlertController(title: "無法登入", message: "請確認帳號密碼是否錯誤，或選取的學校是否正確。\n錯誤敘述：\(responseString)", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
@@ -109,6 +140,7 @@ class LoginViewController: UIViewController {
                 if self.remSwitch.isOn{
                     self.uDefault.set(usr, forKey: "userName")
                     self.uDefault.set(pwd, forKey: "passWord")
+                    self.uDefault.set(self.selOrgId, forKey: "orgID")
                     self.uDefault.set(userInfo.name!, forKey: "studentName")
                 }
                 
@@ -122,12 +154,27 @@ class LoginViewController: UIViewController {
             }catch let error{
                 print(error)
                 Crashlytics.sharedInstance().recordError(error)
-                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。", preferredStyle: .alert)
+                let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。\n錯誤敘述：\(responseString)", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)
             }
         }
     }
+    
+    @IBAction func chooseOrg(_ sender: Any) {
+        let alert = UIAlertController(title: "請選擇學校", message: nil, preferredStyle: .actionSheet)
+        for org in orgInfo{
+            let action = UIAlertAction(title: org.name!, style: .default, handler: {_ in
+                self.selOrgName = org.name!
+                self.selOrgId = org.id!
+                self.orgButton.setTitle(self.selOrgName, for: .normal)
+            })
+            alert.addAction(action)
+        }
+        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
 }
 

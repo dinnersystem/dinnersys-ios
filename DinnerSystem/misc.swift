@@ -58,6 +58,8 @@ struct loginInfo{
 }
 */
 
+var orgInfo: [Organization] = []
+
 func logout(){
     AF.request("\(dinnersysURL)/dinnersys_beta/backend/backend.php?cmd=logout").responseData{_ in}
 }

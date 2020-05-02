@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
+		E60C5F26245DA8AE00621BFE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C5F22245DA8AD00621BFE /* Login.swift */; };
+		E60C5F27245DA8AE00621BFE /* LoginOrganization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C5F23245DA8AE00621BFE /* LoginOrganization.swift */; };
+		E60C5F28245DA8AE00621BFE /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C5F24245DA8AE00621BFE /* LoginClas.swift */; };
+		E60C5F29245DA8AE00621BFE /* LoginVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C5F25245DA8AE00621BFE /* LoginVege.swift */; };
 		E61419D223F7ABB8000E5634 /* RemLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D123F7ABB8000E5634 /* RemLoginViewController.swift */; };
 		E61419DC23F7AE34000E5634 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D523F7AE34000E5634 /* History.swift */; };
 		E61419DD23F7AE34000E5634 /* HistoryClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61419D623F7AE34000E5634 /* HistoryClas.swift */; };
@@ -32,9 +36,6 @@
 		E658B1E423C42A21003BFE76 /* DMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E658B1E323C42A21003BFE76 /* DMTableViewController.swift */; };
 		E6672FBF23F6884200493932 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6672FBE23F6884200493932 /* Login.storyboard */; };
 		E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6806A342051797B00935718 /* AudioToolbox.framework */; };
-		E6813EDA23FA649F008F6066 /* LoginClas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813ED723FA649E008F6066 /* LoginClas.swift */; };
-		E6813EDB23FA649F008F6066 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813ED823FA649F008F6066 /* Login.swift */; };
-		E6813EDC23FA649F008F6066 /* LoginVege.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813ED923FA649F008F6066 /* LoginVege.swift */; };
 		E6813EDF23FA89F3008F6066 /* StudentMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813EDE23FA89F3008F6066 /* StudentMainViewController.swift */; };
 		E6813EE123FA8C94008F6066 /* Barcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813EE023FA8C94008F6066 /* Barcode.swift */; };
 		E6813EE423FA8D69008F6066 /* CardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6813EE323FA8D69008F6066 /* CardInfo.swift */; };
@@ -62,6 +63,7 @@
 		E6CA0A7A22ABE56600DD1B21 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E6CA0A7922ABE56600DD1B21 /* Settings.bundle */; };
 		E6D05AC023F5915400B8D3A4 /* Student.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D05ABF23F5915400B8D3A4 /* Student.storyboard */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
+		E6E48C1A245C081D0097249D /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E48C19245C081D0097249D /* Organization.swift */; };
 		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 		E6F9A05A2400301E008C32EE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9A00B2400301D008C32EE /* Array+Extensions.swift */; };
 		E6F9A05B2400301E008C32EE /* Common+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9A00C2400301D008C32EE /* Common+Extensions.swift */; };
@@ -121,6 +123,10 @@
 		551BEAC489E8F48309D8368C /* Pods_DinnerSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		E60C5F22245DA8AD00621BFE /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		E60C5F23245DA8AE00621BFE /* LoginOrganization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrganization.swift; sourceTree = "<group>"; };
+		E60C5F24245DA8AE00621BFE /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
+		E60C5F25245DA8AE00621BFE /* LoginVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVege.swift; sourceTree = "<group>"; };
 		E60E4D0F214A105E007C4412 /* misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = misc.swift; sourceTree = "<group>"; };
 		E61419D123F7ABB8000E5634 /* RemLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemLoginViewController.swift; sourceTree = "<group>"; };
 		E61419D523F7AE34000E5634 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
@@ -147,9 +153,6 @@
 		E658B1E323C42A21003BFE76 /* DMTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTableViewController.swift; sourceTree = "<group>"; };
 		E6672FBE23F6884200493932 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		E6806A342051797B00935718 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		E6813ED723FA649E008F6066 /* LoginClas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClas.swift; sourceTree = "<group>"; };
-		E6813ED823FA649F008F6066 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		E6813ED923FA649F008F6066 /* LoginVege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVege.swift; sourceTree = "<group>"; };
 		E6813EDE23FA89F3008F6066 /* StudentMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentMainViewController.swift; sourceTree = "<group>"; };
 		E6813EE023FA8C94008F6066 /* Barcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		E6813EE323FA8D69008F6066 /* CardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
@@ -178,6 +181,7 @@
 		E6CA389C208DF4D5002801DD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6D05ABF23F5915400B8D3A4 /* Student.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Student.storyboard; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
+		E6E48C19245C081D0097249D /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
 		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6F9A00B2400301D008C32EE /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 		E61419D323F7AE34000E5634 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				E6E48C18245C07DF0097249D /* Organization */,
 				E6B7AA5823FBCED4007BDF31 /* Order */,
 				E6813EE223FA8D69008F6066 /* CardInfo */,
 				E6813ED023FA640A008F6066 /* Login */,
@@ -379,9 +384,10 @@
 		E6813ED023FA640A008F6066 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E6813ED823FA649F008F6066 /* Login.swift */,
-				E6813ED723FA649E008F6066 /* LoginClas.swift */,
-				E6813ED923FA649F008F6066 /* LoginVege.swift */,
+				E60C5F22245DA8AD00621BFE /* Login.swift */,
+				E60C5F24245DA8AE00621BFE /* LoginClas.swift */,
+				E60C5F23245DA8AE00621BFE /* LoginOrganization.swift */,
+				E60C5F25245DA8AE00621BFE /* LoginVege.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -461,6 +467,14 @@
 				E6B7AA6F23FBD845007BDF31 /* HistoryTableViewController.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		E6E48C18245C07DF0097249D /* Organization */ = {
+			isa = PBXGroup;
+			children = (
+				E6E48C19245C081D0097249D /* Organization.swift */,
+			);
+			path = Organization;
 			sourceTree = "<group>";
 		};
 		E6F9A0092400301D008C32EE /* AdvancedAlert */ = {
@@ -838,9 +852,10 @@
 				E61419DC23F7AE34000E5634 /* History.swift in Sources */,
 				E658B1E423C42A21003BFE76 /* DMTableViewController.swift in Sources */,
 				E6F9A0692400301E008C32EE /* UIView+Extensions.swift in Sources */,
+				E6E48C1A245C081D0097249D /* Organization.swift in Sources */,
 				E6E38CA7222A0480007440F8 /* sutra.swift in Sources */,
 				E6B7AA5323FBAA4A007BDF31 /* BonusViewController.swift in Sources */,
-				E6813EDA23FA649F008F6066 /* LoginClas.swift in Sources */,
+				E60C5F29245DA8AE00621BFE /* LoginVege.swift in Sources */,
 				E6995BAB21FC24F100F8C8F1 /* AppDelegate.swift in Sources */,
 				E61419E823F7AED6000E5634 /* Factory.swift in Sources */,
 				E6F9A05E2400301E008C32EE /* Optional+Extensions.swift in Sources */,
@@ -861,9 +876,9 @@
 				E6F9A08A2400301E008C32EE /* Button.swift in Sources */,
 				E6F9A0602400301E008C32EE /* UIAlertController+Extensions.swift in Sources */,
 				E6F9A0892400301E008C32EE /* TextViewController.swift in Sources */,
+				E60C5F27245DA8AE00621BFE /* LoginOrganization.swift in Sources */,
 				E6F9A06B2400301E008C32EE /* ColorPickerViewController.swift in Sources */,
 				E6F9A0632400301E008C32EE /* UIImage+Extensions.swift in Sources */,
-				E6813EDB23FA649F008F6066 /* Login.swift in Sources */,
 				E6F9A0742400301E008C32EE /* LocalePickerViewController.swift in Sources */,
 				E61419E723F7AED6000E5634 /* Department.swift in Sources */,
 				E689816B23FEF76900EAC1D7 /* confirmTableViewController.swift in Sources */,
@@ -877,7 +892,6 @@
 				E6F9A0882400301E008C32EE /* AttributedTextBlock.swift in Sources */,
 				E647D50924081AA800054721 /* LegacyBonusViewController.swift in Sources */,
 				E6F9A0792400301E008C32EE /* PhoneCodeCell.swift in Sources */,
-				E6813EDC23FA649F008F6066 /* LoginVege.swift in Sources */,
 				E6F9A08C2400301E008C32EE /* Label.swift in Sources */,
 				E6F9A08E2400301E008C32EE /* TextField.swift in Sources */,
 				E6B7AA6723FBCF06007BDF31 /* GuanDonTableViewController.swift in Sources */,
@@ -888,6 +902,7 @@
 				E6F9A08B2400301E008C32EE /* GradientSlider.swift in Sources */,
 				E6B7AA7023FBD845007BDF31 /* BeforeHistoryTableViewController.swift in Sources */,
 				E6B7AA6C23FBCF06007BDF31 /* TaiwanTableViewController.swift in Sources */,
+				E60C5F26245DA8AE00621BFE /* Login.swift in Sources */,
 				E6F9A0782400301E008C32EE /* CurrencyCell.swift in Sources */,
 				E61419D223F7ABB8000E5634 /* RemLoginViewController.swift in Sources */,
 				E6B7AA6B23FBCF06007BDF31 /* RandomOrderViewController.swift in Sources */,
@@ -898,6 +913,7 @@
 				E6F9A0672400301E008C32EE /* UITextField+Extensions.swift in Sources */,
 				E6F9A0752400301E008C32EE /* LocaleStore.swift in Sources */,
 				E6B7AA5A23FBCED4007BDF31 /* Order.swift in Sources */,
+				E60C5F28245DA8AE00621BFE /* LoginClas.swift in Sources */,
 				E6B7AA7123FBD845007BDF31 /* HistoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
