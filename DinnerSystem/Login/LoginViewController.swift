@@ -27,11 +27,20 @@ class LoginViewController: UIViewController {
     var selOrgName = ""
     var selOrgId = ""
     
-    //MARK: - VWA
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    //MARK: - VDA
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+        self.activityIndicator.startAnimating()
+        self.indicatorBackView.isHidden = false
+        
         let orgParam: Parameters = ["cmd":"show_organization"]
         AF.request(dsRequestURL, method: .post, parameters: orgParam).responseData{response in
+            
+            self.indicatorBackView.isHidden = true
+            self.activityIndicator.stopAnimating()
+            
             if response.error != nil{
                 Crashlytics.sharedInstance().recordError(response.error!)
                 self.present(createAlert("連線失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(response.error!)"),animated: false)
@@ -62,9 +71,10 @@ class LoginViewController: UIViewController {
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.gray
+        activityIndicator.startAnimating()
         indicatorBackView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         indicatorBackView.center = self.view.center
-        indicatorBackView.isHidden = true
+        indicatorBackView.isHidden = false
         indicatorBackView.layer.cornerRadius = 20
         indicatorBackView.alpha = 0.5
         indicatorBackView.backgroundColor = UIColor.lightGray
