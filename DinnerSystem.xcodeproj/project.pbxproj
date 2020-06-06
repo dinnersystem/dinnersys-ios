@@ -64,7 +64,6 @@
 		E6D05AC023F5915400B8D3A4 /* Student.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D05ABF23F5915400B8D3A4 /* Student.storyboard */; };
 		E6E38CA7222A0480007440F8 /* sutra.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E38CA6222A0480007440F8 /* sutra.swift */; };
 		E6E48C1A245C081D0097249D /* Organization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E48C19245C081D0097249D /* Organization.swift */; };
-		E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6EA6580208C2113001C9A37 /* Main.storyboard */; };
 		E6F9A05A2400301E008C32EE /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9A00B2400301D008C32EE /* Array+Extensions.swift */; };
 		E6F9A05B2400301E008C32EE /* Common+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9A00C2400301D008C32EE /* Common+Extensions.swift */; };
 		E6F9A05C2400301E008C32EE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9A00D2400301D008C32EE /* Date+Extension.swift */; };
@@ -146,7 +145,7 @@
 		E647D50624081AA800054721 /* LegacyMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMoreTableViewController.swift; sourceTree = "<group>"; };
 		E647D50724081AA800054721 /* LegacyAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyAboutTableViewController.swift; sourceTree = "<group>"; };
 		E647D50824081AA800054721 /* LegacyWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyWebViewController.swift; sourceTree = "<group>"; };
-		E653E42C200074F9000E35AE /* 點餐系統.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "點餐系統.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E653E42C200074F9000E35AE /* 午餐系統.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "午餐系統.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dinnerman.storyboard; sourceTree = "<group>"; };
@@ -182,7 +181,6 @@
 		E6D05ABF23F5915400B8D3A4 /* Student.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Student.storyboard; sourceTree = "<group>"; };
 		E6E38CA6222A0480007440F8 /* sutra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sutra.swift; sourceTree = "<group>"; };
 		E6E48C19245C081D0097249D /* Organization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Organization.swift; sourceTree = "<group>"; };
-		E6EA6581208C2113001C9A37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E6EA6583208C2163001C9A37 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6F9A00B2400301D008C32EE /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		E6F9A00C2400301D008C32EE /* Common+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Common+Extensions.swift"; sourceTree = "<group>"; };
@@ -334,7 +332,7 @@
 		E653E42D200074F9000E35AE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E653E42C200074F9000E35AE /* 點餐系統.app */,
+				E653E42C200074F9000E35AE /* 午餐系統.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -365,7 +363,6 @@
 			isa = PBXGroup;
 			children = (
 				E653E438200074F9000E35AE /* LaunchScreen.storyboard */,
-				E6EA6580208C2113001C9A37 /* Main.storyboard */,
 				E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */,
 				E6D05ABF23F5915400B8D3A4 /* Student.storyboard */,
 				E6672FBE23F6884200493932 /* Login.storyboard */,
@@ -656,7 +653,7 @@
 			);
 			name = DinnerSystem;
 			productName = DinnerSystem;
-			productReference = E653E42C200074F9000E35AE /* 點餐系統.app */;
+			productReference = E653E42C200074F9000E35AE /* 午餐系統.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -718,7 +715,6 @@
 				E6C3B03622BF87CE008AAE8A /* loading.gif in Resources */,
 				E6F9A0732400301E008C32EE /* Countries.bundle in Resources */,
 				E653E437200074F9000E35AE /* Assets.xcassets in Resources */,
-				E6EA6582208C2113001C9A37 /* Main.storyboard in Resources */,
 				E6672FBF23F6884200493932 /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,7 +732,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSBarcodes_Swift/RSBarcodes_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
@@ -748,7 +744,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSBarcodes_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
@@ -929,14 +925,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		E6EA6580208C2113001C9A37 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6EA6581208C2113001C9A37 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1073,7 +1061,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
-				PRODUCT_NAME = "點餐系統";
+				PRODUCT_NAME = "午餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1102,7 +1090,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
-				PRODUCT_NAME = "點餐系統";
+				PRODUCT_NAME = "午餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -22,7 +22,7 @@ class RandomOrderViewController: UIViewController {
         totalItemCount = randomMenuArr.count
         totalPossibilities = Double(1.0/Double(totalItemCount))
         totalPossibilities = Double(round(totalPossibilities*10000)/100)
-        statusLabel.text = "今日共\(totalItemCount)種餐點，每個餐點中獎機率平均，各為\(totalPossibilities)%。"
+        statusLabel.text = "今日共\(totalItemCount)種餐點，每個餐點抽中機率平均，各為\(totalPossibilities)%。"
         dishNameLabel.sizeToFit()
     }
     

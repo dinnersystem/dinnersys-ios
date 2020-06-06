@@ -13,7 +13,8 @@ import AVFoundation
 
 
 func getBarcode(POSData: CardInfo) -> UIImage{
-    let image = RSUnifiedCodeGenerator.shared.generateCode(POSData.card!, machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)!
+    let barcodeCode = POSData.card!.uppercased()
+    let image = RSUnifiedCodeGenerator.shared.generateCode(barcodeCode, machineReadableCodeObjectType: AVMetadataObject.ObjectType.code39.rawValue)!
     let reImageSize = CGSize(width: image.size.width, height: image.size.height)
     return image.resizedImage(newSize: reImageSize)
 }
