@@ -4,7 +4,7 @@
 
 RSBarcodes, now in Swift.
 
-[![Build Status](https://travis-ci.org/yeahdongcn/RSBarcodes_Swift.svg?branch=master)](https://travis-ci.org/yeahdongcn/RSBarcodes_Swift) [![codecov.io](https://codecov.io/gh/yeahdongcn/RSBarcodes_Swift/branch/master/graphs/badge.svg)](https://codecov.io/gh/yeahdongcn/RSBarcodes_Swift/branch/master) ![](https://img.shields.io/badge/Swift-4.0-blue.svg?style=flat) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
+[![Build Status](https://travis-ci.org/yeahdongcn/RSBarcodes_Swift.svg?branch=master)](https://travis-ci.org/yeahdongcn/RSBarcodes_Swift) [![codecov.io](https://codecov.io/gh/yeahdongcn/RSBarcodes_Swift/branch/master/graphs/badge.svg)](https://codecov.io/gh/yeahdongcn/RSBarcodes_Swift/branch/master) ![](https://img.shields.io/badge/Swift-5.0-blue.svg?style=flat) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 
 ---
 
@@ -38,6 +38,11 @@ RSBarcodes allows you to read 1D and 2D barcodes using the metadata scanning cap
 
 ## Installation
 
+### [Swift Package Manager](https://github.com/apple/swift-package-manager)
+
+To add a package dependency to your Xcode project, select File > Swift Packages > Add Package Dependency and enter https://github.com/yeahdongcn/RSBarcodes_Swift to the text field.
+
+
 ### [CocoaPods](http://cocoapods.org)
 
 Simply add the following lines to your `Podfile`:
@@ -46,7 +51,7 @@ Simply add the following lines to your `Podfile`:
 # required by Cocoapods 0.36.0.rc.1 for Swift Pods
 use_frameworks!
 
-pod 'RSBarcodes_Swift', '~> 5.0.0'
+pod 'RSBarcodes_Swift', '~> 5.0.2'
 ```
 
 You will need to import RSBarcodes_Swift manually in the ViewController file after creating the file using wizard.
@@ -58,10 +63,16 @@ You will need to import RSBarcodes_Swift manually in the ViewController file aft
 Simply add the following line to your `Cartfile`:
 
 ```ruby
-github "yeahdongcn/RSBarcodes_Swift" >= 5.0.0
+github "yeahdongcn/RSBarcodes_Swift" >= 5.0.2
 ```
 
 You will need to import RSBarcodes_Swift manually in the ViewController file after creating the file using wizard.
+
+### Swift Package Manager (required Xcode 11)
+
+1. Select File > Swift Packages > Add Package Dependency. Enter `https://github.com/yeahdongcn/RSBarcodes_Swift` in the "Choose Package Repository" dialog.
+2. In the next page, specify the version resolving rule as "Up to Next Major" with the latest version.
+3. After Xcode checking out the source and resolving the version, you can choose the "RSBarcodes_Swift" library and add it to your app target.
 
 ### Manual
 
