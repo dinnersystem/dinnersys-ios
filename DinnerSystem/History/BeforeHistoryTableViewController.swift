@@ -15,6 +15,10 @@ class BeforeHistoryTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    @IBAction func backToMain(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
