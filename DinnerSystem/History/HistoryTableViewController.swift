@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import Crashlytics
+import FirebaseCrashlytics
 
 class HistoryTableViewController: UITableViewController {
     let date = Date()
@@ -28,7 +28,7 @@ class HistoryTableViewController: UITableViewController {
             AF.request(dsRequestURL, method: .post, parameters: balanceParam).responseData{ balanceResponse in
                 if balanceResponse.error != nil{
                     let error = balanceResponse.error!
-                    Crashlytics.sharedInstance().recordError(error)
+                    Crashlytics.crashlytics().record(error: error)
                     print(error)
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\nError info: \(error)", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -43,7 +43,7 @@ class HistoryTableViewController: UITableViewController {
                     balance = Int(POSInfo.money!)!
                     self.navigationItem.title = "檢視今日訂單" + "（餘額: \(balance)）"
                 }catch let error{
-                    Crashlytics.sharedInstance().recordError(error)
+                    Crashlytics.crashlytics().record(error: error)
                     print(String(data: balanceResponse.data!, encoding: .utf8)!)
                     let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！\(String(data: balanceResponse.data!, encoding: .utf8)!)", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -364,7 +364,7 @@ class HistoryTableViewController: UITableViewController {
 //                                        POSInfo = try decoder.decode(CardInfo.self, from: balanceRepsonse)
 //                                        balance = Int(POSInfo.money!)!
 //                                    }catch let error{
-//                                        Crashlytics.sharedInstance().recordError(error)
+//                                        Crashlytics.crashlytics().record(error: error)
 //                                        print(String(data: balanceRepsonse, encoding: .utf8)!)
 //                                        let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
 //                                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -390,7 +390,7 @@ class HistoryTableViewController: UITableViewController {
 //                                    let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)
 //                                    errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 //                                    self.present(errorAlert, animated: true, completion: nil)
-//                                    Crashlytics.sharedInstance().recordError(error)
+//                                    Crashlytics.crashlytics().record(error: error)
 //                                }
 //                                let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
 //                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -402,7 +402,7 @@ class HistoryTableViewController: UITableViewController {
                                 AF.request(dsRequestURL, method: .post, parameters: checkParam).responseData{response in
                                     if response.error != nil{
                                         let error = response.error!
-                                        Crashlytics.sharedInstance().recordError(error)
+                                        Crashlytics.crashlytics().record(error: error)
                                         print(error)
                                         let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\nError info: \(error)", preferredStyle: .alert)
                                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -418,7 +418,7 @@ class HistoryTableViewController: UITableViewController {
                                         POSInfo = try decoder.decode(CardInfo.self, from: balanceResponse)
                                         balance = Int(POSInfo.money!)!
                                     }catch let error{
-                                        Crashlytics.sharedInstance().recordError(error)
+                                        Crashlytics.crashlytics().record(error: error)
                                         print(String(data: balanceResponse, encoding: .utf8)!)
                                         let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -435,7 +435,7 @@ class HistoryTableViewController: UITableViewController {
                                         let errorAlert = UIAlertController(title: "Error", message: "扣款錯誤，請聯絡開發人員", preferredStyle: .alert)
                                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                                         self.present(errorAlert, animated: true, completion: nil)
-                                        Crashlytics.sharedInstance().recordError(error)
+                                        Crashlytics.crashlytics().record(error: error)
                                     }
                                     let alert = UIAlertController(title: "繳款完成", message: "請注意付款狀況，實際情況仍以頁面為主", preferredStyle: .alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -445,7 +445,7 @@ class HistoryTableViewController: UITableViewController {
                                 }
                                 
                             }catch let error{
-                                Crashlytics.sharedInstance().recordError(error)
+                                Crashlytics.crashlytics().record(error: error)
                                 print(String(data: response.data!, encoding: .utf8)!)
                                 print(error)
                                 let errorAlert = UIAlertController(title: "Error", message: "未成功付款，請聯絡開發人員", preferredStyle: .alert)

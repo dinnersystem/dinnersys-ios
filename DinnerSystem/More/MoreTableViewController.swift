@@ -8,7 +8,7 @@
 
 import UIKit
 import Alamofire
-import Crashlytics
+import FirebaseCrashlytics
 import FirebaseMessaging
 import UserNotifications
 
@@ -32,6 +32,11 @@ class MoreTableViewController: UITableViewController {
     }
     
     func chgPass() {
+        if userInfo.validOper!.contains("select_class") && !userInfo.validOper!.contains("select_other") {
+            let errorAlert = UIAlertController(title: "午餐股長無更改密碼功能", message: "更改密碼僅適用於個人帳號", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "返回", style: .default, handler: nil))
+            return
+        }
         let chgAlert = UIAlertController(title: "更改密碼", message: "請輸入新密碼與舊密碼", preferredStyle: .alert)
         chgAlert.addAction(UIAlertAction(title: "確定更改", style: .default, handler: {
             (action:UIAlertAction) -> () in

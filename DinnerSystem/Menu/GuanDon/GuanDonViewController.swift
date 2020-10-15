@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 import UIKit
-import Crashlytics
+import FirebaseCrashlytics
 
 class GuanDonViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     

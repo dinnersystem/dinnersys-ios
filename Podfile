@@ -11,10 +11,17 @@ target 'DinnerSystem' do
   pod 'Firebase/Core'
   pod 'Firebase/Analytics'
   pod 'Firebase/Messaging', :inhibit_warnings => true
-  pod 'Fabric'
-  pod 'Crashlytics'
+  pod 'Firebase/Crashlytics'
   pod 'ReachabilitySwift'
   pod 'TrueTime'
-  pod 'RSBarcodes_Swift', '~> 5.0.0'
+  pod 'RSBarcodes_Swift', '~> 5.1.0'
   pod 'Protobuf', :inhibit_warnings => true
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
 end

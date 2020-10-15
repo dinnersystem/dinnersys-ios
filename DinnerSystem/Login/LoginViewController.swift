@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 import Alamofire
-import Crashlytics
+import FirebaseCrashlytics
 
 class LoginViewController: UIViewController {
     
@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
             self.activityIndicator.stopAnimating()
             
             if response.error != nil{
-                Crashlytics.sharedInstance().recordError(response.error!)
+                Crashlytics.crashlytics().record(error: response.error!)
                 self.present(createAlert("連線失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(response.error!)"),animated: false)
                 return
             }
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                 }
                 self.orgButton.setTitle(self.selOrgName, for: .normal)
             } catch let error{
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
                 self.present(createAlert("取得內容失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(error)"),animated: false)
                 return
             }
@@ -125,7 +125,7 @@ class LoginViewController: UIViewController {
             self.indicatorBackView.isHidden = true
             self.activityIndicator.stopAnimating()
             if response.error != nil{
-                Crashlytics.sharedInstance().recordError(response.error!)
+                Crashlytics.crashlytics().record(error: response.error!)
                 self.present(createAlert("登入失敗", "請注意連線狀態，多次失敗請聯絡開發人員\nError Code: \(response.error!)"),animated: false)
                 return
             }
@@ -163,7 +163,7 @@ class LoginViewController: UIViewController {
                 
             }catch let error{
                 print(error)
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
                 let errorAlert = UIAlertController(title: "Error", message: "不知名的錯誤，請嘗試重新登入或確認帳號密碼是否正確。\n錯誤敘述：\(responseString)", preferredStyle: .alert)
                 errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(errorAlert, animated: true, completion: nil)

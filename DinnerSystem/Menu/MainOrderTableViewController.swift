@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import TrueTime
-import Crashlytics
+import FirebaseCrashlytics
 import FirebaseMessaging
 
 class MainOrderTableViewController: UITableViewController {
@@ -120,7 +120,7 @@ class MainOrderTableViewController: UITableViewController {
                         self.factoryName.append("Random")
                         self.tableView.reloadData()
                     }catch let error{
-                        Crashlytics.sharedInstance().recordError(error)
+                        Crashlytics.crashlytics().record(error: error)
                         let alert = UIAlertController(title: "請重新登入", message: "發生了不知名的錯誤，若重複發生此錯誤請務必通知開發人員！", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                             (action: UIAlertAction!) -> () in
@@ -145,7 +145,7 @@ class MainOrderTableViewController: UITableViewController {
 //                    }
 //                    balance = Int(POSInfo.money!)!
 //                }catch let error{
-//                    Crashlytics.sharedInstance().recordError(error)
+//                    Crashlytics.crashlytics().record(error: error)
 //                    //print(String(data: balanceRepsonse, encoding: .utf8)!)
 //                    let alert = UIAlertController(title: "廠商不見了", message: "無法取得廠商列表，若錯誤重複發生請通知開發人員！！", preferredStyle: UIAlertController.Style.alert)
 //                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -159,7 +159,7 @@ class MainOrderTableViewController: UITableViewController {
                 AF.request(dsRequestURL, method: .post, parameters: factoryParam).responseData{response in
                     if response.error != nil{
                         let error = response.error!
-                        Crashlytics.sharedInstance().recordError(error)
+                        Crashlytics.crashlytics().record(error: error)
                         print(error)
                         let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
                         errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -179,7 +179,7 @@ class MainOrderTableViewController: UITableViewController {
                         }
                         balance = Int(POSInfo.money!)!
                     }catch let error{
-                        Crashlytics.sharedInstance().recordError(error)
+                        Crashlytics.crashlytics().record(error: error)
                         //print(String(data: balanceRepsonse, encoding: .utf8)!)
                         let alert = UIAlertController(title: "廠商不見了", message: "無法取得廠商列表，若錯誤重複發生請通知開發人員！！", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -191,7 +191,7 @@ class MainOrderTableViewController: UITableViewController {
                     }
                 }
 //            }catch let error{
-//                Crashlytics.sharedInstance().recordError(error)
+//                Crashlytics.crashlytics().record(error: error)
 //                print(error)
 //                let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.", preferredStyle: .alert)
 //                errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Crashlytics
+import FirebaseCrashlytics
 import Alamofire
 
 class StudentMainViewController: UIViewController {
@@ -31,7 +31,7 @@ class StudentMainViewController: UIViewController {
 //            titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
 //        }catch let error{
 //            print(error)
-//            Crashlytics.sharedInstance().recordError(error)
+//            Crashlytics.crashlytics().record(error: error)
 //            let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！\n錯誤訊息：\(String(data: cardResponse, encoding: .utf8)!)", preferredStyle: UIAlertController.Style.alert)
 //            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
 //                (action: UIAlertAction!) -> () in
@@ -45,7 +45,7 @@ class StudentMainViewController: UIViewController {
             if response.error != nil{
                 if response.error != nil{
                     let error = response.error!
-                    Crashlytics.sharedInstance().recordError(error)
+                    Crashlytics.crashlytics().record(error: error)
                     print(error)
                     let errorAlert = UIAlertController(title: "Bad Internet.", message: "Please check your internet connection and retry.\nError info: \(error)", preferredStyle: .alert)
                     errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
@@ -65,7 +65,7 @@ class StudentMainViewController: UIViewController {
                 self.titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
             }catch let error{
                 print(error)
-                Crashlytics.sharedInstance().recordError(error)
+                Crashlytics.crashlytics().record(error: error)
                 let alert = UIAlertController(title: "請重新登入", message: "查詢餘額失敗，我們已經派出最精銳的猴子去修理這個問題，若長時間出現此問題請通知開發人員！\n錯誤訊息：\(String(data: cardResponse, encoding: .utf8)!)", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
                     (action: UIAlertAction!) -> () in

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */; };
 		E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */; };
 		E60C5F26245DA8AE00621BFE /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C5F22245DA8AD00621BFE /* Login.swift */; };
 		E60C5F27245DA8AE00621BFE /* LoginOrganization.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60C5F23245DA8AE00621BFE /* LoginOrganization.swift */; };
@@ -30,6 +29,7 @@
 		E647D50A24081AA800054721 /* LegacyMoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50624081AA800054721 /* LegacyMoreTableViewController.swift */; };
 		E647D50B24081AA800054721 /* LegacyAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50724081AA800054721 /* LegacyAboutTableViewController.swift */; };
 		E647D50C24081AA800054721 /* LegacyWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E647D50824081AA800054721 /* LegacyWebViewController.swift */; };
+		E6534F13251F3775002E69FB /* Pods_DinnerSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6534F12251F3775002E69FB /* Pods_DinnerSystem.framework */; };
 		E653E437200074F9000E35AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E653E436200074F9000E35AE /* Assets.xcassets */; };
 		E653E43A200074F9000E35AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E653E438200074F9000E35AE /* LaunchScreen.storyboard */; };
 		E658B1E123C423EF003BFE76 /* Dinnerman.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E658B1E023C423EF003BFE76 /* Dinnerman.storyboard */; };
@@ -102,25 +102,9 @@
 		E6F9A08E2400301E008C32EE /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F9A0592400301E008C32EE /* TextField.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		E6996B6D201DE47100E62A5C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		21C62E36350688BB5C177639 /* Pods-DinnerSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystem/Pods-DinnerSystem.release.xcconfig"; sourceTree = "<group>"; };
-		4168BB920F7B5D430DDABFD8 /* Pods_DinnerSystemUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystemUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44AEDBDAF1A37E22A8809BF1 /* Pods-DinnerSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DinnerSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DinnerSystem/Pods-DinnerSystem.debug.xcconfig"; sourceTree = "<group>"; };
-		551BEAC489E8F48309D8368C /* Pods_DinnerSystemTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystemTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		E60C5F22245DA8AD00621BFE /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		E60C5F23245DA8AE00621BFE /* LoginOrganization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOrganization.swift; sourceTree = "<group>"; };
@@ -145,6 +129,7 @@
 		E647D50624081AA800054721 /* LegacyMoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyMoreTableViewController.swift; sourceTree = "<group>"; };
 		E647D50724081AA800054721 /* LegacyAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyAboutTableViewController.swift; sourceTree = "<group>"; };
 		E647D50824081AA800054721 /* LegacyWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyWebViewController.swift; sourceTree = "<group>"; };
+		E6534F12251F3775002E69FB /* Pods_DinnerSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_DinnerSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E42C200074F9000E35AE /* 午餐系統.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "午餐系統.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E653E436200074F9000E35AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E653E439200074F9000E35AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -156,7 +141,6 @@
 		E6813EE023FA8C94008F6066 /* Barcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Barcode.swift; sourceTree = "<group>"; };
 		E6813EE323FA8D69008F6066 /* CardInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardInfo.swift; sourceTree = "<group>"; };
 		E689816A23FEF76900EAC1D7 /* confirmTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmTableViewController.swift; sourceTree = "<group>"; };
-		E6AB539020483A9A00364B46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6B7AA4E23FBAA4A007BDF31 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		E6B7AA4F23FBAA4A007BDF31 /* BonusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusViewController.swift; sourceTree = "<group>"; };
 		E6B7AA5023FBAA4A007BDF31 /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
@@ -227,7 +211,7 @@
 			files = (
 				E6806A352051797B00935718 /* AudioToolbox.framework in Frameworks */,
 				E60AF6EF201DDE3000C48727 /* LocalAuthentication.framework in Frameworks */,
-				DC07E08885B211FB34E186F9 /* Pods_DinnerSystem.framework in Frameworks */,
+				E6534F13251F3775002E69FB /* Pods_DinnerSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,12 +221,9 @@
 		E60AF6E9201DDE0300C48727 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6534F12251F3775002E69FB /* Pods_DinnerSystem.framework */,
 				E6806A342051797B00935718 /* AudioToolbox.framework */,
-				E6AB539020483A9A00364B46 /* Alamofire.framework */,
 				E60AF6EE201DDE3000C48727 /* LocalAuthentication.framework */,
-				776ED30264425F429A51DEE1 /* Pods_DinnerSystem.framework */,
-				551BEAC489E8F48309D8368C /* Pods_DinnerSystemTests.framework */,
-				4168BB920F7B5D430DDABFD8 /* Pods_DinnerSystemUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -417,9 +398,9 @@
 		E6B7AA4D23FBAA4A007BDF31 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				E6B7AA5023FBAA4A007BDF31 /* MoreTableViewController.swift */,
 				E6B7AA4E23FBAA4A007BDF31 /* AboutTableViewController.swift */,
 				E6B7AA4F23FBAA4A007BDF31 /* BonusViewController.swift */,
-				E6B7AA5023FBAA4A007BDF31 /* MoreTableViewController.swift */,
 				E6B7AA5123FBAA4A007BDF31 /* WebViewController.swift */,
 			);
 			path = More;
@@ -642,7 +623,6 @@
 				E653E429200074F9000E35AE /* Frameworks */,
 				E653E42A200074F9000E35AE /* Resources */,
 				1F68245EACF0D2F10C606F65 /* [CP] Embed Pods Frameworks */,
-				E6996B6D201DE47100E62A5C /* Embed Frameworks */,
 				E679A698203EEC81005AE1F9 /* ShellScript */,
 				E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */,
 				E647D50D24081CBD00054721 /* Run Script */,
@@ -663,7 +643,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "DinnerSystem Team";
 				TargetAttributes = {
 					E653E42B200074F9000E35AE = {
@@ -776,7 +756,7 @@
 		};
 		E647D50D24081CBD00054721 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -788,9 +768,9 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/upload-symbols\" -gsp \"${PROJECT_DIR}/DinnerSystem/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/DinnerSystem/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}\"\n";
 		};
 		E679A698203EEC81005AE1F9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -798,13 +778,14 @@
 			files = (
 			);
 			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 		E6CA0A7C22ABEF4B00DD1B21 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -978,7 +959,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1032,7 +1013,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1044,7 +1025,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44AEDBDAF1A37E22A8809BF1 /* Pods-DinnerSystem.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DinnerSystem/DinnerSystem.entitlements;
@@ -1059,7 +1039,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.6;
+				MARKETING_VERSION = 3.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "午餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1073,7 +1053,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 21C62E36350688BB5C177639 /* Pods-DinnerSystem.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = DinnerSystem/DinnerSystem.entitlements;
@@ -1088,7 +1067,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.6;
+				MARKETING_VERSION = 3.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "午餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
