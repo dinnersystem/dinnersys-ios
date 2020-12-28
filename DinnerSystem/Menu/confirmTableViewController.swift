@@ -418,14 +418,14 @@ class confirmTableViewController: UITableViewController {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = NSTimeZone.local
             let now = Date()
-            dateFormatter.dateFormat = "YYYY/MM/dd"
+            dateFormatter.dateFormat = "yyyy/MM/dd"
             let nowDate = dateFormatter.string(from: now)
             let factory = factoryInfoArray[ConfirmFood.fID]!
             let upperBoundTimeString = factory.availUpperBound! //11:00:00
             let lowerBoundTimeString = factory.upperBound! //12:00:00
             let upperBoundDateString = nowDate + " " + upperBoundTimeString
             let lowerBoundDateString = nowDate + " " + lowerBoundTimeString
-            dateFormatter.dateFormat = "YYYY/MM/dd HH:mm:ss"
+            dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             let upperBound = dateFormatter.date(from: upperBoundDateString)!
             let lowerBound = dateFormatter.date(from: lowerBoundDateString)!
             var availTime = upperBound

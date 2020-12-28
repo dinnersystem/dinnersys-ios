@@ -643,7 +643,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "DinnerSystem Team";
 				TargetAttributes = {
 					E653E42B200074F9000E35AE = {
@@ -1053,7 +1053,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.10;
+				MARKETING_VERSION = 3.0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "午餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1081,7 +1081,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/DinnerSystem/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 3.0.10;
+				MARKETING_VERSION = 3.0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = Sean.DinnerSystem;
 				PRODUCT_NAME = "午餐系統";
 				PROVISIONING_PROFILE_SPECIFIER = "";
