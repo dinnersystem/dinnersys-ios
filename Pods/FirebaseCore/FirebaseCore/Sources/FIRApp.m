@@ -73,8 +73,6 @@ NSString *const kFIRGlobalAppDataCollectionEnabledDefaultsKeyFormat =
 NSString *const kFIRGlobalAppDataCollectionEnabledPlistKey =
     @"FirebaseDataCollectionDefaultEnabled";
 
-NSString *const kFIRAppDiagnosticsNotification = @"FIRAppDiagnosticsNotification";
-
 NSString *const kFIRAppDiagnosticsConfigurationTypeKey = @"ConfigType";
 NSString *const kFIRAppDiagnosticsErrorKey = @"Error";
 NSString *const kFIRAppDiagnosticsFIRAppKey = @"FIRApp";
@@ -96,6 +94,9 @@ NSString *const FIRAuthStateDidChangeInternalNotificationUIDKey =
  * Error domain for exceptions and NSError construction.
  */
 NSString *const kFirebaseCoreErrorDomain = @"com.firebase.core";
+
+/** The NSUserDefaults suite name for FirebaseCore, for those storage locations that use it. */
+NSString *const kFirebaseCoreDefaultsSuiteName = @"com.firebase.core";
 
 /**
  * The URL to download plist files.
@@ -348,7 +349,6 @@ static FIRApp *sDefaultApp;
     return NO;
   }
 
-#if TARGET_OS_IOS
   // Initialize the Analytics once there is a valid options under default app. Analytics should
   // always initialize first by itself before the other SDKs.
   if ([self.name isEqualToString:kFIRDefaultAppName]) {
@@ -369,7 +369,6 @@ static FIRApp *sDefaultApp;
       }
     }
   }
-#endif
 
   [self subscribeForAppDidBecomeActiveNotifications];
 

@@ -29,7 +29,7 @@ class RemLoginViewController: UIViewController {
             let versionResponse = try Data(contentsOf: versionURL)
             print(String(data: versionResponse, encoding: .utf8)!)
             currentVersion = try decoder.decode(AppVersion.self, from: versionResponse)
-            if !(currentVersion.ios!.contains(versionNumber)){
+            if currentVersion.ios!.min() > versionNumber{
                 self.indicatorBackView.isHidden = true
                 self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()

@@ -6,6 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
+		<string>webcredentials:dinnersystem.com</string>
 		<string>webcredentials:*.dinnersystem.com</string>
 	</array>
 </dict>
