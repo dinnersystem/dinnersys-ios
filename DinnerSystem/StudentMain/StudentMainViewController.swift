@@ -81,7 +81,7 @@ class StudentMainViewController: UIViewController {
         
         //sry light here
         if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
+            overrideUserInterfaceStyle = .unspecified
         }
         
         
