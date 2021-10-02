@@ -2,3 +2,5 @@
 .DS_Store
 GoogleService-Info.plist
 DinnerSystem/GoogleService-Info.plist
+*.xcuserstate
+Pods/Pods.xcodeproj/xcuserdata/xiaobowen.xcuserdatad/xcschemes/xcschememanagement.plist

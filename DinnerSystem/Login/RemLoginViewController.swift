@@ -86,7 +86,7 @@ class RemLoginViewController: UIViewController {
         
         //sry light mode here
         if #available(iOS 13.0, *){
-            overrideUserInterfaceStyle = .light
+            overrideUserInterfaceStyle = .unspecified
         }
     }
     
