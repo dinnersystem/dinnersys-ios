@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -90,7 +91,7 @@ $name.</string>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NpO-yn-zZq"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="u1M-go-dSX" firstAttribute="top" secondItem="NpO-yn-zZq" secondAttribute="top" constant="35" id="4s0-Jm-kJe"/>
                             <constraint firstItem="dJR-aM-kSL" firstAttribute="top" secondItem="bJ2-MP-9iM" secondAttribute="bottom" constant="8" id="5HL-oh-xby"/>
@@ -1420,6 +1421,9 @@ upE
         <image name="confirmButton" width="568" height="129"/>
         <image name="more" width="32" height="32"/>
         <image name="ordering" width="32" height="32"/>
+        <namedColor name="BackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

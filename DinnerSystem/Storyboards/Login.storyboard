@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uXY-wS-Xra">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqK-Wc-vlm">
-                                <rect key="frame" x="50" y="425.5" width="314" height="45"/>
+                                <rect key="frame" x="50" y="425.66666666666669" width="314" height="45"/>
                                 <color key="backgroundColor" red="0.0" green="0.49803921568627452" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="dqQ-Hv-uLc"/>
@@ -44,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMZ-FW-tbx">
-                                <rect key="frame" x="260" y="494.5" width="101" height="30"/>
+                                <rect key="frame" x="260" y="494.66666666666669" width="101" height="30.000000000000057"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U4P-qj-LoE"/>
                                 </constraints>
@@ -59,7 +60,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VhM-LR-SXV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gMZ-FW-tbx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="VhM-LR-SXV" secondAttribute="leading" constant="260" id="6JS-Dw-iXj"/>
                             <constraint firstItem="HdO-N3-A4I" firstAttribute="leading" secondItem="OqK-Wc-vlm" secondAttribute="leading" id="M5T-ni-9bi"/>
@@ -140,7 +141,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號(ex. 06610089)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQ6-c8-nCI">
-                                <rect key="frame" x="38" y="229" width="229.5" height="34"/>
+                                <rect key="frame" x="37.999999999999986" y="229" width="229.66666666666663" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                             </textField>
@@ -153,16 +154,16 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mVR-fU-ryW">
-                                <rect key="frame" x="311.5" y="245" width="51" height="31"/>
+                                <rect key="frame" x="311.66666666666669" y="245" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記住密碼" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogM-ye-mZy">
-                                <rect key="frame" x="299.5" y="215" width="69.5" height="22"/>
+                                <rect key="frame" x="299.66666666666669" y="215" width="69.333333333333314" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJQ-pA-10Y">
-                                <rect key="frame" x="57.5" y="173" width="191" height="30"/>
+                                <rect key="frame" x="57.333333333333343" y="173" width="191" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="191" id="Qsx-WB-BV2"/>
                                 </constraints>
@@ -185,7 +186,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iWM-33-jy3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OXs-lR-PXm" firstAttribute="leading" secondItem="e6R-Jd-JEW" secondAttribute="leading" constant="15" id="0Ma-6O-upl"/>
                             <constraint firstItem="OQ6-c8-nCI" firstAttribute="top" secondItem="Sfq-8A-frb" secondAttribute="bottom" constant="107" id="A3z-nm-KWm"/>
@@ -226,16 +227,16 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dRz-WM-PGB"/>
-        <segue reference="eGs-Zh-TPU"/>
+        <segue reference="nim-qq-wxv"/>
+        <segue reference="1ku-Oa-mhk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DinnerSysLogo" width="1024" height="1024"/>
+        <namedColor name="BackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
