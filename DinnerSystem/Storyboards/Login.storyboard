@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,7 +60,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VhM-LR-SXV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gMZ-FW-tbx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="VhM-LR-SXV" secondAttribute="leading" constant="260" id="6JS-Dw-iXj"/>
                             <constraint firstItem="HdO-N3-A4I" firstAttribute="leading" secondItem="OqK-Wc-vlm" secondAttribute="leading" id="M5T-ni-9bi"/>
@@ -185,7 +186,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iWM-33-jy3"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OXs-lR-PXm" firstAttribute="leading" secondItem="e6R-Jd-JEW" secondAttribute="leading" constant="15" id="0Ma-6O-upl"/>
                             <constraint firstItem="OQ6-c8-nCI" firstAttribute="top" secondItem="Sfq-8A-frb" secondAttribute="bottom" constant="107" id="A3z-nm-KWm"/>
@@ -226,16 +227,16 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dRz-WM-PGB"/>
-        <segue reference="eGs-Zh-TPU"/>
+        <segue reference="nim-qq-wxv"/>
+        <segue reference="1ku-Oa-mhk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="DinnerSysLogo" width="1024" height="1024"/>
+        <namedColor name="BackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
