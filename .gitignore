@@ -2,7 +2,5 @@
 .DS_Store
 GoogleService-Info.plist
 DinnerSystem/GoogleService-Info.plist
-
-## User settings
 xcuserdata/
 xcshareddata/
