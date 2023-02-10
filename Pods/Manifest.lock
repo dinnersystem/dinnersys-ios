@@ -111,7 +111,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
-  - Protobuf (3.18.0)
+  - Protobuf (3.18.1)
   - ReachabilitySwift (5.0.0)
   - RSBarcodes_Swift (5.1.1)
   - SwiftGifOrigin (1.7.0)
@@ -167,7 +167,7 @@ SPEC CHECKSUMS:
   LicensePlist: 7cf61d222446422aacd4e3526989e8394dd4bea0
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  Protobuf: 1a37ebea1338949e9ac35a3f06e80b3f536eec8d
+  Protobuf: 0ac2cdc92fb5c33dab66dd1c4e9f9cc4c34d00ba
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   RSBarcodes_Swift: 9be8dd1d00b9ac12e72f3d853cacb680c7722c9f
   SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
