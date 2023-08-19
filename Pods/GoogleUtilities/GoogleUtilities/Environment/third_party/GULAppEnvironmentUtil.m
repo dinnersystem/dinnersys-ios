@@ -17,6 +17,7 @@
 #import <Foundation/Foundation.h>
 #import <dlfcn.h>
 #import <mach-o/dyld.h>
+#import <sys/sysctl.h>
 #import <sys/utsname.h>
 #import <objc/runtime.h>
 
@@ -85,7 +86,7 @@ static NSString *const kFIRAIdentitySandboxReceiptFileName = @"sandboxReceipt";
 /// AppSync or similar to disable codesignature checks.
 ///
 /// More information at <a href="http://landonf.org/2009/02/index.html">Landon Fuller's blog</a>
-static BOOL IsAppEncrypted() {
+static BOOL IsAppEncrypted(void) {
   const struct mach_header *executableHeader = NULL;
   for (uint32_t i = 0; i < _dyld_image_count(); i++) {
     const struct mach_header *header = _dyld_get_image_header(i);
@@ -129,7 +130,7 @@ static BOOL IsAppEncrypted() {
   return NO;
 }
 
-static BOOL HasSCInfoFolder() {
+static BOOL HasSCInfoFolder(void) {
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
   NSString *bundlePath = [NSBundle mainBundle].bundlePath;
   NSString *scInfoPath = [bundlePath stringByAppendingPathComponent:@"SC_Info"];
@@ -139,7 +140,7 @@ static BOOL HasSCInfoFolder() {
 #endif
 }
 
-static BOOL HasEmbeddedMobileProvision() {
+static BOOL HasEmbeddedMobileProvision(void) {
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
   return [[NSBundle mainBundle] pathForResource:@"embedded" ofType:@"mobileprovision"].length > 0;
 #elif TARGET_OS_OSX
@@ -208,17 +209,79 @@ static BOOL HasEmbeddedMobileProvision() {
   return NO;
 }
 
++ (NSString *)getSysctlEntry:(const char *)sysctlKey {
+  static NSString *entryValue;
+  size_t size;
+  sysctlbyname(sysctlKey, NULL, &size, NULL, 0);
+  if (size > 0) {
+    char *entryValueCStr = malloc(size);
+    sysctlbyname(sysctlKey, entryValueCStr, &size, NULL, 0);
+    entryValue = [NSString stringWithCString:entryValueCStr encoding:NSUTF8StringEncoding];
+    free(entryValueCStr);
+    return entryValue;
+  } else {
+    return nil;
+  }
+}
+
 + (NSString *)deviceModel {
   static dispatch_once_t once;
   static NSString *deviceModel;
 
+#if TARGET_OS_OSX || TARGET_OS_MACCATALYST
+  dispatch_once(&once, ^{
+    // The `uname` function only returns x86_64 for Macs. Use `sysctlbyname` instead, but fall back
+    // to the `uname` function if it fails.
+    deviceModel = [GULAppEnvironmentUtil getSysctlEntry:"hw.model"];
+    if (deviceModel.length == 0) {
+      struct utsname systemInfo;
+      if (uname(&systemInfo) == 0) {
+        deviceModel = [NSString stringWithUTF8String:systemInfo.machine];
+      }
+    }
+  });
+#else
   dispatch_once(&once, ^{
     struct utsname systemInfo;
     if (uname(&systemInfo) == 0) {
       deviceModel = [NSString stringWithUTF8String:systemInfo.machine];
     }
   });
+#endif  // TARGET_OS_OSX || TARGET_OS_MACCATALYST
   return deviceModel;
+}
+
++ (NSString *)deviceSimulatorModel {
+  static dispatch_once_t once;
+  static NSString *model = nil;
+
+  dispatch_once(&once, ^{
+#if TARGET_OS_SIMULATOR
+#if TARGET_OS_WATCH
+    model = @"watchOS Simulator";
+#elif TARGET_OS_TV
+    model = @"tvOS Simulator";
+#elif TARGET_OS_IPHONE
+    switch ([[UIDevice currentDevice] userInterfaceIdiom]) {
+      case UIUserInterfaceIdiomPhone:
+        model = @"iOS Simulator (iPhone)";
+        break;
+      case UIUserInterfaceIdiomPad:
+        model = @"iOS Simulator (iPad)";
+        break;
+      default:
+        model = @"iOS Simulator (Unknown)";
+        break;
+    }
+#endif
+#elif TARGET_OS_EMBEDDED
+    model = [GULAppEnvironmentUtil getSysctlEntry:"hw.machine"];
+#else
+    model = [GULAppEnvironmentUtil getSysctlEntry:"hw.model"];
+#endif
+  });
+
+  return model;
 }
 
 + (NSString *)systemVersion {
@@ -271,7 +334,7 @@ static BOOL HasEmbeddedMobileProvision() {
   // `true`, which means the condition list is order-sensitive.
 #if TARGET_OS_MACCATALYST
   applePlatform = @"maccatalyst";
-#elif TARGET_OS_IOS
+#elif TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 #if defined(__IPHONE_14_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
   if (@available(iOS 14.0, *)) {
     // Early iOS 14 betas do not include isiOSAppOnMac (#6969)
@@ -290,9 +353,26 @@ static BOOL HasEmbeddedMobileProvision() {
   applePlatform = @"macos";
 #elif TARGET_OS_WATCH
   applePlatform = @"watchos";
+#elif defined(TARGET_OS_VISION) && TARGET_OS_VISION
+  applePlatform = @"visionos";
 #endif // TARGET_OS_MACCATALYST
 
   return applePlatform;
+}
+
++ (NSString *)appleDevicePlatform {
+  NSString* firebasePlatform = [GULAppEnvironmentUtil applePlatform];
+#if TARGET_OS_IOS
+  // This check is necessary because iOS-only apps running on iPad
+  // will report UIUserInterfaceIdiomPhone via UI_USER_INTERFACE_IDIOM().
+  if ([firebasePlatform isEqualToString:@"ios"] &&
+      ([[UIDevice currentDevice].model.lowercaseString containsString:@"ipad"] ||
+       [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)) {
+    return @"ipados";
+  }
+#endif
+
+  return firebasePlatform;
 }
 
 + (NSString *)deploymentType {
@@ -302,8 +382,10 @@ static BOOL HasEmbeddedMobileProvision() {
   NSString *deploymentType = @"carthage";
 #elif FIREBASE_BUILD_ZIP_FILE
   NSString *deploymentType = @"zip";
-#else
+#elif COCOAPODS
   NSString *deploymentType = @"cocoapods";
+#else
+  NSString *deploymentType = @"unknown";
 #endif
 
   return deploymentType;

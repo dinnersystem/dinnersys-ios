@@ -18,10 +18,13 @@ target 'DinnerSystem' do
   pod 'Protobuf', :inhibit_warnings => true
 end
 
-#post_install do |installer|
-#  installer.pods_project.targets.each do |target|
-#    target.build_configurations.each do |config|
-#      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
-#    end
-#  end
-#end
+post_install do |installer|
+  installer.generated_projects.each do |project|
+    project.targets.each do |target|
+      target.build_configurations.each do |config|
+#         config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      end
+    end
+  end
+end

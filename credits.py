@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # coding: utf-8
 
 """
@@ -21,7 +21,7 @@ from optparse import OptionParser
 from optparse import Option, OptionValueError
 from copy import deepcopy
 
-VERSION = '0.3'
+VERSION = '0.11.0'
 PROG = os.path.basename(os.path.splitext(__file__)[0])
 DESCRIPTION = """Generate a `Settings.bundle` friendly plist file from all
  'LICENSE.*' files in a given directory. Inspired by JosephH and Sean's
@@ -42,18 +42,21 @@ class MultipleOption(Option):
 
 
 def main(_):
-    def exclude_callback(option, _, value, option_parser):
-        setattr(option_parser.values, option.dest, value.split(','))
+    def list_callback(option, _, value, option_parser):
+        values = [item.strip() for item in value.split(',')]
+        setattr(option_parser.values, option.dest, values)
 
     parser = OptionParser(option_class=MultipleOption,
                           usage='usage: %prog -s source_path -o output_plist -e [exclude_paths]',
                           version='%s %s' % (PROG, VERSION),
                           description=DESCRIPTION)
     parser.add_option('-s', '--source',
-                      type="string",
+                      action="callback", type="string",
                       dest='input_path',
                       metavar='source_path',
-                      help='source directory to search for licenses')
+                      help='comma separated list of directories to \
+                          recursively search for licenses',
+                      callback=list_callback)
     parser.add_option('-o', '--output-plist',
                       type="string",
                       dest='output_file',
@@ -64,41 +67,56 @@ def main(_):
                       dest='excludes',
                       metavar='path1, ...',
                       help='comma separated list of paths to be excluded',
-                      callback=exclude_callback)
+                      callback=list_callback)
+    parser.add_option('-t', '--test',
+                      action="store_true",
+                      dest='include_tests',
+                      metavar='include_tests',
+                      default=False,
+                      help='include files in the `Tests` directory for unit testing')
     if len(sys.argv) == 1:
         parser.parse_args(['--help'])
 
     options, args = parser.parse_args()
 
-    if not os.path.isdir(options.input_path):
-        print("Error: Invalid source path: %s" % options.input_path)
-        sys.exit(2)
+    for path in options.input_path:
+        if(not os.path.isdir(path)):
+            print("Error: Source path does not exist: %s" % path)
+            sys.exit(2)
 
     if not options.output_file.endswith('.plist'):
         print("Error: Outputfile must end in .plist")
         sys.exit(2)
 
-    plist = plist_from_dir(options.input_path, options.excludes)
-    plistlib.writePlist(plist, options.output_file)
+    plist = plist_from_dirs(
+        options.input_path,
+        options.excludes,
+        options.include_tests
+    )
+
+    with open(options.output_file, 'wb') as f:
+        plistlib.dump(plist, f)
     return 0
 
 
-def plist_from_dir(directory, excludes):
+def plist_from_dirs(directories, excludes, include_tests):
     """
-    Recursively search 'dir' to generates plist objects from LICENSE files.
+    Recursively searches each directory in 'directories' and
+    generates plist objects from any LICENSE files found.
     """
     plist = {'PreferenceSpecifiers': [], 'StringsTable': 'Acknowledgements'}
-    license_paths = license_paths_form_dir(directory)
-    plist_paths = (plist_path for plist_path in license_paths if not exclude_path(plist_path, excludes))
-    for plist_path in plist_paths:
-        license_dict = plist_from_file(plist_path)
-        plist['PreferenceSpecifiers'].append(license_dict)
+    for directory in directories:
+        license_paths = license_paths_from_dir(directory)
+        plist_paths = [plist_path for plist_path in license_paths if not exclude_path(directory, plist_path, excludes, include_tests)]
+        for plist_path in plist_paths:
+            license_dict = plist_from_file(plist_path)
+            plist['PreferenceSpecifiers'].append(license_dict)
 
     plist['PreferenceSpecifiers'] = sorted(plist['PreferenceSpecifiers'], key=lambda x: x['Title'])
     return plist
 
 
-def license_paths_form_dir(directory):
+def license_paths_from_dir(directory):
     return_dict = []
     os.chdir(sys.path[0])
     for dir_path, _, file_names in os.walk(directory):
@@ -117,21 +135,26 @@ def plist_from_file(path):
     current_file = open(path, 'r')
     group = deepcopy(base_group)
     title = path.split("/")[-2]
-    group['Title'] = unicode(title, 'utf-8')
+    group['Title'] = title
     src_body = current_file.read()
     body = ""
     for match in re.finditer(r'(?s)((?:[^\n][\n]?)+)', src_body):
         body = body + re.sub("(\\n)", " ", match.group()) + "\n\n"
-    body = unicode(body, 'utf-8')
+    body = body
     group['FooterText'] = rchop(body, " \n\n")
     return group
 
 
-def exclude_path(path, excludes):
-    if excludes is None:
+def exclude_path(source_path, plist_path, excludes, is_testing):
+    if "/LicenseGenerator-iOS/Example/" in plist_path and '/LicenseGenerator-iOS/Example/Pods' not in source_path:
+        return True
+    elif "/LicenseGenerator-iOS/Tests/" in plist_path:
+        return not is_testing
+    elif excludes is None:
         return False
+
     for pattern in excludes:
-        if re.search(pattern.strip(), path, re.S) is not None:
+        if re.search(pattern.strip(), plist_path, re.S) is not None:
             return True
     return False
 

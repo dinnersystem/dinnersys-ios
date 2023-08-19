@@ -183,7 +183,7 @@ extension HTTPHeaders: Collection {
 
 extension HTTPHeaders: CustomStringConvertible {
     public var description: String {
-        headers.map { $0.description }
+        headers.map(\.description)
             .joined(separator: "\n")
     }
 }
@@ -300,10 +300,19 @@ extension HTTPHeader {
         HTTPHeader(name: "Content-Disposition", value: value)
     }
 
+    /// Returns a `Content-Encoding` header.
+    ///
+    /// - Parameter value: The `Content-Encoding`.
+    ///
+    /// - Returns:         The header.
+    public static func contentEncoding(_ value: String) -> HTTPHeader {
+        HTTPHeader(name: "Content-Encoding", value: value)
+    }
+
     /// Returns a `Content-Type` header.
     ///
-    /// All Alamofire `ParameterEncoding`s and `ParameterEncoder`s set the `Content-Type` of the request, so it may not be necessary to manually
-    /// set this value.
+    /// All Alamofire `ParameterEncoding`s and `ParameterEncoder`s set the `Content-Type` of the request, so it may not
+    /// be necessary to manually set this value.
     ///
     /// - Parameter value: The `Content-Type` value.
     ///
@@ -360,9 +369,7 @@ extension HTTPHeader {
     /// `preferredLanguages`.
     ///
     /// See the [Accept-Language HTTP header documentation](https://tools.ietf.org/html/rfc7231#section-5.3.5).
-    public static let defaultAcceptLanguage: HTTPHeader = {
-        .acceptLanguage(Locale.preferredLanguages.prefix(6).qualityEncoded())
-    }()
+    public static let defaultAcceptLanguage: HTTPHeader = .acceptLanguage(Locale.preferredLanguages.prefix(6).qualityEncoded())
 
     /// Returns Alamofire's default `User-Agent` header.
     ///
