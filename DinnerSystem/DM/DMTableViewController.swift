@@ -20,6 +20,7 @@ class DMTableViewController: UITableViewController {
     
     private func fetchData(){
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         today = formatter.string(from: date)
         print(today)
         dmHistoryTableList = [:]
@@ -97,6 +98,7 @@ class DMTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         today = formatter.string(from: date)
         
         activityIndicator.center = self.view.center

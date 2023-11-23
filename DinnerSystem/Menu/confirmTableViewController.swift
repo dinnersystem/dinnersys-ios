@@ -99,6 +99,7 @@ class confirmTableViewController: UITableViewController {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         let currentDate = formatter.string(from: date)
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         let upperBound = formatter.date(from: "\(currentDate) \(factory.upperBound!)")
@@ -417,6 +418,7 @@ class confirmTableViewController: UITableViewController {
             //time
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = NSTimeZone.local
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
             let now = Date()
             dateFormatter.dateFormat = "yyyy/MM/dd"
             let nowDate = dateFormatter.string(from: now)

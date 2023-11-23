@@ -21,6 +21,7 @@ class HistoryTableViewController: UITableViewController {
     //+"&esti_start=" + today + "-00:00:00&esti_end=" + today + "-23:59:59"
     private func fetchData(){
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         today = formatter.string(from: date)
         print(today)
         historyTableList = []
@@ -125,6 +126,7 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         today = formatter.string(from: date)
         
         
@@ -155,6 +157,7 @@ class HistoryTableViewController: UITableViewController {
     
     @IBAction func reloadButton(_ sender: Any) {
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         today = formatter.string(from: date)
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.activityIndicator.startAnimating()
@@ -210,6 +213,7 @@ class HistoryTableViewController: UITableViewController {
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         let currentDate = formatter.string(from: date)
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
         let upperBound = formatter.date(from: "\(currentDate) \(factory.upperBound!)")
