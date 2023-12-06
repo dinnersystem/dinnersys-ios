@@ -59,9 +59,17 @@ class StudentMainViewController: UIViewController {
             }
             let cardResponse = response.data!
             do{
+                //time
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = NSTimeZone.local
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                let now = Date()
+                dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+                let nowDate = dateFormatter.string(from: now)
                 POSInfo = try decoder.decode(CardInfo.self, from: cardResponse)
+                
                 self.barcodeView.image = getBarcode(POSData: POSInfo) //get barcode image
-                self.cardDetailLabel.text = "卡號：\(POSInfo.card!)\n餘額：\(POSInfo.money!)元（非即時）"
+                self.cardDetailLabel.text = "卡號：\(POSInfo.card!)\n餘額：\(POSInfo.money!)元（非即時）\n\(nowDate)"
                 self.titleLabel.text = "歡迎使用午餐系統，\n\(POSInfo.name!.trimmingCharacters(in: .whitespacesAndNewlines))."
             }catch let error{
                 print(error)
